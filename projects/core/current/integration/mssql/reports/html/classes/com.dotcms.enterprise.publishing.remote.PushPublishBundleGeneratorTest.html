@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">35.491s</div>
+<div class="counter">33.709s</div>
 <p>duration</p>
 </div>
 </td>
@@ -70,15 +70,15 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="testGenerateBundle_FilterDependenciesAndForcePushFalse_ContentExplicitlyAddedMustBePushedRegardlessPushDate"></a>
-<h3 class="failures">testGenerateBundle_FilterDependenciesAndForcePushFalse_ContentExplicitlyAddedMustBePushedRegardlessPushDate</h3>
+<a name="testGenerateBundleWithFilter_ExcludeDependencyClasses_ContentTypeWorkflow_NotAdded"></a>
+<h3 class="failures">testGenerateBundleWithFilter_ExcludeDependencyClasses_ContentTypeWorkflow_NotAdded</h3>
 <span class="code">
 <pre>java.lang.RuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
 	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:269)
 	at com.dotcms.datagen.ContentletDataGen.persist(ContentletDataGen.java:189)
 	at com.dotcms.datagen.ContentletDataGen.nextPersisted(ContentletDataGen.java:175)
 	at com.dotcms.datagen.TestDataUtils.getWikiContent(TestDataUtils.java:827)
-	at com.dotcms.enterprise.publishing.remote.PushPublishBundleGeneratorTest.testGenerateBundle_FilterDependenciesAndForcePushFalse_ContentExplicitlyAddedMustBePushedRegardlessPushDate(PushPublishBundleGeneratorTest.java:703)
+	at com.dotcms.enterprise.publishing.remote.PushPublishBundleGeneratorTest.testGenerateBundleWithFilter_ExcludeDependencyClasses_ContentTypeWorkflow_NotAdded(PushPublishBundleGeneratorTest.java:229)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -155,12 +155,12 @@ Caused by: com.dotmarketing.exception.DotHibernateException: Unable to close Hib
 	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
 	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:267)
 	... 63 more
-Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '24dc5dbd-0e6d-46f7-9d61-671fbe265c83': Content Type with ID '4a0f4343-ba5b-4702-8aff-c2bcd33d1170' was not found via API.
+Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '6b7ebf79-09af-41b0-8879-afd3aaee8522': Content Type with ID '02d5c405-b566-4da4-8d42-b409140b96bc' was not found via API.
 	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
 	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
 	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
 	... 77 more
-Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '24dc5dbd-0e6d-46f7-9d61-671fbe265c83': Content Type with ID '4a0f4343-ba5b-4702-8aff-c2bcd33d1170' was not found via API.
+Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '6b7ebf79-09af-41b0-8879-afd3aaee8522': Content Type with ID '02d5c405-b566-4da4-8d42-b409140b96bc' was not found via API.
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:389)
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
 	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
@@ -179,7 +179,7 @@ Caused by: com.dotcms.content.business.DotMappingException: An error occurred wh
 	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
 	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
 	... 79 more
-Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '4a0f4343-ba5b-4702-8aff-c2bcd33d1170' was not found via API.
+Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '02d5c405-b566-4da4-8d42-b409140b96bc' was not found via API.
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:238)
 	... 95 more
 </pre>
@@ -198,53 +198,53 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '4a
 </thead>
 <tr>
 <td class="success">Test_GenerateBundle_FileAssetZeroBytes_ContentAllowZeroLengthFilesSetToFalse_DotBundleException</td>
-<td>1.068s</td>
+<td>0.995s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_GenerateBundle_FileAssetZeroBytes_ContentAllowZeroLengthFilesSetToTrue_Success</td>
-<td>0.804s</td>
+<td>0.795s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_GenerateBundle_PageWithTemplateDeleted_PageSuccessfullyAddedToBundle</td>
-<td>0.770s</td>
+<td>0.858s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGenerateBundleWithFilter_DependenciesFalse_TemplateContainerFolderContenttypeContentlet_NotAdded</td>
-<td>3.546s</td>
+<td>3.397s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGenerateBundleWithFilter_ExcludeClasses_TemplateContainer_NotAdded</td>
-<td>0.802s</td>
+<td>0.850s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testGenerateBundleWithFilter_ExcludeDependencyClasses_ContentTypeWorkflow_NotAdded</td>
-<td>3.189s</td>
-<td class="success">passed</td>
+<td class="failures">testGenerateBundleWithFilter_ExcludeDependencyClasses_ContentTypeWorkflow_NotAdded</td>
+<td>2.806s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">testGenerateBundleWithFilter_ExcludeDependencyQuery_ContentFromChildContentType_NotAdded</td>
-<td>8.123s</td>
+<td>8.167s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGenerateBundleWithFilter_ExcludeQuery_BaseTypeWidget_NotAdded</td>
-<td>4.919s</td>
+<td>4.346s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGenerateBundleWithFilter_RelationshipsFalse_ChildcontentletChildcontentyypeRelationship_NotAdded</td>
-<td>9.048s</td>
+<td>8.106s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">testGenerateBundle_FilterDependenciesAndForcePushFalse_ContentExplicitlyAddedMustBePushedRegardlessPushDate</td>
-<td>3.222s</td>
-<td class="failures">failed</td>
+<td class="success">testGenerateBundle_FilterDependenciesAndForcePushFalse_ContentExplicitlyAddedMustBePushedRegardlessPushDate</td>
+<td>3.389s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
@@ -256,7 +256,7 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '4a
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.4.1</a> at Dec 18, 2020 11:36:53 PM</p>
+<a href="http://www.gradle.org">Gradle 4.4.1</a> at Dec 22, 2020 6:49:20 PM</p>
 </div>
 </div>
 </body>
