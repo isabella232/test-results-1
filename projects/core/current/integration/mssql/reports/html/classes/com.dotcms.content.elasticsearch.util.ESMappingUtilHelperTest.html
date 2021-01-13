@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">14m31.58s</div>
+<div class="counter">12m54.77s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">96%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,13 +61,134 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Standard error</a>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping_2"></a>
+<h3 class="failures">Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping_2</h3>
+<span class="code">
+<pre>com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4138)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody138(ESContentletAPIImpl.java:4090)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure139.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4083)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4065)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody126(ESContentletAPIImpl.java:4014)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure127.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4011)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:194)
+	at com.dotcms.content.elasticsearch.util.ESMappingUtilHelperTest.testValidateNewsLikeMapping(ESMappingUtilHelperTest.java:466)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at com.tngtech.java.junit.dataprovider.DataProviderFrameworkMethod.invokeExplosively(DataProviderFrameworkMethod.java:119)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '992ba4c5-2113-4967-989a-9028ae1ff4bb': Content Type with ID '03aedc05-8310-4244-9489-af0fb7e0f085' was not found via API.
+	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
+	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
+	... 79 more
+Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '992ba4c5-2113-4967-989a-9028ae1ff4bb': Content Type with ID '03aedc05-8310-4244-9489-af0fb7e0f085' was not found via API.
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:389)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap(ESMappingAPIImpl.java:211)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addBulkRequest(ContentletIndexAPIImpl.java:745)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.appendBulkRequest(ContentletIndexAPIImpl.java:708)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.createBulkRequest(ContentletIndexAPIImpl.java:596)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.indexContentListNow(ContentletIndexAPIImpl.java:548)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addContentToIndex(ContentletIndexAPIImpl.java:542)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.lambda$3(ContentletIndexAPIImpl.java:501)
+	at com.dotmarketing.db.HibernateUtil$DotSyncRunnable.run(HibernateUtil.java:929)
+	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
+	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
+	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
+	... 81 more
+Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '03aedc05-8310-4244-9489-af0fb7e0f085' was not found via API.
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:238)
+	... 97 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -79,141 +200,147 @@
 </thead>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: dates_as_text</td>
-<td>49.339s</td>
+<td>43.267s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: geomapping</td>
-<td>49.225s</td>
+<td>43.564s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: keywordmapping</td>
-<td>54.633s</td>
+<td>47.723s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: permissions</td>
-<td>49.550s</td>
+<td>43.355s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: radio_as_boolean</td>
-<td>49.868s</td>
+<td>44.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: radio_as_float</td>
-<td>50.117s</td>
+<td>44.274s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: radio_as_integer</td>
-<td>50.435s</td>
+<td>44.449s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: select_as_boolean</td>
-<td>50.922s</td>
+<td>45.081s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: select_as_float</td>
-<td>51.130s</td>
+<td>45.573s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: select_as_integer</td>
-<td>51.781s</td>
+<td>45.882s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: strings_as_date_times</td>
-<td>49.503s</td>
+<td>43.493s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: strings_as_dates</td>
-<td>50.025s</td>
+<td>45.321s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: tags</td>
-<td>47.982s</td>
+<td>47.314s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: text_as_float</td>
-<td>52.644s</td>
+<td>46.526s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: text_as_integer</td>
-<td>47.932s</td>
+<td>47.056s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: uniqueField</td>
-<td>48.377s</td>
+<td>41.607s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateEventMapping. Mapping Name: permissions</td>
-<td>0.400s</td>
+<td>0.213s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateEventMapping. Mapping Name: strings_as_dates</td>
-<td>0.311s</td>
+<td>0.234s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateEventMapping. Mapping Name: template_1</td>
-<td>1.501s</td>
+<td>1.243s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateEventMapping. Mapping Name: textmapping</td>
-<td>0.318s</td>
+<td>0.229s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateFileAssetMapping. Mapping Name: keywordmapping</td>
-<td>2.997s</td>
+<td>3.015s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateFileAssetMapping. Mapping Name: longmapping</td>
-<td>3.539s</td>
+<td>3.148s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping</td>
-<td>6.020s</td>
+<td>5.023s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping_2</td>
-<td>6.051s</td>
-<td class="success">passed</td>
+<td class="failures">Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping_2</td>
+<td>3.396s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateNewsLikeMapping. Mapping Name: keywordmapping</td>
-<td>6.164s</td>
+<td>5.686s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateContentIndexWithCustomMappings</td>
-<td>40.811s</td>
+<td>34.087s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>Jan 11, 2021 10:36:46 PM com.hazelcast.internal.diagnostics.HealthMonitor
-INFO: [172.19.0.3]:5701 [dev] [3.9.2] processors=2, physical.memory.total=6.8G, physical.memory.free=647.0M, swap.space.total=4.0G, swap.space.free=3.9G, heap.memory.used=1.1G, heap.memory.free=98.4M, heap.memory.total=1.2G, heap.memory.max=1.5G, heap.memory.used/total=91.73%, heap.memory.used/max=70.62%, minor.gc.count=632, minor.gc.time=14512ms, major.gc.count=6, major.gc.time=3607ms, load.process=0.04%, load.system=0.58%, load.systemAverage=142.72%, thread.count=570, thread.peakCount=583, cluster.timeDiff=0, event.q.size=0, executor.q.async.size=0, executor.q.client.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operations.size=0, executor.q.priorityOperation.size=0, operations.completed.count=2, executor.q.mapLoad.size=0, executor.q.mapLoadAllKeys.size=0, executor.q.cluster.size=0, executor.q.response.size=0, operations.running.count=0, operations.pending.invocations.percentage=0.00%, operations.pending.invocations.count=0, proxy.count=0, clientEndpoint.count=0, connection.active.count=0, client.connection.count=0, connection.count=0
+<pre>Jan 13, 2021 8:06:05 PM com.hazelcast.internal.diagnostics.HealthMonitor
+INFO: [172.19.0.3]:5701 [dev] [3.9.2] processors=2, physical.memory.total=6.8G, physical.memory.free=260.3M, swap.space.total=4.0G, swap.space.free=3.9G, heap.memory.used=1.1G, heap.memory.free=102.9M, heap.memory.total=1.2G, heap.memory.max=1.5G, heap.memory.used/total=91.52%, heap.memory.used/max=71.79%, minor.gc.count=554, minor.gc.time=12441ms, major.gc.count=6, major.gc.time=3120ms, load.process=0.07%, load.system=0.57%, load.systemAverage=133.01%, thread.count=575, thread.peakCount=593, cluster.timeDiff=0, event.q.size=0, executor.q.async.size=0, executor.q.client.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operations.size=0, executor.q.priorityOperation.size=0, operations.completed.count=2, executor.q.mapLoad.size=0, executor.q.mapLoadAllKeys.size=0, executor.q.cluster.size=0, executor.q.response.size=0, operations.running.count=0, operations.pending.invocations.percentage=0.00%, operations.pending.invocations.count=0, proxy.count=0, clientEndpoint.count=0, connection.active.count=0, client.connection.count=0, connection.count=0
+Jan 13, 2021 8:14:05 PM com.hazelcast.internal.diagnostics.HealthMonitor
+INFO: [172.19.0.3]:5701 [dev] [3.9.2] processors=2, physical.memory.total=6.8G, physical.memory.free=239.0M, swap.space.total=4.0G, swap.space.free=3.9G, heap.memory.used=1.1G, heap.memory.free=94.7M, heap.memory.total=1.2G, heap.memory.max=1.5G, heap.memory.used/total=92.22%, heap.memory.used/max=72.58%, minor.gc.count=567, minor.gc.time=12767ms, major.gc.count=6, major.gc.time=3120ms, load.process=0.02%, load.system=0.57%, load.systemAverage=101.71%, thread.count=575, thread.peakCount=593, cluster.timeDiff=0, event.q.size=0, executor.q.async.size=0, executor.q.client.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operations.size=0, executor.q.priorityOperation.size=0, operations.completed.count=2, executor.q.mapLoad.size=0, executor.q.mapLoadAllKeys.size=0, executor.q.cluster.size=0, executor.q.response.size=0, operations.running.count=0, operations.pending.invocations.percentage=0.00%, operations.pending.invocations.count=0, proxy.count=0, clientEndpoint.count=0, connection.active.count=0, client.connection.count=0, connection.count=0
+Jan 13, 2021 8:14:25 PM com.hazelcast.internal.diagnostics.HealthMonitor
+INFO: [172.19.0.3]:5701 [dev] [3.9.2] processors=2, physical.memory.total=6.8G, physical.memory.free=236.7M, swap.space.total=4.0G, swap.space.free=3.9G, heap.memory.used=1.1G, heap.memory.free=120.2M, heap.memory.total=1.2G, heap.memory.max=1.5G, heap.memory.used/total=90.13%, heap.memory.used/max=70.99%, minor.gc.count=568, minor.gc.time=12800ms, major.gc.count=6, major.gc.time=3120ms, load.process=0.04%, load.system=0.56%, load.systemAverage=107.96%, thread.count=575, thread.peakCount=593, cluster.timeDiff=0, event.q.size=0, executor.q.async.size=0, executor.q.client.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operations.size=0, executor.q.priorityOperation.size=0, operations.completed.count=2, executor.q.mapLoad.size=0, executor.q.mapLoadAllKeys.size=0, executor.q.cluster.size=0, executor.q.response.size=0, operations.running.count=0, operations.pending.invocations.percentage=0.00%, operations.pending.invocations.count=0, proxy.count=0, clientEndpoint.count=0, connection.active.count=0, client.connection.count=0, connection.count=0
+Jan 13, 2021 8:18:25 PM com.hazelcast.internal.diagnostics.HealthMonitor
+INFO: [172.19.0.3]:5701 [dev] [3.9.2] processors=2, physical.memory.total=6.8G, physical.memory.free=241.0M, swap.space.total=4.0G, swap.space.free=3.9G, heap.memory.used=1.1G, heap.memory.free=125.1M, heap.memory.total=1.2G, heap.memory.max=1.5G, heap.memory.used/total=89.77%, heap.memory.used/max=70.97%, minor.gc.count=574, minor.gc.time=12925ms, major.gc.count=6, major.gc.time=3120ms, load.process=0.02%, load.system=0.58%, load.systemAverage=126.27%, thread.count=575, thread.peakCount=593, cluster.timeDiff=0, event.q.size=0, executor.q.async.size=0, executor.q.client.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operations.size=0, executor.q.priorityOperation.size=0, operations.completed.count=2, executor.q.mapLoad.size=0, executor.q.mapLoadAllKeys.size=0, executor.q.cluster.size=0, executor.q.response.size=0, operations.running.count=0, operations.pending.invocations.percentage=0.00%, operations.pending.invocations.count=0, proxy.count=0, clientEndpoint.count=0, connection.active.count=0, client.connection.count=0, connection.count=0
 </pre>
 </span>
 </div>
@@ -225,7 +352,7 @@ INFO: [172.19.0.3]:5701 [dev] [3.9.2] processors=2, physical.memory.total=6.8G, 
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.4.1</a> at Jan 11, 2021 10:41:36 PM</p>
+<a href="http://www.gradle.org">Gradle 4.4.1</a> at Jan 13, 2021 8:21:51 PM</p>
 </div>
 </div>
 </body>
