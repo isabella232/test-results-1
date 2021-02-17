@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">12.568s</div>
+<div class="counter">18.745s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">0%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,138 +61,10 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
-</li>
-<li>
-<a href="#tab1">Tests</a>
+<a href="#tab0">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="Test_deleteOldAssetVersions_success"></a>
-<h3 class="failures">Test_deleteOldAssetVersions_success</h3>
-<span class="code">
-<pre>com.dotmarketing.exception.DotDataException: SQL Error doing a batch and couldn't rollback
-	at com.dotmarketing.common.db.DotConnect.executeBatch_aroundBody0(DotConnect.java:1093)
-	at com.dotmarketing.common.db.DotConnect$AjcClosure1.run(DotConnect.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.common.db.DotConnect.executeBatch(DotConnect.java:1060)
-	at com.dotmarketing.common.db.DotConnect.executeBatch(DotConnect.java:1041)
-	at com.dotmarketing.business.PermissionBitFactoryImpl.dbDeletePermissionReferences(PermissionBitFactoryImpl.java:1189)
-	at com.dotmarketing.business.PermissionBitFactoryImpl.resetPermissionReferences(PermissionBitFactoryImpl.java:2530)
-	at com.dotmarketing.business.PermissionBitAPIImpl.resetPermissionReferences_aroundBody54(PermissionBitAPIImpl.java:1201)
-	at com.dotmarketing.business.PermissionBitAPIImpl$AjcClosure55.run(PermissionBitAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.business.PermissionBitAPIImpl.resetPermissionReferences(PermissionBitAPIImpl.java:1200)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.internalCheckin(ESContentletAPIImpl.java:4769)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.lambda$45(ESContentletAPIImpl.java:4180)
-	at com.dotcms.concurrent.lock.StripedLockImpl.tryLock(StripedLockImpl.java:100)
-	at com.dotcms.concurrent.lock.StripedLockImpl.tryLock(StripedLockImpl.java:55)
-	at com.dotcms.concurrent.lock.IdentifierStripedLock.tryLock(IdentifierStripedLock.java:16)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody144(ESContentletAPIImpl.java:4179)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure145.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4138)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8289)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4049)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4044)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
-	at com.dotmarketing.portlets.cmsmaintenance.factories.CMSMaintenanceFactoryTest.Test_deleteOldAssetVersions_success(CMSMaintenanceFactoryTest.java:55)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.lang.Thread.run(Thread.java:748)
-Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.permission_reference' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.
-	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatementBatch(SQLServerPreparedStatement.java:2800)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtBatchExecCmd.doExecute(SQLServerPreparedStatement.java:2675)
-	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeBatch(SQLServerPreparedStatement.java:2076)
-	at com.zaxxer.hikari.pool.ProxyStatement.executeBatch(ProxyStatement.java:128)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeBatch(HikariProxyPreparedStatement.java)
-	at com.dotmarketing.common.db.DotConnect.executeBatch_aroundBody0(DotConnect.java:1083)
-	... 99 more
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -203,9 +75,9 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 </thead>
 <tr>
-<td class="failures">Test_deleteOldAssetVersions_success</td>
-<td class="failures">12.568s</td>
-<td class="failures">failed</td>
+<td class="success">Test_deleteOldAssetVersions_success</td>
+<td class="success">18.745s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
@@ -217,7 +89,7 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Feb 9, 2021 10:09:12 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Feb 17, 2021 10:27:08 PM</p>
 </div>
 </div>
 </body>
