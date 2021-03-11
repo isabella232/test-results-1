@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">8.722s</div>
+<div class="counter">8.123s</div>
 <p>duration</p>
 </div>
 </td>
@@ -66,6 +66,9 @@
 <li>
 <a href="#tab1">Tests</a>
 </li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
@@ -73,8 +76,8 @@
 <a name="test_Page_with_FileContainer_as_Dependencies"></a>
 <h3 class="failures">test_Page_with_FileContainer_as_Dependencies</h3>
 <span class="code">
-<pre>com.dotcms.contenttype.exception.NotFoundInDbException: On getting the container by folder, the folder: /application/containers/large-column1615491545738/ is not valid, it must be under: /application/containers and must have a child file asset called: container.vtl and one or more vtl assets to backup the supported contents.
-	at com.dotmarketing.portlets.containers.business.FileAssetContainerUtil.fromAssets(FileAssetContainerUtil.java:297)
+<pre>com.dotcms.contenttype.exception.NotFoundInDbException: On getting the container by folder, the folder: /application/containers/large-column1615502650729/ is not valid, it must be under: /application/containers and must have a child file asset called: container.vtl and one or more vtl assets to backup the supported contents.
+	at com.dotmarketing.portlets.containers.business.FileAssetContainerUtil.fromAssets(FileAssetContainerUtil.java:301)
 	at com.dotmarketing.portlets.containers.business.ContainerFactoryImpl.getContainerByFolder(ContainerFactoryImpl.java:247)
 	at com.dotmarketing.portlets.containers.business.ContainerFactoryImpl.getContainerByFolderPath(ContainerFactoryImpl.java:209)
 	at com.dotmarketing.portlets.containers.business.ContainerFactoryImpl.getWorkingContainerByFolderPath(ContainerFactoryImpl.java:194)
@@ -382,30 +385,64 @@
 </thead>
 <tr>
 <td class="failures">test_Page_with_FileContainer_as_Dependencies</td>
-<td class="failures">0.215s</td>
+<td class="failures">0.133s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="failures">test_Sending_Page_as_dependencies_with_PUSH_PUBLISHING_PUSH_ALL_FOLDER_PAGES</td>
-<td class="failures">0.854s</td>
+<td class="failures">0.797s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="failures">test_dependencyManager_shouldIncludeRelationships</td>
-<td class="failures">4.350s</td>
+<td class="failures">4.095s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="failures">test_dependencyManager_shouldIncludeSelfRelationships</td>
-<td class="failures">3.295s</td>
+<td class="failures">3.092s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">test_dependency_manager_setHTMLPagesDependencies</td>
-<td class="success">0.008s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 </table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Mar 11, 2021 10:44:10 PM com.hazelcast.instance.AddressPicker
+INFO: [LOCAL] [dev] [3.9.2] Prefer IPv4 stack is true.
+Mar 11, 2021 10:44:10 PM com.hazelcast.instance.AddressPicker
+INFO: [LOCAL] [dev] [3.9.2] Picked [172.18.0.3]:5701, using socket ServerSocket[addr=/0.0.0.0,localport=5701], bind any local is true
+Mar 11, 2021 10:44:10 PM com.hazelcast.system
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] Hazelcast 3.9.2 (20180103 - 17e4ec3) starting at [172.18.0.3]:5701
+Mar 11, 2021 10:44:10 PM com.hazelcast.system
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] Copyright (c) 2008-2017, Hazelcast, Inc. All Rights Reserved.
+Mar 11, 2021 10:44:10 PM com.hazelcast.system
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] Configured Hazelcast Serialization version: 1
+Mar 11, 2021 10:44:11 PM com.hazelcast.spi.impl.operationservice.impl.BackpressureRegulator
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] Backpressure is disabled
+Mar 11, 2021 10:44:12 PM com.hazelcast.spi.impl.operationexecutor.impl.OperationExecutorImpl
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] Starting 2 partition threads and 3 generic threads (1 dedicated for priority tasks)
+Mar 11, 2021 10:44:12 PM com.hazelcast.internal.diagnostics.Diagnostics
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
+Mar 11, 2021 10:44:12 PM com.hazelcast.core.LifecycleService
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] [172.18.0.3]:5701 is STARTING
+Mar 11, 2021 10:44:12 PM com.hazelcast.instance.Node
+WARNING: [172.18.0.3]:5701 [dev] [3.9.2] No join method is enabled! Starting standalone.
+Mar 11, 2021 10:44:12 PM com.hazelcast.system
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] Cluster version set to 3.9
+Mar 11, 2021 10:44:12 PM com.hazelcast.core.LifecycleService
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] [172.18.0.3]:5701 is STARTED
+Mar 11, 2021 10:44:12 PM com.hazelcast.internal.diagnostics.HealthMonitor
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] processors=2, physical.memory.total=6.8G, physical.memory.free=225.8M, swap.space.total=4.0G, swap.space.free=4.0G, heap.memory.used=1.1G, heap.memory.free=192.3M, heap.memory.total=1.3G, heap.memory.max=1.5G, heap.memory.used/total=85.27%, heap.memory.used/max=72.12%, minor.gc.count=441, minor.gc.time=12339ms, major.gc.count=7, major.gc.time=4000ms, load.process=0.12%, load.system=0.43%, load.systemAverage=108.64%, thread.count=575, thread.peakCount=575, cluster.timeDiff=0, event.q.size=1, executor.q.async.size=0, executor.q.client.size=0, executor.q.query.size=0, executor.q.scheduled.size=0, executor.q.io.size=0, executor.q.system.size=0, executor.q.operations.size=0, executor.q.priorityOperation.size=0, operations.completed.count=1, executor.q.mapLoad.size=0, executor.q.mapLoadAllKeys.size=0, executor.q.cluster.size=0, executor.q.response.size=0, operations.running.count=0, operations.pending.invocations.percentage=0.00%, operations.pending.invocations.count=1, proxy.count=0, clientEndpoint.count=0, connection.active.count=0, client.connection.count=0, connection.count=0
+Mar 11, 2021 10:44:12 PM com.hazelcast.internal.partition.impl.PartitionStateManager
+INFO: [172.18.0.3]:5701 [dev] [3.9.2] Initializing cluster partition table arrangement...
+</pre>
+</span>
 </div>
 </div>
 <div id="footer">
@@ -415,7 +452,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Mar 11, 2021 7:39:44 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Mar 11, 2021 10:44:39 PM</p>
 </div>
 </div>
 </body>
