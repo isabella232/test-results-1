@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">50.614s</div>
+<div class="counter">2m2.49s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">96%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,119 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
-</li>
-<li>
-<a href="#tab2">Standard output</a>
+<a href="#tab1">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="Test_Fire_Bulk_Actions_For_Contentlet_Id"></a>
-<h3 class="failures">Test_Fire_Bulk_Actions_For_Contentlet_Id</h3>
-<span class="code">
-<pre>com.dotmarketing.exception.DotDataException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.{
-  &quot;SQL&quot;: [&quot;delete from workflow_task where webasset = ?&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: &quot;8af003bb-5c1e-4b14-be77-a1ea1ae26cc7&quot;
-}
-	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
-	at com.dotmarketing.portlets.workflows.business.WorkflowFactoryImpl.deleteWorkflowTaskByContentletIdAnyLanguage(WorkflowFactoryImpl.java:544)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.deleteWorkflowTaskByContentletIdAnyLanguage_aroundBody88(WorkflowAPIImpl.java:1286)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure89.run(WorkflowAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.deleteWorkflowTaskByContentletIdAnyLanguage(WorkflowAPIImpl.java:1277)
-	at com.dotcms.rest.api.v1.workflow.WorkflowResourceIntegrationTest.Test_Fire_Bulk_Actions_For_Contentlet_Id(WorkflowResourceIntegrationTest.java:935)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.lang.Thread.run(Thread.java:748)
-Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.
-	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:594)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:524)
-	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:505)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
-	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:619)
-	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
-	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
-	... 70 more
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -190,132 +84,132 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 <tr>
 <td class="success">Test_Create_Instance_Of_Content_With_Numeric_Fields_Verify_Message_When_Setting_Invalid_Values_Issue_15340</td>
-<td class="success">0.558s</td>
+<td class="success">0.583s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Find_Bulk_Actions_Then_Fire_Bulk_Actions_On_Custom_Content_Type_Then_Verify_Workflow_Changed</td>
-<td class="success">17.196s</td>
+<td class="success">17.273s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Find_Bulk_Actions_Then_Fire_Bulk_Actions_On_Custom_Content_Type_with_Errors_Then_Verify_Workflow_Did_Not_Changed</td>
-<td class="success">2.310s</td>
+<td class="success">2.293s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">Test_Fire_Bulk_Actions_For_Contentlet_Id</td>
-<td class="failures">14.278s</td>
-<td class="failures">failed</td>
+<td class="success">Test_Fire_Bulk_Actions_For_Contentlet_Id</td>
+<td class="success">1m25.64s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Fire_Save_Instance_Then_Fire_Update_Instance</td>
-<td class="success">0.854s</td>
+<td class="success">0.795s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Fire_Save_Remove_Image_Then_Verify_Fields_Were_Cleared_Issue_15340</td>
-<td class="success">0.808s</td>
+<td class="success">0.766s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Get_Bulk_Actions_For_Contentlet_Ids</td>
-<td class="success">1.747s</td>
+<td class="success">2.216s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Get_Bulk_Actions_For_Query</td>
-<td class="success">2.966s</td>
+<td class="success">2.799s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Set_Value_on_All_NonRequired_Fields_Then_Fire_Save_Set_Null_Then_Verify_Fields_Were_Cleared_Issue_15340</td>
-<td class="success">1.725s</td>
+<td class="success">1.743s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testAddSchemaThenFindIt</td>
-<td class="success">0.013s</td>
+<td class="success">0.011s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateSchemeThenAddStepsThenAddActions</td>
-<td class="success">0.161s</td>
+<td class="success">0.141s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateSchemeThenAddStepsThenDeleteSteps</td>
-<td class="success">2.587s</td>
+<td class="success">2.610s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateSchemeThenFindStepsBySchemeId</td>
-<td class="success">0.048s</td>
+<td class="success">0.050s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testDeleteScheme</td>
-<td class="success">0.124s</td>
+<td class="success">0.160s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testFindActionsByStepThenDeleteThem</td>
-<td class="success">0.119s</td>
+<td class="success">0.169s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testFireActionDefault_ContentWithCategories_Success</td>
-<td class="success">1.042s</td>
+<td class="success">1.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testFireActionDefault_ContentWithRelationships_Success</td>
-<td class="success">1.575s</td>
+<td class="success">1.799s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testImportScheme</td>
-<td class="success">0.281s</td>
+<td class="success">0.253s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testReorderStep</td>
-<td class="success">0.185s</td>
+<td class="success">0.204s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSaveActionToStepThenFindActionsBySchemeThenFindByStep</td>
-<td class="success">0.095s</td>
+<td class="success">0.106s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUpdateAction</td>
-<td class="success">0.076s</td>
+<td class="success">0.067s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUpdateSchema</td>
-<td class="success">0.009s</td>
+<td class="success">0.013s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUpdateSchemaUsingDupeName</td>
-<td class="success">0.034s</td>
+<td class="success">0.019s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUpdateStep</td>
-<td class="success">0.068s</td>
+<td class="success">0.081s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_Fire_Save_Content_Type_Binary_File</td>
-<td class="success">1.112s</td>
+<td class="success">1.050s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>
@@ -334,7 +228,7 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Mar 23, 2021 7:38:24 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Mar 25, 2021 12:31:09 AM</p>
 </div>
 </div>
 </body>
