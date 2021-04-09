@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">2</div>
+<div class="counter">3</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">48.394s</div>
+<div class="counter">49.625s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">92%</div>
+<div class="percent">89%</div>
 <p>successful</p>
 </div>
 </td>
@@ -73,7 +73,7 @@
 <a name="Test_Inherited_Permissions"></a>
 <h3 class="failures">Test_Inherited_Permissions</h3>
 <span class="code">
-<pre>java.lang.AssertionError: expected:&lt;[com.dotmarketing.beans.Permission@1baaeaa9[id=1316,inode=27c211c9-9f3e-47b3-9097-63bc8d7dffde,roleId=4b1063f0-9c86-4101-a3dd-a2ae4b228c8f,permission=3,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage]]&gt; but was:&lt;[com.dotmarketing.beans.Permission@221997dd[id=27,inode=SYSTEM_HOST,roleId=654b0931-1027-41f7-ad4d-173115ed8ec1,permission=1,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage], com.dotmarketing.beans.Permission@1473f621[id=94,inode=SYSTEM_HOST,roleId=e2b40ebd-3616-4d54-858d-5b2037908358,permission=7,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage], com.dotmarketing.beans.Permission@7ee1b662[id=659,inode=SYSTEM_HOST,roleId=8cd0d854-ba17-43a0-b34a-391504f4e537,permission=1,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage]]&gt;
+<pre>java.lang.AssertionError: expected:&lt;[com.dotmarketing.beans.Permission@2a75dd85[id=1280,inode=15a25efd-1f00-43cd-9d76-6b8eb4fbbd10,roleId=a48a8737-c0a4-49e3-a771-cb1f744503d6,permission=3,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage]]&gt; but was:&lt;[com.dotmarketing.beans.Permission@5f9abe98[id=27,inode=SYSTEM_HOST,roleId=654b0931-1027-41f7-ad4d-173115ed8ec1,permission=1,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage], com.dotmarketing.beans.Permission@8c17e8a[id=58,inode=SYSTEM_HOST,roleId=0b7b99d8-407c-4f37-ab23-c45ccefd72c0,permission=7,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage], com.dotmarketing.beans.Permission@2aee66f2[id=623,inode=SYSTEM_HOST,roleId=41016098-da6d-45bd-8361-0842aae7c29c,permission=1,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage]]&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
@@ -216,6 +216,79 @@
 </pre>
 </span>
 </div>
+<div class="test">
+<a name="issue847"></a>
+<h3 class="failures">issue847</h3>
+<span class="code">
+<pre>java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:86)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at org.junit.Assert.assertTrue(Assert.java:52)
+	at com.dotmarketing.business.PermissionAPITest.issue847(PermissionAPITest.java:591)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+</pre>
+</span>
+</div>
 </div>
 <div id="tab1" class="tab">
 <h2>Tests</h2>
@@ -229,142 +302,142 @@
 </thead>
 <tr>
 <td class="failures">Test_Inherited_Permissions</td>
-<td class="failures">4.280s</td>
+<td class="failures">3.545s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">Test_Remove_All_Permissions_Then_Verify_Cache_Is_Null</td>
-<td class="success">0.893s</td>
+<td class="success">0.803s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyPermissions</td>
-<td class="success">0.771s</td>
+<td class="success">0.940s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">doesRoleHavePermission</td>
-<td class="success">0.077s</td>
+<td class="success">0.083s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">doesUserHavePermission</td>
-<td class="success">0.069s</td>
+<td class="success">0.083s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">doesUserHavePermission_another_lang</td>
-<td class="success">0.210s</td>
+<td class="success">0.244s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getPermissions</td>
-<td class="success">0.291s</td>
+<td class="success">0.379s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getRolesWithPermission</td>
-<td class="success">0.269s</td>
+<td class="success">0.315s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getUsersWithPermission</td>
-<td class="success">0.486s</td>
+<td class="success">0.432s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">issue1073</td>
-<td class="success">1.049s</td>
+<td class="success">1.206s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">issue560</td>
-<td class="success">1.935s</td>
+<td class="success">1.989s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">issue781</td>
-<td class="failures">1.756s</td>
+<td class="failures">1.931s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">issue847</td>
-<td class="success">2.428s</td>
-<td class="success">passed</td>
+<td class="failures">issue847</td>
+<td class="failures">2.941s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">issue886</td>
-<td class="success">3.698s</td>
+<td class="success">4.597s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">permissionIndividually</td>
-<td class="success">0.007s</td>
+<td class="success">0.010s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">removePermissions</td>
-<td class="success">2.085s</td>
+<td class="success">2.094s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">save</td>
-<td class="success">0.481s</td>
+<td class="success">0.414s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testAnonymousUserCannotReadNonLiveContent</td>
-<td class="success">5.818s</td>
+<td class="success">5.545s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersCountDeleted</td>
-<td class="success">0.068s</td>
+<td class="success">0.084s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersCountWithFilter</td>
-<td class="success">0.098s</td>
+<td class="success">0.095s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersCountWithoutFilter</td>
-<td class="success">0.073s</td>
+<td class="success">0.099s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersDeleted</td>
-<td class="success">0.167s</td>
+<td class="success">0.155s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersWithFilter</td>
-<td class="success">0.066s</td>
+<td class="success">0.072s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersWithoutFilter</td>
-<td class="success">0.075s</td>
+<td class="success">0.102s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testPermissionIndividuallyByRole</td>
-<td class="success">19.143s</td>
+<td class="success">19.253s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_doesUserHavePermissions_checkDiffAssetIdThatPermissionsWereGiven_returnFalse</td>
-<td class="success">0.082s</td>
+<td class="success">0.125s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_doesUserHavePermissions_checkSameAssetIdThatPermissionsWereGiven_returnTrue</td>
-<td class="success">0.240s</td>
+<td class="success">0.290s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_templateLayout_parentPermissionableIsHost</td>
-<td class="success">1.779s</td>
+<td class="success">1.799s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -377,7 +450,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Apr 8, 2021, 11:00:17 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Apr 9, 2021, 7:43:25 PM</p>
 </div>
 </div>
 </body>
