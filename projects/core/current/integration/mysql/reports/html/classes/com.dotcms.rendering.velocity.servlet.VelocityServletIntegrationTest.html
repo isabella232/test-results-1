@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">18.766s</div>
+<div class="counter">19.470s</div>
 <p>duration</p>
 </div>
 </td>
@@ -70,15 +70,12 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="whenRequestURLMap"></a>
-<h3 class="failures">whenRequestURLMap</h3>
+<a name="whenRequestURLMapAndVanityURLTogether"></a>
+<h3 class="failures">whenRequestURLMapAndVanityURLTogether</h3>
 <span class="code">
-<pre>com.dotmarketing.exception.DotRuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
-	at com.dotcms.datagen.TestDataUtils.getNewsContent(TestDataUtils.java:1149)
-	at com.dotcms.datagen.TestDataUtils.getNewsContent(TestDataUtils.java:1109)
-	at com.dotcms.datagen.TestDataUtils.getNewsContent(TestDataUtils.java:1104)
-	at com.dotcms.rendering.velocity.servlet.VelocityServletIntegrationTest.createURLMapperContentType(VelocityServletIntegrationTest.java:247)
-	at com.dotcms.rendering.velocity.servlet.VelocityServletIntegrationTest.whenRequestURLMap(VelocityServletIntegrationTest.java:134)
+<pre>java.lang.RuntimeException: com.dotmarketing.business.FutureContentletPublishStateException: The content cannot be published because it is scheduled to be published on future date.
+	at com.dotcms.datagen.ContentletDataGen.publish(ContentletDataGen.java:298)
+	at com.dotcms.rendering.velocity.servlet.VelocityServletIntegrationTest.whenRequestURLMapAndVanityURLTogether(VelocityServletIntegrationTest.java:207)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -138,56 +135,27 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: java.lang.RuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
-	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:274)
-	at com.dotcms.datagen.ContentletDataGen.persist(ContentletDataGen.java:194)
-	at com.dotcms.datagen.ContentletDataGen.nextPersisted(ContentletDataGen.java:180)
-	at com.dotcms.datagen.TestDataUtils.getNewsContent(TestDataUtils.java:1144)
-	... 63 more
-Caused by: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
+Caused by: com.dotmarketing.business.FutureContentletPublishStateException: The content cannot be published because it is scheduled to be published on future date.
+	at com.dotmarketing.business.VersionableAPIImpl.setLive_aroundBody26(VersionableAPIImpl.java:468)
+	at com.dotmarketing.business.VersionableAPIImpl$AjcClosure27.run(VersionableAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
 	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
 	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4155)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8277)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4066)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
+	at com.dotmarketing.business.VersionableAPIImpl.setLive(VersionableAPIImpl.java:446)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.internalPublish(ESContentletAPIImpl.java:663)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.publish_aroundBody32(ESContentletAPIImpl.java:599)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure33.run(ESContentletAPIImpl.java:1)
 	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
 	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4061)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
-	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:272)
-	... 66 more
-Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID 'eb52eb98-54f4-4e8b-b410-f4b996a43bf7': Content Type with ID '312eecb7-0876-4f79-8d39-cdae5956422e' was not found via API.
-	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
-	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
-	... 80 more
-Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID 'eb52eb98-54f4-4e8b-b410-f4b996a43bf7': Content Type with ID '312eecb7-0876-4f79-8d39-cdae5956422e' was not found via API.
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:413)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap(ESMappingAPIImpl.java:247)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addBulkRequest(ContentletIndexAPIImpl.java:751)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.appendBulkRequest(ContentletIndexAPIImpl.java:714)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.createBulkRequest(ContentletIndexAPIImpl.java:602)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.indexContentListNow(ContentletIndexAPIImpl.java:554)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addContentToIndex(ContentletIndexAPIImpl.java:548)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.lambda$3(ContentletIndexAPIImpl.java:507)
-	at com.dotmarketing.db.HibernateUtil$DotSyncRunnable.run(HibernateUtil.java:929)
-	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
-	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
-	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
-	... 82 more
-Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '312eecb7-0876-4f79-8d39-cdae5956422e' was not found via API.
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:274)
-	... 98 more
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.publish(ESContentletAPIImpl.java:574)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.publish(ContentletAPIInterceptor.java:1502)
+	at com.dotcms.datagen.ContentletDataGen.publish(ContentletDataGen.java:296)
+	... 60 more
 </pre>
 </span>
 </div>
@@ -204,22 +172,22 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '31
 </thead>
 <tr>
 <td class="success">testingTimeMachine</td>
-<td class="success">3.063s</td>
+<td class="success">3.428s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">whenRequestURLMap</td>
-<td class="failures">5.729s</td>
+<td class="success">whenRequestURLMap</td>
+<td class="success">7.454s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">whenRequestURLMapAndVanityURLTogether</td>
+<td class="failures">5.747s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">whenRequestURLMapAndVanityURLTogether</td>
-<td class="success">7.093s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
 <td class="success">whenRequestVanityURL</td>
-<td class="success">2.881s</td>
+<td class="success">2.841s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -232,7 +200,7 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '31
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Apr 20, 2021, 5:13:58 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Apr 20, 2021, 8:33:36 PM</p>
 </div>
 </div>
 </body>
