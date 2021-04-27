@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">3m7.10s</div>
+<div class="counter">2m59.92s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">99%</div>
+<div class="infoBox skipped" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,135 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
-</li>
-<li>
-<a href="#tab2">Standard error</a>
+<a href="#tab1">Standard error</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="deleteMultipleContents"></a>
-<h3 class="failures">deleteMultipleContents</h3>
-<span class="code">
-<pre>com.dotmarketing.exception.DotDataException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.{
-  &quot;SQL&quot;: [&quot;delete from workflow_task where webasset = ?&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: &quot;4aaa13c6-c985-44ac-99ea-5ba28f62b5b9&quot;
-}
-	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
-	at com.dotmarketing.portlets.workflows.business.WorkflowFactoryImpl.deleteWorkflowTaskByContentletIdAnyLanguage(WorkflowFactoryImpl.java:544)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.deleteWorkflowTaskByContentletIdAnyLanguage_aroundBody88(WorkflowAPIImpl.java:1286)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure89.run(WorkflowAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.deleteWorkflowTaskByContentletIdAnyLanguage(WorkflowAPIImpl.java:1277)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.destroyContentlets(ESContentletAPIImpl.java:2220)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.deleteContentlet(ESContentletAPIImpl.java:2471)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.deleteContentlets(ESContentletAPIImpl.java:2436)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.delete_aroundBody78(ESContentletAPIImpl.java:1968)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure79.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.delete(ESContentletAPIImpl.java:1965)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.delete(ContentletAPIInterceptor.java:571)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPITest.deleteMultipleContents(ContentletAPITest.java:4208)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.
-	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:594)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:524)
-	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:505)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
-	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:619)
-	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
-	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
-	... 86 more
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -201,132 +79,132 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </thead>
 <tr>
 <td class="success">TestCopyHTMLPageIncludesPersonalizedMultiTrees</td>
-<td class="success">1.444s</td>
+<td class="success">1.991s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Copy_Metadata_On_CheckIn</td>
-<td class="success">0.869s</td>
+<td class="success">1.732s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addLinkToContentlet</td>
-<td class="success">0.141s</td>
+<td class="success">0.146s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addRemoveContentFromIndex</td>
-<td class="success">1.350s</td>
+<td class="success">1.439s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">archive</td>
-<td class="success">0.294s</td>
+<td class="success">0.325s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">archiveCollection</td>
-<td class="success">0.484s</td>
+<td class="success">0.532s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cleanBinaryField</td>
-<td class="success">0.037s</td>
+<td class="success">0.030s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cleanHostField</td>
-<td class="success">0.069s</td>
+<td class="success">0.061s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cleanTagField</td>
-<td class="success">0.033s</td>
+<td class="success">0.050s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">contentOnlyWithExpireFieldTest</td>
-<td class="success">1.179s</td>
+<td class="success">1.113s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentlet</td>
-<td class="success">1.002s</td>
+<td class="success">0.764s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentletWithFolder</td>
-<td class="success">0.753s</td>
+<td class="success">0.633s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentletWithFolderAppendCopy</td>
-<td class="success">0.605s</td>
+<td class="success">0.730s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentletWithHost</td>
-<td class="success">0.587s</td>
+<td class="success">1.033s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentletWithSeveralVersionsOrderIssue</td>
-<td class="success">13.903s</td>
+<td class="success">12.204s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">delete</td>
-<td class="success">0.740s</td>
+<td class="success">0.696s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">deleteAllVersionsAndBackup</td>
-<td class="success">0.652s</td>
+<td class="success">0.606s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">deleteCollection</td>
-<td class="success">0.726s</td>
+<td class="success">0.690s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">deleteCollectionAllVersions</td>
-<td class="success">1.269s</td>
+<td class="success">1.270s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">deleteForAllVersions</td>
-<td class="success">1.049s</td>
+<td class="success">0.715s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">deleteMultipleContents</td>
-<td class="failures">8.131s</td>
-<td class="failures">failed</td>
+<td class="success">deleteMultipleContents</td>
+<td class="success">8.424s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">deleteRelatedContent</td>
-<td class="success">2.451s</td>
+<td class="success">2.511s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">deleteRelatedContentWithParent</td>
-<td class="success">1.588s</td>
+<td class="success">1.589s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">delete_GivenUnarchivedContentAndDontValidateMeInTrue_ShouldDeleteSuccessfully</td>
-<td class="success">0.684s</td>
+<td class="success">0.837s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">destroy_content_locked_by_admin_by_other_admin_user</td>
-<td class="success">1.458s</td>
+<td class="success">1.434s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">find</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -336,17 +214,17 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 <tr>
 <td class="success">findByStructure</td>
-<td class="success">0.008s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findByStructureInode</td>
-<td class="success">0.013s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findContentletByIdentifier</td>
-<td class="success">0.010s</td>
+<td class="success">0.008s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -366,12 +244,12 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 <tr>
 <td class="success">findContentletsByFolder</td>
-<td class="success">2.171s</td>
+<td class="success">1.454s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findContentletsByHost</td>
-<td class="success">0.419s</td>
+<td class="success">0.317s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -381,47 +259,47 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 <tr>
 <td class="success">getAllLanguages</td>
-<td class="success">6.855s</td>
+<td class="success">7.046s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getAllRelationships</td>
-<td class="success">0.022s</td>
+<td class="success">0.032s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getAllRelationshipsByContentlet</td>
-<td class="success">1.380s</td>
+<td class="success">1.187s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getContentletReferences</td>
-<td class="success">3.704s</td>
+<td class="success">3.259s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getContentletReferencesForMonolingualPages</td>
-<td class="success">2.305s</td>
+<td class="success">1.651s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getFieldValue</td>
-<td class="success">0.022s</td>
+<td class="success">0.019s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getNextReview</td>
-<td class="success">0.024s</td>
+<td class="success">0.020s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getRelatedContent</td>
-<td class="success">1.296s</td>
+<td class="success">1.337s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getRelatedContentPullByParent</td>
-<td class="success">1.241s</td>
+<td class="success">1.174s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -431,47 +309,47 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 <tr>
 <td class="success">newFileAssetLanguageDifferentThanDefault</td>
-<td class="success">0.407s</td>
+<td class="success">0.539s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">newVersionFileAssetLanguageDifferentThanDefault</td>
-<td class="success">1.303s</td>
+<td class="success">1.108s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">no_destroy_limited_content_locked_by_admin_by_limited_user</td>
-<td class="success">1.180s</td>
+<td class="success">1.082s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">publish</td>
-<td class="success">0.209s</td>
+<td class="success">0.189s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">publishCollection</td>
-<td class="success">0.355s</td>
+<td class="success">0.289s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">publishRelatedHtmlPages</td>
-<td class="success">0.011s</td>
+<td class="success">0.013s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">rangeQuery</td>
-<td class="success">3.661s</td>
+<td class="success">3.460s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">relateContent</td>
-<td class="success">1.337s</td>
+<td class="success">1.084s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">relateContentDirect</td>
-<td class="success">1.196s</td>
+<td class="success">1.025s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -481,7 +359,7 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 <tr>
 <td class="success">saveContentWithExistingIdentifier</td>
-<td class="success">1.106s</td>
+<td class="success">1.711s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -491,402 +369,402 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 <tr>
 <td class="success">searchIndex</td>
-<td class="success">0.009s</td>
+<td class="success">0.008s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">searchWithPermissions</td>
-<td class="success">0.023s</td>
+<td class="success">0.024s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckInContentletWithoutHost_shouldUseContentTypeHost</td>
-<td class="success">0.574s</td>
+<td class="success">0.553s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckInWithSelfRelationInBothParentsAndChildren</td>
-<td class="success">1.523s</td>
+<td class="success">1.506s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin1_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
-<td class="success">1.282s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin1_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">1.282s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin1_ExistingContentWithChildAndParentRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">3.892s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin1_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.622s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin2_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
-<td class="success">1.588s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin2_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">1.275s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin2_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.455s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin3_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
-<td class="success">1.207s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin3_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">1.076s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin3_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
-<td class="success">1.801s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin3_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.493s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin4_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
-<td class="success">1.100s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin4_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">1.254s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin4_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
-<td class="success">1.314s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin4_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.413s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinDefaultActions</td>
-<td class="success">1.245s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinDefaultActionsSkip</td>
-<td class="success">1.252s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinDefaultActionsSkipBySettingActionId</td>
-<td class="success">1.911s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinNoDefaultActions</td>
-<td class="success">1.516s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinWithoutVersioning_ExistingContentWithCats_EmptyCats_ShouldWipeExistingCats</td>
-<td class="success">1.217s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinWithoutVersioning_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">1.203s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinWithoutVersioning_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
-<td class="success">1.645s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinWithoutVersioning_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.770s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinWithoutVersioning_ShouldDeletePreviousBinary_WhenBinaryIsUpdated</td>
-<td class="success">0.690s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckinWithoutVersioning_ShouldPreserveBinary_WhenOtherFieldsAreUpdated</td>
-<td class="success">0.758s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin_Non_Existing_Identifier_With_Not_Validate_Success</td>
-<td class="success">0.688s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin_Non_Existing_Identifier_With_Validate_Should_FAIL</td>
-<td class="success">0.066s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin_nullRequiredFieldValue[0: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@7340f65e]</td>
-<td class="success">0.517s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin_nullRequiredFieldValue[1: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@6ef96a12]</td>
-<td class="success">0.409s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin_nullRequiredFieldValue[2: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@2a51e9ca]</td>
-<td class="success">0.405s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCheckin_nullRequiredFieldValue[3: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@37f2fbdf]</td>
-<td class="success">0.414s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testContentWithTwoBinaryFieldsAndSameFile_afterCheckinShouldContainBothFields</td>
-<td class="success">0.856s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCopyContentletDoesNotCopyWorkflowHistory</td>
-<td class="success">4.490s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCopyProperties_TypeWithTagField_shouldCopyTagFieldValue</td>
-<td class="success">0.737s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testCreateSelfJoinedRelationship_contentletAddedAsChild</td>
-<td class="success">1.321s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testDeletePageDefinedAsDetailPage</td>
-<td class="success">2.694s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testDelete_GivenMultiLangMultiVersionContent_WhenDeletingOneSpanishVersion_ShouldDeleteAllSpanishVersions</td>
-<td class="success">1.980s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testDotAsset_Checkin</td>
-<td class="success">0.909s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testFileCopyOnSecondLanguageVersion</td>
-<td class="success">2.320s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testGetRelatedForSelfJoinsDoesNotCacheWhenPullByParentIsNull</td>
-<td class="success">1.370s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testMoveContentDependenciesFromChild</td>
-<td class="success">1.403s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testMoveContentDependenciesFromChildSelfRelated</td>
-<td class="success">1.584s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testMoveContentDependenciesFromParent</td>
-<td class="success">1.743s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testMoveContentDependenciesFromParentSelfRelated</td>
-<td class="success">1.828s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testRemoveContentFromIndexMultilingualContent</td>
-<td class="success">1.126s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testSearchFileAssetByMetadata</td>
-<td class="success">1.455s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testSetTemplateForAPageMustKeepTheSameTemplateForWorkingVersionsNoLive</td>
-<td class="success">3.660s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testSetTemplateForAPageMustKeepTheSameTemplateForWorkingVersionsOnly</td>
-<td class="success">1.924s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testUniqueTextFieldContentlets[0: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@43740979]</td>
-<td class="success">1.253s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testUniqueTextFieldContentlets[1: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@667852ff]</td>
-<td class="success">1.473s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testUniqueTextFieldContentlets[2: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@43c2e843]</td>
-<td class="success">1.281s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testUniqueTextFieldContentlets[3: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@634ecfe7]</td>
-<td class="success">1.312s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testUniqueTextFieldContentlets[4: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@922d36]</td>
-<td class="success">1.242s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testUniqueTextFieldContentlets[5: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@24596871]</td>
-<td class="success">1.655s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testUniqueTextFieldContentlets[6: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@708d1c49]</td>
 <td class="success">1.259s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[7: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@6529d448]</td>
-<td class="success">1.407s</td>
+<td class="success">testCheckin1_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
+<td class="success">1.246s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[8: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@7443ae46]</td>
-<td class="success">1.797s</td>
+<td class="success">testCheckin1_ExistingContentWithChildAndParentRels_NullRels_ShouldKeepExistingRels</td>
+<td class="success">3.514s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin1_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
+<td class="success">1.769s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin2_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
+<td class="success">1.322s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin2_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
+<td class="success">1.361s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin2_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
+<td class="success">1.342s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin3_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
+<td class="success">1.198s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin3_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
+<td class="success">1.090s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin3_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
+<td class="success">1.677s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin3_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
+<td class="success">1.868s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin4_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
+<td class="success">1.054s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin4_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
+<td class="success">1.354s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin4_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
+<td class="success">1.446s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin4_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
+<td class="success">1.345s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinDefaultActions</td>
+<td class="success">1.168s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinDefaultActionsSkip</td>
+<td class="success">1.154s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinDefaultActionsSkipBySettingActionId</td>
+<td class="success">1.851s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinNoDefaultActions</td>
+<td class="success">1.492s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinWithoutVersioning_ExistingContentWithCats_EmptyCats_ShouldWipeExistingCats</td>
+<td class="success">1.105s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinWithoutVersioning_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
+<td class="success">1.127s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinWithoutVersioning_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
+<td class="success">1.534s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinWithoutVersioning_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
+<td class="success">1.510s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinWithoutVersioning_ShouldDeletePreviousBinary_WhenBinaryIsUpdated</td>
+<td class="success">0.539s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckinWithoutVersioning_ShouldPreserveBinary_WhenOtherFieldsAreUpdated</td>
+<td class="success">0.580s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin_Non_Existing_Identifier_With_Not_Validate_Success</td>
+<td class="success">0.788s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin_Non_Existing_Identifier_With_Validate_Should_FAIL</td>
+<td class="success">0.056s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin_nullRequiredFieldValue[0: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@18f7a4ee]</td>
+<td class="success">0.477s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin_nullRequiredFieldValue[1: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@1a2221ea]</td>
+<td class="success">0.492s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin_nullRequiredFieldValue[2: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@cb8eae3]</td>
+<td class="success">0.465s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCheckin_nullRequiredFieldValue[3: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@30b6c41]</td>
+<td class="success">0.493s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testContentWithTwoBinaryFieldsAndSameFile_afterCheckinShouldContainBothFields</td>
+<td class="success">0.824s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCopyContentletDoesNotCopyWorkflowHistory</td>
+<td class="success">4.109s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCopyProperties_TypeWithTagField_shouldCopyTagFieldValue</td>
+<td class="success">0.584s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testCreateSelfJoinedRelationship_contentletAddedAsChild</td>
+<td class="success">1.146s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testDeletePageDefinedAsDetailPage</td>
+<td class="success">2.596s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testDelete_GivenMultiLangMultiVersionContent_WhenDeletingOneSpanishVersion_ShouldDeleteAllSpanishVersions</td>
+<td class="success">2.045s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testDotAsset_Checkin</td>
+<td class="success">1.009s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testFileCopyOnSecondLanguageVersion</td>
+<td class="success">2.759s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testGetRelatedForSelfJoinsDoesNotCacheWhenPullByParentIsNull</td>
+<td class="success">1.523s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMoveContentDependenciesFromChild</td>
+<td class="success">1.463s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMoveContentDependenciesFromChildSelfRelated</td>
+<td class="success">1.270s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMoveContentDependenciesFromParent</td>
+<td class="success">1.793s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testMoveContentDependenciesFromParentSelfRelated</td>
+<td class="success">1.683s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testRemoveContentFromIndexMultilingualContent</td>
+<td class="success">0.938s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSearchFileAssetByMetadata</td>
+<td class="success">1.164s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSetTemplateForAPageMustKeepTheSameTemplateForWorkingVersionsNoLive</td>
+<td class="success">3.653s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSetTemplateForAPageMustKeepTheSameTemplateForWorkingVersionsOnly</td>
+<td class="success">1.846s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[0: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@26fe781a]</td>
+<td class="success">1.481s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[1: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@2d58305e]</td>
+<td class="success">1.515s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[2: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@667c28e4]</td>
+<td class="success">1.697s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[3: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@3ecd390e]</td>
+<td class="success">1.137s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[4: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@6ba6a865]</td>
+<td class="success">1.107s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[5: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@790bf8f]</td>
+<td class="success">1.512s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[6: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@ac9c91]</td>
+<td class="success">1.589s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[7: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@57fec0c3]</td>
+<td class="success">1.118s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testUniqueTextFieldContentlets[8: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@945bfd9]</td>
+<td class="success">1.216s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUniqueTextFieldLiveAndWorkingWithDiffValues</td>
-<td class="success">3.817s</td>
+<td class="success">3.503s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUniqueTextFieldWithDataTypeWholeNumber</td>
-<td class="success">0.982s</td>
+<td class="success">0.993s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUpdatePublishExpireDatesFromIdentifier</td>
-<td class="success">4.102s</td>
+<td class="success">3.818s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_copyContentlet_contentletArchivedShouldCopyAsArchived</td>
-<td class="success">1.018s</td>
+<td class="success">1.134s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_DotContentletStateException_expected_true</td>
-<td class="success">0.236s</td>
+<td class="success">0.266s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_EnglishLive_WithSpanishWorking_fallback_true_expecting_English_true</td>
-<td class="success">1.526s</td>
+<td class="success">1.204s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_EnglishLive_WithSpanishWorking_fallback_true_expecting_SpanishWorking_true</td>
-<td class="success">1.860s</td>
+<td class="success">1.724s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_EnglishSpanish_fallback_false_expecting_Spanish_true</td>
-<td class="success">0.659s</td>
+<td class="success">0.589s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_EnglishSpanish_fallback_true_expecting_Spanish_true</td>
-<td class="success">0.362s</td>
+<td class="success">0.536s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_English_No_Spanish_fallback_false_expecting_False</td>
-<td class="success">0.335s</td>
+<td class="success">0.332s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_English_version_no_Spanish_fallback_false_expecting_false</td>
-<td class="success">0.229s</td>
+<td class="success">0.231s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_NonEnglish_WithSpanish_fallback_false_expecting_Spanish_true</td>
-<td class="success">0.334s</td>
+<td class="success">0.151s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_NonEnglish_WithSpanish_fallback_true_expecting_Spanish_true</td>
-<td class="success">1.043s</td>
+<td class="success">1.479s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_OnlySpanishWorking_fallback_true_expecting_English_true</td>
-<td class="success">0.672s</td>
+<td class="success">0.615s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_non_existing_DotContentletStateException_expected</td>
-<td class="success">0.006s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findInDb_returns_properly</td>
-<td class="success">0.792s</td>
+<td class="success">0.533s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_getAllRelationships_checkOrdering</td>
-<td class="success">2.384s</td>
+<td class="success">2.075s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_getAllRelationships_checkOrdering_selfRelatedContentType</td>
-<td class="success">1.954s</td>
+<td class="success">1.833s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_invalidate_shorty_cache</td>
-<td class="success">1.424s</td>
+<td class="success">1.311s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -896,57 +774,57 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 </tr>
 <tr>
 <td class="success">test_update_mod_date_contentlet_expect_success</td>
-<td class="success">0.480s</td>
+<td class="success">0.197s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_validateContentlet_contentWithTabDividerField</td>
-<td class="success">0.565s</td>
+<td class="success">0.510s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_validateContentlet_noErrors_whenRelationChainSameContentType</td>
-<td class="success">1.895s</td>
+<td class="success">1.411s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_validateContentlet_wrong_mime_type_expect_DotContentletValidationException</td>
-<td class="success">0.128s</td>
+<td class="success">0.115s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_validateContentlet_wrong_size_expect_DotContentletValidationException</td>
-<td class="success">0.179s</td>
+<td class="success">0.119s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">unarchive</td>
-<td class="success">0.238s</td>
+<td class="success">0.214s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">unarchiveCollection</td>
-<td class="success">0.750s</td>
+<td class="success">0.646s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">unpublish</td>
-<td class="success">0.591s</td>
+<td class="success">0.351s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">unpublishCollection</td>
-<td class="success">0.689s</td>
+<td class="success">0.726s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">widgetInvalidateAllLang</td>
-<td class="success">1.125s</td>
+<td class="success">1.155s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard error</h2>
 <span class="code">
 <pre>
@@ -1071,7 +949,7 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation t
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Apr 27, 2021, 5:35:49 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Apr 27, 2021, 8:27:01 PM</p>
 </div>
 </div>
 </body>
