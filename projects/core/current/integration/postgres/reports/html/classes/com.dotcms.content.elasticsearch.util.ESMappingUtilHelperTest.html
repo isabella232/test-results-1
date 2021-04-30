@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">13m55.40s</div>
+<div class="counter">15m44.88s</div>
 <p>duration</p>
 </div>
 </td>
@@ -70,32 +70,14 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping"></a>
-<h3 class="failures">Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping</h3>
+<a name="Test Name: testValidateEventMapping. Mapping Name: template_1"></a>
+<h3 class="failures">Test Name: testValidateEventMapping. Mapping Name: template_1</h3>
 <span class="code">
-<pre>com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4155)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody138(ESContentletAPIImpl.java:4107)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure139.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4100)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4082)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody126(ESContentletAPIImpl.java:4031)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure127.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4028)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:194)
-	at com.dotcms.content.elasticsearch.util.ESMappingUtilHelperTest.testValidateNewsLikeMapping(ESMappingUtilHelperTest.java:549)
+<pre>java.lang.RuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:296)
+	at com.dotcms.datagen.ContentletDataGen.persist(ContentletDataGen.java:203)
+	at com.dotcms.datagen.ContentletDataGen.nextPersisted(ContentletDataGen.java:189)
+	at com.dotcms.content.elasticsearch.util.ESMappingUtilHelperTest.testValidateEventMapping(ESMappingUtilHelperTest.java:629)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -156,12 +138,29 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '908cdac5-1fa0-423f-be40-87408b5dd8be': Content Type with ID '7ebbb31d-1ae5-4c0b-b1eb-bd4d9281be74' was not found via API.
+Caused by: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4155)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8287)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4066)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4061)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
+	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:293)
+	... 63 more
+Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '4f0be587-11b1-4815-ac9f-60c8a8933e7f': Content Type with ID 'bc773f5e-2f5d-49be-aaa3-583cedf51f1b' was not found via API.
 	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
 	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
 	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
-	... 81 more
-Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '908cdac5-1fa0-423f-be40-87408b5dd8be': Content Type with ID '7ebbb31d-1ae5-4c0b-b1eb-bd4d9281be74' was not found via API.
+	... 77 more
+Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '4f0be587-11b1-4815-ac9f-60c8a8933e7f': Content Type with ID 'bc773f5e-2f5d-49be-aaa3-583cedf51f1b' was not found via API.
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:413)
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
 	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
@@ -179,10 +178,10 @@ Caused by: com.dotcms.content.business.DotMappingException: An error occurred wh
 	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
 	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
 	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
-	... 83 more
-Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '7ebbb31d-1ae5-4c0b-b1eb-bd4d9281be74' was not found via API.
+	... 79 more
+Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'bc773f5e-2f5d-49be-aaa3-583cedf51f1b' was not found via API.
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:274)
-	... 99 more
+	... 95 more
 </pre>
 </span>
 </div>
@@ -199,137 +198,137 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '7e
 </thead>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: dates_as_text</td>
-<td class="success">46.197s</td>
+<td class="success">52.204s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: geomapping</td>
-<td class="success">45.169s</td>
+<td class="success">49.243s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: keywordmapping</td>
-<td class="success">49.355s</td>
+<td class="success">53.477s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: permissions</td>
-<td class="success">46.330s</td>
+<td class="success">50.037s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: radio_as_boolean</td>
-<td class="success">44.594s</td>
+<td class="success">50.806s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: radio_as_float</td>
-<td class="success">44.028s</td>
+<td class="success">51.899s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: radio_as_integer</td>
-<td class="success">44.422s</td>
+<td class="success">52.391s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: select_as_boolean</td>
-<td class="success">45.806s</td>
+<td class="success">51.363s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: select_as_float</td>
-<td class="success">44.858s</td>
+<td class="success">52.122s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: select_as_integer</td>
-<td class="success">45.549s</td>
+<td class="success">53.813s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: strings_as_date_times</td>
-<td class="success">46.942s</td>
+<td class="success">50.964s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: strings_as_dates</td>
-<td class="success">46.656s</td>
+<td class="success">51.490s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: tags</td>
-<td class="success">47.327s</td>
+<td class="success">54.217s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: text_as_float</td>
-<td class="success">46.621s</td>
+<td class="success">53.305s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: text_as_integer</td>
-<td class="success">47.383s</td>
+<td class="success">53.436s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testAddMappingForFields. Mapping Name: uniqueField</td>
-<td class="success">48.201s</td>
+<td class="success">55.208s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateEventMapping. Mapping Name: permissions</td>
-<td class="success">0.150s</td>
+<td class="success">0.293s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateEventMapping. Mapping Name: strings_as_dates</td>
-<td class="success">0.244s</td>
+<td class="success">0.270s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test Name: testValidateEventMapping. Mapping Name: template_1</td>
-<td class="success">1.212s</td>
-<td class="success">passed</td>
+<td class="failures">Test Name: testValidateEventMapping. Mapping Name: template_1</td>
+<td class="failures">1.013s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateEventMapping. Mapping Name: textmapping</td>
-<td class="success">0.171s</td>
+<td class="success">0.539s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateFileAssetMapping. Mapping Name: keywordmapping</td>
-<td class="success">3.025s</td>
+<td class="success">3.044s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateFileAssetMapping. Mapping Name: longmapping</td>
-<td class="success">2.495s</td>
+<td class="success">3.011s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping</td>
-<td class="failures">3.253s</td>
-<td class="failures">failed</td>
+<td class="success">Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping</td>
+<td class="success">3.821s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateNewsLikeMapping. Mapping Name: geomapping_2</td>
-<td class="success">3.863s</td>
+<td class="success">4.025s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test Name: testValidateNewsLikeMapping. Mapping Name: keywordmapping</td>
-<td class="success">4.033s</td>
+<td class="success">4.103s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateContentIndexWithCustomMappings</td>
-<td class="success">39.587s</td>
+<td class="success">46.847s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testMappingForDateFields</td>
-<td class="success">37.930s</td>
+<td class="success">41.943s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -342,7 +341,7 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '7e
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Apr 30, 2021, 11:37:42 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Apr 30, 2021, 11:43:58 PM</p>
 </div>
 </div>
 </body>
