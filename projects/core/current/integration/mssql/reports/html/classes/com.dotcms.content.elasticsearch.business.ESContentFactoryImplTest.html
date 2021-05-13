@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">51.584s</div>
+<div class="counter">41.395s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">97%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,10 +61,170 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="test_findContentletByIdentifierAnyLanguageNoArchived"></a>
+<h3 class="failures">test_findContentletByIdentifierAnyLanguageNoArchived</h3>
+<span class="code">
+<pre>com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4155)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8287)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4066)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4061)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
+	at com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest.test_findContentletByIdentifierAnyLanguageNoArchived(ESContentFactoryImplTest.java:803)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID 'd8f23e04-6703-4573-a65c-d1ca5dfb3670': null
+	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
+	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
+	... 75 more
+Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID 'd8f23e04-6703-4573-a65c-d1ca5dfb3670': null
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:414)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap(ESMappingAPIImpl.java:248)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addBulkRequest(ContentletIndexAPIImpl.java:762)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.appendBulkRequest(ContentletIndexAPIImpl.java:725)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.createBulkRequest(ContentletIndexAPIImpl.java:613)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.indexContentListNow(ContentletIndexAPIImpl.java:556)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addContentToIndex(ContentletIndexAPIImpl.java:550)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.lambda$3(ContentletIndexAPIImpl.java:509)
+	at com.dotmarketing.db.HibernateUtil$DotSyncRunnable.run(HibernateUtil.java:929)
+	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
+	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
+	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
+	... 77 more
+Caused by: com.dotmarketing.exception.DotDataException
+	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushObject(DataBaseStoragePersistenceAPIImpl.java:625)
+	at com.dotcms.storage.FileStorageAPIImpl.storeMetadata(FileStorageAPIImpl.java:350)
+	at com.dotcms.storage.FileStorageAPIImpl.generateMetaData(FileStorageAPIImpl.java:279)
+	at com.dotcms.storage.FileMetadataAPIImpl.generateFullMetadata(FileMetadataAPIImpl.java:217)
+	at com.dotcms.storage.FileMetadataAPIImpl.generateContentletMetadata(FileMetadataAPIImpl.java:110)
+	at com.dotcms.storage.FileMetadataAPIImpl.generateContentletMetadata(FileMetadataAPIImpl.java:273)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.writeMetadata(ESMappingAPIImpl.java:431)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:399)
+	... 93 more
+Caused by: com.dotmarketing.exception.DotDataException
+	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.wrapInTransaction(DataBaseStoragePersistenceAPIImpl.java:96)
+	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushFile(DataBaseStoragePersistenceAPIImpl.java:453)
+	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushObject(DataBaseStoragePersistenceAPIImpl.java:622)
+	... 100 more
+Caused by: com.dotmarketing.exception.DotRuntimeException: Exception pushing new file. group=[dotmetadata], path=[/1/0/10c75b82-71f9-4b55-b8fc-a455c73c85f4/image-metadata.json], fileHash=[58cb480ba000053a7e4a95260f843a107e439fb61e8988fa3ec36884ac07a16c]
+	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushNewFile(DataBaseStoragePersistenceAPIImpl.java:556)
+	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.lambda$14(DataBaseStoragePersistenceAPIImpl.java:467)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.wrapInTransaction(DataBaseStoragePersistenceAPIImpl.java:93)
+	... 102 more
+Caused by: com.dotmarketing.exception.DotDataException: Violation of PRIMARY KEY constraint 'PK__storage___B100AEC946A1DF54'. Cannot insert duplicate key in object 'dbo.storage_data'. The duplicate key value is (58cb480ba000053a7e4a95260f843a107e439fb61e8988fa3ec36884ac07a16c).
+	at com.dotmarketing.common.db.DotConnect.executeUpdate_aroundBody2(DotConnect.java:1227)
+	at com.dotmarketing.common.db.DotConnect$AjcClosure3.run(DotConnect.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotmarketing.common.db.DotConnect.executeUpdate(DotConnect.java:1214)
+	at com.dotmarketing.common.db.DotConnect.executeUpdate(DotConnect.java:1198)
+	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushNewFile(DataBaseStoragePersistenceAPIImpl.java:528)
+	... 105 more
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY KEY constraint 'PK__storage___B100AEC946A1DF54'. Cannot insert duplicate key in object 'dbo.storage_data'. The duplicate key value is (58cb480ba000053a7e4a95260f843a107e439fb61e8988fa3ec36884ac07a16c).
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:594)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:524)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeUpdate(SQLServerPreparedStatement.java:473)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at com.dotmarketing.common.db.DotConnect.executeUpdate_aroundBody2(DotConnect.java:1222)
+	... 113 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -76,132 +236,132 @@
 </thead>
 <tr>
 <td class="success">Test_Setting_Track_Hits</td>
-<td class="success">0.002s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_TrackHits_SearchCount</td>
-<td class="success">7.840s</td>
+<td class="success">6.753s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findContentlets</td>
-<td class="success">0.392s</td>
+<td class="success">0.201s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findContentletsReturnsInExpectedOrder</td>
-<td class="success">1.582s</td>
+<td class="success">1.865s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">saveContentlets</td>
-<td class="success">0.012s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testDeleteVersion_KeepPermissions</td>
-<td class="success">2.028s</td>
+<td class="success">1.618s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByDateTime[0: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@7a62f1a9]</td>
-<td class="success">1.868s</td>
+<td class="success">testIndexSearchFilteringByDateTime[0: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@5d603bf3]</td>
+<td class="success">1.848s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByDateTime[1: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@1676db9e]</td>
-<td class="success">2.036s</td>
+<td class="success">testIndexSearchFilteringByDateTime[1: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@488e4083]</td>
+<td class="success">2.022s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByDateTime[2: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@1cf94317]</td>
-<td class="success">2.036s</td>
+<td class="success">testIndexSearchFilteringByDateTime[2: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@5f63d2f]</td>
+<td class="success">1.029s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByDateTime[3: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@4df5f70d]</td>
-<td class="success">2.009s</td>
+<td class="success">testIndexSearchFilteringByDateTime[3: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@77bcb65]</td>
+<td class="success">1.038s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByDateTime[4: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@20f7b8a3]</td>
-<td class="success">2.021s</td>
+<td class="success">testIndexSearchFilteringByDateTime[4: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@5b98d7da]</td>
+<td class="success">2.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByDateTime[5: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@7d3d08]</td>
-<td class="success">2.036s</td>
+<td class="success">testIndexSearchFilteringByDateTime[5: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@61280e72]</td>
+<td class="success">1.035s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByDateTime[6: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@564a27eb]</td>
-<td class="success">2.067s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testIndexSearchFilteringByDateTime[7: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@3465efb0]</td>
-<td class="success">1.996s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testIndexSearchFilteringByDateTime[8: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@29ca6b3f]</td>
-<td class="success">2.041s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testIndexSearchFilteringByTime[0: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@23028bff]</td>
-<td class="success">1.608s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testIndexSearchFilteringByTime[1: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@12b8eb9b]</td>
-<td class="success">2.036s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testIndexSearchFilteringByTime[2: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@5595d8cf]</td>
+<td class="success">testIndexSearchFilteringByDateTime[6: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@5503583d]</td>
 <td class="success">2.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByTime[3: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@6391fd36]</td>
-<td class="success">1.019s</td>
+<td class="success">testIndexSearchFilteringByDateTime[7: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@cfa911b]</td>
+<td class="success">1.023s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByTime[4: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@547bcfc8]</td>
-<td class="success">2.041s</td>
+<td class="success">testIndexSearchFilteringByDateTime[8: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@1141a159]</td>
+<td class="success">1.010s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testIndexSearchFilteringByTime[5: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@14a12ef]</td>
-<td class="success">2.013s</td>
+<td class="success">testIndexSearchFilteringByTime[0: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@4dcda649]</td>
+<td class="success">1.848s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIndexSearchFilteringByTime[1: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@457868ee]</td>
+<td class="success">2.000s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIndexSearchFilteringByTime[2: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@2228b503]</td>
+<td class="success">1.017s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIndexSearchFilteringByTime[3: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@1c613357]</td>
+<td class="success">1.030s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIndexSearchFilteringByTime[4: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@3cbe217c]</td>
+<td class="success">1.024s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testIndexSearchFilteringByTime[5: com.dotcms.content.elasticsearch.business.ESContentFactoryImplTest$TestCase@3a07011d]</td>
+<td class="success">2.012s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testModDateDotRawFormatIsValid</td>
-<td class="success">0.011s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testScore</td>
-<td class="success">0.845s</td>
+<td class="success">0.773s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_cached_es_query_different_responses_for_all_params</td>
-<td class="success">2.808s</td>
+<td class="success">2.312s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_cached_es_query_response</td>
-<td class="success">0.715s</td>
+<td class="success">0.658s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_convertContentletToFatContentlet</td>
-<td class="success">0.111s</td>
+<td class="success">0.103s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -211,37 +371,37 @@
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifier</td>
-<td class="success">1.545s</td>
+<td class="success">1.137s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierAnyLanguage</td>
-<td class="success">1.300s</td>
+<td class="success">1.191s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierAnyLanguageIncludeDeleted</td>
-<td class="success">1.735s</td>
+<td class="success">1.461s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">test_findContentletByIdentifierAnyLanguageNoArchived</td>
-<td class="success">1.656s</td>
-<td class="success">passed</td>
+<td class="failures">test_findContentletByIdentifierAnyLanguageNoArchived</td>
+<td class="failures">1.166s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">test_translateQueryWithLicense</td>
-<td class="success">0.003s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_translateQueryWithoutLicense</td>
-<td class="success">0.015s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_trying_with_bad_sorts</td>
-<td class="success">0.014s</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -254,7 +414,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at May 13, 2021, 5:06:17 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at May 13, 2021, 5:10:48 PM</p>
 </div>
 </div>
 </body>
