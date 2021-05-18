@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">3</div>
+<div class="counter">2</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">39.804s</div>
+<div class="counter">34.146s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">89%</div>
+<div class="percent">92%</div>
 <p>successful</p>
 </div>
 </td>
@@ -73,7 +73,7 @@
 <a name="Test_Inherited_Permissions"></a>
 <h3 class="failures">Test_Inherited_Permissions</h3>
 <span class="code">
-<pre>java.lang.AssertionError: expected:&lt;[com.dotmarketing.beans.Permission@353d6741[id=1117,inode=4bf25378-293b-48c5-ae8c-6a422f08b640,roleId=35bbe414-876e-4175-8230-53ec1ad8e2e6,permission=3,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage]]&gt; but was:&lt;[com.dotmarketing.beans.Permission@3de2f0ae[id=27,inode=SYSTEM_HOST,roleId=654b0931-1027-41f7-ad4d-173115ed8ec1,permission=1,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage], com.dotmarketing.beans.Permission@46d3b507[id=94,inode=SYSTEM_HOST,roleId=d0ce5271-f5a4-4ff5-addd-faa0ad7f7ee8,permission=7,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage], com.dotmarketing.beans.Permission@abbd6f0[id=653,inode=SYSTEM_HOST,roleId=2bf81453-2234-4afe-a23e-96b7e722fa0a,permission=1,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage]]&gt;
+<pre>java.lang.AssertionError: expected:&lt;[com.dotmarketing.beans.Permission@7f1063d0[id=1103,inode=c24a10f5-4f0b-40a4-8e89-fb99a55364d7,roleId=8074d82e-44d6-4b05-ab9c-fcb8f494ce08,permission=3,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage]]&gt; but was:&lt;[com.dotmarketing.beans.Permission@64444d1f[id=27,inode=SYSTEM_HOST,roleId=654b0931-1027-41f7-ad4d-173115ed8ec1,permission=1,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage], com.dotmarketing.beans.Permission@72d46055[id=94,inode=SYSTEM_HOST,roleId=74e877fb-b570-4ece-9fbc-29d6e228fcac,permission=7,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage], com.dotmarketing.beans.Permission@495bee44[id=653,inode=SYSTEM_HOST,roleId=4c2375c7-f9c9-4b24-9508-8e94abb1615c,permission=1,isBitPermission=true,type=com.dotmarketing.portlets.htmlpageasset.model.IHTMLPage]]&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:118)
@@ -218,161 +218,6 @@
 </pre>
 </span>
 </div>
-<div class="test">
-<a name="issue886"></a>
-<h3 class="failures">issue886</h3>
-<span class="code">
-<pre>com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4155)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8287)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4066)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4061)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
-	at com.dotmarketing.business.PermissionAPITest.issue886(PermissionAPITest.java:652)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '457d4d83-b9d8-40fb-89b3-54fcd2a3cbb3': null
-	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
-	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
-	... 76 more
-Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '457d4d83-b9d8-40fb-89b3-54fcd2a3cbb3': null
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:414)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap(ESMappingAPIImpl.java:248)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addBulkRequest(ContentletIndexAPIImpl.java:762)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.appendBulkRequest(ContentletIndexAPIImpl.java:725)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.createBulkRequest(ContentletIndexAPIImpl.java:613)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.indexContentListNow(ContentletIndexAPIImpl.java:556)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addContentToIndex(ContentletIndexAPIImpl.java:550)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.lambda$3(ContentletIndexAPIImpl.java:509)
-	at com.dotmarketing.db.HibernateUtil$DotSyncRunnable.run(HibernateUtil.java:929)
-	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
-	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
-	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
-	... 78 more
-Caused by: com.dotmarketing.exception.DotDataException
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushObject(DataBaseStoragePersistenceAPIImpl.java:625)
-	at com.dotcms.storage.FileStorageAPIImpl.storeMetadata(FileStorageAPIImpl.java:350)
-	at com.dotcms.storage.FileStorageAPIImpl.generateMetaData(FileStorageAPIImpl.java:279)
-	at com.dotcms.storage.FileMetadataAPIImpl.generateFullMetadata(FileMetadataAPIImpl.java:217)
-	at com.dotcms.storage.FileMetadataAPIImpl.generateContentletMetadata(FileMetadataAPIImpl.java:110)
-	at com.dotcms.storage.FileMetadataAPIImpl.generateContentletMetadata(FileMetadataAPIImpl.java:273)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.writeMetadata(ESMappingAPIImpl.java:431)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:399)
-	... 94 more
-Caused by: com.dotmarketing.exception.DotDataException
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.wrapInTransaction(DataBaseStoragePersistenceAPIImpl.java:96)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushFile(DataBaseStoragePersistenceAPIImpl.java:453)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushObject(DataBaseStoragePersistenceAPIImpl.java:622)
-	... 101 more
-Caused by: com.dotmarketing.exception.DotRuntimeException: Exception pushing new file. group=[dotmetadata], path=[/5/0/506a9882-3aa4-4a18-85ac-8cb97d5131b2/fileasset-metadata.json], fileHash=[a6f52e595c213327c7f68d92325860772ddbcc4d225cc4da35b9afa2a3e7e45c]
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushNewFile(DataBaseStoragePersistenceAPIImpl.java:556)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.lambda$14(DataBaseStoragePersistenceAPIImpl.java:467)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.wrapInTransaction(DataBaseStoragePersistenceAPIImpl.java:93)
-	... 103 more
-Caused by: com.dotmarketing.exception.DotDataException: Violation of PRIMARY KEY constraint 'PK__storage___B100AEC996E3AC84'. Cannot insert duplicate key in object 'dbo.storage_data'. The duplicate key value is (a6f52e595c213327c7f68d92325860772ddbcc4d225cc4da35b9afa2a3e7e45c).
-	at com.dotmarketing.common.db.DotConnect.executeUpdate_aroundBody2(DotConnect.java:1227)
-	at com.dotmarketing.common.db.DotConnect$AjcClosure3.run(DotConnect.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotmarketing.common.db.DotConnect.executeUpdate(DotConnect.java:1214)
-	at com.dotmarketing.common.db.DotConnect.executeUpdate(DotConnect.java:1198)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushNewFile(DataBaseStoragePersistenceAPIImpl.java:528)
-	... 106 more
-Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY KEY constraint 'PK__storage___B100AEC996E3AC84'. Cannot insert duplicate key in object 'dbo.storage_data'. The duplicate key value is (a6f52e595c213327c7f68d92325860772ddbcc4d225cc4da35b9afa2a3e7e45c).
-	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:594)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:524)
-	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeUpdate(SQLServerPreparedStatement.java:473)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
-	at com.dotmarketing.common.db.DotConnect.executeUpdate_aroundBody2(DotConnect.java:1222)
-	... 114 more
-</pre>
-</span>
-</div>
 </div>
 <div id="tab1" class="tab">
 <h2>Tests</h2>
@@ -386,73 +231,73 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </thead>
 <tr>
 <td class="failures">Test_Inherited_Permissions</td>
-<td class="failures">4.067s</td>
+<td class="failures">3.889s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">Test_Remove_All_Permissions_Then_Verify_Cache_Is_Null</td>
-<td class="success">0.924s</td>
+<td class="success">0.877s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyPermissions</td>
-<td class="success">0.337s</td>
+<td class="success">0.223s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">doesRoleHavePermission</td>
-<td class="success">0.096s</td>
+<td class="success">0.062s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">doesUserHavePermission</td>
-<td class="success">0.063s</td>
+<td class="success">0.055s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">doesUserHavePermission_another_lang</td>
-<td class="success">0.246s</td>
+<td class="success">0.163s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getPermissions</td>
-<td class="success">0.137s</td>
+<td class="success">0.113s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getRolesWithPermission</td>
-<td class="success">0.120s</td>
+<td class="success">0.084s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getUsersWithPermission</td>
-<td class="success">0.258s</td>
+<td class="success">0.114s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">issue1073</td>
-<td class="success">0.456s</td>
+<td class="success">0.317s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">issue560</td>
-<td class="success">2.046s</td>
+<td class="success">1.712s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">issue781</td>
-<td class="failures">1.458s</td>
+<td class="failures">1.069s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">issue847</td>
-<td class="success">2.713s</td>
+<td class="success">1.589s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">issue886</td>
-<td class="failures">3.380s</td>
-<td class="failures">failed</td>
+<td class="success">issue886</td>
+<td class="success">2.919s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">permissionIndividually</td>
@@ -461,67 +306,67 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">removePermissions</td>
-<td class="success">2.095s</td>
+<td class="success">2.077s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">save</td>
-<td class="success">0.194s</td>
+<td class="success">0.139s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testAnonymousUserCannotReadNonLiveContent</td>
-<td class="success">6.701s</td>
+<td class="success">5.134s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersCountDeleted</td>
-<td class="success">0.085s</td>
+<td class="success">0.056s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersCountWithFilter</td>
-<td class="success">0.107s</td>
+<td class="success">0.068s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersCountWithoutFilter</td>
-<td class="success">0.101s</td>
+<td class="success">0.065s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersDeleted</td>
-<td class="success">0.165s</td>
+<td class="success">0.136s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersWithFilter</td>
-<td class="success">0.103s</td>
+<td class="success">0.069s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetUsersWithoutFilter</td>
-<td class="success">0.078s</td>
+<td class="success">0.074s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testPermissionIndividuallyByRole</td>
-<td class="success">12.123s</td>
+<td class="success">11.651s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_doesUserHavePermissions_checkDiffAssetIdThatPermissionsWereGiven_returnFalse</td>
-<td class="success">0.112s</td>
+<td class="success">0.085s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_doesUserHavePermissions_checkSameAssetIdThatPermissionsWereGiven_returnTrue</td>
-<td class="success">0.259s</td>
+<td class="success">0.197s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_templateLayout_parentPermissionableIsHost</td>
-<td class="success">1.378s</td>
+<td class="success">1.207s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -534,7 +379,7 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at May 18, 2021, 5:51:16 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at May 18, 2021, 6:33:51 PM</p>
 </div>
 </div>
 </body>
