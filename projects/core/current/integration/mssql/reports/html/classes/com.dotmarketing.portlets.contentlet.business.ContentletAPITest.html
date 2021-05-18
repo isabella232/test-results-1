@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">2m12.39s</div>
+<div class="counter">2m21.50s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">99%</div>
+<div class="infoBox skipped" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,183 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
-</li>
-<li>
-<a href="#tab2">Standard error</a>
+<a href="#tab1">Standard error</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="copyContentletWithSeveralVersionsOrderIssue"></a>
-<h3 class="failures">copyContentletWithSeveralVersionsOrderIssue</h3>
-<span class="code">
-<pre>com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4155)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8287)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4066)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4061)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
-	at com.dotmarketing.portlets.fileassets.business.FileAssetAPIImpl.renameFile_aroundBody20(FileAssetAPIImpl.java:458)
-	at com.dotmarketing.portlets.fileassets.business.FileAssetAPIImpl$AjcClosure21.run(FileAssetAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotmarketing.portlets.fileassets.business.FileAssetAPIImpl.renameFile(FileAssetAPIImpl.java:440)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPITest.copyContentletWithSeveralVersionsOrderIssue(ContentletAPITest.java:1657)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:48)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '4fe59b0b-6006-4d3c-ae56-30b47d475eac': null
-	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
-	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
-	... 85 more
-Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '4fe59b0b-6006-4d3c-ae56-30b47d475eac': null
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:414)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap(ESMappingAPIImpl.java:248)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addBulkRequest(ContentletIndexAPIImpl.java:762)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.appendBulkRequest(ContentletIndexAPIImpl.java:725)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.createBulkRequest(ContentletIndexAPIImpl.java:613)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.indexContentListNow(ContentletIndexAPIImpl.java:556)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addContentToIndex(ContentletIndexAPIImpl.java:550)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.lambda$3(ContentletIndexAPIImpl.java:509)
-	at com.dotmarketing.db.HibernateUtil$DotSyncRunnable.run(HibernateUtil.java:929)
-	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
-	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
-	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
-	... 87 more
-Caused by: com.dotmarketing.exception.DotDataException
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushObject(DataBaseStoragePersistenceAPIImpl.java:625)
-	at com.dotcms.storage.FileStorageAPIImpl.storeMetadata(FileStorageAPIImpl.java:350)
-	at com.dotcms.storage.FileStorageAPIImpl.generateMetaData(FileStorageAPIImpl.java:279)
-	at com.dotcms.storage.FileMetadataAPIImpl.generateFullMetadata(FileMetadataAPIImpl.java:217)
-	at com.dotcms.storage.FileMetadataAPIImpl.generateContentletMetadata(FileMetadataAPIImpl.java:110)
-	at com.dotcms.storage.FileMetadataAPIImpl.generateContentletMetadata(FileMetadataAPIImpl.java:273)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.writeMetadata(ESMappingAPIImpl.java:431)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:399)
-	... 103 more
-Caused by: com.dotmarketing.exception.DotDataException
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.wrapInTransaction(DataBaseStoragePersistenceAPIImpl.java:96)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushFile(DataBaseStoragePersistenceAPIImpl.java:453)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushObject(DataBaseStoragePersistenceAPIImpl.java:622)
-	... 110 more
-Caused by: com.dotmarketing.exception.DotRuntimeException: Exception pushing new file. group=[dotmetadata], path=[/6/3/63aa1a04-37c9-416b-89c6-72a521f6cc36/fileasset-metadata.json], fileHash=[033ffe8bfb44e5948888ee789fbfd49a5877f12d9037bff328f098daffd7458a]
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushNewFile(DataBaseStoragePersistenceAPIImpl.java:556)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.lambda$14(DataBaseStoragePersistenceAPIImpl.java:467)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.wrapInTransaction(DataBaseStoragePersistenceAPIImpl.java:93)
-	... 112 more
-Caused by: com.dotmarketing.exception.DotDataException: Violation of PRIMARY KEY constraint 'PK__storage___B100AEC9E6A0E394'. Cannot insert duplicate key in object 'dbo.storage_data'. The duplicate key value is (033ffe8bfb44e5948888ee789fbfd49a5877f12d9037bff328f098daffd7458a).
-	at com.dotmarketing.common.db.DotConnect.executeUpdate_aroundBody2(DotConnect.java:1227)
-	at com.dotmarketing.common.db.DotConnect$AjcClosure3.run(DotConnect.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotmarketing.common.db.DotConnect.executeUpdate(DotConnect.java:1214)
-	at com.dotmarketing.common.db.DotConnect.executeUpdate(DotConnect.java:1198)
-	at com.dotcms.storage.DataBaseStoragePersistenceAPIImpl.pushNewFile(DataBaseStoragePersistenceAPIImpl.java:528)
-	... 115 more
-Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY KEY constraint 'PK__storage___B100AEC9E6A0E394'. Cannot insert duplicate key in object 'dbo.storage_data'. The duplicate key value is (033ffe8bfb44e5948888ee789fbfd49a5877f12d9037bff328f098daffd7458a).
-	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:594)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:524)
-	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
-	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
-	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.executeUpdate(SQLServerPreparedStatement.java:473)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
-	at com.dotmarketing.common.db.DotConnect.executeUpdate_aroundBody2(DotConnect.java:1222)
-	... 123 more
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -249,37 +79,37 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </thead>
 <tr>
 <td class="success">TestCopyHTMLPageIncludesPersonalizedMultiTrees</td>
-<td class="success">1.084s</td>
+<td class="success">1.856s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Copy_Metadata_On_CheckIn</td>
-<td class="success">1.226s</td>
+<td class="success">1.696s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addLinkToContentlet</td>
-<td class="success">0.133s</td>
+<td class="success">0.090s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addRemoveContentFromIndex</td>
-<td class="success">1.232s</td>
+<td class="success">0.948s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">archive</td>
-<td class="success">0.472s</td>
+<td class="success">0.161s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">archiveCollection</td>
-<td class="success">0.697s</td>
+<td class="success">0.353s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">cleanBinaryField</td>
-<td class="success">0.022s</td>
+<td class="success">0.038s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -289,87 +119,87 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">cleanTagField</td>
-<td class="success">0.016s</td>
+<td class="success">0.029s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">contentOnlyWithExpireFieldTest</td>
-<td class="success">0.626s</td>
+<td class="success">0.630s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentlet</td>
-<td class="success">0.574s</td>
+<td class="success">0.539s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentletWithFolder</td>
-<td class="success">0.544s</td>
+<td class="success">0.627s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentletWithFolderAppendCopy</td>
-<td class="success">0.383s</td>
+<td class="success">0.529s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copyContentletWithHost</td>
-<td class="success">0.455s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="failures">copyContentletWithSeveralVersionsOrderIssue</td>
-<td class="failures">2.060s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
-<td class="success">delete</td>
-<td class="success">0.528s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deleteAllVersionsAndBackup</td>
-<td class="success">0.402s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deleteCollection</td>
-<td class="success">0.710s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deleteCollectionAllVersions</td>
-<td class="success">0.773s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deleteForAllVersions</td>
-<td class="success">0.497s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deleteMultipleContents</td>
-<td class="success">6.037s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deleteRelatedContent</td>
-<td class="success">1.373s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">deleteRelatedContentWithParent</td>
-<td class="success">1.154s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">delete_GivenUnarchivedContentAndDontValidateMeInTrue_ShouldDeleteSuccessfully</td>
 <td class="success">0.434s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
+<td class="success">copyContentletWithSeveralVersionsOrderIssue</td>
+<td class="success">9.329s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">delete</td>
+<td class="success">0.574s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteAllVersionsAndBackup</td>
+<td class="success">0.417s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteCollection</td>
+<td class="success">0.551s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteCollectionAllVersions</td>
+<td class="success">1.435s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteForAllVersions</td>
+<td class="success">0.556s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteMultipleContents</td>
+<td class="success">6.229s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteRelatedContent</td>
+<td class="success">2.198s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">deleteRelatedContentWithParent</td>
+<td class="success">1.224s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">delete_GivenUnarchivedContentAndDontValidateMeInTrue_ShouldDeleteSuccessfully</td>
+<td class="success">0.385s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">destroy_content_locked_by_admin_by_other_admin_user</td>
-<td class="success">1.533s</td>
+<td class="success">1.210s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -384,27 +214,27 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">findByStructure</td>
-<td class="success">0.017s</td>
+<td class="success">0.013s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findByStructureInode</td>
-<td class="success">0.005s</td>
+<td class="success">0.013s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findContentletByIdentifier</td>
-<td class="success">0.006s</td>
+<td class="success">0.008s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findContentletByIdentifiers</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findContentletForLanguage</td>
-<td class="success">0.007s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -414,12 +244,12 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">findContentletsByFolder</td>
-<td class="success">0.955s</td>
+<td class="success">1.136s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findContentletsByHost</td>
-<td class="success">0.297s</td>
+<td class="success">0.302s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -429,47 +259,47 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">getAllLanguages</td>
-<td class="success">4.949s</td>
+<td class="success">4.550s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getAllRelationships</td>
-<td class="success">0.024s</td>
+<td class="success">0.020s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getAllRelationshipsByContentlet</td>
-<td class="success">1.277s</td>
+<td class="success">0.837s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getContentletReferences</td>
-<td class="success">2.942s</td>
+<td class="success">2.285s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getContentletReferencesForMonolingualPages</td>
-<td class="success">1.049s</td>
+<td class="success">1.332s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getFieldValue</td>
-<td class="success">0.014s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getNextReview</td>
-<td class="success">0.016s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getRelatedContent</td>
-<td class="success">0.888s</td>
+<td class="success">0.905s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">getRelatedContentPullByParent</td>
-<td class="success">0.886s</td>
+<td class="success">0.744s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -479,27 +309,27 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">newFileAssetLanguageDifferentThanDefault</td>
-<td class="success">0.512s</td>
+<td class="success">0.312s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">newVersionFileAssetLanguageDifferentThanDefault</td>
-<td class="success">0.639s</td>
+<td class="success">1.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">no_destroy_limited_content_locked_by_admin_by_limited_user</td>
-<td class="success">0.961s</td>
+<td class="success">0.777s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">publish</td>
-<td class="success">0.194s</td>
+<td class="success">0.172s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">publishCollection</td>
-<td class="success">0.266s</td>
+<td class="success">0.805s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -509,17 +339,17 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">rangeQuery</td>
-<td class="success">2.959s</td>
+<td class="success">2.781s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">relateContent</td>
-<td class="success">0.877s</td>
+<td class="success">0.880s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">relateContentDirect</td>
-<td class="success">1.298s</td>
+<td class="success">0.808s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -529,7 +359,7 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">saveContentWithExistingIdentifier</td>
-<td class="success">0.837s</td>
+<td class="success">1.099s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -539,377 +369,377 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">searchIndex</td>
-<td class="success">0.008s</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">searchWithPermissions</td>
-<td class="success">0.017s</td>
+<td class="success">0.011s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckInContentletWithoutHost_shouldUseContentTypeHost</td>
-<td class="success">0.346s</td>
+<td class="success">0.368s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckInWithSelfRelationInBothParentsAndChildren</td>
-<td class="success">1.017s</td>
+<td class="success">1.080s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin1_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
-<td class="success">0.981s</td>
+<td class="success">1.069s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin1_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">0.859s</td>
+<td class="success">0.871s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin1_ExistingContentWithChildAndParentRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">2.865s</td>
+<td class="success">2.751s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin1_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.293s</td>
+<td class="success">1.394s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin2_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
-<td class="success">0.844s</td>
+<td class="success">0.770s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin2_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">0.908s</td>
+<td class="success">0.810s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin2_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.165s</td>
+<td class="success">0.966s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin3_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
-<td class="success">0.842s</td>
+<td class="success">0.745s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin3_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">0.985s</td>
+<td class="success">0.849s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin3_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
-<td class="success">1.039s</td>
+<td class="success">1.147s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin3_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.501s</td>
+<td class="success">1.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin4_ExistingContentWithCats_EmptyCatsList_ShouldWipeExistingCats</td>
-<td class="success">0.754s</td>
+<td class="success">1.384s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin4_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">0.840s</td>
+<td class="success">1.213s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin4_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
-<td class="success">0.904s</td>
+<td class="success">1.066s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin4_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">0.852s</td>
+<td class="success">0.963s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinDefaultActions</td>
-<td class="success">0.924s</td>
+<td class="success">1.058s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinDefaultActionsSkip</td>
-<td class="success">1.175s</td>
+<td class="success">1.828s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinDefaultActionsSkipBySettingActionId</td>
-<td class="success">1.507s</td>
+<td class="success">1.619s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinNoDefaultActions</td>
-<td class="success">1.193s</td>
+<td class="success">1.207s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinWithoutVersioning_ExistingContentWithCats_EmptyCats_ShouldWipeExistingCats</td>
-<td class="success">0.728s</td>
+<td class="success">0.830s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinWithoutVersioning_ExistingContentWithCats_NullCats_ShouldKeepExistingCats</td>
-<td class="success">0.826s</td>
+<td class="success">0.700s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinWithoutVersioning_ExistingContentWithRels_EmptyRels_ShouldWipeExistingRels</td>
-<td class="success">1.310s</td>
+<td class="success">0.980s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinWithoutVersioning_ExistingContentWithRels_NullRels_ShouldKeepExistingRels</td>
-<td class="success">1.014s</td>
+<td class="success">1.460s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinWithoutVersioning_ShouldDeletePreviousBinary_WhenBinaryIsUpdated</td>
-<td class="success">0.453s</td>
+<td class="success">0.450s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckinWithoutVersioning_ShouldPreserveBinary_WhenOtherFieldsAreUpdated</td>
-<td class="success">0.474s</td>
+<td class="success">0.578s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin_Non_Existing_Identifier_With_Not_Validate_Success</td>
-<td class="success">0.419s</td>
+<td class="success">0.494s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckin_Non_Existing_Identifier_With_Validate_Should_FAIL</td>
-<td class="success">0.044s</td>
+<td class="success">0.052s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testCheckin_nullRequiredFieldValue[0: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@729a54cd]</td>
-<td class="success">0.423s</td>
+<td class="success">testCheckin_nullRequiredFieldValue[0: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@661dfeb9]</td>
+<td class="success">0.293s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testCheckin_nullRequiredFieldValue[1: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@249d1b55]</td>
-<td class="success">0.338s</td>
+<td class="success">testCheckin_nullRequiredFieldValue[1: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@29e3c0d4]</td>
+<td class="success">0.312s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testCheckin_nullRequiredFieldValue[2: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@7c863035]</td>
-<td class="success">0.281s</td>
+<td class="success">testCheckin_nullRequiredFieldValue[2: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@3766aaa6]</td>
+<td class="success">0.332s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testCheckin_nullRequiredFieldValue[3: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@148758d1]</td>
-<td class="success">0.248s</td>
+<td class="success">testCheckin_nullRequiredFieldValue[3: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$TestCaseNullFieldvalues@73732112]</td>
+<td class="success">0.313s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testContentWithTwoBinaryFieldsAndSameFile_afterCheckinShouldContainBothFields</td>
-<td class="success">0.712s</td>
+<td class="success">0.689s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCopyContentletDoesNotCopyWorkflowHistory</td>
-<td class="success">4.064s</td>
+<td class="success">4.669s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCopyProperties_TypeWithTagField_shouldCopyTagFieldValue</td>
-<td class="success">0.399s</td>
+<td class="success">0.436s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCreateSelfJoinedRelationship_contentletAddedAsChild</td>
-<td class="success">0.873s</td>
+<td class="success">0.918s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testDeletePageDefinedAsDetailPage</td>
-<td class="success">2.346s</td>
+<td class="success">1.795s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testDelete_GivenMultiLangMultiVersionContent_WhenDeletingOneSpanishVersion_ShouldDeleteAllSpanishVersions</td>
-<td class="success">1.327s</td>
+<td class="success">1.715s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testDotAsset_Checkin</td>
-<td class="success">0.682s</td>
+<td class="success">0.829s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testFileCopyOnSecondLanguageVersion</td>
-<td class="success">1.930s</td>
+<td class="success">1.995s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetRelatedForSelfJoinsDoesNotCacheWhenPullByParentIsNull</td>
-<td class="success">1.402s</td>
+<td class="success">1.038s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testMoveContentDependenciesFromChild</td>
-<td class="success">0.933s</td>
+<td class="success">1.102s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testMoveContentDependenciesFromChildSelfRelated</td>
-<td class="success">0.942s</td>
+<td class="success">1.131s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testMoveContentDependenciesFromParent</td>
-<td class="success">1.253s</td>
+<td class="success">2.018s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testMoveContentDependenciesFromParentSelfRelated</td>
-<td class="success">1.790s</td>
+<td class="success">1.363s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testRemoveContentFromIndexMultilingualContent</td>
-<td class="success">1.089s</td>
+<td class="success">0.684s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSearchFileAssetByMetadata</td>
-<td class="success">1.197s</td>
+<td class="success">0.994s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSetTemplateForAPageMustKeepTheSameTemplateForWorkingVersionsNoLive</td>
-<td class="success">2.043s</td>
+<td class="success">2.147s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSetTemplateForAPageMustKeepTheSameTemplateForWorkingVersionsOnly</td>
-<td class="success">1.451s</td>
+<td class="success">1.303s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[0: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@341b5ab0]</td>
-<td class="success">1.008s</td>
+<td class="success">testUniqueTextFieldContentlets[0: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@7a92e1f3]</td>
+<td class="success">1.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[1: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@7890b8d5]</td>
-<td class="success">1.054s</td>
+<td class="success">testUniqueTextFieldContentlets[1: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@4dc07b15]</td>
+<td class="success">0.980s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[2: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@35da286a]</td>
-<td class="success">0.997s</td>
+<td class="success">testUniqueTextFieldContentlets[2: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@4f71db91]</td>
+<td class="success">1.102s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[3: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@1bb5bfd0]</td>
-<td class="success">1.041s</td>
+<td class="success">testUniqueTextFieldContentlets[3: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@256008dc]</td>
+<td class="success">0.888s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[4: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@7515a8cc]</td>
-<td class="success">0.940s</td>
+<td class="success">testUniqueTextFieldContentlets[4: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@4890f8fa]</td>
+<td class="success">1.036s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[5: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@8bee0ab]</td>
-<td class="success">1.011s</td>
+<td class="success">testUniqueTextFieldContentlets[5: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@6c62a2e]</td>
+<td class="success">1.055s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[6: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@6cc310ae]</td>
-<td class="success">0.979s</td>
+<td class="success">testUniqueTextFieldContentlets[6: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@472ac434]</td>
+<td class="success">1.082s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[7: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@5a3e69d9]</td>
-<td class="success">1.037s</td>
+<td class="success">testUniqueTextFieldContentlets[7: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@62a912e5]</td>
+<td class="success">1.138s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testUniqueTextFieldContentlets[8: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@2b5e99a]</td>
-<td class="success">0.985s</td>
+<td class="success">testUniqueTextFieldContentlets[8: com.dotmarketing.portlets.contentlet.business.ContentletAPITest$testCaseUniqueTextField@2db16162]</td>
+<td class="success">0.998s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUniqueTextFieldLiveAndWorkingWithDiffValues</td>
-<td class="success">3.530s</td>
+<td class="success">3.575s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUniqueTextFieldWithDataTypeWholeNumber</td>
-<td class="success">1.123s</td>
+<td class="success">0.745s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testUpdatePublishExpireDatesFromIdentifier</td>
-<td class="success">3.428s</td>
+<td class="success">3.459s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_copyContentlet_contentletArchivedShouldCopyAsArchived</td>
-<td class="success">0.698s</td>
+<td class="success">0.670s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_DotContentletStateException_expected_true</td>
-<td class="success">0.151s</td>
+<td class="success">0.115s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_EnglishLive_WithSpanishWorking_fallback_true_expecting_English_true</td>
-<td class="success">1.521s</td>
+<td class="success">1.400s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_EnglishLive_WithSpanishWorking_fallback_true_expecting_SpanishWorking_true</td>
-<td class="success">1.498s</td>
+<td class="success">1.139s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_EnglishSpanish_fallback_false_expecting_Spanish_true</td>
-<td class="success">0.365s</td>
+<td class="success">0.765s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_EnglishSpanish_fallback_true_expecting_Spanish_true</td>
-<td class="success">0.400s</td>
+<td class="success">0.235s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_English_No_Spanish_fallback_false_expecting_False</td>
-<td class="success">0.263s</td>
+<td class="success">0.192s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_English_version_no_Spanish_fallback_false_expecting_false</td>
-<td class="success">0.244s</td>
+<td class="success">0.161s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_NonEnglish_WithSpanish_fallback_false_expecting_Spanish_true</td>
-<td class="success">0.136s</td>
+<td class="success">0.128s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_NonEnglish_WithSpanish_fallback_true_expecting_Spanish_true</td>
-<td class="success">0.586s</td>
+<td class="success">1.020s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_findContentletByIdentifierOrFallback_existing_OnlySpanishWorking_fallback_true_expecting_English_true</td>
-<td class="success">0.447s</td>
+<td class="success">0.452s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -919,22 +749,22 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">test_findInDb_returns_properly</td>
-<td class="success">0.586s</td>
+<td class="success">0.416s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_getAllRelationships_checkOrdering</td>
-<td class="success">1.973s</td>
+<td class="success">1.701s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_getAllRelationships_checkOrdering_selfRelatedContentType</td>
-<td class="success">1.505s</td>
+<td class="success">1.591s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_invalidate_shorty_cache</td>
-<td class="success">1.174s</td>
+<td class="success">1.032s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -944,84 +774,84 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of PRIMARY
 </tr>
 <tr>
 <td class="success">test_update_mod_date_contentlet_expect_success</td>
-<td class="success">0.159s</td>
+<td class="success">0.219s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_validateContentlet_contentWithTabDividerField</td>
-<td class="success">0.357s</td>
+<td class="success">0.905s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_validateContentlet_noErrors_whenRelationChainSameContentType</td>
-<td class="success">1.170s</td>
+<td class="success">1.215s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_validateContentlet_wrong_mime_type_expect_DotContentletValidationException</td>
-<td class="success">0.273s</td>
+<td class="success">0.134s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_validateContentlet_wrong_size_expect_DotContentletValidationException</td>
-<td class="success">0.205s</td>
+<td class="success">0.144s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">unarchive</td>
-<td class="success">0.213s</td>
+<td class="success">0.153s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">unarchiveCollection</td>
-<td class="success">0.685s</td>
+<td class="success">0.397s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">unpublish</td>
-<td class="success">0.287s</td>
+<td class="success">0.253s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">unpublishCollection</td>
-<td class="success">0.694s</td>
+<td class="success">0.439s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">widgetInvalidateAllLang</td>
-<td class="success">0.948s</td>
+<td class="success">0.842s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>May 18, 2021 5:50:26 PM com.hazelcast.instance.AddressPicker
+<pre>May 18, 2021 5:57:15 PM com.hazelcast.instance.AddressPicker
 INFO: [LOCAL] [dev] [3.9.2] Prefer IPv4 stack is true.
-May 18, 2021 5:50:26 PM com.hazelcast.instance.AddressPicker
+May 18, 2021 5:57:15 PM com.hazelcast.instance.AddressPicker
 INFO: [LOCAL] [dev] [3.9.2] Picked [172.18.0.3]:5701, using socket ServerSocket[addr=/0.0.0.0,localport=5701], bind any local is true
-May 18, 2021 5:50:26 PM com.hazelcast.system
+May 18, 2021 5:57:15 PM com.hazelcast.system
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] Hazelcast 3.9.2 (20180103 - 17e4ec3) starting at [172.18.0.3]:5701
-May 18, 2021 5:50:26 PM com.hazelcast.system
+May 18, 2021 5:57:15 PM com.hazelcast.system
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] Copyright (c) 2008-2017, Hazelcast, Inc. All Rights Reserved.
-May 18, 2021 5:50:26 PM com.hazelcast.system
+May 18, 2021 5:57:15 PM com.hazelcast.system
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] Configured Hazelcast Serialization version: 1
-May 18, 2021 5:50:26 PM com.hazelcast.spi.impl.operationservice.impl.BackpressureRegulator
+May 18, 2021 5:57:16 PM com.hazelcast.spi.impl.operationservice.impl.BackpressureRegulator
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] Backpressure is disabled
-May 18, 2021 5:50:28 PM com.hazelcast.spi.impl.operationexecutor.impl.OperationExecutorImpl
+May 18, 2021 5:57:18 PM com.hazelcast.spi.impl.operationexecutor.impl.OperationExecutorImpl
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] Starting 2 partition threads and 3 generic threads (1 dedicated for priority tasks)
-May 18, 2021 5:50:28 PM com.hazelcast.internal.diagnostics.Diagnostics
+May 18, 2021 5:57:18 PM com.hazelcast.internal.diagnostics.Diagnostics
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
-May 18, 2021 5:50:28 PM com.hazelcast.core.LifecycleService
+May 18, 2021 5:57:18 PM com.hazelcast.core.LifecycleService
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] [172.18.0.3]:5701 is STARTING
-May 18, 2021 5:50:28 PM com.hazelcast.instance.Node
+May 18, 2021 5:57:18 PM com.hazelcast.instance.Node
 WARNING: [172.18.0.3]:5701 [dev] [3.9.2] No join method is enabled! Starting standalone.
-May 18, 2021 5:50:28 PM com.hazelcast.system
+May 18, 2021 5:57:18 PM com.hazelcast.system
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] Cluster version set to 3.9
-May 18, 2021 5:50:28 PM com.hazelcast.core.LifecycleService
+May 18, 2021 5:57:18 PM com.hazelcast.core.LifecycleService
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] [172.18.0.3]:5701 is STARTED
-May 18, 2021 5:50:28 PM com.hazelcast.internal.partition.impl.PartitionStateManager
+May 18, 2021 5:57:18 PM com.hazelcast.internal.partition.impl.PartitionStateManager
 INFO: [172.18.0.3]:5701 [dev] [3.9.2] Initializing cluster partition table arrangement...
 
 
@@ -1145,7 +975,7 @@ INFO: [172.18.0.3]:5701 [dev] [3.9.2] Initializing cluster partition table arran
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at May 18, 2021, 6:33:51 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at May 18, 2021, 6:40:59 PM</p>
 </div>
 </div>
 </body>
