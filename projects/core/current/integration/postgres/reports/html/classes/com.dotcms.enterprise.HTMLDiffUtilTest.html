@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">5.988s</div>
+<div class="counter">7.994s</div>
 <p>duration</p>
 </div>
 </td>
@@ -73,45 +73,12 @@
 <a name="Test_Page_With_Changes_Expect_Difference"></a>
 <h3 class="failures">Test_Page_With_Changes_Expect_Difference</h3>
 <span class="code">
-<pre>com.dotmarketing.exception.DotRuntimeException: ERROR: duplicate key value violates unique constraint &quot;unique_workflow_task&quot;
-  Detail: Key (webasset, language_id)=(4a6fbe43-39a3-425d-a446-d6c9d7187899, 1621980359826) already exists.{
-  &quot;SQL&quot;: [&quot;INSERT INTO workflow_task (id, creation_date, mod_date, due_date, created_by, assigned_to, belongs_to, title, description, status, webasset, language_id) values (?,?,?,?,?,?,?,?,?,?,?,?)&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: [
-    &quot;6e0a9cdc-ab93-4e75-9664-190d936ead94&quot;,
-    &quot;2021-05-25 22:06:02.063&quot;,
-    &quot;2021-05-25 22:06:02.063&quot;,
-    null,
-    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
-    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
-    null,
-    &quot;seekers&quot;,
-    null,
-    &quot;ee24a4cb-2d15-4c98-b1bd-6327126451f3&quot;,
-    &quot;4a6fbe43-39a3-425d-a446-d6c9d7187899&quot;,
-    1621980359826
-  ]
-}
-	at com.dotcms.exception.ExceptionUtil.bubbleUpException(ExceptionUtil.java:165)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody144(ESContentletAPIImpl.java:4204)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure145.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4155)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8287)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4066)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4061)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
-	at com.dotcms.enterprise.HTMLDiffUtilTest.Test_Page_With_Changes_Expect_Difference(HTMLDiffUtilTest.java:154)
+<pre>java.lang.AssertionError: Values should be different. Actual: Nothing Changed
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failEquals(Assert.java:185)
+	at org.junit.Assert.assertNotEquals(Assert.java:161)
+	at org.junit.Assert.assertNotEquals(Assert.java:175)
+	at com.dotcms.enterprise.HTMLDiffUtilTest.Test_Page_With_Changes_Expect_Difference(HTMLDiffUtilTest.java:194)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -173,119 +140,6 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: com.dotmarketing.exception.DotRuntimeException: ERROR: duplicate key value violates unique constraint &quot;unique_workflow_task&quot;
-  Detail: Key (webasset, language_id)=(4a6fbe43-39a3-425d-a446-d6c9d7187899, 1621980359826) already exists.{
-  &quot;SQL&quot;: [&quot;INSERT INTO workflow_task (id, creation_date, mod_date, due_date, created_by, assigned_to, belongs_to, title, description, status, webasset, language_id) values (?,?,?,?,?,?,?,?,?,?,?,?)&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: [
-    &quot;6e0a9cdc-ab93-4e75-9664-190d936ead94&quot;,
-    &quot;2021-05-25 22:06:02.063&quot;,
-    &quot;2021-05-25 22:06:02.063&quot;,
-    null,
-    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
-    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
-    null,
-    &quot;seekers&quot;,
-    null,
-    &quot;ee24a4cb-2d15-4c98-b1bd-6327126451f3&quot;,
-    &quot;4a6fbe43-39a3-425d-a446-d6c9d7187899&quot;,
-    1621980359826
-  ]
-}
-	at com.dotcms.util.ThreadContextUtil.wrapVoidNoReindex(ThreadContextUtil.java:88)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireContentWorkflow_aroundBody182(WorkflowAPIImpl.java:3023)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure183.run(WorkflowAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireContentWorkflow(WorkflowAPIImpl.java:3000)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.validateWorkflowStateOrRunAsWorkflow(ESContentletAPIImpl.java:4401)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody144(ESContentletAPIImpl.java:4185)
-	... 78 more
-Caused by: com.dotmarketing.portlets.workflows.business.DotWorkflowException: ERROR: duplicate key value violates unique constraint &quot;unique_workflow_task&quot;
-  Detail: Key (webasset, language_id)=(4a6fbe43-39a3-425d-a446-d6c9d7187899, 1621980359826) already exists.{
-  &quot;SQL&quot;: [&quot;INSERT INTO workflow_task (id, creation_date, mod_date, due_date, created_by, assigned_to, belongs_to, title, description, status, webasset, language_id) values (?,?,?,?,?,?,?,?,?,?,?,?)&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: [
-    &quot;6e0a9cdc-ab93-4e75-9664-190d936ead94&quot;,
-    &quot;2021-05-25 22:06:02.063&quot;,
-    &quot;2021-05-25 22:06:02.063&quot;,
-    null,
-    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
-    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
-    null,
-    &quot;seekers&quot;,
-    null,
-    &quot;ee24a4cb-2d15-4c98-b1bd-6327126451f3&quot;,
-    &quot;4a6fbe43-39a3-425d-a446-d6c9d7187899&quot;,
-    1621980359826
-  ]
-}
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin_aroundBody168(WorkflowAPIImpl.java:2355)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure169.run(WorkflowAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin(WorkflowAPIImpl.java:2306)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.lambda$79(WorkflowAPIImpl.java:3023)
-	at com.dotcms.util.ThreadContextUtil.wrapVoidNoReindex(ThreadContextUtil.java:85)
-	... 88 more
-Caused by: com.dotmarketing.exception.DotDataException: ERROR: duplicate key value violates unique constraint &quot;unique_workflow_task&quot;
-  Detail: Key (webasset, language_id)=(4a6fbe43-39a3-425d-a446-d6c9d7187899, 1621980359826) already exists.{
-  &quot;SQL&quot;: [&quot;INSERT INTO workflow_task (id, creation_date, mod_date, due_date, created_by, assigned_to, belongs_to, title, description, status, webasset, language_id) values (?,?,?,?,?,?,?,?,?,?,?,?)&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: [
-    &quot;6e0a9cdc-ab93-4e75-9664-190d936ead94&quot;,
-    &quot;2021-05-25 22:06:02.063&quot;,
-    &quot;2021-05-25 22:06:02.063&quot;,
-    null,
-    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
-    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
-    null,
-    &quot;seekers&quot;,
-    null,
-    &quot;ee24a4cb-2d15-4c98-b1bd-6327126451f3&quot;,
-    &quot;4a6fbe43-39a3-425d-a446-d6c9d7187899&quot;,
-    1621980359826
-  ]
-}
-	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
-	at com.dotmarketing.portlets.workflows.business.WorkflowFactoryImpl.saveWorkflowTask(WorkflowFactoryImpl.java:2232)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTaskWithoutIndexing(WorkflowAPIImpl.java:2437)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTaskInternal(WorkflowAPIImpl.java:1388)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTaskWithoutIndexing_aroundBody170(WorkflowAPIImpl.java:2447)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure171.run(WorkflowAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTaskWithoutIndexing(WorkflowAPIImpl.java:2445)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTask(WorkflowAPIImpl.java:2411)
-	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin_aroundBody168(WorkflowAPIImpl.java:2338)
-	... 97 more
-Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint &quot;unique_workflow_task&quot;
-  Detail: Key (webasset, language_id)=(4a6fbe43-39a3-425d-a446-d6c9d7187899, 1621980359826) already exists.
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2497)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2233)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
-	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:446)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:370)
-	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:149)
-	at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:138)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
-	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:619)
-	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
-	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
-	... 110 more
 </pre>
 </span>
 </div>
@@ -302,12 +156,12 @@ Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violate
 </thead>
 <tr>
 <td class="success">Test_Page_No_Changes_Expect_Nothing_Changed_Message</td>
-<td class="success">3.356s</td>
+<td class="success">3.315s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">Test_Page_With_Changes_Expect_Difference</td>
-<td class="failures">2.632s</td>
+<td class="failures">4.679s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -320,7 +174,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violate
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at May 25, 2021, 10:29:58 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at May 26, 2021, 5:21:03 PM</p>
 </div>
 </div>
 </body>
