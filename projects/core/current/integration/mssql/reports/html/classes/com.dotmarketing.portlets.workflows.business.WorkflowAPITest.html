@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">2</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">35.626s</div>
+<div class="counter">40.546s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">97%</div>
+<div class="percent">95%</div>
 <p>successful</p>
 </div>
 </td>
@@ -146,6 +146,138 @@
 </pre>
 </span>
 </div>
+<div class="test">
+<a name="fireWorkflowAction_checkPropertiesAreCopied_successfully"></a>
+<h3 class="failures">fireWorkflowAction_checkPropertiesAreCopied_successfully</h3>
+<span class="code">
+<pre>com.dotcms.exception.BaseRuntimeInternationalizationException: com.dotmarketing.exception.DotDataException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.{
+  &quot;SQL&quot;: [&quot;delete from workflow_task where webasset = ?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: &quot;b40eeea5-6c28-4b5d-8f3c-e7740b6583ca&quot;
+}
+	at com.dotcms.contenttype.business.ContentTypeAPIImpl.delete_aroundBody0(ContentTypeAPIImpl.java:88)
+	at com.dotcms.contenttype.business.ContentTypeAPIImpl$AjcClosure1.run(ContentTypeAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.contenttype.business.ContentTypeAPIImpl.delete(ContentTypeAPIImpl.java:81)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPITest.fireWorkflowAction_checkPropertiesAreCopied_successfully(WorkflowAPITest.java:3922)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.dotmarketing.exception.DotDataException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.{
+  &quot;SQL&quot;: [&quot;delete from workflow_task where webasset = ?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: &quot;b40eeea5-6c28-4b5d-8f3c-e7740b6583ca&quot;
+}
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
+	at com.dotmarketing.portlets.workflows.business.WorkflowFactoryImpl.deleteWorkflowTaskByContentletIdAnyLanguage(WorkflowFactoryImpl.java:544)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.deleteWorkflowTaskByContentletIdAnyLanguage_aroundBody88(WorkflowAPIImpl.java:1286)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure89.run(WorkflowAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.deleteWorkflowTaskByContentletIdAnyLanguage(WorkflowAPIImpl.java:1277)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.destroyContentlets(ESContentletAPIImpl.java:2220)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.internalDestroy(ESContentletAPIImpl.java:2125)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.destroy_aroundBody80(ESContentletAPIImpl.java:2091)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure81.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.destroy(ESContentletAPIImpl.java:2064)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.destroy(ContentletAPIInterceptor.java:535)
+	at com.dotcms.contenttype.business.ContentTypeFactoryImpl.deleteContentletsByType(ContentTypeFactoryImpl.java:680)
+	at com.dotcms.contenttype.business.ContentTypeFactoryImpl.dbDelete(ContentTypeFactoryImpl.java:565)
+	at com.dotcms.contenttype.business.ContentTypeFactoryImpl.delete(ContentTypeFactoryImpl.java:133)
+	at com.dotcms.contenttype.business.ContentTypeAPIImpl.delete_aroundBody0(ContentTypeAPIImpl.java:85)
+	... 70 more
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:594)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:524)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:505)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:619)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
+	... 94 more
+</pre>
+</span>
+</div>
 </div>
 <div id="tab1" class="tab">
 <h2>Tests</h2>
@@ -159,72 +291,72 @@
 </thead>
 <tr>
 <td class="success">Create_Contentlet_Assign_Task_With_Null_Status_Then_Checkin_Then_Verify_Auto_Assign_is_Called_And_New_Task_Is_Set_Contentlet</td>
-<td class="success">0.341s</td>
+<td class="success">0.470s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">archive_success_whenWorkflowIsArchived</td>
-<td class="success">1.550s</td>
+<td class="success">2.069s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">copy_system_workflow_success</td>
-<td class="success">0.648s</td>
+<td class="success">0.595s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">deleteScheme</td>
-<td class="success">6.253s</td>
+<td class="success">9.340s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">deleteWorkflowHistoryOldVersions</td>
-<td class="success">0.232s</td>
+<td class="success">0.294s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">delete_action_and_dependencies_Test</td>
-<td class="success">0.453s</td>
+<td class="success">0.494s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findAction</td>
-<td class="success">0.466s</td>
+<td class="success">0.398s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findActionMappedBySystemActionContentlet_Test</td>
-<td class="success">1.141s</td>
+<td class="success">1.046s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findActionRespectingPermissions</td>
-<td class="success">0.458s</td>
+<td class="success">0.563s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findActions</td>
-<td class="success">0.026s</td>
+<td class="success">0.017s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">findActionsRestrictedByPermission</td>
-<td class="failures">0.095s</td>
+<td class="failures">0.082s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">findAvailableActions</td>
-<td class="success">0.712s</td>
+<td class="success">0.907s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findAvailableActions_working_version_get_empty_actions</td>
-<td class="success">1.512s</td>
+<td class="success">1.111s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findFirstStepExistingTest</td>
-<td class="success">0.006s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -239,47 +371,47 @@
 </tr>
 <tr>
 <td class="success">findFirstStepNonExistingTest</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findSchemesForContenttype_validateIfSchemesResultsAreOnCache</td>
-<td class="success">2.412s</td>
+<td class="success">2.796s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findStepsByContentlet</td>
-<td class="success">1.204s</td>
+<td class="success">1.230s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findStepsByContentlet_validateIfStepsResultsAreOnCache</td>
-<td class="success">2.084s</td>
+<td class="success">2.021s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">findTaskByContentlet</td>
-<td class="success">0.789s</td>
+<td class="success">1.548s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">find_Task_By_Contentlet_Then_Find_Version_Info</td>
-<td class="success">0.769s</td>
+<td class="success">0.817s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">fireWorkflowAction_checkPropertiesAreCopied_successfully</td>
-<td class="success">1.859s</td>
-<td class="success">passed</td>
+<td class="failures">fireWorkflowAction_checkPropertiesAreCopied_successfully</td>
+<td class="failures">1.825s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">hasArchiveActionlet_False_Test</td>
-<td class="success">0.003s</td>
+<td class="success">0.042s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">hasArchiveActionlet_True_Test</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -289,37 +421,37 @@
 </tr>
 <tr>
 <td class="success">hasPublishActionlet_True_Test</td>
-<td class="success">0.003s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">hasSaveActionlet_False_Test</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">hasSaveActionlet_True_Test</td>
-<td class="success">0.018s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">issue5197</td>
-<td class="success">1.309s</td>
+<td class="success">1.452s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">mapSystemActionToWorkflowActionForContentType_InvalidHost_ContentType_Test</td>
-<td class="success">0.005s</td>
+<td class="success">0.007s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">mapSystemActionToWorkflowActionForContentType_Null_ContentType_Test</td>
-<td class="success">0.004s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">mapSystemActionToWorkflowActionForContentType_Null_SystemAction_Test</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -329,7 +461,7 @@
 </tr>
 <tr>
 <td class="success">mapSystemActionToWorkflowActionForContentType_Test</td>
-<td class="success">0.092s</td>
+<td class="success">0.096s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -344,47 +476,47 @@
 </tr>
 <tr>
 <td class="success">mapSystemActionToWorkflowActionForWorkflowScheme_Null_WFAction_Test</td>
-<td class="success">0.002s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">mapSystemActionToWorkflowActionForWorkflowScheme_Null_Workflow_Scheme_Test</td>
-<td class="success">0.006s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">mapSystemActionToWorkflowActionForWorkflowScheme_Test</td>
-<td class="success">2.840s</td>
+<td class="success">2.705s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">onLanguageDeletedEvent_Test</td>
-<td class="success">0.232s</td>
+<td class="success">0.261s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">saveScheme_keepExistingContentWorkflowTaskStatus_IfWorkflowSchemeRemainsAssociated</td>
-<td class="success">2.862s</td>
+<td class="success">3.079s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">saveSchemesForStruct</td>
-<td class="success">0.073s</td>
+<td class="success">0.082s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testPushIndexUpdate</td>
-<td class="success">0.716s</td>
+<td class="success">0.722s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">validatingDocumentManagementWorkflow</td>
-<td class="success">3.969s</td>
+<td class="success">3.917s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">validatingNoObligatorieContentTypeWorkflow</td>
-<td class="success">0.439s</td>
+<td class="success">0.493s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -407,7 +539,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 10, 2021, 12:11:50 AM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 10, 2021, 2:21:40 AM</p>
 </div>
 </div>
 </body>
