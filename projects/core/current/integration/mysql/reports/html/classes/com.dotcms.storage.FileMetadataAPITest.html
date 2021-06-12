@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">37.429s</div>
+<div class="counter">32.800s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">97%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,10 +61,136 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="Test_Copy_Metadata[1: DB]"></a>
+<h3 class="failures">Test_Copy_Metadata[1: DB]</h3>
+<span class="code">
+<pre>com.dotmarketing.exception.DotRuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotcms.datagen.TestDataUtils.persistBinaries(TestDataUtils.java:1976)
+	at com.dotcms.datagen.TestDataUtils.getMultipleBinariesContent(TestDataUtils.java:1936)
+	at com.dotcms.storage.FileMetadataAPITest.Test_Copy_Metadata(FileMetadataAPITest.java:700)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at com.tngtech.java.junit.dataprovider.DataProviderFrameworkMethod.invokeExplosively(DataProviderFrameworkMethod.java:119)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.RuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:296)
+	at com.dotcms.datagen.ContentletDataGen.persist(ContentletDataGen.java:203)
+	at com.dotcms.datagen.ContentletDataGen.nextPersisted(ContentletDataGen.java:189)
+	at com.dotcms.datagen.TestDataUtils.persistBinaries(TestDataUtils.java:1964)
+	... 61 more
+Caused by: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1163)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4159)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8291)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4070)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4065)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
+	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:293)
+	... 64 more
+Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '19651f9a-709a-4a51-bc2f-42e7a072466f': Content Type with ID '0302db98-e91b-41fd-b7aa-a1a6ff6a35a2' was not found via API.
+	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
+	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1073)
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1157)
+	... 78 more
+Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '19651f9a-709a-4a51-bc2f-42e7a072466f': Content Type with ID '0302db98-e91b-41fd-b7aa-a1a6ff6a35a2' was not found via API.
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:416)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap(ESMappingAPIImpl.java:250)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addBulkRequest(ContentletIndexAPIImpl.java:767)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.appendBulkRequest(ContentletIndexAPIImpl.java:730)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.createBulkRequest(ContentletIndexAPIImpl.java:613)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.indexContentListNow(ContentletIndexAPIImpl.java:556)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addContentToIndex(ContentletIndexAPIImpl.java:550)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.lambda$3(ContentletIndexAPIImpl.java:509)
+	at com.dotmarketing.db.HibernateUtil$DotSyncRunnable.run(HibernateUtil.java:934)
+	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
+	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
+	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
+	... 80 more
+Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '0302db98-e91b-41fd-b7aa-a1a6ff6a35a2' was not found via API.
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:277)
+	... 96 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -76,17 +202,17 @@
 </thead>
 <tr>
 <td class="success">TestMetadataModel</td>
-<td class="success">0.002s</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Add_Custom_Attributes_FileAssets[0: FILE_SYSTEM]</td>
-<td class="success">1.189s</td>
+<td class="success">1.077s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Add_Custom_Attributes_FileAssets[1: DB]</td>
-<td class="success">1.297s</td>
+<td class="success">1.035s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -96,192 +222,192 @@
 </tr>
 <tr>
 <td class="success">Test_Copy_Metadata[0: FILE_SYSTEM]</td>
-<td class="success">2.241s</td>
+<td class="success">2.028s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Copy_Metadata[1: DB]</td>
-<td class="success">2.479s</td>
+<td class="failures">Test_Copy_Metadata[1: DB]</td>
+<td class="failures">0.679s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">Test_Force_Set_Metadata[0: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image1.jpg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@76a4992e[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=b5ed9be0-e51a-4987-b645-ecea75a35652, fileName=test_image11623451618831.jpg, modDate=Fri Jun 11 22:46:58 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451618831.jpg, inode=1754034b-ba61-4cbe-b8a8-22283406e6bd, fileAsset=/custom/assets/1/7/1754034b-ba61-4cbe-b8a8-22283406e6bd/fileAsset/test_image11623451618831.jpg, metaData={}, folder=1af79be2-8c10-4e15-aec3-fe66a23dc0b9, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">0.528s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Force_Set_Metadata[0: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image1.jpg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@10bbfcfb[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=688d98a5-b35b-46fe-9034-0f13ef95d435, fileName=test_image11623273814097.jpg, modDate=Wed Jun 09 21:23:34 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273814097.jpg, inode=7f64bb10-0da6-4333-82e9-6b42fe682843, fileAsset=/custom/assets/7/f/7f64bb10-0da6-4333-82e9-6b42fe682843/fileAsset/test_image11623273814097.jpg, metaData={}, folder=735f5082-9657-4b80-9d45-32a783b1c586, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">0.585s</td>
+<td class="success">Test_Force_Set_Metadata[1: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test.gif, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@b64a72a[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=bc780175-4a89-442a-aa5b-6e30efaf6b03, fileName=test_image11623451619736.gif, modDate=Fri Jun 11 22:46:59 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451619736.gif, inode=7679a8ba-478f-452c-867d-7400a6fe518a, fileAsset=/custom/assets/7/6/7679a8ba-478f-452c-867d-7400a6fe518a/fileAsset/test_image11623451619736.gif, metaData={}, folder=2632f729-8223-4034-9dac-d4d8973dcd1b, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">1.022s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Force_Set_Metadata[1: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test.gif, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@3399278f[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=48454a2d-15b0-4d9c-b426-62825558e8fb, fileName=test_image11623273814877.gif, modDate=Wed Jun 09 21:23:34 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273814877.gif, inode=6a1d5c65-8505-4521-8736-aa86a8abbae6, fileAsset=/custom/assets/6/a/6a1d5c65-8505-4521-8736-aa86a8abbae6/fileAsset/test_image11623273814877.gif, metaData={}, folder=bac371d3-183a-4fd2-98d4-27f6ffb7e45c, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">1.026s</td>
+<td class="success">Test_Force_Set_Metadata[2: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image2.png, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@28a14a44[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=f5d4762f-e118-4589-a803-73be28efcefb, fileName=test_image11623451620778.png, modDate=Fri Jun 11 22:47:00 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451620778.png, inode=add48346-4259-4402-bf2d-eb7d6cd9bbd6, fileAsset=/custom/assets/a/d/add48346-4259-4402-bf2d-eb7d6cd9bbd6/fileAsset/test_image11623451620778.png, metaData={}, folder=0c082ac3-48bc-4926-bf7b-21152740ee1a, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">1.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Force_Set_Metadata[2: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image2.png, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@1edb6d67[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=af7a8868-23b5-41b7-af13-3001700daa4a, fileName=test_image11623273815886.png, modDate=Wed Jun 09 21:23:35 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273815886.png, inode=c9042ef7-4ada-4292-ac10-9f4af0be802f, fileAsset=/custom/assets/c/9/c9042ef7-4ada-4292-ac10-9f4af0be802f/fileAsset/test_image11623273815886.png, metaData={}, folder=a905f1cb-5745-494e-b073-b72a01549401, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">1.017s</td>
+<td class="success">Test_Force_Set_Metadata[3: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image.svg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@203640c6[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=a24906eb-082f-4679-8d1b-919bebdeec3b, fileName=test_image11623451621783.svg, modDate=Fri Jun 11 22:47:01 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451621783.svg, inode=bdce3873-4f3a-4b46-91eb-3fbb03ba23c4, fileAsset=/custom/assets/b/d/bdce3873-4f3a-4b46-91eb-3fbb03ba23c4/fileAsset/test_image11623451621783.svg, metaData={}, folder=17bc1b56-c1c3-4036-86f6-abb8a5eca1f6, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">1.032s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Force_Set_Metadata[3: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image.svg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@ec451c4[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=f746d252-93f3-4b52-9b16-687565f9fbd1, fileName=test_image11623273816917.svg, modDate=Wed Jun 09 21:23:36 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273816917.svg, inode=bb77dddc-810a-4289-8d92-b09c4f6367e1, fileAsset=/custom/assets/b/b/bb77dddc-810a-4289-8d92-b09c4f6367e1/fileAsset/test_image11623273816917.svg, metaData={}, folder=877936df-695f-478f-8fd7-2dce712d0bcb, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">1.027s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Force_Set_Metadata[4: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test.pdf, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@b5905c6[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=2e0b1083-5a11-4b20-8d26-7a56bd7e6754, fileName=test_image11623273817929.pdf, modDate=Wed Jun 09 21:23:37 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273817929.pdf, inode=43927fad-a7ff-4c4e-b6de-d6fa7f37219c, fileAsset=/custom/assets/4/3/43927fad-a7ff-4c4e-b6de-d6fa7f37219c/fileAsset/test_image11623273817929.pdf, metaData={}, folder=5a28645d-9078-432d-93fa-3f9828e8a6d0, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">1.043s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Force_Set_Metadata[5: TestCase{langId=1, storageType=DB, testFile=test_image1.jpg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@59c89a68[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=b3bc24ce-3a11-4b67-91d2-fdbc59a08c9a, fileName=test_image11623273818955.jpg, modDate=Wed Jun 09 21:23:38 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273818955.jpg, inode=7352a26c-1b94-4b52-9437-89046325b3fc, fileAsset=/custom/assets/7/3/7352a26c-1b94-4b52-9437-89046325b3fc/fileAsset/test_image11623273818955.jpg, metaData={}, folder=c6b925b6-2aa0-458f-9e6e-f59a3db79077, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">1.061s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Force_Set_Metadata[6: TestCase{langId=1, storageType=DB, testFile=test.gif, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@3658079d[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=fcd49933-0096-48b3-95a1-c673a4690349, fileName=test_image11623273820000.gif, modDate=Wed Jun 09 21:23:40 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273820000.gif, inode=8319e05e-e7aa-4f47-82f7-ff5f5b89b8ee, fileAsset=/custom/assets/8/3/8319e05e-e7aa-4f47-82f7-ff5f5b89b8ee/fileAsset/test_image11623273820000.gif, metaData={}, folder=27f1f1e4-394f-4a23-a69e-8d4d2d7c6634, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">1.023s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Force_Set_Metadata[7: TestCase{langId=1, storageType=DB, testFile=test_image2.png, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@6457a633[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=57c4013a-4c71-43a7-b3b4-b63268d4e38a, fileName=test_image11623273821017.png, modDate=Wed Jun 09 21:23:41 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273821017.png, inode=60c13460-d277-4986-8fed-74f2d6922864, fileAsset=/custom/assets/6/0/60c13460-d277-4986-8fed-74f2d6922864/fileAsset/test_image11623273821017.png, metaData={}, folder=71be75dc-a43d-484b-8db7-8f7531b97130, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">Test_Force_Set_Metadata[4: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test.pdf, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@be48133[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=4ac4929c-0646-4261-9844-4d2dbee45401, fileName=test_image11623451622813.pdf, modDate=Fri Jun 11 22:47:02 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451622813.pdf, inode=974c31f7-b855-49d6-8156-6da518195e97, fileAsset=/custom/assets/9/7/974c31f7-b855-49d6-8156-6da518195e97/fileAsset/test_image11623451622813.pdf, metaData={}, folder=4de11fd2-91f8-42f5-955e-01cd3f8da7b7, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
 <td class="success">1.030s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Force_Set_Metadata[8: TestCase{langId=1, storageType=DB, testFile=test_image.svg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@79c867f4[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=523cd401-68d0-4e41-bb1b-3e3fe7d93dbf, fileName=test_image11623273822043.svg, modDate=Wed Jun 09 21:23:42 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273822043.svg, inode=060f85a9-bd1f-4878-8e49-90a36103c434, fileAsset=/custom/assets/0/6/060f85a9-bd1f-4878-8e49-90a36103c434/fileAsset/test_image11623273822043.svg, metaData={}, folder=605cb0cc-83f0-4993-af6c-2ef090d88996, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">1.036s</td>
+<td class="success">Test_Force_Set_Metadata[5: TestCase{langId=1, storageType=DB, testFile=test_image1.jpg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@5da035ad[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=cbd02544-33ca-4c03-9a4e-b135a13bfb75, fileName=test_image11623451623842.jpg, modDate=Fri Jun 11 22:47:03 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451623842.jpg, inode=145dd8f0-8be3-4e52-b7a0-a83874e23cd4, fileAsset=/custom/assets/1/4/145dd8f0-8be3-4e52-b7a0-a83874e23cd4/fileAsset/test_image11623451623842.jpg, metaData={}, folder=54a59388-5f42-4733-97cd-3b285a5a8ff5, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">1.037s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Force_Set_Metadata[9: TestCase{langId=1, storageType=DB, testFile=test.pdf, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@78c2370a[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=582a5489-9a44-44ee-936d-d541b9aca846, fileName=test_image11623273823068.pdf, modDate=Wed Jun 09 21:23:43 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273823068.pdf, inode=24965b35-8cfc-49eb-90bc-932fc5290487, fileAsset=/custom/assets/2/4/24965b35-8cfc-49eb-90bc-932fc5290487/fileAsset/test_image11623273823068.pdf, metaData={}, folder=96277b36-34ac-413e-8d10-d38999f1e69f, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">1.057s</td>
+<td class="success">Test_Force_Set_Metadata[6: TestCase{langId=1, storageType=DB, testFile=test.gif, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@2ed2f385[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=e3372baa-ba44-406d-aaef-037b72b38890, fileName=test_image11623451624880.gif, modDate=Fri Jun 11 22:47:04 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451624880.gif, inode=e3d02ff5-548a-4681-8993-d6d374a54570, fileAsset=/custom/assets/e/3/e3d02ff5-548a-4681-8993-d6d374a54570/fileAsset/test_image11623451624880.gif, metaData={}, folder=f4866b2c-4c0f-494f-8f53-ab28fa3ca652, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">1.053s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test_Force_Set_Metadata[7: TestCase{langId=1, storageType=DB, testFile=test_image2.png, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@1572ce06[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=a28ad3cc-3431-4418-843b-1c6708a64760, fileName=test_image11623451625879.png, modDate=Fri Jun 11 22:47:05 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451625879.png, inode=32ce01ad-7fcf-482b-9007-17a141586de9, fileAsset=/custom/assets/3/2/32ce01ad-7fcf-482b-9007-17a141586de9/fileAsset/test_image11623451625879.png, metaData={}, folder=65cdeb30-6c32-40b7-ba5e-fd97dea20245, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">1.028s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test_Force_Set_Metadata[8: TestCase{langId=1, storageType=DB, testFile=test_image.svg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@4cca7704[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=a71bf006-f735-4260-a29e-83fdcffffa29, fileName=test_image11623451626911.svg, modDate=Fri Jun 11 22:47:06 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451626911.svg, inode=04ead9b7-dff3-4291-9cd1-e6816d6efa9e, fileAsset=/custom/assets/0/4/04ead9b7-dff3-4291-9cd1-e6816d6efa9e/fileAsset/test_image11623451626911.svg, metaData={}, folder=f5c55d96-6eb1-4d44-b23b-9adbf497a455, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">1.023s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test_Force_Set_Metadata[9: TestCase{langId=1, storageType=DB, testFile=test.pdf, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@2afda50c[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=53b16401-4aa5-44ea-8770-af98d172363d, fileName=test_image11623451627931.pdf, modDate=Fri Jun 11 22:47:07 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451627931.pdf, inode=dd2d95ee-00b8-4d98-964b-6b3c4f1c4322, fileAsset=/custom/assets/d/d/dd2d95ee-00b8-4d98-964b-6b3c4f1c4322/fileAsset/test_image11623451627931.pdf, metaData={}, folder=ddf3dea5-bcb7-4077-861f-b5c074644b43, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">1.019s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Generate_Metadata_From_ContentType_With_Multiple_Binary_Fields[0: FILE_SYSTEM]</td>
-<td class="success">2.417s</td>
+<td class="success">1.432s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Generate_Metadata_From_ContentType_With_Multiple_Binary_Fields[1: DB]</td>
-<td class="success">2.090s</td>
+<td class="success">2.135s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[0: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image1.jpg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@10bbfcfb[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=688d98a5-b35b-46fe-9034-0f13ef95d435, fileName=test_image11623273814097.jpg, modDate=Wed Jun 09 21:23:34 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273814097.jpg, inode=7f64bb10-0da6-4333-82e9-6b42fe682843, fileAsset=/custom/assets/7/f/7f64bb10-0da6-4333-82e9-6b42fe682843/fileAsset/test_image11623273814097.jpg, metaData={}, folder=735f5082-9657-4b80-9d45-32a783b1c586, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">0.026s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[1: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test.gif, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@3399278f[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=48454a2d-15b0-4d9c-b426-62825558e8fb, fileName=test_image11623273814877.gif, modDate=Wed Jun 09 21:23:34 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273814877.gif, inode=6a1d5c65-8505-4521-8736-aa86a8abbae6, fileAsset=/custom/assets/6/a/6a1d5c65-8505-4521-8736-aa86a8abbae6/fileAsset/test_image11623273814877.gif, metaData={}, folder=bac371d3-183a-4fd2-98d4-27f6ffb7e45c, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">0.021s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[2: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image2.png, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@1edb6d67[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=af7a8868-23b5-41b7-af13-3001700daa4a, fileName=test_image11623273815886.png, modDate=Wed Jun 09 21:23:35 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273815886.png, inode=c9042ef7-4ada-4292-ac10-9f4af0be802f, fileAsset=/custom/assets/c/9/c9042ef7-4ada-4292-ac10-9f4af0be802f/fileAsset/test_image11623273815886.png, metaData={}, folder=a905f1cb-5745-494e-b073-b72a01549401, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">Test_Generate_Metadata_From_FileAssets[0: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image1.jpg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@76a4992e[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=b5ed9be0-e51a-4987-b645-ecea75a35652, fileName=test_image11623451618831.jpg, modDate=Fri Jun 11 22:46:58 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451618831.jpg, inode=1754034b-ba61-4cbe-b8a8-22283406e6bd, fileAsset=/custom/assets/1/7/1754034b-ba61-4cbe-b8a8-22283406e6bd/fileAsset/test_image11623451618831.jpg, metaData={}, folder=1af79be2-8c10-4e15-aec3-fe66a23dc0b9, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
 <td class="success">0.023s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[3: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image.svg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@ec451c4[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=f746d252-93f3-4b52-9b16-687565f9fbd1, fileName=test_image11623273816917.svg, modDate=Wed Jun 09 21:23:36 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273816917.svg, inode=bb77dddc-810a-4289-8d92-b09c4f6367e1, fileAsset=/custom/assets/b/b/bb77dddc-810a-4289-8d92-b09c4f6367e1/fileAsset/test_image11623273816917.svg, metaData={}, folder=877936df-695f-478f-8fd7-2dce712d0bcb, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">0.008s</td>
+<td class="success">Test_Generate_Metadata_From_FileAssets[1: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test.gif, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@b64a72a[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=bc780175-4a89-442a-aa5b-6e30efaf6b03, fileName=test_image11623451619736.gif, modDate=Fri Jun 11 22:46:59 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451619736.gif, inode=7679a8ba-478f-452c-867d-7400a6fe518a, fileAsset=/custom/assets/7/6/7679a8ba-478f-452c-867d-7400a6fe518a/fileAsset/test_image11623451619736.gif, metaData={}, folder=2632f729-8223-4034-9dac-d4d8973dcd1b, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">0.022s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[4: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test.pdf, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@b5905c6[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=2e0b1083-5a11-4b20-8d26-7a56bd7e6754, fileName=test_image11623273817929.pdf, modDate=Wed Jun 09 21:23:37 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273817929.pdf, inode=43927fad-a7ff-4c4e-b6de-d6fa7f37219c, fileAsset=/custom/assets/4/3/43927fad-a7ff-4c4e-b6de-d6fa7f37219c/fileAsset/test_image11623273817929.pdf, metaData={}, folder=5a28645d-9078-432d-93fa-3f9828e8a6d0, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">0.044s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[5: TestCase{langId=1, storageType=DB, testFile=test_image1.jpg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@59c89a68[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=b3bc24ce-3a11-4b67-91d2-fdbc59a08c9a, fileName=test_image11623273818955.jpg, modDate=Wed Jun 09 21:23:38 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273818955.jpg, inode=7352a26c-1b94-4b52-9437-89046325b3fc, fileAsset=/custom/assets/7/3/7352a26c-1b94-4b52-9437-89046325b3fc/fileAsset/test_image11623273818955.jpg, metaData={}, folder=c6b925b6-2aa0-458f-9e6e-f59a3db79077, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">0.008s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[6: TestCase{langId=1, storageType=DB, testFile=test.gif, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@3658079d[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=fcd49933-0096-48b3-95a1-c673a4690349, fileName=test_image11623273820000.gif, modDate=Wed Jun 09 21:23:40 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273820000.gif, inode=8319e05e-e7aa-4f47-82f7-ff5f5b89b8ee, fileAsset=/custom/assets/8/3/8319e05e-e7aa-4f47-82f7-ff5f5b89b8ee/fileAsset/test_image11623273820000.gif, metaData={}, folder=27f1f1e4-394f-4a23-a69e-8d4d2d7c6634, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
-<td class="success">0.009s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[7: TestCase{langId=1, storageType=DB, testFile=test_image2.png, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@6457a633[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=57c4013a-4c71-43a7-b3b4-b63268d4e38a, fileName=test_image11623273821017.png, modDate=Wed Jun 09 21:23:41 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273821017.png, inode=60c13460-d277-4986-8fed-74f2d6922864, fileAsset=/custom/assets/6/0/60c13460-d277-4986-8fed-74f2d6922864/fileAsset/test_image11623273821017.png, metaData={}, folder=71be75dc-a43d-484b-8db7-8f7531b97130, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">Test_Generate_Metadata_From_FileAssets[2: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image2.png, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@28a14a44[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=f5d4762f-e118-4589-a803-73be28efcefb, fileName=test_image11623451620778.png, modDate=Fri Jun 11 22:47:00 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451620778.png, inode=add48346-4259-4402-bf2d-eb7d6cd9bbd6, fileAsset=/custom/assets/a/d/add48346-4259-4402-bf2d-eb7d6cd9bbd6/fileAsset/test_image11623451620778.png, metaData={}, folder=0c082ac3-48bc-4926-bf7b-21152740ee1a, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
 <td class="success">0.012s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[8: TestCase{langId=1, storageType=DB, testFile=test_image.svg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@79c867f4[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=523cd401-68d0-4e41-bb1b-3e3fe7d93dbf, fileName=test_image11623273822043.svg, modDate=Wed Jun 09 21:23:42 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273822043.svg, inode=060f85a9-bd1f-4878-8e49-90a36103c434, fileAsset=/custom/assets/0/6/060f85a9-bd1f-4878-8e49-90a36103c434/fileAsset/test_image11623273822043.svg, metaData={}, folder=605cb0cc-83f0-4993-af6c-2ef090d88996, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">Test_Generate_Metadata_From_FileAssets[3: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test_image.svg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@203640c6[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=a24906eb-082f-4679-8d1b-919bebdeec3b, fileName=test_image11623451621783.svg, modDate=Fri Jun 11 22:47:01 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451621783.svg, inode=bdce3873-4f3a-4b46-91eb-3fbb03ba23c4, fileAsset=/custom/assets/b/d/bdce3873-4f3a-4b46-91eb-3fbb03ba23c4/fileAsset/test_image11623451621783.svg, metaData={}, folder=17bc1b56-c1c3-4036-86f6-abb8a5eca1f6, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test_Generate_Metadata_From_FileAssets[4: TestCase{langId=1, storageType=FILE_SYSTEM, testFile=test.pdf, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@be48133[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=4ac4929c-0646-4261-9844-4d2dbee45401, fileName=test_image11623451622813.pdf, modDate=Fri Jun 11 22:47:02 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451622813.pdf, inode=974c31f7-b855-49d6-8156-6da518195e97, fileAsset=/custom/assets/9/7/974c31f7-b855-49d6-8156-6da518195e97/fileAsset/test_image11623451622813.pdf, metaData={}, folder=4de11fd2-91f8-42f5-955e-01cd3f8da7b7, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">0.030s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test_Generate_Metadata_From_FileAssets[5: TestCase{langId=1, storageType=DB, testFile=test_image1.jpg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@5da035ad[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=cbd02544-33ca-4c03-9a4e-b135a13bfb75, fileName=test_image11623451623842.jpg, modDate=Fri Jun 11 22:47:03 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451623842.jpg, inode=145dd8f0-8be3-4e52-b7a0-a83874e23cd4, fileAsset=/custom/assets/1/4/145dd8f0-8be3-4e52-b7a0-a83874e23cd4/fileAsset/test_image11623451623842.jpg, metaData={}, folder=54a59388-5f42-4733-97cd-3b285a5a8ff5, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test_Generate_Metadata_From_FileAssets[6: TestCase{langId=1, storageType=DB, testFile=test.gif, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@2ed2f385[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=e3372baa-ba44-406d-aaef-037b72b38890, fileName=test_image11623451624880.gif, modDate=Fri Jun 11 22:47:04 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451624880.gif, inode=e3d02ff5-548a-4681-8993-d6d374a54570, fileAsset=/custom/assets/e/3/e3d02ff5-548a-4681-8993-d6d374a54570/fileAsset/test_image11623451624880.gif, metaData={}, folder=f4866b2c-4c0f-494f-8f53-ab28fa3ca652, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
 <td class="success">0.007s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">Test_Generate_Metadata_From_FileAssets[9: TestCase{langId=1, storageType=DB, testFile=test.pdf, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@78c2370a[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=582a5489-9a44-44ee-936d-d541b9aca846, fileName=test_image11623273823068.pdf, modDate=Wed Jun 09 21:23:43 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623273823068.pdf, inode=24965b35-8cfc-49eb-90bc-932fc5290487, fileAsset=/custom/assets/2/4/24965b35-8cfc-49eb-90bc-932fc5290487/fileAsset/test_image11623273823068.pdf, metaData={}, folder=96277b36-34ac-413e-8d10-d38999f1e69f, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">Test_Generate_Metadata_From_FileAssets[7: TestCase{langId=1, storageType=DB, testFile=test_image2.png, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@1572ce06[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=a28ad3cc-3431-4418-843b-1c6708a64760, fileName=test_image11623451625879.png, modDate=Fri Jun 11 22:47:05 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451625879.png, inode=32ce01ad-7fcf-482b-9007-17a141586de9, fileAsset=/custom/assets/3/2/32ce01ad-7fcf-482b-9007-17a141586de9/fileAsset/test_image11623451625879.png, metaData={}, folder=65cdeb30-6c32-40b7-ba5e-fd97dea20245, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test_Generate_Metadata_From_FileAssets[8: TestCase{langId=1, storageType=DB, testFile=test_image.svg, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@4cca7704[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=a71bf006-f735-4260-a29e-83fdcffffa29, fileName=test_image11623451626911.svg, modDate=Fri Jun 11 22:47:06 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451626911.svg, inode=04ead9b7-dff3-4291-9cd1-e6816d6efa9e, fileAsset=/custom/assets/0/4/04ead9b7-dff3-4291-9cd1-e6816d6efa9e/fileAsset/test_image11623451626911.svg, metaData={}, folder=f5c55d96-6eb1-4d44-b23b-9adbf497a455, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
 <td class="success">0.007s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">Test_Generate_Metadata_From_FileAssets[9: TestCase{langId=1, storageType=DB, testFile=test.pdf, fileAssetContent=com.dotmarketing.portlets.contentlet.model.Contentlet@2afda50c[map={owner=system, nullProperties=[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, iWantTo, wfPublishTime, wfExpireTime], identifier=53b16401-4aa5-44ea-8770-af98d172363d, fileName=test_image11623451627931.pdf, modDate=Fri Jun 11 22:47:07 GMT 2021, _is_test_mode=true, languageId=1, title=test_image11623451627931.pdf, inode=dd2d95ee-00b8-4d98-964b-6b3c4f1c4322, fileAsset=/custom/assets/d/d/dd2d95ee-00b8-4d98-964b-6b3c4f1c4322/fileAsset/test_image11623451627931.pdf, metaData={}, folder=ddf3dea5-bcb7-4077-861f-b5c074644b43, __disable_workflow__=true, disabledWYSIWYG=[], sortOrder=0, modUser=system, host=8a7d5e23-da1e-420a-b4f0-471e7da8ea2d, stInode=33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d},lowIndexPriority=false]}]</td>
+<td class="success">0.008s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Generate_Metadata_Should_Not_Override_Custom_Attributes[0: FILE_SYSTEM]</td>
-<td class="success">1.515s</td>
+<td class="success">1.268s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Generate_Metadata_Should_Not_Override_Custom_Attributes[1: DB]</td>
-<td class="success">1.217s</td>
+<td class="success">1.063s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_GetMetadata[0: FILE_SYSTEM]</td>
-<td class="success">1.340s</td>
+<td class="success">1.808s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_GetMetadata[1: DB]</td>
-<td class="success">0.682s</td>
+<td class="success">0.630s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_GetMetadata_ForceGenerate[0: FILE_SYSTEM]</td>
-<td class="success">1.091s</td>
+<td class="success">1.036s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_GetMetadata_ForceGenerate[1: DB]</td>
-<td class="success">0.985s</td>
+<td class="success">1.037s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Get_First_Indexed_Binary_Field</td>
-<td class="success">2.410s</td>
+<td class="success">1.528s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Get_Metadata_No_Cache[0: FILE_SYSTEM]</td>
-<td class="success">0.594s</td>
+<td class="success">0.525s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Get_Metadata_No_Cache[1: DB]</td>
-<td class="success">1.026s</td>
+<td class="success">1.025s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Get_Metadata_No_Cache_Force_Generate[0: FILE_SYSTEM]</td>
-<td class="success">1.027s</td>
+<td class="success">1.012s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Get_Metadata_No_Cache_Force_Generate[1: DB]</td>
-<td class="success">1.021s</td>
+<td class="success">1.043s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Get_Metadata_Property</td>
-<td class="success">0.842s</td>
+<td class="success">0.885s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Write_Custom_Metadata_Then_Generate_Metadata_Expect_All_Metadata[0: FILE_SYSTEM]</td>
-<td class="success">0.825s</td>
+<td class="success">0.587s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_Write_Custom_Metadata_Then_Generate_Metadata_Expect_All_Metadata[1: DB]</td>
-<td class="success">1.067s</td>
+<td class="success">1.039s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -294,7 +420,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 10, 2021, 2:09:23 AM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 12, 2021, 3:26:12 AM</p>
 </div>
 </div>
 </body>
