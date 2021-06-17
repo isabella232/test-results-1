@@ -318,12 +318,12 @@ DEBUG: WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (&amp;(osgi.wirin
 DEBUG: WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (&amp;(osgi.wiring.package=org.osgi.service.http)(version&gt;=0.0.0)) -&gt; [org.apache.felix.http.api [7](R 7.0)]
 DEBUG: WIRE: [com.dotcms.tika [3](R 3.0)] osgi.ee; (&amp;(osgi.ee=JavaSE)(version=1.8)) -&gt; [org.apache.felix.framework [0](R 0)]
 DEBUG: DYNAMIC WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (osgi.wiring.package=*) -&gt; [org.apache.felix.framework [0](R 0)]
+DEBUG: WIRE: [slf4j.api [10](R 10.0)] osgi.ee; (&amp;(osgi.ee=JavaSE)(version=1.5.0)) -&gt; [org.apache.felix.framework [0](R 0)]
+DEBUG: FRAGMENT WIRE: [slf4j.simple [11](R 11.0)] osgi.wiring.host; (&amp;(osgi.wiring.host=slf4j.api)(bundle-version&gt;=0.0.0)) -&gt; [slf4j.api [10](R 10.0)]
+DEBUG: FRAGMENT WIRE: [slf4j.simple [11](R 11.0)] osgi.ee; (&amp;(osgi.ee=JavaSE)(version=1.5.0)) -&gt; [org.apache.felix.framework [0](R 0)]
 DEBUG: WIRE: [jcl.over.slf4j [4](R 4.0)] osgi.wiring.package; (&amp;(osgi.wiring.package=org.slf4j)(version&gt;=1.7.25)) -&gt; [slf4j.api [10](R 10.0)]
 DEBUG: WIRE: [jcl.over.slf4j [4](R 4.0)] osgi.wiring.package; (&amp;(osgi.wiring.package=org.slf4j.spi)(version&gt;=1.7.25)) -&gt; [slf4j.api [10](R 10.0)]
 DEBUG: WIRE: [jcl.over.slf4j [4](R 4.0)] osgi.ee; (&amp;(osgi.ee=JavaSE)(version=1.5.0)) -&gt; [org.apache.felix.framework [0](R 0)]
-DEBUG: FRAGMENT WIRE: [slf4j.simple [11](R 11.0)] osgi.wiring.host; (&amp;(osgi.wiring.host=slf4j.api)(bundle-version&gt;=0.0.0)) -&gt; [slf4j.api [10](R 10.0)]
-DEBUG: FRAGMENT WIRE: [slf4j.simple [11](R 11.0)] osgi.ee; (&amp;(osgi.ee=JavaSE)(version=1.5.0)) -&gt; [org.apache.felix.framework [0](R 0)]
-DEBUG: WIRE: [slf4j.api [10](R 10.0)] osgi.ee; (&amp;(osgi.ee=JavaSE)(version=1.5.0)) -&gt; [org.apache.felix.framework [0](R 0)]
 DEBUG: WIRE: [osgi.cmpn [9](R 9.0)] osgi.wiring.package; (osgi.wiring.package=javax.naming) -&gt; [org.apache.felix.framework [0](R 0)]
 DEBUG: WIRE: [osgi.cmpn [9](R 9.0)] osgi.wiring.package; (osgi.wiring.package=javax.naming.directory) -&gt; [org.apache.felix.framework [0](R 0)]
 DEBUG: WIRE: [osgi.cmpn [9](R 9.0)] osgi.wiring.package; (osgi.wiring.package=javax.persistence) -&gt; [org.apache.felix.framework [0](R 0)]
@@ -472,8 +472,8 @@ DEBUG: WIRE: [org.apache.tika.core [13](R 13.0)] osgi.wiring.package; (osgi.wiri
 DEBUG: WIRE: [org.apache.tika.core [13](R 13.0)] osgi.wiring.package; (osgi.wiring.package=org.xml.sax.helpers) -&gt; [org.apache.felix.framework [0](R 0)]
 DEBUG: WIRE: [org.apache.tika.core [13](R 13.0)] osgi.ee; (&amp;(osgi.ee=JavaSE)(version=1.8)) -&gt; [org.apache.felix.framework [0](R 0)]
 DEBUG: Bundle org.apache.tika.bundle [12] org/apache/tika/parser/geo/topic/en-ner-location.bin not found by org.apache.tika.bundle [12]
-DEBUG: DYNAMIC WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (osgi.wiring.package=*) -&gt; [org.apache.tika.core [13](R 13.0)]
 DEBUG: DYNAMIC WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (osgi.wiring.package=*) -&gt; [org.apache.felix.framework [0](R 0)]
+DEBUG: DYNAMIC WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (osgi.wiring.package=*) -&gt; [org.apache.tika.core [13](R 13.0)]
 DEBUG: DYNAMIC WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (osgi.wiring.package=*) -&gt; [org.apache.tika.core [13](R 13.0)]
 DEBUG: DYNAMIC WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (osgi.wiring.package=*) -&gt; [org.apache.tika.core [13](R 13.0)]
 DEBUG: DYNAMIC WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (osgi.wiring.package=*) -&gt; [org.apache.tika.core [13](R 13.0)]
@@ -486,29 +486,29 @@ DEBUG: DYNAMIC WIRE: [com.dotcms.tika [3](R 3.0)] osgi.wiring.package; (osgi.wir
 <div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>Jun 17, 2021 3:39:19 PM com.hazelcast.instance.AddressPicker
+<pre>Jun 17, 2021 5:32:41 PM com.hazelcast.instance.AddressPicker
 INFO: [LOCAL] [dev] [3.9.2] Prefer IPv4 stack is true.
-Jun 17, 2021 3:39:19 PM com.hazelcast.instance.AddressPicker
+Jun 17, 2021 5:32:41 PM com.hazelcast.instance.AddressPicker
 INFO: [LOCAL] [dev] [3.9.2] Picked [172.19.0.3]:5701, using socket ServerSocket[addr=/0.0.0.0,localport=5701], bind any local is true
-Jun 17, 2021 3:39:19 PM com.hazelcast.system
+Jun 17, 2021 5:32:41 PM com.hazelcast.system
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Hazelcast 3.9.2 (20180103 - 17e4ec3) starting at [172.19.0.3]:5701
-Jun 17, 2021 3:39:19 PM com.hazelcast.system
+Jun 17, 2021 5:32:41 PM com.hazelcast.system
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Copyright (c) 2008-2017, Hazelcast, Inc. All Rights Reserved.
-Jun 17, 2021 3:39:19 PM com.hazelcast.system
+Jun 17, 2021 5:32:41 PM com.hazelcast.system
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Configured Hazelcast Serialization version: 1
-Jun 17, 2021 3:39:19 PM com.hazelcast.spi.impl.operationservice.impl.BackpressureRegulator
+Jun 17, 2021 5:32:41 PM com.hazelcast.spi.impl.operationservice.impl.BackpressureRegulator
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Backpressure is disabled
-Jun 17, 2021 3:39:20 PM com.hazelcast.spi.impl.operationexecutor.impl.OperationExecutorImpl
+Jun 17, 2021 5:32:42 PM com.hazelcast.spi.impl.operationexecutor.impl.OperationExecutorImpl
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Starting 2 partition threads and 3 generic threads (1 dedicated for priority tasks)
-Jun 17, 2021 3:39:20 PM com.hazelcast.internal.diagnostics.Diagnostics
+Jun 17, 2021 5:32:42 PM com.hazelcast.internal.diagnostics.Diagnostics
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
-Jun 17, 2021 3:39:20 PM com.hazelcast.core.LifecycleService
+Jun 17, 2021 5:32:42 PM com.hazelcast.core.LifecycleService
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] [172.19.0.3]:5701 is STARTING
-Jun 17, 2021 3:39:20 PM com.hazelcast.instance.Node
+Jun 17, 2021 5:32:42 PM com.hazelcast.instance.Node
 WARNING: [172.19.0.3]:5701 [dev] [3.9.2] No join method is enabled! Starting standalone.
-Jun 17, 2021 3:39:20 PM com.hazelcast.system
+Jun 17, 2021 5:32:42 PM com.hazelcast.system
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Cluster version set to 3.9
-Jun 17, 2021 3:39:20 PM com.hazelcast.core.LifecycleService
+Jun 17, 2021 5:32:42 PM com.hazelcast.core.LifecycleService
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] [172.19.0.3]:5701 is STARTED
 java.lang.NullPointerException
 	at com.dotcms.saml.osgi.Activator.addSamlWebInterceptor(Activator.java:90)
@@ -519,7 +519,7 @@ java.lang.NullPointerException
 	at org.apache.felix.framework.Felix.setActiveStartLevel(Felix.java:1373)
 	at org.apache.felix.framework.FrameworkStartLevelImpl.run(FrameworkStartLevelImpl.java:308)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-Jun 17, 2021 3:39:33 PM org.apache.tika.config.InitializableProblemHandler$3 handleInitializableProblem
+Jun 17, 2021 5:32:56 PM org.apache.tika.config.InitializableProblemHandler$3 handleInitializableProblem
 WARNING: TIFFImageWriter not loaded. tiff files will not be processed
 See https://pdfbox.apache.org/2.0/dependencies.html#jai-image-io
 for optional dependencies.
@@ -527,11 +527,11 @@ J2KImageReader not loaded. JPEG2000 files will not be processed.
 See https://pdfbox.apache.org/2.0/dependencies.html#jai-image-io
 for optional dependencies.
 
-Jun 17, 2021 3:39:33 PM org.apache.tika.config.InitializableProblemHandler$3 handleInitializableProblem
+Jun 17, 2021 5:32:56 PM org.apache.tika.config.InitializableProblemHandler$3 handleInitializableProblem
 WARNING: org.xerial's sqlite-jdbc is not loaded.
 Please provide the jar on your classpath to parse sqlite files.
 See tika-parsers/pom.xml for the correct version.
-Jun 17, 2021 3:39:33 PM org.apache.tika.utils.XMLReaderUtils trySetXercesSecurityManager
+Jun 17, 2021 5:32:56 PM org.apache.tika.utils.XMLReaderUtils trySetXercesSecurityManager
 WARNING: SAX Security Manager could not be setup [log suppressed for 5 minutes]
 org.xml.sax.SAXNotRecognizedException: Property 'http://www.oracle.com/xml/jaxp/properties/entityExpansionLimit' is not recognized.
 	at org.apache.xerces.parsers.AbstractSAXParser.getProperty(Unknown Source)
@@ -566,49 +566,49 @@ org.xml.sax.SAXNotRecognizedException: Property 'http://www.oracle.com/xml/jaxp/
 	at org.apache.felix.framework.FrameworkStartLevelImpl.run(FrameworkStartLevelImpl.java:308)
 	at java.base/java.lang.Thread.run(Thread.java:829)
 
-Jun 17, 2021 4:14:20 PM com.hazelcast.nio.tcp.TcpIpAcceptor
-INFO: [172.19.0.3]:5701 [dev] [3.9.2] Accepting socket connection from /127.0.0.1:34120
-Jun 17, 2021 4:14:20 PM com.hazelcast.nio.tcp.TcpIpConnectionManager
-INFO: [172.19.0.3]:5701 [dev] [3.9.2] Established socket connection between /127.0.0.1:5701 and /127.0.0.1:34120
-Jun 17, 2021 4:14:20 PM com.hazelcast.nio.tcp.TcpIpConnection
-INFO: [172.19.0.3]:5701 [dev] [3.9.2] Connection[id=1, /127.0.0.1:5701-&gt;/127.0.0.1:34120, endpoint=null, alive=false, type=NONE] closed. Reason: Connection closed by the other side
-Jun 17, 2021 4:14:21 PM com.hazelcast.core.LifecycleService
+Jun 17, 2021 6:09:07 PM com.hazelcast.nio.tcp.TcpIpAcceptor
+INFO: [172.19.0.3]:5701 [dev] [3.9.2] Accepting socket connection from /127.0.0.1:40768
+Jun 17, 2021 6:09:07 PM com.hazelcast.nio.tcp.TcpIpConnectionManager
+INFO: [172.19.0.3]:5701 [dev] [3.9.2] Established socket connection between /127.0.0.1:5701 and /127.0.0.1:40768
+Jun 17, 2021 6:09:07 PM com.hazelcast.nio.tcp.TcpIpConnection
+INFO: [172.19.0.3]:5701 [dev] [3.9.2] Connection[id=1, /127.0.0.1:5701-&gt;/127.0.0.1:40768, endpoint=null, alive=false, type=NONE] closed. Reason: Connection closed by the other side
+Jun 17, 2021 6:09:08 PM com.hazelcast.core.LifecycleService
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] [172.19.0.3]:5701 is SHUTTING_DOWN
-Jun 17, 2021 4:14:21 PM com.hazelcast.instance.Node
+Jun 17, 2021 6:09:08 PM com.hazelcast.instance.Node
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Shutting down connection manager...
-Jun 17, 2021 4:14:21 PM com.hazelcast.instance.Node
+Jun 17, 2021 6:09:08 PM com.hazelcast.instance.Node
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Shutting down node engine...
-Jun 17, 2021 4:14:21 PM com.hazelcast.instance.NodeExtension
+Jun 17, 2021 6:09:08 PM com.hazelcast.instance.NodeExtension
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Destroying node NodeExtension.
-Jun 17, 2021 4:14:21 PM com.hazelcast.instance.Node
-INFO: [172.19.0.3]:5701 [dev] [3.9.2] Hazelcast Shutdown is completed in 20 ms.
-Jun 17, 2021 4:14:21 PM com.hazelcast.core.LifecycleService
+Jun 17, 2021 6:09:08 PM com.hazelcast.instance.Node
+INFO: [172.19.0.3]:5701 [dev] [3.9.2] Hazelcast Shutdown is completed in 23 ms.
+Jun 17, 2021 6:09:08 PM com.hazelcast.core.LifecycleService
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] [172.19.0.3]:5701 is SHUTDOWN
-Jun 17, 2021 4:14:21 PM com.hazelcast.instance.AddressPicker
+Jun 17, 2021 6:09:08 PM com.hazelcast.instance.AddressPicker
 INFO: [LOCAL] [dev] [3.9.2] Prefer IPv4 stack is true.
-Jun 17, 2021 4:14:21 PM com.hazelcast.instance.AddressPicker
+Jun 17, 2021 6:09:08 PM com.hazelcast.instance.AddressPicker
 INFO: [LOCAL] [dev] [3.9.2] Picked [172.19.0.3]:5701, using socket ServerSocket[addr=/0.0.0.0,localport=5701], bind any local is true
-Jun 17, 2021 4:14:21 PM com.hazelcast.system
+Jun 17, 2021 6:09:08 PM com.hazelcast.system
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Hazelcast 3.9.2 (20180103 - 17e4ec3) starting at [172.19.0.3]:5701
-Jun 17, 2021 4:14:21 PM com.hazelcast.system
+Jun 17, 2021 6:09:08 PM com.hazelcast.system
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Copyright (c) 2008-2017, Hazelcast, Inc. All Rights Reserved.
-Jun 17, 2021 4:14:21 PM com.hazelcast.system
+Jun 17, 2021 6:09:08 PM com.hazelcast.system
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Configured Hazelcast Serialization version: 1
-Jun 17, 2021 4:14:21 PM com.hazelcast.spi.impl.operationservice.impl.BackpressureRegulator
+Jun 17, 2021 6:09:08 PM com.hazelcast.spi.impl.operationservice.impl.BackpressureRegulator
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Backpressure is disabled
-Jun 17, 2021 4:14:21 PM com.hazelcast.spi.impl.operationexecutor.impl.OperationExecutorImpl
+Jun 17, 2021 6:09:08 PM com.hazelcast.spi.impl.operationexecutor.impl.OperationExecutorImpl
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Starting 2 partition threads and 3 generic threads (1 dedicated for priority tasks)
-Jun 17, 2021 4:14:21 PM com.hazelcast.internal.diagnostics.Diagnostics
+Jun 17, 2021 6:09:08 PM com.hazelcast.internal.diagnostics.Diagnostics
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Diagnostics disabled. To enable add -Dhazelcast.diagnostics.enabled=true to the JVM arguments.
-Jun 17, 2021 4:14:21 PM com.hazelcast.core.LifecycleService
+Jun 17, 2021 6:09:08 PM com.hazelcast.core.LifecycleService
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] [172.19.0.3]:5701 is STARTING
-Jun 17, 2021 4:14:21 PM com.hazelcast.instance.Node
+Jun 17, 2021 6:09:08 PM com.hazelcast.instance.Node
 WARNING: [172.19.0.3]:5701 [dev] [3.9.2] No join method is enabled! Starting standalone.
-Jun 17, 2021 4:14:21 PM com.hazelcast.system
+Jun 17, 2021 6:09:08 PM com.hazelcast.system
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Cluster version set to 3.9
-Jun 17, 2021 4:14:21 PM com.hazelcast.core.LifecycleService
+Jun 17, 2021 6:09:08 PM com.hazelcast.core.LifecycleService
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] [172.19.0.3]:5701 is STARTED
-Jun 17, 2021 4:14:21 PM com.hazelcast.internal.partition.impl.PartitionStateManager
+Jun 17, 2021 6:09:08 PM com.hazelcast.internal.partition.impl.PartitionStateManager
 INFO: [172.19.0.3]:5701 [dev] [3.9.2] Initializing cluster partition table arrangement...
 </pre>
 </span>
@@ -621,7 +621,7 @@ INFO: [172.19.0.3]:5701 [dev] [3.9.2] Initializing cluster partition table arran
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 17, 2021, 5:05:49 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 17, 2021, 6:59:43 PM</p>
 </div>
 </div>
 </body>
