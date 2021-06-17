@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">18.224s</div>
+<div class="counter">18.220s</div>
 <p>duration</p>
 </div>
 </td>
@@ -70,15 +70,15 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="whenRequestURLMapAndVanityURLTogether"></a>
-<h3 class="failures">whenRequestURLMapAndVanityURLTogether</h3>
+<a name="whenRequestURLMap"></a>
+<h3 class="failures">whenRequestURLMap</h3>
 <span class="code">
 <pre>com.dotmarketing.exception.DotRuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
 	at com.dotcms.datagen.TestDataUtils.getNewsContent(TestDataUtils.java:1149)
 	at com.dotcms.datagen.TestDataUtils.getNewsContent(TestDataUtils.java:1109)
 	at com.dotcms.datagen.TestDataUtils.getNewsContent(TestDataUtils.java:1104)
 	at com.dotcms.rendering.velocity.servlet.VelocityServletIntegrationTest.createURLMapperContentType(VelocityServletIntegrationTest.java:247)
-	at com.dotcms.rendering.velocity.servlet.VelocityServletIntegrationTest.whenRequestURLMapAndVanityURLTogether(VelocityServletIntegrationTest.java:206)
+	at com.dotcms.rendering.velocity.servlet.VelocityServletIntegrationTest.whenRequestURLMap(VelocityServletIntegrationTest.java:134)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -162,12 +162,12 @@ Caused by: com.dotmarketing.exception.DotHibernateException: Unable to close Hib
 	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
 	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:293)
 	... 67 more
-Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID 'ec859bf0-7d9d-4ef9-b70c-8d0202e73903': Content Type with ID 'd84a3236-334f-4936-82f6-067ff3572b30' was not found via API.
+Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '6272b23e-3d2a-457b-9d1c-bfa1a821e179': Content Type with ID '72984f93-d4b3-46fd-8af8-37f0f4ef4af6' was not found via API.
 	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
 	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1073)
 	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1157)
 	... 81 more
-Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID 'ec859bf0-7d9d-4ef9-b70c-8d0202e73903': Content Type with ID 'd84a3236-334f-4936-82f6-067ff3572b30' was not found via API.
+Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '6272b23e-3d2a-457b-9d1c-bfa1a821e179': Content Type with ID '72984f93-d4b3-46fd-8af8-37f0f4ef4af6' was not found via API.
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:416)
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
 	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
@@ -186,7 +186,7 @@ Caused by: com.dotcms.content.business.DotMappingException: An error occurred wh
 	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
 	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
 	... 83 more
-Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'd84a3236-334f-4936-82f6-067ff3572b30' was not found via API.
+Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '72984f93-d4b3-46fd-8af8-37f0f4ef4af6' was not found via API.
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:277)
 	... 99 more
 </pre>
@@ -205,22 +205,22 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'd8
 </thead>
 <tr>
 <td class="success">testingTimeMachine</td>
-<td class="success">2.636s</td>
+<td class="success">3.274s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">whenRequestURLMap</td>
-<td class="success">7.410s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="failures">whenRequestURLMapAndVanityURLTogether</td>
-<td class="failures">5.293s</td>
+<td class="failures">whenRequestURLMap</td>
+<td class="failures">5.334s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
+<td class="success">whenRequestURLMapAndVanityURLTogether</td>
+<td class="success">6.790s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">whenRequestVanityURL</td>
-<td class="success">2.885s</td>
+<td class="success">2.822s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -233,7 +233,7 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'd8
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 17, 2021, 4:53:31 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 17, 2021, 6:44:17 PM</p>
 </div>
 </div>
 </body>
