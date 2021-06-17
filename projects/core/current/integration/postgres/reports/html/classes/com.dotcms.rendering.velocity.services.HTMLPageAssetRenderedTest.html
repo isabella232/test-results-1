@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">3m36.84s</div>
+<div class="counter">3m36.35s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">98%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,10 +61,141 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="pageWithFileTemplateDesignShouldRender"></a>
+<h3 class="failures">pageWithFileTemplateDesignShouldRender</h3>
+<span class="code">
+<pre>com.dotmarketing.exception.DotRuntimeException
+	at com.dotcms.util.ThreadContextUtil.wrapVoidNoReindex(ThreadContextUtil.java:88)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireContentWorkflow_aroundBody182(WorkflowAPIImpl.java:3023)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure183.run(WorkflowAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireContentWorkflow(WorkflowAPIImpl.java:3000)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkAndRunPublishAsWorkflow(ESContentletAPIImpl.java:4330)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.publish_aroundBody32(ESContentletAPIImpl.java:588)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure33.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.publish(ESContentletAPIImpl.java:574)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.publish(ContentletAPIInterceptor.java:1502)
+	at com.dotcms.rendering.velocity.services.HTMLPageAssetRenderedTest.createHtmlPageAsset(HTMLPageAssetRenderedTest.java:516)
+	at com.dotcms.rendering.velocity.services.HTMLPageAssetRenderedTest.pageWithFileTemplateDesignShouldRender(HTMLPageAssetRenderedTest.java:1868)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.dotmarketing.portlets.workflows.business.DotWorkflowException
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin_aroundBody168(WorkflowAPIImpl.java:2355)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure169.run(WorkflowAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin(WorkflowAPIImpl.java:2306)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.lambda$79(WorkflowAPIImpl.java:3023)
+	at com.dotcms.util.ThreadContextUtil.wrapVoidNoReindex(ThreadContextUtil.java:85)
+	... 80 more
+Caused by: com.dotmarketing.portlets.workflows.model.WorkflowActionFailureException
+	at com.dotmarketing.portlets.workflows.actionlet.PublishContentActionlet.executeAction(PublishContentActionlet.java:85)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin_aroundBody168(WorkflowAPIImpl.java:2326)
+	... 89 more
+Caused by: java.lang.NullPointerException
+	at com.dotcms.rendering.velocity.viewtools.DotTemplateTool.getDrawedBody(DotTemplateTool.java:141)
+	at com.dotcms.rendering.velocity.viewtools.DotTemplateTool.themeLayout(DotTemplateTool.java:125)
+	at com.dotcms.rendering.velocity.viewtools.DotTemplateTool.themeLayout(DotTemplateTool.java:100)
+	at com.dotmarketing.portlets.templates.business.TemplateAPIImpl.getContainersInTemplate_aroundBody26(TemplateAPIImpl.java:551)
+	at com.dotmarketing.portlets.templates.business.TemplateAPIImpl$AjcClosure27.run(TemplateAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotmarketing.portlets.templates.business.TemplateAPIImpl.getContainersInTemplate(TemplateAPIImpl.java:545)
+	at com.dotmarketing.factories.PublishFactory.getUnpublishedRelatedAssetsForPage_aroundBody0(PublishFactory.java:523)
+	at com.dotmarketing.factories.PublishFactory$AjcClosure1.run(PublishFactory.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotmarketing.factories.PublishFactory.getUnpublishedRelatedAssetsForPage(PublishFactory.java:508)
+	at com.dotmarketing.portlets.workflows.actionlet.PublishContentActionlet.executeAction(PublishContentActionlet.java:63)
+	... 90 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -75,263 +206,263 @@
 </tr>
 </thead>
 <tr>
-<td class="success">ContentFallbackFalse_PageFallbackFalse_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent2And3[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">5.113s</td>
+<td class="success">ContentFallbackFalse_PageFallbackFalse_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent2And3[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">5.127s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">ContentFallbackFalse_PageFallbackFalse_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent2And3[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">5.121s</td>
+<td class="success">ContentFallbackFalse_PageFallbackFalse_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent2And3[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
+<td class="success">5.159s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">ContentFallbackFalse_PageFallbackTrue_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent2And3[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">4.792s</td>
+<td class="success">ContentFallbackFalse_PageFallbackTrue_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent2And3[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">4.984s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">ContentFallbackFalse_PageFallbackTrue_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent2And3[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
+<td class="success">ContentFallbackFalse_PageFallbackTrue_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent2And3[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
 <td class="success">5.134s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">ContentFallbackFalse_PageFallbackTrue_PageEnglish_ViewEnglishContent1And2_ViewSpanishContent2And3[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">1.997s</td>
+<td class="success">ContentFallbackFalse_PageFallbackTrue_PageEnglish_ViewEnglishContent1And2_ViewSpanishContent2And3[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">2.013s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">ContentFallbackFalse_PageFallbackTrue_PageEnglish_ViewEnglishContent1And2_ViewSpanishContent2And3[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">2.057s</td>
+<td class="success">ContentFallbackFalse_PageFallbackTrue_PageEnglish_ViewEnglishContent1And2_ViewSpanishContent2And3[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
+<td class="success">2.052s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">ContentFallbackTrue_PageFallbackTrue_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent1And2And3[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">5.135s</td>
+<td class="success">ContentFallbackTrue_PageFallbackTrue_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent1And2And3[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">5.146s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">ContentFallbackTrue_PageFallbackTrue_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent1And2And3[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">5.138s</td>
+<td class="success">ContentFallbackTrue_PageFallbackTrue_PageEnglishAndSpanish_ViewEnglishContent1And2_ViewSpanishContent1And2And3[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
+<td class="success">5.145s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">constantField_notUpdatedCache_whenChanged[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">4.381s</td>
+<td class="success">constantField_notUpdatedCache_whenChanged[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">4.356s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">constantField_notUpdatedCache_whenChanged[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">3.966s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">containerArchived_PageShouldResolve</td>
-<td class="success">4.106s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">containerTwiceIntoPage</td>
-<td class="success">4.024s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">containerTwiceIntoPageAndTemplateLayout</td>
-<td class="success">6.166s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">pageWithFileTemplateAdvancedShouldRender</td>
-<td class="success">3.121s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">pageWithFileTemplateDesignShouldRender</td>
-<td class="success">3.071s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">pageWithMultiplePersona</td>
-<td class="success">7.160s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">pageWithSidebarShouldRender</td>
-<td class="success">6.129s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">renderPageWithDotAssetImage</td>
-<td class="success">6.175s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">renderPageWithFileAssetImage</td>
-<td class="success">6.163s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">render_spanish_contentlets_on_english_page[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">1.888s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">render_spanish_contentlets_on_english_page[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">2.041s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: default</td>
-<td class="success">6.131s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: default</td>
-<td class="success">4.127s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: default</td>
-<td class="success">6.179s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: default</td>
+<td class="success">constantField_notUpdatedCache_whenChanged[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
 <td class="success">4.132s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: test1623861520239.dotcms.com</td>
-<td class="success">4.071s</td>
+<td class="success">containerArchived_PageShouldResolve</td>
+<td class="success">3.962s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: test1623861520239.dotcms.com</td>
-<td class="success">6.124s</td>
+<td class="success">containerTwiceIntoPage</td>
+<td class="success">3.981s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: test1623861520239.dotcms.com</td>
-<td class="success">6.150s</td>
+<td class="success">containerTwiceIntoPageAndTemplateLayout</td>
+<td class="success">6.172s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: test1623861520239.dotcms.com</td>
-<td class="success">4.060s</td>
+<td class="success">pageWithFileTemplateAdvancedShouldRender</td>
+<td class="success">3.148s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: test1623861535017.dotcms.com</td>
-<td class="success">6.130s</td>
+<td class="failures">pageWithFileTemplateDesignShouldRender</td>
+<td class="failures">1.763s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">pageWithMultiplePersona</td>
+<td class="success">7.193s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: test1623861535017.dotcms.com</td>
-<td class="success">4.102s</td>
+<td class="success">pageWithSidebarShouldRender</td>
+<td class="success">6.189s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: test1623861535017.dotcms.com</td>
-<td class="success">6.137s</td>
+<td class="success">renderPageWithDotAssetImage</td>
+<td class="success">6.184s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861520239.dotcms.com Container Host: test1623861535017.dotcms.com</td>
-<td class="success">4.116s</td>
+<td class="success">renderPageWithFileAssetImage</td>
+<td class="success">6.154s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861535017.dotcms.com Container Host: default</td>
-<td class="success">6.139s</td>
+<td class="success">render_spanish_contentlets_on_english_page[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">1.804s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861535017.dotcms.com Container Host: default</td>
-<td class="success">6.153s</td>
+<td class="success">render_spanish_contentlets_on_english_page[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
+<td class="success">2.029s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861535017.dotcms.com Container Host: default</td>
-<td class="success">4.075s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: default</td>
+<td class="success">6.154s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861535017.dotcms.com Container Host: default</td>
-<td class="success">4.102s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: default</td>
+<td class="success">6.166s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861535017.dotcms.com Container Host: test1623861535017.dotcms.com</td>
-<td class="success">6.157s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: default</td>
+<td class="success">4.118s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861535017.dotcms.com Container Host: test1623861535017.dotcms.com</td>
-<td class="success">4.096s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: default</td>
+<td class="success">4.121s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861535017.dotcms.com Container Host: test1623861535017.dotcms.com</td>
-<td class="success">4.099s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: test1623944376118.dotcms.com</td>
+<td class="success">4.111s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldRenderTemplateAndContainers page Host: test1623861520239.dotcms.com Template Host: test1623861535017.dotcms.com Container Host: test1623861535017.dotcms.com</td>
-<td class="success">6.148s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: test1623944376118.dotcms.com</td>
+<td class="success">6.176s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldReturnPageHTMLForLegacyUUIDAndMultiTree[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">1.064s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: test1623944376118.dotcms.com</td>
+<td class="success">4.085s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldReturnPageHTMLForLegacyUUIDAndMultiTree[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">0.985s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: test1623944376118.dotcms.com</td>
+<td class="success">6.145s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldReturnPageHTMLForLegacyUUID[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">1.056s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: test1623944390569.dotcms.com</td>
+<td class="success">6.116s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldReturnPageHTMLForLegacyUUID[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">1.024s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: test1623944390569.dotcms.com</td>
+<td class="success">4.059s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldReturnPageHTMLForPersona[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">2.042s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: test1623944390569.dotcms.com</td>
+<td class="success">6.134s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldReturnPageHTMLForPersona[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">2.082s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944376118.dotcms.com Container Host: test1623944390569.dotcms.com</td>
+<td class="success">4.101s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldReturnParserContainerUUID[0: com.dotmarketing.portlets.containers.model.Container@58694e02[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623861532385,friendlyName=containerHTMLPageRenderedTest1623861532385,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=a5dd4c47-eab5-42c9-be54-f623f2441d03,identifier=c58d0130-cfbc-4579-95d9-90b987fe6376], com.dotmarketing.portlets.templates.model.Template@7598e393]</td>
-<td class="success">2.060s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944390569.dotcms.com Container Host: default</td>
+<td class="success">6.152s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">shouldReturnParserContainerUUID[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@4fc9b96[languageId=1,host=test1623861520239.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623861532525/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623861532525,modDate=Wed Jun 16 16:38:52 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Wed Jun 16 16:38:52 GMT 2021,type=containers,owner=system,inode=dbfff37c-942e-4fa6-aacb-3021328a8241,identifier=91d9ad34-1ea1-4c59-b84b-861b865ca77f], com.dotmarketing.portlets.templates.model.Template@ed0eaa7]</td>
-<td class="success">2.070s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944390569.dotcms.com Container Host: default</td>
+<td class="success">4.125s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">test_WidgetPreExecuteCodeShowRegardlessPageMode[0: com.dotcms.rendering.velocity.services.HTMLPageAssetRenderedTest$WidgetPreExecuteCodeTestCase@6c340da0]</td>
-<td class="success">3.055s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944390569.dotcms.com Container Host: default</td>
+<td class="success">6.136s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">test_WidgetPreExecuteCodeShowRegardlessPageMode[1: com.dotcms.rendering.velocity.services.HTMLPageAssetRenderedTest$WidgetPreExecuteCodeTestCase@170c3c1a]</td>
-<td class="success">3.041s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944390569.dotcms.com Container Host: default</td>
+<td class="success">4.169s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">test_WidgetPreExecuteCodeShowRegardlessPageMode[2: com.dotcms.rendering.velocity.services.HTMLPageAssetRenderedTest$WidgetPreExecuteCodeTestCase@2b31651f]</td>
-<td class="success">3.051s</td>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944390569.dotcms.com Container Host: test1623944390569.dotcms.com</td>
+<td class="success">6.166s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944390569.dotcms.com Container Host: test1623944390569.dotcms.com</td>
+<td class="success">4.127s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944390569.dotcms.com Container Host: test1623944390569.dotcms.com</td>
+<td class="success">4.122s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldRenderTemplateAndContainers page Host: test1623944376118.dotcms.com Template Host: test1623944390569.dotcms.com Container Host: test1623944390569.dotcms.com</td>
+<td class="success">6.165s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReturnPageHTMLForLegacyUUIDAndMultiTree[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">1.019s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReturnPageHTMLForLegacyUUIDAndMultiTree[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
+<td class="success">1.044s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReturnPageHTMLForLegacyUUID[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">1.296s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReturnPageHTMLForLegacyUUID[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
+<td class="success">1.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReturnPageHTMLForPersona[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">2.044s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReturnPageHTMLForPersona[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
+<td class="success">2.077s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReturnParserContainerUUID[0: com.dotmarketing.portlets.containers.model.Container@22c5472e[code=&lt;null&gt;,maxContentlets=5,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=&lt;null&gt;,source=DB,title=containerHTMLPageRenderedTest1623944387776,friendlyName=containerHTMLPageRenderedTest1623944387776,modDate=Thu Jun 17 15:39:47 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:47 GMT 2021,type=containers,owner=system,inode=13a26842-489b-4ca4-bea0-acd9df7578d4,identifier=41c7cf78-0d97-40ac-824b-ca96bdd9bbc9], com.dotmarketing.portlets.templates.model.Template@7a048]</td>
+<td class="success">2.067s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">shouldReturnParserContainerUUID[1: com.dotmarketing.portlets.containers.model.FileAssetContainer@31a58039[languageId=1,host=test1623944376118.dotcms.com,path=/application/containers/containerHTMLPageRenderedTest1623944387926/,code=&lt;null&gt;,maxContentlets=25,useDiv=false,sortContentletsBy=&lt;null&gt;,preLoop=&lt;null&gt;,postLoop=&lt;null&gt;,staticify=false,luceneQuery=&lt;null&gt;,notes=Medium Column:Blog,Events,Generic,Location,Media,News,Documents,Products,source=FILE,title=Test Container,friendlyName=containerHTMLPageRenderedTest1623944387926,modDate=Thu Jun 17 15:39:48 GMT 2021,modUser=system,sortOrder=0,showOnMenu=false,iDate=Thu Jun 17 15:39:48 GMT 2021,type=containers,owner=system,inode=d7953f9d-3c96-423c-bba0-b7bb3e0bdc4c,identifier=54ed7b71-01ee-4d1d-82a4-facf1f6b1fc5], com.dotmarketing.portlets.templates.model.Template@ea36738b]</td>
+<td class="success">2.054s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test_WidgetPreExecuteCodeShowRegardlessPageMode[0: com.dotcms.rendering.velocity.services.HTMLPageAssetRenderedTest$WidgetPreExecuteCodeTestCase@7cf8f4d7]</td>
+<td class="success">3.058s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test_WidgetPreExecuteCodeShowRegardlessPageMode[1: com.dotcms.rendering.velocity.services.HTMLPageAssetRenderedTest$WidgetPreExecuteCodeTestCase@2ca70137]</td>
+<td class="success">3.070s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test_WidgetPreExecuteCodeShowRegardlessPageMode[2: com.dotcms.rendering.velocity.services.HTMLPageAssetRenderedTest$WidgetPreExecuteCodeTestCase@3e560227]</td>
+<td class="success">3.131s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -344,7 +475,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 16, 2021, 5:46:40 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jun 17, 2021, 4:53:31 PM</p>
 </div>
 </div>
 </body>
