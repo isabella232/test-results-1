@@ -1,20 +1,18 @@
-[17/06/21 17:32:47:124 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
-[17/06/21 17:32:47:153 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
-[17/06/21 17:32:47:207 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
-[17/06/21 17:32:47:212 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
-[17/06/21 17:32:47:668 GMT]  INFO util.Config: Initializing properties reader.
-[17/06/21 17:32:47:669 GMT]  INFO util.Config: Loading dotCMS [dotmarketing-config.properties] Properties...
-[17/06/21 17:32:47:736 GMT]  INFO util.Config: dotCMS Properties [dotmarketing-config.properties] Loaded
-[17/06/21 17:32:47:756 GMT]  INFO util.Config: Loading dotCMS [dotcms-config-cluster.properties] Properties...
-[17/06/21 17:32:47:758 GMT]  INFO util.Config: dotCMS Properties [dotcms-config-cluster.properties] Loaded
-[17/06/21 17:32:47:766 GMT]  INFO util.Config: Assigned default refresh: 5 minutes.
-[17/06/21 17:32:47:776 GMT]  INFO business.CacheLocator: loading cache administrator: ChainableCacheAdministratorImpl
-[17/06/21 17:32:47:941 GMT]  WARN hikari.HikariConfig: jdbc/dotCMSPool - idleTimeout is close to or more than maxLifetime, disabling it.
-[17/06/21 17:32:47:945 GMT]  INFO hikari.HikariDataSource: jdbc/dotCMSPool - Starting...
-[17/06/21 17:32:49:507 GMT] ERROR pool.HikariPool: jdbc/dotCMSPool - Exception during pool initialization.
-java.sql.SQLException: Listener refused the connection with the following error:
-ORA-12528, TNS:listener: all appropriate instances are blocking new connections
- 
+[22/06/21 16:22:14:014 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
+[22/06/21 16:22:14:022 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
+[22/06/21 16:22:14:038 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
+[22/06/21 16:22:14:038 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
+[22/06/21 16:22:14:259 GMT]  INFO util.Config: Initializing properties reader.
+[22/06/21 16:22:14:259 GMT]  INFO util.Config: Loading dotCMS [dotmarketing-config.properties] Properties...
+[22/06/21 16:22:14:331 GMT]  INFO util.Config: dotCMS Properties [dotmarketing-config.properties] Loaded
+[22/06/21 16:22:14:355 GMT]  INFO util.Config: Loading dotCMS [dotcms-config-cluster.properties] Properties...
+[22/06/21 16:22:14:368 GMT]  INFO util.Config: dotCMS Properties [dotcms-config-cluster.properties] Loaded
+[22/06/21 16:22:14:378 GMT]  INFO util.Config: Assigned default refresh: 5 minutes.
+[22/06/21 16:22:14:399 GMT]  INFO business.CacheLocator: loading cache administrator: ChainableCacheAdministratorImpl
+[22/06/21 16:22:14:540 GMT]  WARN hikari.HikariConfig: jdbc/dotCMSPool - idleTimeout is close to or more than maxLifetime, disabling it.
+[22/06/21 16:22:14:542 GMT]  INFO hikari.HikariDataSource: jdbc/dotCMSPool - Starting...
+[22/06/21 16:22:15:996 GMT] ERROR pool.HikariPool: jdbc/dotCMSPool - Exception during pool initialization.
+java.sql.SQLRecoverableException: IO Error: Got minus one from a read call
 	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:854) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:793) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:57) ~[ojdbc8-19.3.jar:19.3.0.0.0]
@@ -48,7 +46,8 @@ ORA-12528, TNS:listener: all appropriate instances are blocking new connections
 	at com.dotmarketing.business.CommitListenerCacheWrapper.initProviders(CommitListenerCacheWrapper.java:29) ~[main/:?]
 	at com.dotmarketing.business.CacheLocator.init(CacheLocator.java:110) ~[main/:?]
 	at com.dotcms.util.IntegrationTestInitService.init(IntegrationTestInitService.java:42) ~[integrationTest/:?]
-	at com.dotcms.graphql.business.GraphqlAPITest.dataProviderEEBaseTypes(GraphqlAPITest.java:686) ~[integrationTest/:?]
+	at com.dotcms.enterprise.publishing.remote.bundler.RuleBundlerTest.prepare(RuleBundlerTest.java:41) ~[integrationTest/:?]
+	at com.dotcms.enterprise.publishing.remote.bundler.RuleBundlerTest.rules(RuleBundlerTest.java:47) ~[integrationTest/:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
@@ -110,22 +109,18 @@ ORA-12528, TNS:listener: all appropriate instances are blocking new connections
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55) ~[?:?]
 	at java.lang.Thread.run(Thread.java:829) [?:?]
-Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
-ORA-12528, TNS:listener: all appropriate instances are blocking new connections
- 
-	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:284) ~[ojdbc8-19.3.jar:19.3.0.0.0]
+Caused by: oracle.net.ns.NetException: Got minus one from a read call
+	at oracle.net.ns.NSProtocolNIO.doSocketRead(NSProtocolNIO.java:557) ~[ojdbc8-19.3.jar:19.3.0.0.0]
+	at oracle.net.ns.NIOPacket.readNIOPacket(NIOPacket.java:403) ~[ojdbc8-19.3.jar:19.3.0.0.0]
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:127) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:340) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:1596) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:588) ~[ojdbc8-19.3.jar:19.3.0.0.0]
-	... 94 more
-[17/06/21 17:32:49:508 GMT]  WARN db.DataSourceStrategyProvider: Error initializing datasource. Reason: Failed to initialize pool: Listener refused the connection with the following error:
-ORA-12528, TNS:listener: all appropriate instances are blocking new connections
- Trying to load datasource from context.xml ...
-[17/06/21 17:32:49:508 GMT]  WARN db.DataSourceStrategyProvider: Failed to initialize pool: Listener refused the connection with the following error:
-ORA-12528, TNS:listener: all appropriate instances are blocking new connections
- 
-[17/06/21 17:32:49:509 GMT]  WARN db.DataSourceStrategyProvider: com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:589)
-[17/06/21 17:32:49:554 GMT] ERROR db.TomcatDataSourceStrategy: ---------- Error getting dbconnection jdbc/dotCMSPool from context.xml
+	... 95 more
+[22/06/21 16:22:15:997 GMT]  WARN db.DataSourceStrategyProvider: Error initializing datasource. Reason: Failed to initialize pool: IO Error: Got minus one from a read callTrying to load datasource from context.xml ...
+[22/06/21 16:22:15:997 GMT]  WARN db.DataSourceStrategyProvider: Failed to initialize pool: IO Error: Got minus one from a read call
+[22/06/21 16:22:15:998 GMT]  WARN db.DataSourceStrategyProvider: com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:589)
+[22/06/21 16:22:16:050 GMT] ERROR db.TomcatDataSourceStrategy: ---------- Error getting dbconnection jdbc/dotCMSPool from context.xml
 javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
 	at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:702) ~[?:?]
 	at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305) ~[?:?]
@@ -153,7 +148,8 @@ javax.naming.NoInitialContextException: Need to specify class name in environmen
 	at com.dotmarketing.business.CommitListenerCacheWrapper.initProviders(CommitListenerCacheWrapper.java:29) ~[main/:?]
 	at com.dotmarketing.business.CacheLocator.init(CacheLocator.java:110) ~[main/:?]
 	at com.dotcms.util.IntegrationTestInitService.init(IntegrationTestInitService.java:42) ~[integrationTest/:?]
-	at com.dotcms.graphql.business.GraphqlAPITest.dataProviderEEBaseTypes(GraphqlAPITest.java:686) ~[integrationTest/:?]
+	at com.dotcms.enterprise.publishing.remote.bundler.RuleBundlerTest.prepare(RuleBundlerTest.java:41) ~[integrationTest/:?]
+	at com.dotcms.enterprise.publishing.remote.bundler.RuleBundlerTest.rules(RuleBundlerTest.java:47) ~[integrationTest/:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
 	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
 	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
