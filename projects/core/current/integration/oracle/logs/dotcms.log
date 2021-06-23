@@ -1,18 +1,20 @@
-[22/06/21 16:22:14:014 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
-[22/06/21 16:22:14:022 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
-[22/06/21 16:22:14:038 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
-[22/06/21 16:22:14:038 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
-[22/06/21 16:22:14:259 GMT]  INFO util.Config: Initializing properties reader.
-[22/06/21 16:22:14:259 GMT]  INFO util.Config: Loading dotCMS [dotmarketing-config.properties] Properties...
-[22/06/21 16:22:14:331 GMT]  INFO util.Config: dotCMS Properties [dotmarketing-config.properties] Loaded
-[22/06/21 16:22:14:355 GMT]  INFO util.Config: Loading dotCMS [dotcms-config-cluster.properties] Properties...
-[22/06/21 16:22:14:368 GMT]  INFO util.Config: dotCMS Properties [dotcms-config-cluster.properties] Loaded
-[22/06/21 16:22:14:378 GMT]  INFO util.Config: Assigned default refresh: 5 minutes.
-[22/06/21 16:22:14:399 GMT]  INFO business.CacheLocator: loading cache administrator: ChainableCacheAdministratorImpl
-[22/06/21 16:22:14:540 GMT]  WARN hikari.HikariConfig: jdbc/dotCMSPool - idleTimeout is close to or more than maxLifetime, disabling it.
-[22/06/21 16:22:14:542 GMT]  INFO hikari.HikariDataSource: jdbc/dotCMSPool - Starting...
-[22/06/21 16:22:15:996 GMT] ERROR pool.HikariPool: jdbc/dotCMSPool - Exception during pool initialization.
-java.sql.SQLRecoverableException: IO Error: Got minus one from a read call
+[23/06/21 16:26:34:269 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
+[23/06/21 16:26:34:282 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
+[23/06/21 16:26:34:301 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
+[23/06/21 16:26:34:301 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
+[23/06/21 16:26:34:510 GMT]  INFO util.Config: Initializing properties reader.
+[23/06/21 16:26:34:510 GMT]  INFO util.Config: Loading dotCMS [dotmarketing-config.properties] Properties...
+[23/06/21 16:26:34:581 GMT]  INFO util.Config: dotCMS Properties [dotmarketing-config.properties] Loaded
+[23/06/21 16:26:34:625 GMT]  INFO util.Config: Loading dotCMS [dotcms-config-cluster.properties] Properties...
+[23/06/21 16:26:34:626 GMT]  INFO util.Config: dotCMS Properties [dotcms-config-cluster.properties] Loaded
+[23/06/21 16:26:34:627 GMT]  INFO util.Config: Assigned default refresh: 5 minutes.
+[23/06/21 16:26:34:634 GMT]  INFO business.CacheLocator: loading cache administrator: ChainableCacheAdministratorImpl
+[23/06/21 16:26:34:872 GMT]  WARN hikari.HikariConfig: jdbc/dotCMSPool - idleTimeout is close to or more than maxLifetime, disabling it.
+[23/06/21 16:26:34:875 GMT]  INFO hikari.HikariDataSource: jdbc/dotCMSPool - Starting...
+[23/06/21 16:26:36:276 GMT] ERROR pool.HikariPool: jdbc/dotCMSPool - Exception during pool initialization.
+java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12528, TNS:listener: all appropriate instances are blocking new connections
+ 
 	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:854) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:793) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:57) ~[ojdbc8-19.3.jar:19.3.0.0.0]
@@ -109,18 +111,22 @@ java.sql.SQLRecoverableException: IO Error: Got minus one from a read call
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55) ~[?:?]
 	at java.lang.Thread.run(Thread.java:829) [?:?]
-Caused by: oracle.net.ns.NetException: Got minus one from a read call
-	at oracle.net.ns.NSProtocolNIO.doSocketRead(NSProtocolNIO.java:557) ~[ojdbc8-19.3.jar:19.3.0.0.0]
-	at oracle.net.ns.NIOPacket.readNIOPacket(NIOPacket.java:403) ~[ojdbc8-19.3.jar:19.3.0.0.0]
-	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:127) ~[ojdbc8-19.3.jar:19.3.0.0.0]
+Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
+ORA-12528, TNS:listener: all appropriate instances are blocking new connections
+ 
+	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:284) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:340) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:1596) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:588) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	... 95 more
-[22/06/21 16:22:15:997 GMT]  WARN db.DataSourceStrategyProvider: Error initializing datasource. Reason: Failed to initialize pool: IO Error: Got minus one from a read callTrying to load datasource from context.xml ...
-[22/06/21 16:22:15:997 GMT]  WARN db.DataSourceStrategyProvider: Failed to initialize pool: IO Error: Got minus one from a read call
-[22/06/21 16:22:15:998 GMT]  WARN db.DataSourceStrategyProvider: com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:589)
-[22/06/21 16:22:16:050 GMT] ERROR db.TomcatDataSourceStrategy: ---------- Error getting dbconnection jdbc/dotCMSPool from context.xml
+[23/06/21 16:26:36:282 GMT]  WARN db.DataSourceStrategyProvider: Error initializing datasource. Reason: Failed to initialize pool: Listener refused the connection with the following error:
+ORA-12528, TNS:listener: all appropriate instances are blocking new connections
+ Trying to load datasource from context.xml ...
+[23/06/21 16:26:36:282 GMT]  WARN db.DataSourceStrategyProvider: Failed to initialize pool: Listener refused the connection with the following error:
+ORA-12528, TNS:listener: all appropriate instances are blocking new connections
+ 
+[23/06/21 16:26:36:283 GMT]  WARN db.DataSourceStrategyProvider: com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:589)
+[23/06/21 16:26:36:378 GMT] ERROR db.TomcatDataSourceStrategy: ---------- Error getting dbconnection jdbc/dotCMSPool from context.xml
 javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
 	at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:702) ~[?:?]
 	at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305) ~[?:?]
