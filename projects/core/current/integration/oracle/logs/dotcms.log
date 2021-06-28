@@ -1,19 +1,19 @@
-[28/06/21 14:54:02:484 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
-[28/06/21 14:54:02:493 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
-[28/06/21 14:54:02:507 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
-[28/06/21 14:54:02:508 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
-[28/06/21 14:54:02:704 GMT]  INFO util.Config: Initializing properties reader.
-[28/06/21 14:54:02:704 GMT]  INFO util.Config: Loading dotCMS [dotmarketing-config.properties] Properties...
-[28/06/21 14:54:02:746 GMT]  INFO util.Config: dotCMS Properties [dotmarketing-config.properties] Loaded
-[28/06/21 14:54:02:778 GMT]  INFO util.Config: Loading dotCMS [dotcms-config-cluster.properties] Properties...
-[28/06/21 14:54:02:779 GMT]  INFO util.Config: dotCMS Properties [dotcms-config-cluster.properties] Loaded
-[28/06/21 14:54:02:780 GMT]  INFO util.Config: Assigned default refresh: 5 minutes.
-[28/06/21 14:54:02:787 GMT]  INFO business.CacheLocator: loading cache administrator: ChainableCacheAdministratorImpl
-[28/06/21 14:54:02:916 GMT]  WARN hikari.HikariConfig: jdbc/dotCMSPool - idleTimeout is close to or more than maxLifetime, disabling it.
-[28/06/21 14:54:02:918 GMT]  INFO hikari.HikariDataSource: jdbc/dotCMSPool - Starting...
-[28/06/21 14:54:04:313 GMT] ERROR pool.HikariPool: jdbc/dotCMSPool - Exception during pool initialization.
+[28/06/21 15:28:05:540 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
+[28/06/21 15:28:05:543 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
+[28/06/21 15:28:05:566 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system.properties
+[28/06/21 15:28:05:567 GMT]  INFO util.SystemProperties: Loading file:/build/src/core/dotCMS/build/resources/main/system-ext.properties
+[28/06/21 15:28:05:741 GMT]  INFO util.Config: Initializing properties reader.
+[28/06/21 15:28:05:741 GMT]  INFO util.Config: Loading dotCMS [dotmarketing-config.properties] Properties...
+[28/06/21 15:28:05:803 GMT]  INFO util.Config: dotCMS Properties [dotmarketing-config.properties] Loaded
+[28/06/21 15:28:05:835 GMT]  INFO util.Config: Loading dotCMS [dotcms-config-cluster.properties] Properties...
+[28/06/21 15:28:05:836 GMT]  INFO util.Config: dotCMS Properties [dotcms-config-cluster.properties] Loaded
+[28/06/21 15:28:05:838 GMT]  INFO util.Config: Assigned default refresh: 5 minutes.
+[28/06/21 15:28:05:844 GMT]  INFO business.CacheLocator: loading cache administrator: ChainableCacheAdministratorImpl
+[28/06/21 15:28:05:977 GMT]  WARN hikari.HikariConfig: jdbc/dotCMSPool - idleTimeout is close to or more than maxLifetime, disabling it.
+[28/06/21 15:28:05:978 GMT]  INFO hikari.HikariDataSource: jdbc/dotCMSPool - Starting...
+[28/06/21 15:28:07:340 GMT] ERROR pool.HikariPool: jdbc/dotCMSPool - Exception during pool initialization.
 java.sql.SQLException: Listener refused the connection with the following error:
-ORA-12528, TNS:listener: all appropriate instances are blocking new connections
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
  
 	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:854) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:793) ~[ojdbc8-19.3.jar:19.3.0.0.0]
@@ -112,17 +112,108 @@ ORA-12528, TNS:listener: all appropriate instances are blocking new connections
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55) ~[?:?]
 	at java.lang.Thread.run(Thread.java:829) [?:?]
 Caused by: oracle.net.ns.NetException: Listener refused the connection with the following error:
-ORA-12528, TNS:listener: all appropriate instances are blocking new connections
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
  
 	at oracle.net.ns.NSProtocolNIO.negotiateConnection(NSProtocolNIO.java:284) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:340) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.T4CConnection.connect(T4CConnection.java:1596) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:588) ~[ojdbc8-19.3.jar:19.3.0.0.0]
 	... 95 more
-[28/06/21 14:54:04:313 GMT]  WARN db.DataSourceStrategyProvider: Error initializing datasource. Reason: Failed to initialize pool: Listener refused the connection with the following error:
-ORA-12528, TNS:listener: all appropriate instances are blocking new connections
+[28/06/21 15:28:07:341 GMT]  WARN db.DataSourceStrategyProvider: Error initializing datasource. Reason: Failed to initialize pool: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
  Trying to load datasource from context.xml ...
-[28/06/21 14:54:04:313 GMT]  WARN db.DataSourceStrategyProvider: Failed to initialize pool: Listener refused the connection with the following error:
-ORA-12528, TNS:listener: all appropriate instances are blocking new connections
+[28/06/21 15:28:07:341 GMT]  WARN db.DataSourceStrategyProvider: Failed to initialize pool: Listener refused the connection with the following error:
+ORA-12505, TNS:listener does not currently know of SID given in connect descriptor
  
-[28/06/21 14:54:04:315 GMT]  WARN db.DataSourceStrategyProvider: com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:589)
+[28/06/21 15:28:07:343 GMT]  WARN db.DataSourceStrategyProvider: com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:589)
+[28/06/21 15:28:07:390 GMT] ERROR db.TomcatDataSourceStrategy: ---------- Error getting dbconnection jdbc/dotCMSPool from context.xml
+javax.naming.NoInitialContextException: Need to specify class name in environment or system property, or in an application resource file: java.naming.factory.initial
+	at javax.naming.spi.NamingManager.getInitialContext(NamingManager.java:702) ~[?:?]
+	at javax.naming.InitialContext.getDefaultInitCtx(InitialContext.java:305) ~[?:?]
+	at javax.naming.InitialContext.getURLOrDefaultInitCtx(InitialContext.java:342) ~[?:?]
+	at javax.naming.InitialContext.lookup(InitialContext.java:409) ~[?:?]
+	at com.liferay.util.JNDIUtil.lookup(JNDIUtil.java:88) ~[main/:?]
+	at com.dotmarketing.db.TomcatDataSourceStrategy.apply(TomcatDataSourceStrategy.java:36) ~[main/:?]
+	at com.dotmarketing.db.DataSourceStrategyProvider.get(DataSourceStrategyProvider.java:99) ~[main/:?]
+	at com.dotmarketing.db.DbConnectionFactory.getDataSource(DbConnectionFactory.java:117) ~[main/:?]
+	at com.dotmarketing.db.DbConnectionFactory.getConnection(DbConnectionFactory.java:206) ~[main/:?]
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:531) ~[main/:?]
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271) ~[main/:?]
+	at com.dotmarketing.common.db.DotConnect.loadObjectResults(DotConnect.java:925) ~[main/:?]
+	at com.dotcms.enterprise.license.a.c(SourceFile:160) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.license.a.a(SourceFile:167) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.license.LicenseManager.c(SourceFile:127) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.license.LicenseManager.b(SourceFile:59) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.license.LicenseManager.<init>(SourceFile:52) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.license.LicenseManager.<clinit>(SourceFile:211) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.LicenseUtil.getLevel(SourceFile:161) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.cache.provider.CacheProviderAPIImpl.a(SourceFile:175) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.cache.provider.CacheProviderAPIImpl.b(SourceFile:191) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotcms.enterprise.cache.provider.CacheProviderAPIImpl.init(SourceFile:323) ~[ee-master-SNAPSHOT.jar:?]
+	at com.dotmarketing.business.ChainableCacheAdministratorImpl.initProviders(ChainableCacheAdministratorImpl.java:71) ~[main/:?]
+	at com.dotmarketing.business.CommitListenerCacheWrapper.initProviders(CommitListenerCacheWrapper.java:29) ~[main/:?]
+	at com.dotmarketing.business.CacheLocator.init(CacheLocator.java:110) ~[main/:?]
+	at com.dotcms.util.IntegrationTestInitService.init(IntegrationTestInitService.java:42) ~[integrationTest/:?]
+	at com.dotcms.enterprise.publishing.remote.bundler.RuleBundlerTest.prepare(RuleBundlerTest.java:41) ~[integrationTest/:?]
+	at com.dotcms.enterprise.publishing.remote.bundler.RuleBundlerTest.rules(RuleBundlerTest.java:47) ~[integrationTest/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50) ~[junit-4.12.jar:4.12]
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47) ~[junit-4.12.jar:4.12]
+	at com.tngtech.java.junit.dataprovider.internal.TestGenerator.explodeTestMethod(TestGenerator.java:100) ~[junit4-dataprovider-2.6.jar:2.6]
+	at com.tngtech.java.junit.dataprovider.internal.TestGenerator.generateExplodedTestMethodsFor(TestGenerator.java:58) ~[junit4-dataprovider-2.6.jar:2.6]
+	at com.tngtech.java.junit.dataprovider.DataProviderRunner.generateExplodedTestMethodsFor(DataProviderRunner.java:227) ~[junit4-dataprovider-2.6.jar:2.6]
+	at com.tngtech.java.junit.dataprovider.DataProviderRunner.computeTestMethods(DataProviderRunner.java:181) ~[junit4-dataprovider-2.6.jar:2.6]
+	at com.tngtech.java.junit.dataprovider.DataProviderRunner.validateInstanceMethods(DataProviderRunner.java:113) ~[junit4-dataprovider-2.6.jar:2.6]
+	at org.junit.runners.BlockJUnit4ClassRunner.collectInitializationErrors(BlockJUnit4ClassRunner.java:128) ~[junit-4.12.jar:4.12]
+	at com.tngtech.java.junit.dataprovider.DataProviderRunner.collectInitializationErrors(DataProviderRunner.java:88) ~[junit4-dataprovider-2.6.jar:2.6]
+	at org.junit.runners.ParentRunner.validate(ParentRunner.java:416) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.ParentRunner.<init>(ParentRunner.java:84) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.BlockJUnit4ClassRunner.<init>(BlockJUnit4ClassRunner.java:65) ~[junit-4.12.jar:4.12]
+	at com.tngtech.java.junit.dataprovider.DataProviderRunner.<init>(DataProviderRunner.java:79) ~[junit4-dataprovider-2.6.jar:2.6]
+	at com.dotcms.junit.CustomDataProviderRunner.<init>(CustomDataProviderRunner.java:16) ~[integrationTest/:?]
+	at com.dotcms.junit.MainBaseSuite.getRunners(MainBaseSuite.java:37) ~[integrationTest/:?]
+	at com.dotcms.junit.MainBaseSuite.<init>(MainBaseSuite.java:17) ~[integrationTest/:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[?:?]
+	at org.junit.internal.builders.AnnotatedBuilder.buildRunner(AnnotatedBuilder.java:107) ~[junit-4.12.jar:4.12]
+	at org.junit.internal.builders.AnnotatedBuilder.runnerForClass(AnnotatedBuilder.java:86) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59) ~[junit-4.12.jar:4.12]
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:26) ~[junit-4.12.jar:4.12]
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59) ~[junit-4.12.jar:4.12]
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:33) ~[junit-4.12.jar:4.12]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:78) ~[?:?]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58) ~[?:?]
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38) ~[?:?]
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66) ~[?:?]
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[?:?]
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32) ~[?:?]
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93) ~[?:?]
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source) ~[?:?]
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35) ~[?:?]
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24) ~[?:?]
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155) ~[?:?]
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137) ~[?:?]
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404) ~[?:?]
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63) ~[?:?]
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55) ~[?:?]
+	at java.lang.Thread.run(Thread.java:829) [?:?]
