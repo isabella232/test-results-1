@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">52.226s</div>
+<div class="counter">40.379s</div>
 <p>duration</p>
 </div>
 </td>
@@ -70,14 +70,14 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="testSetRelatedForOneSidedRelationship[4: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@20a2a201]"></a>
-<h3 class="failures">testSetRelatedForOneSidedRelationship[4: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@20a2a201]</h3>
+<a name="testSetRelatedForSelfRelationship[3: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@664cf48c]"></a>
+<h3 class="failures">testSetRelatedForSelfRelationship[3: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@664cf48c]</h3>
 <span class="code">
 <pre>java.lang.RuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
 	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:296)
 	at com.dotcms.datagen.ContentletDataGen.persist(ContentletDataGen.java:203)
 	at com.dotcms.datagen.ContentletDataGen.nextPersisted(ContentletDataGen.java:189)
-	at com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest.testSetRelatedForOneSidedRelationship(ContentletIntegrationTest.java:335)
+	at com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest.testSetRelatedForSelfRelationship(ContentletIntegrationTest.java:386)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -143,24 +143,24 @@ Caused by: com.dotmarketing.exception.DotHibernateException: Unable to close Hib
 	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
 	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
 	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4173)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8284)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody134(ESContentletAPIImpl.java:4084)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure135.run(ESContentletAPIImpl.java:1)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4331)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8448)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody138(ESContentletAPIImpl.java:4242)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure139.run(ESContentletAPIImpl.java:1)
 	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
 	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
 	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
 	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4079)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4237)
 	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
 	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:293)
 	... 63 more
-Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '8fbba101fbf938ddba0a87b49b142c01': Content Type with ID '991420c99c88eab57d00eb9095c9c80b' was not found via API.
+Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID 'fc646064ee7411b42b9676ed2199dd01': Content Type with ID 'b654f6fabfc01397f27369cda1733a0b' was not found via API.
 	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
 	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
 	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
 	... 77 more
-Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '8fbba101fbf938ddba0a87b49b142c01': Content Type with ID '991420c99c88eab57d00eb9095c9c80b' was not found via API.
+Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID 'fc646064ee7411b42b9676ed2199dd01': Content Type with ID 'b654f6fabfc01397f27369cda1733a0b' was not found via API.
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:417)
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
 	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
@@ -179,7 +179,7 @@ Caused by: com.dotcms.content.business.DotMappingException: An error occurred wh
 	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
 	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
 	... 79 more
-Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '991420c99c88eab57d00eb9095c9c80b' was not found via API.
+Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'b654f6fabfc01397f27369cda1733a0b' was not found via API.
 	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:275)
 	... 95 more
 </pre>
@@ -198,77 +198,77 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '99
 </thead>
 <tr>
 <td class="success">testGetContentTypeAlwaysReturnsTheLatestCachedVersion</td>
-<td class="success">0.235s</td>
+<td class="success">0.270s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetRelatedForOneSidedRelationship</td>
-<td class="success">1.100s</td>
+<td class="success">0.704s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetRelatedForOneSidedRelationshipWhenLimitedUserShouldReturnEmptyList</td>
-<td class="success">1.455s</td>
+<td class="success">1.163s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetRelatedWhenInvalidVarFieldShouldThrowAnException</td>
-<td class="success">0.152s</td>
+<td class="success">0.244s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetRelatedWhenNoRelatedContentShouldReturnEmptyList</td>
-<td class="success">0.648s</td>
+<td class="success">0.743s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testSetRelatedForOneSidedRelationship[0: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@62adfc89]</td>
-<td class="success">3.588s</td>
+<td class="success">testSetRelatedForOneSidedRelationship[0: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@1def913]</td>
+<td class="success">3.315s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testSetRelatedForOneSidedRelationship[1: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@7354bf23]</td>
-<td class="success">3.922s</td>
+<td class="success">testSetRelatedForOneSidedRelationship[1: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@519593ed]</td>
+<td class="success">3.110s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testSetRelatedForOneSidedRelationship[2: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@207f2ae9]</td>
-<td class="success">3.063s</td>
+<td class="success">testSetRelatedForOneSidedRelationship[2: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@34051acb]</td>
+<td class="success">3.022s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testSetRelatedForOneSidedRelationship[3: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@2d665a90]</td>
-<td class="success">3.124s</td>
+<td class="success">testSetRelatedForOneSidedRelationship[3: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@664cf48c]</td>
+<td class="success">3.121s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">testSetRelatedForOneSidedRelationship[4: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@20a2a201]</td>
-<td class="failures">0.167s</td>
+<td class="success">testSetRelatedForOneSidedRelationship[4: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@102c8f37]</td>
+<td class="success">0.705s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSetRelatedForSelfRelationship[0: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@1def913]</td>
+<td class="success">7.696s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSetRelatedForSelfRelationship[1: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@519593ed]</td>
+<td class="success">7.056s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testSetRelatedForSelfRelationship[2: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@34051acb]</td>
+<td class="success">8.203s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">testSetRelatedForSelfRelationship[3: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@664cf48c]</td>
+<td class="failures">0.181s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">testSetRelatedForSelfRelationship[0: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@62adfc89]</td>
-<td class="success">8.096s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testSetRelatedForSelfRelationship[1: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@7354bf23]</td>
-<td class="success">8.693s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testSetRelatedForSelfRelationship[2: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@207f2ae9]</td>
-<td class="success">8.695s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testSetRelatedForSelfRelationship[3: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@2d665a90]</td>
-<td class="success">8.198s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">testSetRelatedForSelfRelationship[4: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@20a2a201]</td>
-<td class="success">1.090s</td>
+<td class="success">testSetRelatedForSelfRelationship[4: com.dotmarketing.portlets.contentlet.model.ContentletIntegrationTest$SetRelatedTestCase@102c8f37]</td>
+<td class="success">0.846s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -281,7 +281,7 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID '99
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jul 19, 2021, 5:38:50 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jul 20, 2021, 3:42:38 PM</p>
 </div>
 </div>
 </body>
