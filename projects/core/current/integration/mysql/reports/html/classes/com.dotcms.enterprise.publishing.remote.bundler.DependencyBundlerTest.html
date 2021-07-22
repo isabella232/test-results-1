@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">32.648s</div>
+<div class="counter">33.713s</div>
 <p>duration</p>
 </div>
 </td>
@@ -70,14 +70,17 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Category,Container,Folder,WorkflowScheme,ImmutableSimpleContentType,Host,ImmutableSimpleContentType,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}"></a>
-<h3 class="failures">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Category,Container,Folder,WorkflowScheme,ImmutableSimpleContentType,Host,ImmutableSimpleContentType,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</h3>
+<a name="includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55"></a>
+<h3 class="failures">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55</h3>
 <span class="code">
-<pre>java.lang.AssertionError: Not Contain 87d5361556f6cb436cabb80c440d5e26 in [f4d7c1b8-2c88-4071-abf1-a5328977b07d, 92e94e27e88c9dafff1baf34711c4750] Class class com.dotcms.contenttype.model.type.ImmutableSimpleContentType
-	at org.jgroups.util.Util.assertTrue(Util.java:166)
-	at com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest.assertAll(DependencyBundlerTest.java:1838)
-	at com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest.addAssetInBundle(DependencyBundlerTest.java:996)
-	at jdk.internal.reflect.GeneratedMethodAccessor1572.invoke(Unknown Source)
+<pre>java.lang.RuntimeException: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:296)
+	at com.dotcms.datagen.ContentletDataGen.persist(ContentletDataGen.java:203)
+	at com.dotcms.datagen.ContentletDataGen.nextPersisted(ContentletDataGen.java:189)
+	at com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest.createRelationShip(DependencyBundlerTest.java:1331)
+	at com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest.includeContenletChildWithSeveralVersionAssetByModDate(DependencyBundlerTest.java:1135)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
@@ -136,6 +139,50 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4331)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8448)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody138(ESContentletAPIImpl.java:4242)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure139.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4237)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
+	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:293)
+	... 64 more
+Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '71edd6ce74a7896653e02700d0a3fbf8': Content Type with ID 'fc7be758f792189fa03dc1190ab9f3d3' was not found via API.
+	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
+	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
+	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
+	... 78 more
+Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '71edd6ce74a7896653e02700d0a3fbf8': Content Type with ID 'fc7be758f792189fa03dc1190ab9f3d3' was not found via API.
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:417)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap(ESMappingAPIImpl.java:248)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addBulkRequest(ContentletIndexAPIImpl.java:770)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.appendBulkRequest(ContentletIndexAPIImpl.java:733)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.createBulkRequest(ContentletIndexAPIImpl.java:614)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.indexContentListNow(ContentletIndexAPIImpl.java:557)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addContentToIndex(ContentletIndexAPIImpl.java:551)
+	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.lambda$3(ContentletIndexAPIImpl.java:510)
+	at com.dotmarketing.db.HibernateUtil$DotSyncRunnable.run(HibernateUtil.java:929)
+	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
+	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
+	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
+	... 80 more
+Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'fc7be758f792189fa03dc1190ab9f3d3' was not found via API.
+	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:275)
+	... 96 more
 </pre>
 </span>
 </div>
@@ -221,268 +268,268 @@
 </tr>
 </thead>
 <tr>
-<td class="failures">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Category,Container,Folder,WorkflowScheme,ImmutableSimpleContentType,Host,ImmutableSimpleContentType,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="failures">0.012s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.016s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.018s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container,ImmutableSimpleContentType,Folder,WorkflowScheme,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.009s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container,ImmutableSimpleContentType,Folder,WorkflowScheme,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.011s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Category,Host,Folder,ImmutableSimpleContentType,Host,Contentlet,WorkflowScheme,Language,ImmutableSimpleContentType,Contentlet], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.040s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet,Host,ImmutableSimpleContentType,Category,Folder,WorkflowScheme,Language], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.011s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet,Host,ImmutableSimpleContentType,Category,Folder,WorkflowScheme,Language], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.019s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet,Host,ImmutableSimpleContentType,Folder,WorkflowScheme,Language], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.027s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet,Host,ImmutableSimpleContentType,Folder,WorkflowScheme,Language], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.036s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.005s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.005s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.010s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.005s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Folder,Host,Category,Host,ImmutableSimpleContentType,Folder,WorkflowScheme,Contentlet,Language,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.026s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Host,Contentlet,Folder,ImmutableSimpleContentType,WorkflowScheme,ImmutableSimpleContentType,Contentlet,Language], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.020s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Host,Contentlet,Folder,WorkflowScheme,ImmutableSimpleContentType,Language], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.010s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Host,ImmutableSimpleContentType,Folder,Folder,WorkflowScheme,Language,Contentlet], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.026s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Host,ImmutableSimpleContentType,Folder,Folder,WorkflowScheme,Language,Contentlet], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.035s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.008s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.005s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,Host,Folder,WorkflowScheme,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.030s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,Host,Folder,WorkflowScheme,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.016s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Contentlet,Folder,Folder,Language,Folder,WorkflowScheme,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.035s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Contentlet,Folder,Folder,Language,Folder,WorkflowScheme,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.044s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Folder,Category,Folder,WorkflowScheme,ImmutableSimpleContentType,ImmutableSimpleContentType,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.048s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Folder,WorkflowScheme,Host,Folder], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.013s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Folder,WorkflowScheme,Host,Folder], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.016s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,ImmutableSimpleContentType,Folder,Folder,WorkflowScheme,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.025s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,ImmutableSimpleContentType,Folder,Folder,WorkflowScheme,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.024s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Language,Folder,Contentlet,WorkflowScheme,Folder,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.014s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Language,Folder,Contentlet,WorkflowScheme,Folder,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.020s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Link,Folder,WorkflowScheme,Folder,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Container], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Folder,Container,WorkflowScheme,Host,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Folder,Container,WorkflowScheme,Host,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.043s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Container], [dependenciesToAssert=Host,ImmutableSimpleContentType,ImmutableSimpleContentType,Category,Folder,WorkflowScheme,Container,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet,Host,Folder,WorkflowScheme,Language,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.018s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet,ImmutableSimpleContentType,Contentlet,Host,Folder,WorkflowScheme,Language,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.030s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Host,Link,Folder,WorkflowScheme,Folder,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=Contentlet], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=ImmutableSimpleContentType,Category,Host,Folder,WorkflowScheme,Language,Contentlet], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.015s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=ImmutableSimpleContentType,Category,Host,Folder,WorkflowScheme,Language,Contentlet], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.017s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=ImmutableSimpleContentType,Contentlet,Host,Folder,Category,WorkflowScheme,Language,Host,ImmutableSimpleContentType,Contentlet], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.027s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=ImmutableSimpleContentType,Contentlet,Host,Folder,WorkflowScheme,Language], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.015s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=ImmutableSimpleContentType,Contentlet,Host,Folder,WorkflowScheme,Language], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.020s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=ImmutableSimpleContentType,Host,Category,Folder,WorkflowScheme,Folder,Language,Contentlet,Host,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.028s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=ImmutableSimpleContentType,Host,Contentlet,Folder,Folder,WorkflowScheme,Language], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Contentlet], [dependenciesToAssert=ImmutableSimpleContentType,Host,Contentlet,Folder,Folder,WorkflowScheme,Language], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.016s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Contentlet,ImmutableFileAssetContentType,Language,Folder,WorkflowScheme,Host,Folder,Folder,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.032s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Contentlet,ImmutableFileAssetContentType,Language,Folder,WorkflowScheme,Host,Folder,Folder,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.035s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder,Contentlet,ImmutableFileAssetContentType,Language,Folder,WorkflowScheme,Host,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.017s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder,Contentlet,ImmutableFileAssetContentType,Language,Folder,WorkflowScheme,Host,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.021s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.005s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.010s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=Folder], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,Folder,WorkflowScheme,Host,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,Folder,WorkflowScheme,Host,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.017s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,WorkflowScheme,Category,ImmutableSimpleContentType,Host,ImmutableSimpleContentType,Host,Folder], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.016s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,WorkflowScheme,Host,Folder,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,WorkflowScheme,Host,Folder,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.024s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,WorkflowScheme,Host,ImmutableSimpleContentType,Host,Folder], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.039s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Folder,WorkflowScheme,Host,ImmutableSimpleContentType,Host,Folder], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.021s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Link,Folder,WorkflowScheme,Folder,Host,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.013s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Folder], [dependenciesToAssert=ImmutableFileAssetContentType,Link,Folder,WorkflowScheme,Folder,Host,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.018s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=HTMLPageAsset], [dependenciesToAssert=HTMLPageAsset], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.005s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -491,58 +538,68 @@
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=HTMLPageAsset], [dependenciesToAssert=Host,Language,Host,Folder,WorkflowScheme,Template,HTMLPageAsset,ImmutablePageContentType,ImmutableSimpleContentType,Container,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.026s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=HTMLPageAsset], [dependenciesToAssert=ImmutableSimpleContentType,ImmutablePageContentType,Host,Language,Host,Template,Folder,WorkflowScheme,Container,HTMLPageAsset,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.021s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=HTMLPageAsset], [dependenciesToAssert=Host,Language,Host,Folder,WorkflowScheme,Template,HTMLPageAsset,ImmutablePageContentType,ImmutableSimpleContentType,Container,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.038s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=HTMLPageAsset], [dependenciesToAssert=ImmutableSimpleContentType,ImmutablePageContentType,Host,Language,Host,Template,Folder,WorkflowScheme,Container,HTMLPageAsset,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.030s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Container,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.018s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Container,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.028s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,ImmutableFileAssetContentType,Folder,WorkflowScheme,Folder,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.033s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,ImmutableFileAssetContentType,Folder,WorkflowScheme,Folder,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.029s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,Language,ImmutableSimpleContentType,Folder,Contentlet,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,Container], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,Language,ImmutableSimpleContentType,Folder,Contentlet,WorkflowScheme], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,Container], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.022s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,ImmutableFileAssetContentType,Folder,WorkflowScheme,Folder,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.030s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,ImmutableFileAssetContentType,Folder,WorkflowScheme,Folder,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.034s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,ImmutableSimpleContentType,Language,Contentlet,Folder,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.017s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,ImmutableSimpleContentType,Language,Contentlet,Folder,WorkflowScheme], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.026s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,Template], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.015s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,Rule], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,Template], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.020s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host,Rule], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.024s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.008s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.010s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -557,16 +614,16 @@
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.012s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
@@ -583,16 +640,6 @@
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -602,82 +649,82 @@
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.019s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.021s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Rule,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.017s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.027s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Rule,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.036s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Category,Host,Folder,WorkflowScheme,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Template,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Category,Host,Folder,WorkflowScheme,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.038s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Host], [dependenciesToAssert=Template,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.025s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Folder,ImmutableSimpleContentType,Host,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.013s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Folder,Host,WorkflowScheme,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Folder,ImmutableSimpleContentType,Host,WorkflowScheme], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.013s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,ImmutableSimpleContentType,WorkflowScheme,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,ImmutableSimpleContentType,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.015s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,ImmutableSimpleContentType,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.017s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,ImmutableSimpleContentType,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.020s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,ImmutableSimpleContentType,WorkflowScheme], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.017s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,WorkflowScheme,WorkflowScheme,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.012s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,WorkflowScheme,WorkflowScheme,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,WorkflowScheme,ImmutableSimpleContentType,Folder], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.018s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,WorkflowScheme,ImmutableSimpleContentType,Category], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.017s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType,Host,Folder,WorkflowScheme], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.013s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,Folder,WorkflowScheme,ImmutableSimpleContentType,Category], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,ImmutableSimpleContentType,Folder,WorkflowScheme,ImmutableSimpleContentType], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,ImmutableSimpleContentType,Folder,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.015s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,ImmutableSimpleContentType,Folder,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.014s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,ImmutableSimpleContentType,Folder,WorkflowScheme], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.021s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,ImmutableSimpleContentType,WorkflowScheme,Folder,WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.020s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=Host,ImmutableSimpleContentType,WorkflowScheme,Folder,WorkflowScheme], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.030s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType,Host,WorkflowScheme,Folder], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.015s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -687,17 +734,17 @@
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -712,17 +759,17 @@
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.003s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.003s</td>
+<td class="success">0.006s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=ImmutableSimpleContentType], [dependenciesToAssert=ImmutableSimpleContentType], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -737,27 +784,27 @@
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Language], [dependenciesToAssert=Language], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Language], [dependenciesToAssert=Language], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.025s</td>
+<td class="success">0.015s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Language], [dependenciesToAssert=Language], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.026s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Link], [dependenciesToAssert=Folder,Host,Link], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.025s</td>
+<td class="success">0.017s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Link], [dependenciesToAssert=Folder,Link,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.026s</td>
+<td class="success">0.011s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Link], [dependenciesToAssert=Folder,Link,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -776,28 +823,28 @@
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=HTMLPageAsset,Rule], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.027s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=Rule,HTMLPageAsset], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=HTMLPageAsset,Rule], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.022s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=Rule,HTMLPageAsset], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.012s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=HTMLPageAsset,Rule], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=Rule,HTMLPageAsset], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.026s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=Rule,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.009s</td>
+<td class="success">0.031s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=Rule,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.032s</td>
+<td class="success">0.020s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -812,7 +859,12 @@
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=Rule], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">0.024s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=Rule], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -821,68 +873,63 @@
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Rule], [dependenciesToAssert=Rule], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Category,Host,ImmutableSimpleContentType,Host,Folder,Container,ImmutableSimpleContentType,WorkflowScheme,Template], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.018s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Folder,Template,ImmutableSimpleContentType,Container,WorkflowScheme,Host,Category,ImmutableSimpleContentType,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.016s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=ImmutableSimpleContentType,Container,Template,Folder,WorkflowScheme,Host,Container], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Container,Folder,Template,Container,WorkflowScheme,ImmutableSimpleContentType,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.022s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=ImmutableSimpleContentType,Container,Template,Folder,WorkflowScheme,Host,Container], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.042s</td>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Container,Folder,Template,Container,WorkflowScheme,ImmutableSimpleContentType,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.025s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Template,Host], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.031s</td>
+<td class="success">0.017s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Template,Host], filterDescriptor={dependencies=true, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.012s</td>
+<td class="success">0.027s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Template], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Template], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Template], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Template], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
 <td class="success">0.007s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Template], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">addAssetInBundle: [assetsToAddInBundle=Template], [dependenciesToAssert=Template], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=WorkflowScheme], [dependenciesToAssert=WorkflowScheme], filterDescriptor={dependencies=false, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=WorkflowScheme], [dependenciesToAssert=WorkflowScheme], filterDescriptor={dependencies=false, relationships=true, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.004s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">addAssetInBundle: [assetsToAddInBundle=WorkflowScheme], [dependenciesToAssert=WorkflowScheme], filterDescriptor={dependencies=true, relationships=false, forcePush=false, excludeDependencyClasses=[]}</td>
-<td class="success">0.019s</td>
+<td class="success">0.020s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -892,152 +939,152 @@
 </tr>
 <tr>
 <td class="success">addLanguageVariableTestCaseInBundle</td>
-<td class="success">0.040s</td>
+<td class="success">0.032s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@46852063</td>
-<td class="success">0.968s</td>
+<td class="success">excludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@14ff5b92</td>
+<td class="success">1.023s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@533e6dbe</td>
-<td class="success">1.042s</td>
+<td class="success">excludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55</td>
+<td class="success">1.446s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@7e2789</td>
-<td class="success">1.050s</td>
+<td class="success">excludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@2982303d</td>
+<td class="success">1.051s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@86294b8</td>
-<td class="success">1.404s</td>
+<td class="success">excludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@40507767</td>
+<td class="success">0.983s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeDependenciesWhenAssetExcludeByFilter: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@46852063</td>
-<td class="success">0.819s</td>
+<td class="success">excludeDependenciesWhenAssetExcludeByFilter: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@14ff5b92</td>
+<td class="success">0.920s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeDependenciesWhenAssetExcludeByFilter: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@533e6dbe</td>
-<td class="success">1.063s</td>
+<td class="success">excludeDependenciesWhenAssetExcludeByFilter: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55</td>
+<td class="success">0.715s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeDependenciesWhenAssetExcludeByFilter: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@7e2789</td>
-<td class="success">1.195s</td>
+<td class="success">excludeDependenciesWhenAssetExcludeByFilter: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@2982303d</td>
+<td class="success">1.081s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeDependenciesWhenAssetExcludeByFilter: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@86294b8</td>
-<td class="success">0.647s</td>
+<td class="success">excludeDependenciesWhenAssetExcludeByFilter: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@40507767</td>
+<td class="success">1.108s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeHTMLDependenciesByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@46852063</td>
-<td class="success">1.153s</td>
+<td class="success">excludeHTMLDependenciesByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@14ff5b92</td>
+<td class="success">1.088s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeHTMLDependenciesByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@533e6dbe</td>
-<td class="success">0.871s</td>
+<td class="success">excludeHTMLDependenciesByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55</td>
+<td class="success">1.489s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeHTMLDependenciesByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@7e2789</td>
-<td class="success">1.054s</td>
+<td class="success">excludeHTMLDependenciesByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@2982303d</td>
+<td class="success">1.064s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">excludeHTMLDependenciesByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@86294b8</td>
-<td class="success">0.541s</td>
+<td class="success">excludeHTMLDependenciesByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@40507767</td>
+<td class="success">0.962s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@46852063</td>
+<td class="success">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@14ff5b92</td>
+<td class="success">1.973s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55</td>
+<td class="failures">1.202s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@2982303d</td>
+<td class="success">1.289s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@40507767</td>
+<td class="success">1.104s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">includeDependenciesEvenWhenAssetExcludeByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@14ff5b92</td>
+<td class="success">0.920s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">includeDependenciesEvenWhenAssetExcludeByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55</td>
+<td class="success">1.399s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">includeDependenciesEvenWhenAssetExcludeByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@2982303d</td>
+<td class="success">0.996s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">includeDependenciesEvenWhenAssetExcludeByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@40507767</td>
+<td class="success">0.996s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">includeHTMLDependenciesNoMatterModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@14ff5b92</td>
+<td class="success">0.906s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">includeHTMLDependenciesNoMatterModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55</td>
+<td class="success">0.801s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">includeHTMLDependenciesNoMatterModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@2982303d</td>
 <td class="success">1.015s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@533e6dbe</td>
-<td class="success">1.025s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@7e2789</td>
-<td class="success">1.958s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeContenletChildWithSeveralVersionAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@86294b8</td>
-<td class="success">1.567s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeDependenciesEvenWhenAssetExcludeByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@46852063</td>
-<td class="success">0.936s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeDependenciesEvenWhenAssetExcludeByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@533e6dbe</td>
-<td class="success">1.040s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeDependenciesEvenWhenAssetExcludeByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@7e2789</td>
-<td class="success">0.969s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeDependenciesEvenWhenAssetExcludeByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@86294b8</td>
-<td class="success">1.279s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeHTMLDependenciesNoMatterModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@46852063</td>
-<td class="success">1.171s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeHTMLDependenciesNoMatterModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@533e6dbe</td>
-<td class="success">0.823s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeHTMLDependenciesNoMatterModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@7e2789</td>
-<td class="success">0.984s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">includeHTMLDependenciesNoMatterModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@86294b8</td>
-<td class="success">0.717s</td>
+<td class="success">includeHTMLDependenciesNoMatterModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@40507767</td>
+<td class="success">0.994s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">includeTemplateUsingTwoEnvironment</td>
-<td class="failures">1.018s</td>
+<td class="failures">1.012s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="success">notExcludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@46852063</td>
-<td class="success">1.007s</td>
+<td class="success">notExcludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@14ff5b92</td>
+<td class="success">0.984s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">notExcludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@533e6dbe</td>
-<td class="success">1.019s</td>
+<td class="success">notExcludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@20861d55</td>
+<td class="success">1.393s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">notExcludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@7e2789</td>
-<td class="success">1.022s</td>
+<td class="success">notExcludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@2982303d</td>
+<td class="success">1.197s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">notExcludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@86294b8</td>
-<td class="success">1.398s</td>
+<td class="success">notExcludeContenletChildAssetByModDate: com.dotcms.enterprise.publishing.remote.bundler.DependencyBundlerTest$ModDateTestData@40507767</td>
+<td class="success">0.877s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -1050,7 +1097,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jul 22, 2021, 3:47:44 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Jul 22, 2021, 3:48:12 PM</p>
 </div>
 </div>
 </body>
