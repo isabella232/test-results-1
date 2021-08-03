@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.054s</div>
+<div class="counter">0.162s</div>
 <p>duration</p>
 </div>
 </td>
@@ -73,23 +73,33 @@
 <a name="Test_Copy_Content_Expect_Success"></a>
 <h3 class="failures">Test_Copy_Content_Expect_Success</h3>
 <span class="code">
-<pre>com.dotmarketing.exception.DotHibernateException: Unable to close Hibernate Session 
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1158)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:62)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4335)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8452)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody138(ESContentletAPIImpl.java:4246)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure139.run(ESContentletAPIImpl.java:1)
+<pre>com.dotmarketing.portlets.workflows.business.DotWorkflowException: Table 'dotcms.Cannot_update_for_this_path_does_not_exist_for_the_given_host' doesn't exist{
+  &quot;SQL&quot;: [&quot;UPDATE identifier set parent_path=?, asset_name=?, host_inode=?, asset_type=?, syspublish_date=?, sysexpire_date=?, owner=?, create_date=?, asset_subtype=? where id=?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: [
+    &quot;nullnull&quot;,
+    &quot;content.1db4e76f-849b-47b7-b2ac-eec445ef1b3f&quot;,
+    &quot;cf6a0d0921f6a8b87f95749558749958&quot;,
+    &quot;contentlet&quot;,
+    null,
+    null,
+    &quot;system&quot;,
+    &quot;2021-08-03 23:24:32.0&quot;,
+    &quot;DotCopyActionletTest1628033071286&quot;,
+    &quot;6834a328723ac7ce0a8039096fde84dc&quot;
+  ]
+}
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin_aroundBody168(WorkflowAPIImpl.java:2385)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure169.run(WorkflowAPIImpl.java:1)
 	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
 	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4241)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
-	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionletTest.saveCustomTestContentType(MoveContentActionletTest.java:144)
-	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionletTest.Test_Copy_Content_Expect_Success(MoveContentActionletTest.java:176)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin(WorkflowAPIImpl.java:2336)
+	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionletTest.submitAction(MoveContentActionletTest.java:163)
+	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionletTest.Test_Copy_Content_Expect_Success(MoveContentActionletTest.java:180)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -152,32 +162,81 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: com.dotmarketing.business.DotStateException: An error occurred when mapping properties of Contentlet with ID '277eda0f32de4e7859ee5b3e6f87a6d3': Content Type with ID 'd3722bd75584ab6c2b21240959d067c8' was not found via API.
-	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:56)
-	at com.dotmarketing.db.HibernateUtil.finalizeCommitListeners(HibernateUtil.java:1068)
-	at com.dotmarketing.db.HibernateUtil.commitTransaction(HibernateUtil.java:1152)
-	... 77 more
-Caused by: com.dotcms.content.business.DotMappingException: An error occurred when mapping properties of Contentlet with ID '277eda0f32de4e7859ee5b3e6f87a6d3': Content Type with ID 'd3722bd75584ab6c2b21240959d067c8' was not found via API.
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:417)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl$AjcClosure1.run(ESMappingAPIImpl.java:1)
+Caused by: com.dotmarketing.portlets.workflows.model.WorkflowActionFailureException: Table 'dotcms.Cannot_update_for_this_path_does_not_exist_for_the_given_host' doesn't exist{
+  &quot;SQL&quot;: [&quot;UPDATE identifier set parent_path=?, asset_name=?, host_inode=?, asset_type=?, syspublish_date=?, sysexpire_date=?, owner=?, create_date=?, asset_subtype=? where id=?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: [
+    &quot;nullnull&quot;,
+    &quot;content.1db4e76f-849b-47b7-b2ac-eec445ef1b3f&quot;,
+    &quot;cf6a0d0921f6a8b87f95749558749958&quot;,
+    &quot;contentlet&quot;,
+    null,
+    null,
+    &quot;system&quot;,
+    &quot;2021-08-03 23:24:32.0&quot;,
+    &quot;DotCopyActionletTest1628033071286&quot;,
+    &quot;6834a328723ac7ce0a8039096fde84dc&quot;
+  ]
+}
+	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionlet.lambda$1(MoveContentActionlet.java:79)
+	at io.vavr.control.Try.getOrElseThrow(Try.java:748)
+	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionlet.executeAction(MoveContentActionlet.java:79)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin_aroundBody168(WorkflowAPIImpl.java:2356)
+	... 71 more
+Caused by: com.dotmarketing.exception.DotDataException: Table 'dotcms.Cannot_update_for_this_path_does_not_exist_for_the_given_host' doesn't exist{
+  &quot;SQL&quot;: [&quot;UPDATE identifier set parent_path=?, asset_name=?, host_inode=?, asset_type=?, syspublish_date=?, sysexpire_date=?, owner=?, create_date=?, asset_subtype=? where id=?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: [
+    &quot;nullnull&quot;,
+    &quot;content.1db4e76f-849b-47b7-b2ac-eec445ef1b3f&quot;,
+    &quot;cf6a0d0921f6a8b87f95749558749958&quot;,
+    &quot;contentlet&quot;,
+    null,
+    null,
+    &quot;system&quot;,
+    &quot;2021-08-03 23:24:32.0&quot;,
+    &quot;DotCopyActionletTest1628033071286&quot;,
+    &quot;6834a328723ac7ce0a8039096fde84dc&quot;
+  ]
+}
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
+	at com.dotmarketing.business.IdentifierFactoryImpl.saveIdentifier(IdentifierFactoryImpl.java:504)
+	at com.dotmarketing.business.IdentifierAPIImpl.save_aroundBody14(IdentifierAPIImpl.java:125)
+	at com.dotmarketing.business.IdentifierAPIImpl$AjcClosure15.run(IdentifierAPIImpl.java:1)
 	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
 	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap(ESMappingAPIImpl.java:248)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addBulkRequest(ContentletIndexAPIImpl.java:770)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.appendBulkRequest(ContentletIndexAPIImpl.java:733)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.createBulkRequest(ContentletIndexAPIImpl.java:614)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.indexContentListNow(ContentletIndexAPIImpl.java:557)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.addContentToIndex(ContentletIndexAPIImpl.java:551)
-	at com.dotcms.content.elasticsearch.business.ContentletIndexAPIImpl.lambda$3(ContentletIndexAPIImpl.java:510)
-	at com.dotmarketing.db.HibernateUtil$DotSyncRunnable.run(HibernateUtil.java:929)
-	at com.dotmarketing.db.DotRunnableThread.internalRunner(DotRunnableThread.java:99)
-	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:158)
-	at com.dotmarketing.db.DotRunnableThread.run(DotRunnableThread.java:53)
-	... 79 more
-Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'd3722bd75584ab6c2b21240959d067c8' was not found via API.
-	at com.dotcms.content.elasticsearch.business.ESMappingAPIImpl.toMap_aroundBody0(ESMappingAPIImpl.java:275)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.business.IdentifierAPIImpl.save(IdentifierAPIImpl.java:124)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.move_aroundBody8(ESContentletAPIImpl.java:488)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure9.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:59)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:23)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.move(ESContentletAPIImpl.java:450)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.move(ESContentletAPIImpl.java:437)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.move(ESContentletAPIImpl.java:381)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.move(ContentletAPIInterceptor.java:657)
+	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionlet.lambda$0(MoveContentActionlet.java:78)
+	at io.vavr.control.Try.of(Try.java:75)
+	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionlet.executeAction(MoveContentActionlet.java:78)
+	... 72 more
+Caused by: java.sql.SQLSyntaxErrorException: Table 'dotcms.Cannot_update_for_this_path_does_not_exist_for_the_given_host' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:619)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
 	... 95 more
 </pre>
 </span>
@@ -195,7 +254,7 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'd3
 </thead>
 <tr>
 <td class="failures">Test_Copy_Content_Expect_Success</td>
-<td class="failures">0.054s</td>
+<td class="failures">0.162s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -208,7 +267,7 @@ Caused by: com.dotmarketing.exception.DotDataException: Content Type with ID 'd3
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Aug 3, 2021, 4:47:50 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Aug 3, 2021, 11:24:45 PM</p>
 </div>
 </div>
 </body>
