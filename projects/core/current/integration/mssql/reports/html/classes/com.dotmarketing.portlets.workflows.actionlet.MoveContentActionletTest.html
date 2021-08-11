@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.528s</div>
+<div class="counter">0.556s</div>
 <p>duration</p>
 </div>
 </td>
@@ -73,12 +73,35 @@
 <a name="Test_Copy_Content_Expect_Success"></a>
 <h3 class="failures">Test_Copy_Content_Expect_Success</h3>
 <span class="code">
-<pre>java.lang.AssertionError: Values should be different. Actual: /content.cf75c857-3519-47d5-8868-8eb53d837305
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failEquals(Assert.java:185)
-	at org.junit.Assert.assertNotEquals(Assert.java:161)
-	at org.junit.Assert.assertNotEquals(Assert.java:175)
-	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionletTest.Test_Copy_Content_Expect_Success(MoveContentActionletTest.java:186)
+<pre>com.dotmarketing.portlets.workflows.business.DotWorkflowException: Violation of UNIQUE KEY constraint 'unique_workflow_task'. Cannot insert duplicate key in object 'dbo.workflow_task'. The duplicate key value is (dbb5fe58dfebd212abb6c0ac1a7cc0e6, 1).{
+  &quot;SQL&quot;: [&quot;INSERT INTO workflow_task (id, creation_date, mod_date, due_date, created_by, assigned_to, belongs_to, title, description, status, webasset, language_id) values (?,?,?,?,?,?,?,?,?,?,?,?)&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: [
+    &quot;59fecd35-b8e0-4bf9-a92e-76065a45131d&quot;,
+    &quot;2021-08-11 17:37:53.287&quot;,
+    &quot;2021-08-11 17:37:53.291&quot;,
+    null,
+    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
+    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
+    null,
+    &quot;Test Save&quot;,
+    null,
+    &quot;a93af315-c31b-4a0e-b8eb-ce24e2221176&quot;,
+    &quot;dbb5fe58dfebd212abb6c0ac1a7cc0e6&quot;,
+    1
+  ]
+}
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin_aroundBody168(WorkflowAPIImpl.java:2385)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure169.run(WorkflowAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin(WorkflowAPIImpl.java:2336)
+	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionletTest.submitAction(MoveContentActionletTest.java:163)
+	at com.dotmarketing.portlets.workflows.actionlet.MoveContentActionletTest.Test_Copy_Content_Expect_Success(MoveContentActionletTest.java:180)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -141,6 +164,56 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.dotmarketing.exception.DotDataException: Violation of UNIQUE KEY constraint 'unique_workflow_task'. Cannot insert duplicate key in object 'dbo.workflow_task'. The duplicate key value is (dbb5fe58dfebd212abb6c0ac1a7cc0e6, 1).{
+  &quot;SQL&quot;: [&quot;INSERT INTO workflow_task (id, creation_date, mod_date, due_date, created_by, assigned_to, belongs_to, title, description, status, webasset, language_id) values (?,?,?,?,?,?,?,?,?,?,?,?)&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: [
+    &quot;59fecd35-b8e0-4bf9-a92e-76065a45131d&quot;,
+    &quot;2021-08-11 17:37:53.287&quot;,
+    &quot;2021-08-11 17:37:53.291&quot;,
+    null,
+    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
+    &quot;2adccac3-a56b-4078-be40-94e343f20712&quot;,
+    null,
+    &quot;Test Save&quot;,
+    null,
+    &quot;a93af315-c31b-4a0e-b8eb-ce24e2221176&quot;,
+    &quot;dbb5fe58dfebd212abb6c0ac1a7cc0e6&quot;,
+    1
+  ]
+}
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
+	at com.dotmarketing.portlets.workflows.business.WorkflowFactoryImpl.saveWorkflowTask(WorkflowFactoryImpl.java:2230)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTaskWithoutIndexing(WorkflowAPIImpl.java:2467)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTaskInternal(WorkflowAPIImpl.java:1398)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTaskWithoutIndexing_aroundBody170(WorkflowAPIImpl.java:2476)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure171.run(WorkflowAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTaskWithoutIndexing(WorkflowAPIImpl.java:2474)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.saveWorkflowTask(WorkflowAPIImpl.java:2441)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.fireWorkflowPostCheckin_aroundBody168(WorkflowAPIImpl.java:2368)
+	... 71 more
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Violation of UNIQUE KEY constraint 'unique_workflow_task'. Cannot insert duplicate key in object 'dbo.workflow_task'. The duplicate key value is (dbb5fe58dfebd212abb6c0ac1a7cc0e6, 1).
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:594)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:524)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:505)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:619)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
+	... 84 more
 </pre>
 </span>
 </div>
@@ -157,7 +230,7 @@
 </thead>
 <tr>
 <td class="failures">Test_Copy_Content_Expect_Success</td>
-<td class="failures">0.528s</td>
+<td class="failures">0.556s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -170,7 +243,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Aug 11, 2021, 5:20:53 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Aug 11, 2021, 5:38:11 PM</p>
 </div>
 </div>
 </body>
