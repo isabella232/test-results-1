@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - Class com.dotcms.publisher.util.DependencyManagerTest</title>
+<title>Test results - Class com.dotcms.publishing.manifest.ManifestReaderFactoryTest</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>Class com.dotcms.publisher.util.DependencyManagerTest</h1>
+<h1>Class com.dotcms.publishing.manifest.ManifestReaderFactoryTest</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/com.dotcms.publisher.util.html">com.dotcms.publisher.util</a> &gt; DependencyManagerTest</div>
+<a href="../packages/com.dotcms.publishing.manifest.html">com.dotcms.publishing.manifest</a> &gt; ManifestReaderFactoryTest</div>
 <div id="summary">
 <table>
 <tr>
@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">6</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">20.779s</div>
+<div class="counter">0.113s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">83%</div>
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -66,17 +66,26 @@
 <li>
 <a href="#tab1">Tests</a>
 </li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="test_Page_with_FileTemplateDesign_as_Dependencies"></a>
-<h3 class="failures">test_Page_with_FileTemplateDesign_as_Dependencies</h3>
+<a name="createCSVManifestReader"></a>
+<h3 class="failures">createCSVManifestReader</h3>
 <span class="code">
-<pre>java.lang.AssertionError: fileAsset: 3f90ca13bdc76c6181a476d344d41448Contents: [e894f9d8ee0219e87bec7107bb54aa89, 0b1e51a9e410a93aa71badb1fa016e36, 1c5c50aec212749cb533aaf6a950cc76, d642e9f3b05002c460294f372385df6b]
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.assertTrue(Assert.java:41)
-	at com.dotcms.publisher.util.DependencyManagerTest.test_Page_with_FileTemplateDesign_as_Dependencies(DependencyManagerTest.java:414)
+<pre>com.dotcms.publishing.DotPublishingException: com.dotcms.enterprise.publishing.remote.bundler.HostBundler : generate()null: Unable to pull content
+	at com.dotcms.publishing.PublisherAPIImpl.publish_aroundBody0(PublisherAPIImpl.java:154)
+	at com.dotcms.publishing.PublisherAPIImpl$AjcClosure1.run(PublisherAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.publishing.PublisherAPIImpl.publish(PublisherAPIImpl.java:47)
+	at com.dotcms.publishing.PublisherAPIImpl.publish(PublisherAPIImpl.java:42)
+	at com.dotcms.publishing.manifest.ManifestReaderFactoryTest.createCSVManifestReader(ManifestReaderFactoryTest.java:62)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -136,6 +145,23 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.dotcms.publishing.DotBundleException: com.dotcms.enterprise.publishing.remote.bundler.HostBundler : generate()null: Unable to pull content
+	at com.dotcms.enterprise.publishing.remote.bundler.HostBundler.generate(SourceFile:192)
+	at com.dotcms.publishing.PublisherAPIImpl.publish_aroundBody0(PublisherAPIImpl.java:118)
+	... 67 more
+Caused by: java.lang.NullPointerException
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.findContentRelationships(ESContentletAPIImpl.java:7141)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.findContentRelationships_aroundBody208(ESContentletAPIImpl.java:8268)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure209.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.findContentRelationships(ESContentletAPIImpl.java:8259)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.findContentRelationships(ContentletAPIInterceptor.java:2545)
+	at com.dotcms.enterprise.publishing.remote.bundler.HostBundler.a(SourceFile:211)
+	at com.dotcms.enterprise.publishing.remote.bundler.HostBundler.generate(SourceFile:173)
+	... 68 more
 </pre>
 </span>
 </div>
@@ -151,36 +177,18 @@
 </tr>
 </thead>
 <tr>
-<td class="success">test_Page_with_FileContainer_as_Dependencies</td>
-<td class="success">2.304s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">test_Page_with_FileTemplateAdvanced_as_Dependencies</td>
-<td class="success">2.790s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="failures">test_Page_with_FileTemplateDesign_as_Dependencies</td>
-<td class="failures">2.300s</td>
+<td class="failures">createCSVManifestReader</td>
+<td class="failures">0.113s</td>
 <td class="failures">failed</td>
 </tr>
-<tr>
-<td class="success">test_Sending_Page_as_dependencies_with_PUSH_PUBLISHING_PUSH_ALL_FOLDER_PAGES</td>
-<td class="success">5.303s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">test_dependencyManager_shouldIncludeRelationships</td>
-<td class="success">4.533s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">test_dependencyManager_shouldIncludeSelfRelationships</td>
-<td class="success">3.549s</td>
-<td class="success">passed</td>
-</tr>
 </table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>
+</pre>
+</span>
 </div>
 </div>
 <div id="footer">
