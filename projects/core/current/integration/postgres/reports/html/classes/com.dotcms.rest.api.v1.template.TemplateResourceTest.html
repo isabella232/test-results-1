@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">32.660s</div>
+<div class="counter">32.796s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">96%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,10 +61,131 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="test_listTemplate_filterByHost"></a>
+<h3 class="failures">test_listTemplate_filterByHost</h3>
+<span class="code">
+<pre>com.dotmarketing.exception.DotDataException: ERROR: cached plan must not change result type{
+  &quot;SQL&quot;: [&quot;select * from identifier where id = ?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: &quot;83cf29ef2446464e54d7d307b4e1b69d&quot;
+}
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
+	at com.dotmarketing.common.db.DotConnect.loadObjectResults(DotConnect.java:925)
+	at com.dotmarketing.business.IdentifierFactoryImpl.loadFromDb(IdentifierFactoryImpl.java:208)
+	at com.dotmarketing.business.IdentifierFactoryImpl.find(IdentifierFactoryImpl.java:462)
+	at com.dotmarketing.business.IdentifierFactoryImpl.find(IdentifierFactoryImpl.java:260)
+	at com.dotmarketing.business.IdentifierAPIImpl.find_aroundBody6(IdentifierAPIImpl.java:92)
+	at com.dotmarketing.business.IdentifierAPIImpl$AjcClosure7.run(IdentifierAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
+	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
+	at com.dotmarketing.business.IdentifierAPIImpl.find(IdentifierAPIImpl.java:86)
+	at com.dotmarketing.business.VersionableAPIImpl.setWorking_aroundBody30(VersionableAPIImpl.java:576)
+	at com.dotmarketing.business.VersionableAPIImpl$AjcClosure31.run(VersionableAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.business.VersionableAPIImpl.setWorking(VersionableAPIImpl.java:571)
+	at com.dotmarketing.portlets.templates.business.TemplateAPIImpl.saveTemplate_aroundBody26(TemplateAPIImpl.java:593)
+	at com.dotmarketing.portlets.templates.business.TemplateAPIImpl$AjcClosure27.run(TemplateAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.templates.business.TemplateAPIImpl.saveTemplate(TemplateAPIImpl.java:539)
+	at com.dotcms.rest.api.v1.template.TemplateResourceTest.test_listTemplate_filterByHost(TemplateResourceTest.java:984)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.postgresql.util.PSQLException: ERROR: cached plan must not change result type
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2497)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2233)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:446)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:370)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:149)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:629)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
+	... 87 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -76,157 +197,157 @@
 </thead>
 <tr>
 <td class="success">test_archiveTemplate_LimitedUserWithoutEditPermissions_failedToArchived</td>
-<td class="success">0.958s</td>
+<td class="success">1.021s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_archiveTemplate_templateIsAlreadyArchived_success</td>
-<td class="success">0.997s</td>
+<td class="success">1.280s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_archiveTemplate_templateIsLive_failedToArchive</td>
-<td class="success">1.047s</td>
+<td class="success">0.987s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_archiveTemplate_templateIsWorking_success</td>
-<td class="success">0.875s</td>
+<td class="success">0.831s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_archiveTemplates_OneTemplateIdDoesNotExist_OneTemplateIdExists</td>
-<td class="success">0.931s</td>
+<td class="success">0.771s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_copyTemplate_IdDoesNotBelongToAnyTemplate_failedToCopy</td>
-<td class="success">0.030s</td>
+<td class="success">0.050s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_copyTemplate_LimitedUserWithoutReadPermissions_failedToCopy</td>
-<td class="success">1.058s</td>
+<td class="success">0.992s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_copyTemplate_success</td>
-<td class="success">1.032s</td>
+<td class="success">1.064s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_deleteTemplate_LimitedUserWithoutEditPermissions_failedToDelete</td>
-<td class="success">0.934s</td>
+<td class="success">0.996s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_deleteTemplate_pageStillReferencingTemplate_failedToDelete</td>
-<td class="success">1.125s</td>
+<td class="success">1.429s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_deleteTemplate_templateIsArchived_success</td>
-<td class="success">1.122s</td>
+<td class="success">1.000s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_deleteTemplate_templateIsLive_failedToDelete</td>
-<td class="success">0.981s</td>
+<td class="success">0.771s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_deleteTemplates_OneTemplateIdDoesNotExist_OneTemplateIdExists</td>
-<td class="success">0.941s</td>
+<td class="success">0.851s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">test_listTemplate_filterByHost</td>
-<td class="success">2.097s</td>
-<td class="success">passed</td>
+<td class="failures">test_listTemplate_filterByHost</td>
+<td class="failures">1.970s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">test_listTemplate_filterByHost_usingCurrentHost</td>
-<td class="success">2.069s</td>
+<td class="success">2.060s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_listTemplate_limitedUserNoREADPermissionsOverOneTemplate</td>
-<td class="success">1.410s</td>
+<td class="success">1.511s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_publishTemplate_LimitedUserWithoutPublishPermissions_failedToPublish</td>
-<td class="success">1.011s</td>
+<td class="success">1.024s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_publishTemplate_OneTemplateIdDoesNotExist_OneTemplateIdExists</td>
-<td class="success">0.815s</td>
+<td class="success">0.562s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_publishTemplate_success</td>
-<td class="success">1.011s</td>
+<td class="success">0.963s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_publishTemplate_templateIsAlreadyPublished_success</td>
-<td class="success">1.004s</td>
+<td class="success">1.057s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_publishTemplate_templateIsArchived_failedToPublish</td>
-<td class="success">0.926s</td>
+<td class="success">1.223s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_unarchiveTemplate_LimitedUserWithoutEditPermissions_failedToUnarchive</td>
-<td class="success">1.142s</td>
+<td class="success">1.069s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_unarchiveTemplate_templateIsArchived_success</td>
-<td class="success">1.136s</td>
+<td class="success">1.100s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_unarchiveTemplate_templateIsLive_failedToUnArchived</td>
-<td class="success">0.967s</td>
+<td class="success">0.973s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_unarchiveTemplate_templateIsWorking_failedToUnarchive</td>
-<td class="success">0.855s</td>
+<td class="success">0.932s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_unarchiveTemplates_OneTemplateIdDoesNotExist_OneTemplateIdExists</td>
-<td class="success">1.044s</td>
+<td class="success">1.066s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_unpublishTemplate_LimitedUserWithoutEditPermissions_failedToPublish</td>
-<td class="success">0.968s</td>
+<td class="success">0.863s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_unpublishTemplate_OneTemplateIdDoesNotExist_OneTemplateIdExists</td>
-<td class="success">1.042s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">test_unpublishTemplate_success</td>
-<td class="success">1.011s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">test_unpublishTemplate_templateIsAlreadyUnpublished_success</td>
 <td class="success">1.134s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
+<td class="success">test_unpublishTemplate_success</td>
+<td class="success">1.217s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">test_unpublishTemplate_templateIsAlreadyUnpublished_success</td>
+<td class="success">1.028s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
 <td class="success">test_unpublishTemplate_templateIsArchived_failedToUnpublish</td>
-<td class="success">0.987s</td>
+<td class="success">1.001s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -239,7 +360,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Oct 8, 2021, 7:32:34 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Oct 12, 2021, 5:13:26 PM</p>
 </div>
 </div>
 </body>
