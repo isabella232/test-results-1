@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">46.719s</div>
+<div class="counter">57.736s</div>
 <p>duration</p>
 </div>
 </td>
@@ -70,19 +70,19 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="makeDefault"></a>
-<h3 class="failures">makeDefault</h3>
+<a name="testDeleteHost"></a>
+<h3 class="failures">testDeleteHost</h3>
 <span class="code">
-<pre>com.dotmarketing.business.DotStateException: No version info. Call setWorking first 8a7d5e23-da1e-420a-b4f0-471e7da8ea2d
-	at com.dotmarketing.business.VersionableAPIImpl.isLive_aroundBody14(VersionableAPIImpl.java:293)
-	at com.dotmarketing.business.VersionableAPIImpl$AjcClosure15.run(VersionableAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotmarketing.business.VersionableAPIImpl.isLive(VersionableAPIImpl.java:277)
-	at com.dotmarketing.portlets.contentlet.model.Contentlet.isLive(Contentlet.java:854)
-	at com.dotmarketing.portlets.contentlet.business.HostAPITest.makeDefault(HostAPITest.java:227)
+<pre>java.util.concurrent.ExecutionException: com.dotmarketing.exception.DotRuntimeException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.{
+  &quot;SQL&quot;: [&quot;delete from workflow_task where webasset = ?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: &quot;0308837923951a0059465ec88e316bbc&quot;
+}
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at com.dotmarketing.portlets.contentlet.business.HostAPITest.deleteHost(HostAPITest.java:545)
+	at com.dotmarketing.portlets.contentlet.business.HostAPITest.testDeleteHost(HostAPITest.java:213)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -144,6 +144,90 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: com.dotmarketing.exception.DotRuntimeException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.{
+  &quot;SQL&quot;: [&quot;delete from workflow_task where webasset = ?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: &quot;0308837923951a0059465ec88e316bbc&quot;
+}
+	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl$1DeleteHostThread.call_aroundBody0(HostAPIImpl.java:674)
+	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl$1DeleteHostThread$AjcClosure1.run(HostAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl$1DeleteHostThread.call(HostAPIImpl.java:649)
+	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl$1DeleteHostThread.call(HostAPIImpl.java:1)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	... 1 more
+Caused by: com.dotmarketing.exception.DotRuntimeException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.{
+  &quot;SQL&quot;: [&quot;delete from workflow_task where webasset = ?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: &quot;0308837923951a0059465ec88e316bbc&quot;
+}
+	at com.dotmarketing.db.LocalTransaction.wrapNoException(LocalTransaction.java:244)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.deleteByHost_aroundBody78(ESContentletAPIImpl.java:2095)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure79.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.deleteByHost(ESContentletAPIImpl.java:2079)
+	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.deleteByHost(ContentletAPIInterceptor.java:506)
+	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl$1DeleteHostThread.deleteHost(HostAPIImpl.java:714)
+	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl$1DeleteHostThread.call_aroundBody0(HostAPIImpl.java:652)
+	... 12 more
+Caused by: com.dotmarketing.exception.DotDataException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.{
+  &quot;SQL&quot;: [&quot;delete from workflow_task where webasset = ?&quot;],
+  &quot;maxRows&quot;: [-1],
+  &quot;offest&quot;: [0],
+  &quot;params&quot;: &quot;0308837923951a0059465ec88e316bbc&quot;
+}
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
+	at com.dotmarketing.portlets.workflows.business.WorkflowFactoryImpl.deleteWorkflowTaskByContentletIdAnyLanguage(WorkflowFactoryImpl.java:545)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.deleteWorkflowTaskByContentletIdAnyLanguage_aroundBody88(WorkflowAPIImpl.java:1287)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl$AjcClosure89.run(WorkflowAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.workflows.business.WorkflowAPIImpl.deleteWorkflowTaskByContentletIdAnyLanguage(WorkflowAPIImpl.java:1278)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.destroyContentlets(ESContentletAPIImpl.java:2377)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.internalDestroy(ESContentletAPIImpl.java:2282)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.destroy_aroundBody82(ESContentletAPIImpl.java:2248)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure83.run(ESContentletAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.destroy(ESContentletAPIImpl.java:2221)
+	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.lambda$35(ESContentletAPIImpl.java:2101)
+	at com.dotmarketing.db.LocalTransaction.wrap(LocalTransaction.java:218)
+	at com.dotmarketing.db.LocalTransaction.wrapNoException(LocalTransaction.java:241)
+	... 23 more
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Snapshot isolation transaction aborted due to update conflict. You cannot use snapshot isolation to access table 'dbo.workflow_history' directly or indirectly in database 'dotcms' to update, delete, or insert the row that has been modified or deleted by another transaction. Retry the transaction or change the isolation level for the update/delete statement.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDatabaseError(SQLServerException.java:262)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.getNextResult(SQLServerStatement.java:1624)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.doExecutePreparedStatement(SQLServerPreparedStatement.java:594)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement$PrepStmtExecCmd.doExecute(SQLServerPreparedStatement.java:524)
+	at com.microsoft.sqlserver.jdbc.TDSCommand.execute(IOBuffer.java:7194)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.executeCommand(SQLServerConnection.java:2979)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeCommand(SQLServerStatement.java:248)
+	at com.microsoft.sqlserver.jdbc.SQLServerStatement.executeStatement(SQLServerStatement.java:223)
+	at com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement.execute(SQLServerPreparedStatement.java:505)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.execute(ProxyPreparedStatement.java:44)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.execute(HikariProxyPreparedStatement.java)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:619)
+	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
+	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
+	... 45 more
 </pre>
 </span>
 </div>
@@ -160,87 +244,87 @@
 </thead>
 <tr>
 <td class="success">Test_Host_With_Multiple_Lang_Versions_Return_Default_Lang_OtherWise_First_Occurrence</td>
-<td class="success">0.994s</td>
+<td class="success">1.372s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">Test_findAllCache</td>
-<td class="success">2.195s</td>
+<td class="success">2.262s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">delete_host_with_content_type</td>
-<td class="success">1.092s</td>
+<td class="success">1.510s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">delete_host_with_default_type_content_type</td>
-<td class="success">2.999s</td>
+<td class="success">2.937s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">delete_host_with_system_content_type</td>
-<td class="success">1.624s</td>
+<td class="success">1.314s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">givenSearch_whenNewHost_thenFindsNewHost</td>
-<td class="success">4.218s</td>
+<td class="success">2.902s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">makeDefault</td>
-<td class="failures">0.004s</td>
-<td class="failures">failed</td>
+<td class="success">makeDefault</td>
+<td class="success">8.972s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldReturnExistingHost</td>
-<td class="success">1.760s</td>
+<td class="success">1.791s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldReturnHostByAlias</td>
-<td class="success">2.781s</td>
+<td class="success">4.065s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldReturnHostWhenRespectFrontendRolesIsTrue</td>
-<td class="success">1.470s</td>
+<td class="success">1.463s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldReturnNull</td>
-<td class="success">0.025s</td>
+<td class="success">0.009s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldStoreDefaultHostIntoCache</td>
-<td class="success">0.012s</td>
+<td class="success">0.014s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">shouldThrowDotSecurityExceptionWhenUserNotHavePermission</td>
-<td class="success">1.033s</td>
+<td class="success">0.654s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">testDeleteHost</td>
-<td class="success">17.455s</td>
-<td class="success">passed</td>
+<td class="failures">testDeleteHost</td>
+<td class="failures">20.074s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">testDeleteHostCleanUpTemplates</td>
-<td class="success">2.643s</td>
+<td class="success">2.076s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenBothAliasStartByProd</td>
-<td class="success">5.120s</td>
+<td class="success">4.129s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenHostHasMultipleAliasshouldReturnHostByAlias</td>
-<td class="success">1.294s</td>
+<td class="success">2.192s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -253,7 +337,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Oct 12, 2021, 8:30:53 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Oct 13, 2021, 5:55:14 PM</p>
 </div>
 </div>
 </body>
