@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.068s</div>
+<div class="counter">1.799s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">75%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,179 +61,10 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
-</li>
-<li>
-<a href="#tab1">Tests</a>
+<a href="#tab0">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="test_executeFix"></a>
-<h3 class="failures">test_executeFix</h3>
-<span class="code">
-<pre>com.dotmarketing.exception.DotRuntimeException: Unable to populate contentlet from table columns for ID='7ed729fab20c8c76c2ac2a4afec5f475', Inode='e17cc653-e449-4b06-ae9e-218e97e532f3', Content-Type '855a2d72-f2f3-4169-8b04-ac5157c4380c': ERROR: cached plan must not change result type{
-  &quot;SQL&quot;: [&quot;select * from identifier where id = ?&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: &quot;7ed729fab20c8c76c2ac2a4afec5f475&quot;
-}
-	at com.dotcms.exception.ExceptionUtil.bubbleUpException(ExceptionUtil.java:165)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody148(ESContentletAPIImpl.java:4377)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure149.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4328)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8459)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody138(ESContentletAPIImpl.java:4239)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure139.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4234)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
-	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl.save_aroundBody16(HostAPIImpl.java:450)
-	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl$AjcClosure17.run(HostAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.portlets.contentlet.business.HostAPIImpl.save(HostAPIImpl.java:425)
-	at com.dotcms.integritycheckers.HostIntegrityCheckerTest.addHost(HostIntegrityCheckerTest.java:207)
-	at com.dotcms.integritycheckers.HostIntegrityCheckerTest.test_executeFix(HostIntegrityCheckerTest.java:121)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
-	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
-	at org.junit.runners.Suite.runChild(Suite.java:128)
-	at org.junit.runners.Suite.runChild(Suite.java:27)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: com.dotmarketing.exception.DotRuntimeException: Unable to populate contentlet from table columns for ID='7ed729fab20c8c76c2ac2a4afec5f475', Inode='e17cc653-e449-4b06-ae9e-218e97e532f3', Content-Type '855a2d72-f2f3-4169-8b04-ac5157c4380c': ERROR: cached plan must not change result type{
-  &quot;SQL&quot;: [&quot;select * from identifier where id = ?&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: &quot;7ed729fab20c8c76c2ac2a4afec5f475&quot;
-}
-	at com.dotcms.exception.ExceptionUtil.bubbleUpException(ExceptionUtil.java:165)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.internalCheckin(ESContentletAPIImpl.java:5334)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.lambda$68(ESContentletAPIImpl.java:4370)
-	at com.dotcms.concurrent.lock.StripedLockImpl.tryLock(StripedLockImpl.java:100)
-	at com.dotcms.concurrent.lock.StripedLockImpl.tryLock(StripedLockImpl.java:55)
-	at com.dotcms.concurrent.lock.IdentifierStripedLock.tryLock(IdentifierStripedLock.java:16)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody148(ESContentletAPIImpl.java:4369)
-	... 87 more
-Caused by: com.dotmarketing.exception.DotRuntimeException: Unable to populate contentlet from table columns for ID='7ed729fab20c8c76c2ac2a4afec5f475', Inode='e17cc653-e449-4b06-ae9e-218e97e532f3', Content-Type '855a2d72-f2f3-4169-8b04-ac5157c4380c': ERROR: cached plan must not change result type{
-  &quot;SQL&quot;: [&quot;select * from identifier where id = ?&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: &quot;7ed729fab20c8c76c2ac2a4afec5f475&quot;
-}
-	at com.dotmarketing.portlets.contentlet.transform.ContentletTransformer.transform(ContentletTransformer.java:114)
-	at com.dotmarketing.portlets.contentlet.transform.ContentletTransformer.&lt;init&gt;(ContentletTransformer.java:51)
-	at com.dotcms.util.transform.TransformerLocator.createContentletTransformer(TransformerLocator.java:135)
-	at com.dotcms.content.elasticsearch.business.ESContentFactoryImpl.findInDb(ESContentFactoryImpl.java:793)
-	at com.dotcms.content.elasticsearch.business.ESContentFactoryImpl.save(ESContentFactoryImpl.java:1939)
-	at com.dotcms.content.elasticsearch.business.ESContentFactoryImpl.save(ESContentFactoryImpl.java:1928)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.internalCheckin(ESContentletAPIImpl.java:4880)
-	... 92 more
-Caused by: com.dotmarketing.exception.DotDataException: ERROR: cached plan must not change result type{
-  &quot;SQL&quot;: [&quot;select * from identifier where id = ?&quot;],
-  &quot;maxRows&quot;: [-1],
-  &quot;offest&quot;: [0],
-  &quot;params&quot;: &quot;7ed729fab20c8c76c2ac2a4afec5f475&quot;
-}
-	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:273)
-	at com.dotmarketing.common.db.DotConnect.loadObjectResults(DotConnect.java:925)
-	at com.dotmarketing.business.IdentifierFactoryImpl.loadFromDb(IdentifierFactoryImpl.java:208)
-	at com.dotmarketing.business.IdentifierAPIImpl.loadFromDb_aroundBody12(IdentifierAPIImpl.java:120)
-	at com.dotmarketing.business.IdentifierAPIImpl$AjcClosure13.run(IdentifierAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotmarketing.business.IdentifierAPIImpl.loadFromDb(IdentifierAPIImpl.java:119)
-	at com.dotmarketing.portlets.contentlet.transform.ContentletTransformer.populateFolderAndHost(ContentletTransformer.java:123)
-	at com.dotmarketing.portlets.contentlet.transform.ContentletTransformer.transform(ContentletTransformer.java:107)
-	... 98 more
-Caused by: org.postgresql.util.PSQLException: ERROR: cached plan must not change result type
-	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2497)
-	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2233)
-	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:310)
-	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:446)
-	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:370)
-	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:149)
-	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:108)
-	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
-	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
-	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:629)
-	at com.dotmarketing.common.db.DotConnect.executeQuery(DotConnect.java:532)
-	at com.dotmarketing.common.db.DotConnect.loadResult(DotConnect.java:271)
-	... 109 more
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -244,18 +75,18 @@ Caused by: org.postgresql.util.PSQLException: ERROR: cached plan must not change
 </tr>
 </thead>
 <tr>
-<td class="failures">test_executeFix</td>
-<td class="failures">0.125s</td>
-<td class="failures">failed</td>
+<td class="success">test_executeFix</td>
+<td class="success">0.925s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_generateCSVFile</td>
-<td class="success">0.355s</td>
+<td class="success">0.250s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_generateIntegrityResults</td>
-<td class="success">0.588s</td>
+<td class="success">0.624s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -273,7 +104,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: cached plan must not change
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Nov 5, 2021, 5:55:02 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Nov 10, 2021, 6:27:59 PM</p>
 </div>
 </div>
 </body>
