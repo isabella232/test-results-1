@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - Class com.dotcms.content.business.ContentletJsonAPITest</title>
+<title>Test results - Class com.dotmarketing.portlets.workflows.actionlet.VelocityScriptActionletAbortTest</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>Class com.dotcms.content.business.ContentletJsonAPITest</h1>
+<h1>Class com.dotmarketing.portlets.workflows.actionlet.VelocityScriptActionletAbortTest</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/com.dotcms.content.business.html">com.dotcms.content.business</a> &gt; ContentletJsonAPITest</div>
+<a href="../packages/com.dotmarketing.portlets.workflows.actionlet.html">com.dotmarketing.portlets.workflows.actionlet</a> &gt; VelocityScriptActionletAbortTest</div>
 <div id="summary">
 <table>
 <tr>
@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">4</div>
+<div class="counter">2</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">11.702s</div>
+<div class="counter">0.030s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">50%</div>
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -70,15 +70,12 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="Create_Content_Then_Find_It_Then_Create_Json_Content_Then_Recover_And_Compare"></a>
-<h3 class="failures">Create_Content_Then_Find_It_Then_Create_Json_Content_Then_Recover_And_Compare</h3>
+<a name="Test_Velocity_Script_Actionlet_Abort_Non_Stopped"></a>
+<h3 class="failures">Test_Velocity_Script_Actionlet_Abort_Non_Stopped</h3>
 <span class="code">
-<pre>java.lang.AssertionError: expected:&lt;0&gt; but was:&lt;1&gt;
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at org.junit.Assert.assertEquals(Assert.java:631)
-	at com.dotcms.content.business.ContentletJsonAPITest.Create_Content_Then_Find_It_Then_Create_Json_Content_Then_Recover_And_Compare(ContentletJsonAPITest.java:173)
+<pre>com.dotmarketing.portlets.workflows.model.WorkflowActionFailureException
+	at com.dotmarketing.portlets.workflows.actionlet.VelocityScriptActionlet.executeAction(VelocityScriptActionlet.java:119)
+	at com.dotmarketing.portlets.workflows.actionlet.VelocityScriptActionletAbortTest.Test_Velocity_Script_Actionlet_Abort_Non_Stopped(VelocityScriptActionletAbortTest.java:49)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -140,19 +137,27 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.NullPointerException
+	at com.dotcms.rendering.velocity.viewtools.VelocitySessionWrapper.getAttribute(VelocitySessionWrapper.java:24)
+	at org.apache.velocity.tools.generic.DateTool.init(DateTool.java:93)
+	at org.apache.velocity.tools.view.ViewToolInfo.getInstance(ViewToolInfo.java:192)
+	at org.apache.velocity.tools.view.servlet.ServletToolboxManager.getToolbox(ServletToolboxManager.java:397)
+	at org.apache.velocity.tools.view.XMLToolboxManager.getToolboxContext(XMLToolboxManager.java:175)
+	at com.dotcms.rendering.velocity.util.VelocityUtil.getWebContext(VelocityUtil.java:350)
+	at com.dotcms.rendering.velocity.util.VelocityUtil.getContext(VelocityUtil.java:247)
+	at com.dotcms.rendering.engine.VelocityScriptEngine.eval(VelocityScriptEngine.java:33)
+	at com.dotmarketing.portlets.workflows.actionlet.VelocityScriptActionlet.executeAction(VelocityScriptActionlet.java:106)
+	... 62 more
 </pre>
 </span>
 </div>
 <div class="test">
-<a name="Create_Content_Then_Find_It_Then_Create_Json_Content_Then_Recover_And_Compare"></a>
-<h3 class="failures">Create_Content_Then_Find_It_Then_Create_Json_Content_Then_Recover_And_Compare</h3>
+<a name="Test_Velocity_Script_Actionlet_Abort_Stopped"></a>
+<h3 class="failures">Test_Velocity_Script_Actionlet_Abort_Stopped</h3>
 <span class="code">
-<pre>java.lang.AssertionError: expected:&lt;0&gt; but was:&lt;1&gt;
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:645)
-	at org.junit.Assert.assertEquals(Assert.java:631)
-	at com.dotcms.content.business.ContentletJsonAPITest.Create_Content_Then_Find_It_Then_Create_Json_Content_Then_Recover_And_Compare(ContentletJsonAPITest.java:173)
+<pre>com.dotmarketing.portlets.workflows.model.WorkflowActionFailureException
+	at com.dotmarketing.portlets.workflows.actionlet.VelocityScriptActionlet.executeAction(VelocityScriptActionlet.java:119)
+	at com.dotmarketing.portlets.workflows.actionlet.VelocityScriptActionletAbortTest.Test_Velocity_Script_Actionlet_Abort_Stopped(VelocityScriptActionletAbortTest.java:75)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -214,6 +219,17 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.NullPointerException
+	at com.dotcms.rendering.velocity.viewtools.VelocitySessionWrapper.getAttribute(VelocitySessionWrapper.java:24)
+	at org.apache.velocity.tools.generic.DateTool.init(DateTool.java:93)
+	at org.apache.velocity.tools.view.ViewToolInfo.getInstance(ViewToolInfo.java:192)
+	at org.apache.velocity.tools.view.servlet.ServletToolboxManager.getToolbox(ServletToolboxManager.java:397)
+	at org.apache.velocity.tools.view.XMLToolboxManager.getToolboxContext(XMLToolboxManager.java:175)
+	at com.dotcms.rendering.velocity.util.VelocityUtil.getWebContext(VelocityUtil.java:350)
+	at com.dotcms.rendering.velocity.util.VelocityUtil.getContext(VelocityUtil.java:247)
+	at com.dotcms.rendering.engine.VelocityScriptEngine.eval(VelocityScriptEngine.java:33)
+	at com.dotmarketing.portlets.workflows.actionlet.VelocityScriptActionlet.executeAction(VelocityScriptActionlet.java:106)
+	... 62 more
 </pre>
 </span>
 </div>
@@ -229,24 +245,14 @@
 </tr>
 </thead>
 <tr>
-<td class="failures">Create_Content_Then_Find_It_Then_Create_Json_Content_Then_Recover_And_Compare</td>
-<td class="failures">3.423s</td>
+<td class="failures">Test_Velocity_Script_Actionlet_Abort_Non_Stopped</td>
+<td class="failures">0.002s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
-<td class="failures">Create_Content_Then_Find_It_Then_Create_Json_Content_Then_Recover_And_Compare</td>
-<td class="failures">3.258s</td>
+<td class="failures">Test_Velocity_Script_Actionlet_Abort_Stopped</td>
+<td class="failures">0.028s</td>
 <td class="failures">failed</td>
-</tr>
-<tr>
-<td class="success">Simple_Json_Serialize_Test</td>
-<td class="success">2.431s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">Simple_Json_Serialize_Test</td>
-<td class="success">2.590s</td>
-<td class="success">passed</td>
 </tr>
 </table>
 </div>
