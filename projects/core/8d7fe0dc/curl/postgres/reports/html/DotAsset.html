@@ -1,0 +1,2842 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-y: scroll;">
+<head>
+  <meta charset="UTF-8">
+  <title>Newman Summary Report</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
+<style>
+code.renderMarkdown table, code.renderMarkdown th, code.renderMarkdown td {
+    border: 1px solid black;
+    width: max-content;
+    padding: .75rem;
+}
+
+.theme-dark {
+    --background-color: #222;
+    --bg-card-deck: #444444;
+    --text-color: #ccd2d8;
+    --tab-border: solid 1px #444;
+    --success: #3c9372;
+    --failure: #c24a3f;
+    --warning: #d28c23;
+    --info: #4083b6;
+    --badge-outline: #3c9372;
+    --badge-bg: #cdd3db;
+    --badge-text: #ccd2d9;
+    --failure-row: #c24a3f;
+    --warning-row: #d28c23;
+    --card-bg: #444;
+    --card-footer: #4f5758;
+    --form-input: #ececb5;
+    --hov-text: #d2dae5;
+    --h4-text: #ccd1d9;
+}
+
+.theme-light {
+    --tab-border: solid 1px #fff;
+    --text-color: #000000;
+    --success: #42a745;
+    --failure: #dc3544;
+    --warning: #f4c10b;
+    --info: #49a1b8;
+    --badge-outline: #040411;
+    --badge-bg: #f8f9fa;
+    --badge-text: #fff;
+    --failure-row: #f5c6cb;
+    --warning-row: #ffeeba;
+    --card-bg: #f7f7f7;
+    --hov-text: #fff;
+    --h4-text: #ffffff;
+}
+
+body {
+  padding-top:30px;
+  background-color: var(--background-color)!important;
+  color: var(--text-color);
+}
+
+#execution-data {
+  padding: 10px;
+  border: var(--tab-border);
+  border-top: none;
+}
+
+.nav-tabs {
+  padding-top: 10px;
+  height: 105px;
+  overflow-y: auto;
+}
+
+body.theme-dark .card-header {
+    background-color: #444;
+}
+
+body.theme-light .card-header {
+    background-color: #f7f7f7;
+}
+
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: var(--card-footer);
+}
+
+.card-deck {
+    background-color: var(--bg-card-deck)!important;
+}
+.form-control {
+    background: var(--form-input);
+}
+
+.custom-tab {
+  padding: 10px 15px;
+  margin-right: 0px;
+  height: 47px;
+  width: 69px;
+  text-align: center;
+  border: var(--tab-border);
+  border-bottom: none;
+  cursor:pointer;
+}
+
+body.theme-dark .text-white {
+    color: #ccd2d9!important;
+}
+h4 {
+    color: var(--h4-text);
+}
+
+body.theme-dark h1 {
+    color: #ccd2da;
+}
+
+body.theme-dark .bg-light>td {
+    background: #4f5858!important;
+}
+
+body.theme-dark .hljs {
+    background: #0a0a0ab0!important;
+    color: #8d8787!important;
+}
+
+.bg-info {
+    background-color: var(--info)!important;
+}
+.bg-success {
+    background-color: var(--success)!important;
+}
+
+.alert-success {
+    background-color: var(--success)!important;
+}
+
+.alert-warning {
+    background-color: var(--warning)!important;
+}
+
+.alert-info {
+    background-color: var(--info)!important;
+}
+
+.bg-warning {
+    background-color: var(--warning)!important;
+}
+
+.badge-warning {
+    color: var(--badge-text)!important;
+    background-color: var(--warning)!important;
+}
+
+.table-warning>td {
+    background-color: var(--warning-row);
+}
+
+.alert-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-dark .alert-dark {
+    background-color: #636467!important;
+}
+
+body.theme-dark .text-dark {
+    color: #d1dae4!important;
+}
+
+body.theme-dark .badge-light {
+    color: #212529;
+    background-color: #cdd3db;
+}
+
+body.theme-light .badge-light {
+    color: #212529;
+    background-color: #f8f9fa;
+}
+body.theme-light .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-dark .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+.table-danger>td {
+    background-color: var(--failure-row);
+}
+
+body.theme-dark .table .thead-light th {
+    background-color: #4f5858!important;
+    border-color: #dee2e6!important;
+    color: #ccd2d8!important;
+}
+
+.itPassed {
+  background: var(--success);
+  color: white;
+}
+.itFailed {
+  background: var(--failure);
+  color: white;
+}
+
+.resultsInfoPass {
+  color: var(--success);
+  padding-top: 4px;
+}
+
+.resultsInfoFail {
+  color: var(--failure);
+  padding-top: 4px;
+}
+
+.badge-outline-success {
+  color: var(--success);
+  border: 1px solid var(--success);
+  background-color: transparent;
+}
+
+.badge-outline {
+  color: var(--badge-outline);
+  border: 1px solid var(--badge-outline);
+  background-color: transparent;
+}
+
+.btn-outline-success {
+    color: var(--success)!important;
+    border-color: var(--success)!important;
+}
+
+.backToTop:hover {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--hov-text)!important;
+}
+
+.btn-outline-success:hover {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--hov-text)!important;
+}
+
+.btn-outline-secondary {
+  background-color: var(--success)!important;
+  color: var(--hov-text)!important;
+}
+
+body.theme-dark .env-heading {
+    color: #ccd2d9!important;
+}
+
+body, html {
+  height:100%;
+}
+
+.card {
+  overflow:hidden;
+}
+
+body.theme-dark .card-body {
+    background-color: #444;
+}
+
+body.theme-light .card-body {
+    background-color: #f7f7f7;
+}
+
+body.theme-dark .card-body .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-light .card-body .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+.card-body .rotate {
+  z-index: 8;
+  float: right;
+  height: 100%;
+}
+
+.card-body .rotate i {
+  color: #14141426;
+  position: absolute;
+  left: 0;
+  left: auto;
+  right: -10px;
+  bottom: 0;
+  display: block;
+  -webkit-transform: rotate(-44deg);
+  -moz-transform: rotate(-44deg);
+  -o-transform: rotate(-44deg);
+  -ms-transform: rotate(-44deg);
+  transform: rotate(-44deg);
+}
+
+.dyn-height {
+  max-height:350px;
+  overflow-y:auto;
+}
+
+.nav-pills .nav-link.active {
+  background-color: transparent!important;
+}
+
+.backToTop {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  z-index: 99;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.card-header .fa {
+  transition: .3s transform ease-in-out;
+}
+.card-header .collapsed .fa {
+  transform: rotate(90deg);
+}
+
+.single-line-tabs {
+  padding-top: 10px;
+  height: 60px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 0px;
+  bottom: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  box-shadow: 0 0px 15px #2020203d;
+  background: white;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input:checked + .slider {
+  background-color: #4083b6;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4083b6;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+  background: white;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+table.dataTable td, table.dataTable tr {
+    vertical-align: middle;
+} 
+
+body.theme-dark code {
+    color: #ccd2d8!important;
+} 
+
+body.theme-light code {
+    color: #000000!important;
+} 
+
+</style>
+</head>
+<body class="">
+  <div class="container">
+        <div class="container">
+            <label>Light</label>
+            <label id="switch" class="switch">
+                <input type="checkbox" onchange="toggleTheme()" id="slider">
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+        <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+            <li class="nav-item bg-info active" data-toggle="tooltip" title="Click to view the Summary">
+                <a class="nav-link text-white" id="pills-summary-tab" data-toggle="pill" href="#pills-summary" role="tab" aria-controls="pills-summary" aria-selected="true">Summary</a>
+            </li>
+            <li class="nav-item bg-success" data-toggle="tooltip" title="Click to view the Requests">
+                <a class="nav-link text-white" id="pills-requests-tab" data-toggle="pill" href="#pills-requests" role="tab" aria-controls="pills-requests" aria-selected="false">Total Requests <span class="badge badge-light">6</span></a>
+            </li>
+            <li class="nav-item bg-danger" data-toggle="tooltip" title="Click to view the Failed Tests">
+                <a class="nav-link text-white" id="pills-failed-tab" data-toggle="pill" href="#pills-failed" role="tab" aria-controls="pills-failed" aria-selected="false">Failed Tests <span class="badge badge-light">0</span></a>
+            </li>
+            <li class="nav-item bg-warning" data-toggle="tooltip" title="Click to view the Skipped Tests">
+                <a class="nav-link text-white" id="pills-skipped-tab" data-toggle="pill" href="#pills-skipped" role="tab" aria-controls="pills-skipped" aria-selected="false">Skipped Tests <span class="badge badge-light">0</span></a>
+            </li>
+            </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-summary" role="tabcard" aria-labelledby="pills-summary-tab">
+<div class="row">
+  <div class="col-md-9 col-lg-12 main">
+   <h1 class="display-2 text-center">Newman Run Dashboard</h1>
+   <h5 class="text-center">Friday, 04 March 2022 00:31:58</h5>
+   <div class="row">
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-success">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-retweet fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Iterations</h6>
+       <h1 class="display-1">1</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-danger">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-list fa-4x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Assertions</h6>
+       <h1 class="display-1">7</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-info">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-plus-circle fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Failed Tests</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-warning">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-share fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Skipped Tests</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+   </div>
+   <hr>
+    <div class="row">
+    <div class="col">
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-white text-center bg-info">File Information</h5>
+                <span><i class="fas fa-file-code"></i></span><strong> Collection:</strong> DotAsset<br>
+                
+                <span><i class="fas fa-file-code"></i></span><strong> Environment:</strong> dotCMS - Local 8080<br>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-white text-center bg-info">Timings and Data</h5>
+                <span><i class="fas fa-stopwatch"></i></span><strong> Total run duration:</strong> 36.1s<br>
+                <span><i class="fas fa-database"></i></span><strong> Total data received:</strong> 14.47KB<br>
+                <span><i class="fas fa-stopwatch"></i></span><strong> Average response time:</strong> 5.9s<br>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-inverse">
+                    <tr class="text-center">
+                        <th class="text-uppercase">Summary Item</th>
+                        <th class="text-uppercase">Total</th>
+                        <th class="text-uppercase">Failed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Requests</td>
+                        <td class="text-center">6</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td>Prerequest Scripts</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td>Test Scripts</td>
+                        <td class="text-center">3</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr class="">
+                        <td>Assertions</td>
+                        <td class="text-center">7</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr class="">
+                        <td>Skipped Tests</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">-</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    <hr>
+   </div>
+   </div>
+  </div>
+ </div>
+        </div>
+            <div class="tab-pane fade" id="pills-failed" role="tabcard" aria-labelledby="pills-failed-tab">
+                <button id="topOfFailuresScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+                
+                <div class="alert alert-success text-uppercase text-center">
+                     <br><br><h1 class="text-center">There are no failed tests <span><i class="far fa-thumbs-up"></i></span></h1><br><br>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-skipped" role="tabcard" aria-labelledby="pills-skipped-tab">
+                <button id="topOfSkippedScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+
+                <div class="alert alert-success text-uppercase text-center">
+                    <br><br><h1 class="text-center">There are no skipped tests <span><i class="far fa-thumbs-up"></i></span></h1><br><br>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-requests" role="tabcard" aria-labelledby="pills-requests-tab">
+
+            <button id="topOfRequestsScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+            
+            <div class="btn-group float-right" role="group" aria-label="Button Group">
+                <button id="openAll" class="btn btn-outline-success btn-sm float-right" style="text-align: center; width: 140px;">Expand Folders</button>
+                <button id="openAllRequests" class="btn btn-outline-success btn-sm float-right" style="text-align: center; width: 140px;">Expand Requests</button>
+            </div>
+
+    <div class="text-uppercase" id="execution-menu">
+        <h5>1 Iteration available to view</h5>
+        
+        <nav class="table-responsive">
+        <ul class="nav single-line-tabs" id="iterationList">
+        </ul>
+        </nav>
+    </div>
+    <h6 class="text-uppercase text-muted" id="iterationSelected" style="padding-top: 10px;"></h6>
+	<div class="tab-content" id="execution-data">
+            <div id="folder-64e85f48-fb33-4f8e-9ce1-743a3b65a439" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439" aria-expanded="false" aria-controls="collapse" id="requests-64e85f48-fb33-4f8e-9ce1-743a3b65a439" class="collapsed text-white z-block">
+                    Iteration: 1 - Create PdfDotAsset Validation <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439" class="collapse" aria-labelledby="requests-64e85f48-fb33-4f8e-9ce1-743a3b65a439">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code class="renderMarkdown">Creates a DotAsset with accept such as application/pdf</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> POST</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/v1/contenttype" target="_blank">http://dotcms-app:8080/api/v1/contenttype</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 9.3s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 6.4KB</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5 style="padding-top:5px;"><strong>100 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Type</td>
+                                                        <td>application/json</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>70859dad-e951-4cc0-a33f-a2a3495cb893</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Length</td>
+                                                        <td>510</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Body</h5>
+                                        <div class="dyn-height">
+                                            <pre><code id="copyReqText-0" class="prettyPrint">{
+            &quot;defaultType&quot;: false,
+            &quot;fixed&quot;: false,
+            &quot;system&quot;: false,
+            &quot;clazz&quot;: &quot;com.dotcms.contenttype.model.type.ImmutableDotAssetContentType&quot;,
+            &quot;description&quot;: &quot;DotAsset to encapsulate the pdf types&quot;,
+            &quot;folder&quot;: &quot;SYSTEM_FOLDER&quot;,
+            &quot;name&quot;: &quot;PDF DotAsset&quot;,
+            &quot;variable&quot;: &quot;PDFDotAsset&quot;,
+            &quot;workflow&quot;: [
+                &quot;d61a59e1-a49c-46f2-a929-db2b4bfa88b2&quot;
+            ],
+            &quot;systemActionMappings&quot;: {
+            	&quot;NEW&quot;:&quot;ceca71a0-deee-4999-bd47-b01baa1bcfc8&quot;,
+            	&quot;EDIT&quot;:&quot;ceca71a0-deee-4999-bd47-b01baa1bcfc8&quot;
+            }
+        }
+        </code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyReqText-0">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>6047cfe3a9cd|9c36c57e15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;E838C7E0677C4A4204B4D4F4ACF38A49; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NjExOTI1Mi02ODRmLTRiOTItYTE5YS1mZjAxODc3MzRiNzYiLCJ4bW9kIjoxNjQ2MzUzODg1MzYzLCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDYzNTM4ODgsImlzcyI6ImY0ZjllMTM2OTEiLCJleHAiOjE2NDY0NDAyODh9.RkFaXSZj438UTuZW4x9YrTgaKZwIAqZp6_VZoinnb3c; Path&#x3D;/; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">vary</td>
+                                                    <td>accept-encoding</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Encoding</td>
+                                                    <td>gzip</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Transfer-Encoding</td>
+                                                    <td>chunked</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Fri, 04 Mar 2022 00:31:31 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-1c506667-34a0-43f4-9261-4ec4560813d4" class="prettyPrint">{&quot;entity&quot;:[{&quot;baseType&quot;:&quot;DOTASSET&quot;,&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.type.ImmutableDotAssetContentType&quot;,&quot;defaultType&quot;:false,&quot;description&quot;:&quot;DotAsset to encapsulate the pdf types&quot;,&quot;fields&quot;:[{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableHostFolderField&quot;,&quot;contentTypeId&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;dataType&quot;:&quot;SYSTEM&quot;,&quot;fieldType&quot;:&quot;Host-Folder&quot;,&quot;fieldTypeLabel&quot;:&quot;Site or Folder&quot;,&quot;fieldVariables&quot;:[],&quot;fixed&quot;:false,&quot;iDate&quot;:1646353888000,&quot;id&quot;:&quot;52aa5f3d48f0eec1861024db376f8854&quot;,&quot;indexed&quot;:true,&quot;listed&quot;:false,&quot;modDate&quot;:1646353888000,&quot;name&quot;:&quot;Site or Folder&quot;,&quot;readOnly&quot;:false,&quot;required&quot;:false,&quot;searchable&quot;:true,&quot;sortOrder&quot;:0,&quot;unique&quot;:false,&quot;variable&quot;:&quot;hostFolder&quot;},{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableBinaryField&quot;,&quot;contentTypeId&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;dataType&quot;:&quot;SYSTEM&quot;,&quot;fieldType&quot;:&quot;Binary&quot;,&quot;fieldTypeLabel&quot;:&quot;Binary&quot;,&quot;fieldVariables&quot;:[],&quot;fixed&quot;:true,&quot;iDate&quot;:1646353888000,&quot;id&quot;:&quot;c8a4c19e387bd1a2cfd66e38da20ae8f&quot;,&quot;indexed&quot;:true,&quot;listed&quot;:true,&quot;modDate&quot;:1646353888000,&quot;name&quot;:&quot;Asset&quot;,&quot;readOnly&quot;:false,&quot;required&quot;:true,&quot;searchable&quot;:true,&quot;sortOrder&quot;:1,&quot;unique&quot;:false,&quot;variable&quot;:&quot;asset&quot;},{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableTagField&quot;,&quot;contentTypeId&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;dataType&quot;:&quot;SYSTEM&quot;,&quot;fieldType&quot;:&quot;Tag&quot;,&quot;fieldTypeLabel&quot;:&quot;Tag&quot;,&quot;fieldVariables&quot;:[],&quot;fixed&quot;:false,&quot;iDate&quot;:1646353888000,&quot;id&quot;:&quot;8b49177343b2f7f2ac09e970f7dec46e&quot;,&quot;indexed&quot;:true,&quot;listed&quot;:false,&quot;modDate&quot;:1646353888000,&quot;name&quot;:&quot;Tags&quot;,&quot;readOnly&quot;:false,&quot;required&quot;:false,&quot;searchable&quot;:true,&quot;sortOrder&quot;:2,&quot;unique&quot;:false,&quot;variable&quot;:&quot;tags&quot;}],&quot;fixed&quot;:false,&quot;folder&quot;:&quot;SYSTEM_FOLDER&quot;,&quot;host&quot;:&quot;SYSTEM_HOST&quot;,&quot;iDate&quot;:1646353882000,&quot;icon&quot;:&quot;file_copy&quot;,&quot;id&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;layout&quot;:[{&quot;divider&quot;:{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableRowField&quot;,&quot;contentTypeId&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;dataType&quot;:&quot;SYSTEM&quot;,&quot;fieldContentTypeProperties&quot;:[],&quot;fieldType&quot;:&quot;Row&quot;,&quot;fieldTypeLabel&quot;:&quot;Row&quot;,&quot;fieldVariables&quot;:[],&quot;fixed&quot;:false,&quot;iDate&quot;:1646353892000,&quot;indexed&quot;:false,&quot;listed&quot;:false,&quot;modDate&quot;:1646353892000,&quot;name&quot;:&quot;Row Field&quot;,&quot;readOnly&quot;:false,&quot;required&quot;:false,&quot;searchable&quot;:false,&quot;sortOrder&quot;:0,&quot;unique&quot;:false},&quot;columns&quot;:[{&quot;columnDivider&quot;:{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableColumnField&quot;,&quot;contentTypeId&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;dataType&quot;:&quot;SYSTEM&quot;,&quot;fieldContentTypeProperties&quot;:[],&quot;fieldType&quot;:&quot;Column&quot;,&quot;fieldTypeLabel&quot;:&quot;Column&quot;,&quot;fieldVariables&quot;:[],&quot;fixed&quot;:false,&quot;iDate&quot;:1646353892000,&quot;indexed&quot;:false,&quot;listed&quot;:false,&quot;modDate&quot;:1646353892000,&quot;name&quot;:&quot;Column Field&quot;,&quot;readOnly&quot;:false,&quot;required&quot;:false,&quot;searchable&quot;:false,&quot;sortOrder&quot;:1,&quot;unique&quot;:false},&quot;fields&quot;:[{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableHostFolderField&quot;,&quot;contentTypeId&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;dataType&quot;:&quot;SYSTEM&quot;,&quot;fieldType&quot;:&quot;Host-Folder&quot;,&quot;fieldTypeLabel&quot;:&quot;Site or Folder&quot;,&quot;fieldVariables&quot;:[],&quot;fixed&quot;:false,&quot;iDate&quot;:1646353888000,&quot;id&quot;:&quot;52aa5f3d48f0eec1861024db376f8854&quot;,&quot;indexed&quot;:true,&quot;listed&quot;:false,&quot;modDate&quot;:1646353888000,&quot;name&quot;:&quot;Site or Folder&quot;,&quot;readOnly&quot;:false,&quot;required&quot;:false,&quot;searchable&quot;:true,&quot;sortOrder&quot;:2,&quot;unique&quot;:false,&quot;variable&quot;:&quot;hostFolder&quot;},{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableBinaryField&quot;,&quot;contentTypeId&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;dataType&quot;:&quot;SYSTEM&quot;,&quot;fieldType&quot;:&quot;Binary&quot;,&quot;fieldTypeLabel&quot;:&quot;Binary&quot;,&quot;fieldVariables&quot;:[],&quot;fixed&quot;:true,&quot;iDate&quot;:1646353888000,&quot;id&quot;:&quot;c8a4c19e387bd1a2cfd66e38da20ae8f&quot;,&quot;indexed&quot;:true,&quot;listed&quot;:true,&quot;modDate&quot;:1646353888000,&quot;name&quot;:&quot;Asset&quot;,&quot;readOnly&quot;:false,&quot;required&quot;:true,&quot;searchable&quot;:true,&quot;sortOrder&quot;:3,&quot;unique&quot;:false,&quot;variable&quot;:&quot;asset&quot;},{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableTagField&quot;,&quot;contentTypeId&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;dataType&quot;:&quot;SYSTEM&quot;,&quot;fieldType&quot;:&quot;Tag&quot;,&quot;fieldTypeLabel&quot;:&quot;Tag&quot;,&quot;fieldVariables&quot;:[],&quot;fixed&quot;:false,&quot;iDate&quot;:1646353888000,&quot;id&quot;:&quot;8b49177343b2f7f2ac09e970f7dec46e&quot;,&quot;indexed&quot;:true,&quot;listed&quot;:false,&quot;modDate&quot;:1646353888000,&quot;name&quot;:&quot;Tags&quot;,&quot;readOnly&quot;:false,&quot;required&quot;:false,&quot;searchable&quot;:true,&quot;sortOrder&quot;:4,&quot;unique&quot;:false,&quot;variable&quot;:&quot;tags&quot;}]}]}],&quot;modDate&quot;:1646353888000,&quot;multilingualable&quot;:false,&quot;name&quot;:&quot;PDF DotAsset&quot;,&quot;sortOrder&quot;:0,&quot;system&quot;:false,&quot;systemActionMappings&quot;:{&quot;NEW&quot;:{&quot;identifier&quot;:&quot;2b8f11ca-7f7c-4be4-8d41-4deb1dd4271a&quot;,&quot;owner&quot;:{&quot;defaultType&quot;:false,&quot;description&quot;:&quot;DotAsset to encapsulate the pdf types&quot;,&quot;detailPage&quot;:null,&quot;expireDateVar&quot;:null,&quot;fixed&quot;:false,&quot;folder&quot;:&quot;SYSTEM_FOLDER&quot;,&quot;host&quot;:&quot;SYSTEM_HOST&quot;,&quot;iDate&quot;:1646353882000,&quot;icon&quot;:&quot;file_copy&quot;,&quot;id&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;modDate&quot;:1646353888000,&quot;multilingualable&quot;:false,&quot;name&quot;:&quot;PDF DotAsset&quot;,&quot;owner&quot;:null,&quot;publishDateVar&quot;:null,&quot;sortOrder&quot;:0,&quot;system&quot;:false,&quot;urlMapPattern&quot;:null,&quot;variable&quot;:&quot;PDFDotAsset&quot;,&quot;versionable&quot;:true},&quot;systemAction&quot;:&quot;NEW&quot;,&quot;workflowAction&quot;:{&quot;assignable&quot;:false,&quot;commentable&quot;:false,&quot;condition&quot;:&quot;&quot;,&quot;icon&quot;:&quot;workflowIcon&quot;,&quot;id&quot;:&quot;ceca71a0-deee-4999-bd47-b01baa1bcfc8&quot;,&quot;name&quot;:&quot;Save&quot;,&quot;nextAssign&quot;:&quot;654b0931-1027-41f7-ad4d-173115ed8ec1&quot;,&quot;nextStep&quot;:&quot;ee24a4cb-2d15-4c98-b1bd-6327126451f3&quot;,&quot;nextStepCurrentStep&quot;:false,&quot;order&quot;:0,&quot;owner&quot;:null,&quot;roleHierarchyForAssign&quot;:false,&quot;schemeId&quot;:&quot;d61a59e1-a49c-46f2-a929-db2b4bfa88b2&quot;,&quot;showOn&quot;:[&quot;UNPUBLISHED&quot;,&quot;LOCKED&quot;,&quot;EDITING&quot;,&quot;PUBLISHED&quot;,&quot;NEW&quot;]},&quot;ownerContentType&quot;:true,&quot;ownerScheme&quot;:false},&quot;EDIT&quot;:{&quot;identifier&quot;:&quot;07aed26f-b776-4f4d-81bd-c2302d0026cc&quot;,&quot;owner&quot;:{&quot;defaultType&quot;:false,&quot;description&quot;:&quot;DotAsset to encapsulate the pdf types&quot;,&quot;detailPage&quot;:null,&quot;expireDateVar&quot;:null,&quot;fixed&quot;:false,&quot;folder&quot;:&quot;SYSTEM_FOLDER&quot;,&quot;host&quot;:&quot;SYSTEM_HOST&quot;,&quot;iDate&quot;:1646353882000,&quot;icon&quot;:&quot;file_copy&quot;,&quot;id&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;modDate&quot;:1646353888000,&quot;multilingualable&quot;:false,&quot;name&quot;:&quot;PDF DotAsset&quot;,&quot;owner&quot;:null,&quot;publishDateVar&quot;:null,&quot;sortOrder&quot;:0,&quot;system&quot;:false,&quot;urlMapPattern&quot;:null,&quot;variable&quot;:&quot;PDFDotAsset&quot;,&quot;versionable&quot;:true},&quot;systemAction&quot;:&quot;EDIT&quot;,&quot;workflowAction&quot;:{&quot;assignable&quot;:false,&quot;commentable&quot;:false,&quot;condition&quot;:&quot;&quot;,&quot;icon&quot;:&quot;workflowIcon&quot;,&quot;id&quot;:&quot;ceca71a0-deee-4999-bd47-b01baa1bcfc8&quot;,&quot;name&quot;:&quot;Save&quot;,&quot;nextAssign&quot;:&quot;654b0931-1027-41f7-ad4d-173115ed8ec1&quot;,&quot;nextStep&quot;:&quot;ee24a4cb-2d15-4c98-b1bd-6327126451f3&quot;,&quot;nextStepCurrentStep&quot;:false,&quot;order&quot;:0,&quot;owner&quot;:null,&quot;roleHierarchyForAssign&quot;:false,&quot;schemeId&quot;:&quot;d61a59e1-a49c-46f2-a929-db2b4bfa88b2&quot;,&quot;showOn&quot;:[&quot;UNPUBLISHED&quot;,&quot;LOCKED&quot;,&quot;EDITING&quot;,&quot;PUBLISHED&quot;,&quot;NEW&quot;]},&quot;ownerContentType&quot;:true,&quot;ownerScheme&quot;:false}},&quot;variable&quot;:&quot;PDFDotAsset&quot;,&quot;versionable&quot;:true,&quot;workflows&quot;:[{&quot;archived&quot;:false,&quot;creationDate&quot;:1646353891611,&quot;defaultScheme&quot;:false,&quot;description&quot;:&quot;&quot;,&quot;entryActionId&quot;:null,&quot;id&quot;:&quot;d61a59e1-a49c-46f2-a929-db2b4bfa88b2&quot;,&quot;mandatory&quot;:false,&quot;modDate&quot;:1646353635270,&quot;name&quot;:&quot;System Workflow&quot;,&quot;system&quot;:true}]}],&quot;errors&quot;:[],&quot;i18nMessagesMap&quot;:{},&quot;messages&quot;:[],&quot;permissions&quot;:[]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-1c506667-34a0-43f4-9261-4ec4560813d4">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <div class="table-responsive text-nowrap">
+                                        <table id="myTable-1c506667-34a0-43f4-9261-4ec4560813d4" class="table table-hover">
+                                        <thead><tr class="text-center"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr></thead>
+                                            <tbody>
+                                                <tr >
+                                                    <td >Status code should be 200</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                                <tr >
+                                                    <td >Includes default scheme</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                                <tr >
+                                                    <td >Includes system workflow</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                                <tr >
+                                                    <td >Includes Document Management</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="bg-light">
+                                                    <td><strong>Total</strong></td>
+                                                    <td class="text-center">4</td>
+                                                    <td class="text-center">0</td>
+                                                    <td class="text-center">0</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="row d-none">
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="card-deck">
+                                        <div class="card border-danger" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-danger">Test Failure</h5>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                    <thead><tr class="text-nowrap"><th>Test Name</th><th>Assertion Error</th></tr></thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div id="folder-d01d5d04-7f99-48c9-aafe-d8bb6c854db9" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9" aria-expanded="false" aria-controls="collapse" id="requests-d01d5d04-7f99-48c9-aafe-d8bb6c854db9" class="collapsed text-white z-block">
+                    Iteration: 1 - Fire NEW for PDFDotAsset with an pdf Success <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9" class="collapse" aria-labelledby="requests-d01d5d04-7f99-48c9-aafe-d8bb6c854db9">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code class="renderMarkdown">This should be ok, valid asset</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> PUT</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/v1/workflow/actions/default/fire/NEW" target="_blank">http://dotcms-app:8080/api/v1/workflow/actions/default/fire/NEW</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 7s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 1.19KB</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5 style="padding-top:5px;"><strong>100 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Type</td>
+                                                        <td>application/json</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>ead5e866-4120-4a6b-a591-8f563705331e</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cookie</td>
+                                                        <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NjExOTI1Mi02ODRmLTRiOTItYTE5YS1mZjAxODc3MzRiNzYiLCJ4bW9kIjoxNjQ2MzUzODg1MzYzLCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDYzNTM4ODgsImlzcyI6ImY0ZjllMTM2OTEiLCJleHAiOjE2NDY0NDAyODh9.RkFaXSZj438UTuZW4x9YrTgaKZwIAqZp6_VZoinnb3c</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Length</td>
+                                                        <td>648988</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-12 mb-3">
+                                    <div class="card-deck">
+                                        <div class="card border-info" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-info">Request Body</h5>
+                                                <div class="dyn-height">
+                                                    <pre><code id="copyReqText-1" class="prettyPrint">{&quot;file&quot;:&quot;resources/testpdf.pdf&quot;,&quot;json&quot;:&quot;{\n\t \&quot;contentlet\&quot;: {\n\t\t\&quot;contentType\&quot;:\&quot;PDFDotAsset\&quot;,\n\t\t\&quot;title\&quot;:\&quot;Test1\&quot;,\n\t\t\&quot;contentHost\&quot;:\&quot;demo.dotcms.com\&quot;\n\t}\n}\n&quot;}</code></pre>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyReqText-1">Copy to Clipboard</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>6047cfe3a9cd|9c36c57e15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;A38E6C7AA77DBBE2818A0A66EB23FD1C; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">vary</td>
+                                                    <td>accept-encoding</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Encoding</td>
+                                                    <td>gzip</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Transfer-Encoding</td>
+                                                    <td>chunked</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Fri, 04 Mar 2022 00:31:38 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-e5f2d140-0cbf-4304-8b07-49c12d4b2752" class="prettyPrint">{&quot;entity&quot;:{&quot;AUTO_ASSIGN_WORKFLOW&quot;:false,&quot;__icon__&quot;:&quot;pdfIcon&quot;,&quot;archived&quot;:false,&quot;asset&quot;:&quot;/dA/977ee4a7013dce1731e90eabb18b198e/asset/testpdf.pdf&quot;,&quot;assetContentAsset&quot;:&quot;977ee4a7013dce1731e90eabb18b198e/asset&quot;,&quot;assetVersion&quot;:&quot;/dA/ea13e610-c88a-469c-a49c-e78e36c0a496/asset/testpdf.pdf&quot;,&quot;baseType&quot;:&quot;DOTASSET&quot;,&quot;contentType&quot;:&quot;PDFDotAsset&quot;,&quot;extension&quot;:&quot;pdf&quot;,&quot;folder&quot;:&quot;SYSTEM_FOLDER&quot;,&quot;hasLiveVersion&quot;:false,&quot;hasTitleImage&quot;:true,&quot;host&quot;:&quot;SYSTEM_HOST&quot;,&quot;hostName&quot;:&quot;System Host&quot;,&quot;identifier&quot;:&quot;977ee4a7013dce1731e90eabb18b198e&quot;,&quot;inode&quot;:&quot;ea13e610-c88a-469c-a49c-e78e36c0a496&quot;,&quot;isContentlet&quot;:true,&quot;languageId&quot;:1,&quot;live&quot;:false,&quot;locked&quot;:false,&quot;mimeType&quot;:&quot;application/pdf&quot;,&quot;modDate&quot;:1646353894812,&quot;modUser&quot;:&quot;dotcms.org.1&quot;,&quot;modUserName&quot;:&quot;Admin User&quot;,&quot;name&quot;:&quot;testpdf.pdf&quot;,&quot;owner&quot;:&quot;dotcms.org.1&quot;,&quot;path&quot;:&quot;/content.ea13e610-c88a-469c-a49c-e78e36c0a496&quot;,&quot;publishDate&quot;:1646353894812,&quot;size&quot;:648530,&quot;sortOrder&quot;:0,&quot;stInode&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;statusIcons&quot;:&quot;&lt;span class&#x3D;&#x27;workingIcon&#x27;&gt;&lt;/span&gt;&lt;span class&#x3D;&#x27;greyDotIcon&#x27; style&#x3D;&#x27;opacity:.4&#x27;&gt;&lt;/span&gt;&quot;,&quot;title&quot;:&quot;testpdf.pdf&quot;,&quot;titleImage&quot;:&quot;asset&quot;,&quot;type&quot;:&quot;dotasset&quot;,&quot;url&quot;:&quot;/content.ea13e610-c88a-469c-a49c-e78e36c0a496&quot;,&quot;working&quot;:true},&quot;errors&quot;:[],&quot;i18nMessagesMap&quot;:{},&quot;messages&quot;:[],&quot;permissions&quot;:[]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-e5f2d140-0cbf-4304-8b07-49c12d4b2752">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <div class="table-responsive text-nowrap">
+                                        <table id="myTable-e5f2d140-0cbf-4304-8b07-49c12d4b2752" class="table table-hover">
+                                        <thead><tr class="text-center"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr></thead>
+                                            <tbody>
+                                                <tr >
+                                                    <td >Status code should be 200</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                                <tr >
+                                                    <td >Check that is a PDF</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="bg-light">
+                                                    <td><strong>Total</strong></td>
+                                                    <td class="text-center">2</td>
+                                                    <td class="text-center">0</td>
+                                                    <td class="text-center">0</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="row d-none">
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="card-deck">
+                                        <div class="card border-danger" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-danger">Test Failure</h5>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                    <thead><tr class="text-nowrap"><th>Test Name</th><th>Assertion Error</th></tr></thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div id="folder-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724" aria-expanded="false" aria-controls="collapse" id="requests-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724" class="collapsed text-white z-block">
+                    Iteration: 1 - PDF Thumbnail Success <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724" class="collapse" aria-labelledby="requests-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code class="renderMarkdown">Using an id of a previous uploaded PDF, uses the PDF Filter to get it as an image.</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/contentAsset/image-thumbnail/977ee4a7013dce1731e90eabb18b198e/asset/" target="_blank">http://dotcms-app:8080/contentAsset/image-thumbnail/977ee4a7013dce1731e90eabb18b198e/asset/</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 4s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 5.27KB</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5 style="padding-top:5px;"><strong>100 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>e771cc61-97f1-478d-ae00-5b319923b5cb</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cookie</td>
+                                                        <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NjExOTI1Mi02ODRmLTRiOTItYTE5YS1mZjAxODc3MzRiNzYiLCJ4bW9kIjoxNjQ2MzUzODg1MzYzLCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDYzNTM4ODgsImlzcyI6ImY0ZjllMTM2OTEiLCJleHAiOjE2NDY0NDAyODh9.RkFaXSZj438UTuZW4x9YrTgaKZwIAqZp6_VZoinnb3c</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>6047cfe3a9cd|9c36c57e15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;BF9775BC9247CE8F8F19879CA1514CFD; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Disposition</td>
+                                                    <td>inline; filename&#x3D;&quot;testpdf.pdf&quot;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Fri, 04 Feb 2022 00:31:42 +0000</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>max-age&#x3D;-1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Accept-Ranges</td>
+                                                    <td>bytes</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>image/png</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>5401</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Fri, 04 Mar 2022 00:31:42 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-498b88f8-878e-4408-a74b-525a9eebecd9" class="prettyPrint">�PNG
+        
+           IHDR   d   d   ��  �IDATx^��ST���7�!�I^��T^��K��T�*���!U�T��1&#x60;��}TP\��aff�Av�E�Q�e��f��}�n�&#x3D;0̅i�)�5u����v���s��^^	�D�xE�x���Y�Hf]�|���jpp�ɓ&#x27;���.3&lt;x��O?}����|�͏&gt;����W&#x27;2�G����_�������G����3f]�t�o����?�����{����~���_{����J�˕��{��y��}���&#x27;N�㇙��;w�]�q���ݻ�������CCÃ��n߹C��������dK�3f�����;��z��w�z�7�x��W_���ϑ�O&gt;��&gt;X�r�5k��?999&gt;&gt;&gt;666:::�@&amp;�ń���)�&gt;$@�M�)��+wvv�;w����������9s�����������Dq����@ 
+        q[SS�� aII	###z���h6{�^������R9�T��������C�eff¯�g�2&lt;W�X��ݶm�֭[���&#x3D;���W_mڴ�~���JJJ����,�������/ȁ��_����իW(k�ƍd�}����bJ�������v�]��ƍd��g�QU��:y�ر��������&#x3D;߅��Yahh������84dDOoP(a�P�ŐM�&lt;x�&#x60;zzZv5&#x27;��]lp�,&amp;&gt;$��ǐ�.������u&#x60;&#x60;����G�6��YXa;���Np�޼J��A9&quot;����]]](S�R���#�����ӧO#�3�\����RXX� 3l�D�w!8&#x60;5�W����n޼e�U�Dܺu[+.�t����(��m��E_ݸ1���3+k��cy&gt;TW�����?pS&#x27;���O��ڷgOV־��9G��s��N�X0P�A&#x3D;6*3�dK[Ssˉ��Z�:&#x60;��?�MLL��G��.5�l�,J$������o����1�dV]]&#x3D;�_uuMqqIuMmI����%�R�&#x27;����n��4���444C!��
+        U�A�&#x60;��,2�E�(WodT8&#x60;4�嗝��s׮�ܣ{��ݑ��������C���ޝA���G������ȑ&#x3D;{��ۿ?#s�ެ����;wF����72*0�a�V���C�iy*�bv&gt;�!.08a�o���a��@��ss__V%��3���_f��GEB7��v��IlkX��}��)l&quot;a��XF��
+        �	#�B!�K��G!p��u&quot;1�Ņ�T�ǒ�E@F���:
+        �?��e�,XL��׮]�u���t&amp; �&#x27;�:�,p ��@%��w��]�!�B�E!D�7o޼�0�h�Yt/�$@u�a�̕�N�(;�6B�j� |�[�ha����yI���Yf�?E��Π�-����F�#;\�&amp;��Y&lt;~��������Ss|d�: Dz��@i�Yfѫ��bҡ\$@��SSST��\i�Ӯ~�0�,������a  ��&#x60;�7c�[\V�.
+        �+�L�L�t�����f��G��1D踊H^�paF�seXqef� ��&quot;��}c&#x27;&#x60;Z(�%�z�Yf!G(cfe�2�S{���3ͣw!+++�#@hdX�n�Y{���]�$-W! 7� &lt;�P%(o� Ѷ��,�
+        G,iE�Yf�Q��V���W44W&amp;�&#x27;
+        HW!&#x60;hX�6[hC� ���+�����V�^�y���la�Y7t���&lt;z{{�k�8ß9�j�c_]]-�X[z��&#x60;�Y2:��s ��G�2Bk�g!�2�
+        &#x3D;3ɳ��Yfa�����gz���^%3����PUU��$({-��@  fjѐ+������(��IK*�JT&gt;��c�R��HK���T����l���Shȓ�&#x60;0H�T��
+        ����ݥK�$!��sK�x�72*�1K�z�a�Y---Ld�Kc&#x27;
+        ���x�&amp;&amp;&amp;.^���&quot;��*�W�X&amp;Ԣ20ˬ��b���Ђ#�H��]��H��ɳ��N1?�-b�Y��&lt;s�웣Dd��S-H��h�� �)Ƒ��b��ܥv1z74��� 4
+        �:�����Q@�d���9�������DCC��	�^���K\����^��ka�q����*--u?^T����\�nO ��o��u�tdA֯���R����V���Z�72*0���&#x3D;����zͺu�6nJH\�zuRrJJb���7�߰q�w+W����&#x27;5-}�����u�)?��.55��xQdV����~��Q�Y��˗/3&quot;p�p}t44a�x�
+        &#x3D;����a���1g0���bC���E)G�b����Jl�a?&quot;0�,&#x3D;jP-�w��ѻ�dҢ�1�&quot;0��M\_��3�[9{%��\�&amp;����*��UH�Y�QJq�.$x��,�e��X �� ��)� CX&#x27;��b�#�L���(�	#�xY��Y�@��L��3�Yf�a&#x60;˕���8&#x60;&quot;��N3�G����&gt;hN+���&quot;,�(�4�
+        n���d_�e�5�,�X�k���#�2B&quot;�r�v���^K.�Ȋ�j�Yf�2���P(����PD��%��1���0�A�!J���3�u&#x60;�oF�����e�7�2�B�P:�M�i�Ԙ��\:�,�Md{���_dF�T:�0-@I_z�^jH$O�$�Ԛ6�,���Ě7g������� �I|)-��$&amp;8-��ws�3�,�aee�,����H�a�����G��\���fF�}w^D 1��냆L0,F�v��e!����41!�.cP��F�Ӭ�1K�r�����D���H��8�A��e��̍P����F&quot;Pt���\t��b�?s���G�(�r :�,�³{sڼ��2��0s��g�ԉ���2�F+j�� Ғ����,�d1烹�YD�N�8�S��F�D�P@r��+\ F��Ea��0��J�eMU&lt;�J��#K;��2������C4��i4~��;�|�p&#x27;+F�V�l��K(�9��f�����&gt;������&quot;Ph%�bl�b6
+        J��GeR�&#x27;�Ӊ�6�,��WT�Z���/���lMIِ��*)���7nڼ�@jj��-�W������&#x3D;+V|���+5-}��͛�Ff�ğ����������+
+        
+        
+        ���srr��ߟ�����������&#x60;d~AvNnAaa^^�ѣ���x��C�����f�v�[�̣����E�C�z���6K����3	0l���;���Y����&#x60;D�!	�L�(�ʬ� &#x27;���	)&#x3D;��C}J$&#x27;�!hF皯��a�dC��QE��-3#Me�CyY02���3��Sڌ�/��b���+&#x27;TE!�≑�H�#�a%�:�K���dHrʅ��W��3��f�%�~��z�-?9���%&#x27;��%���:��U̱&#x27;ꌑ���1��d�p&#x27;�,5����C�j����	�4&lt;k�	x�&#x60;N��K��4��,��L�Τ��j�����\1���x*SU�:�ҥ6�;�
+        K�$H�$A�d%	��L]&quot;/L�rB\&quot;�W�Pfa٦$	5imm�����!I&gt;�^&quot;�_%&#x60;v�p���2Ŀ�,�,��RG|�y��KmY�&quot;��|���&#x60;��� 2��ܢ��k��$GLd��P(�7�t�e�l&quot;D��&#x3D;�؁�KZ¦��G��0ˬ�1��̭f��G��0�,1���4��ң^p�e6�{SSӢ�&lt;| \H̅Xޖ��a��Qa|,�2f���+G��S̨8zbX[����-�5�8&amp;��z?�y&#x27;Sv�y:�&gt;�s?�5�X&#x60;��$-&lt;�&lt;M�%�f*^��&amp;��0a�j���P�Pb��0qA�g_K���#��K��2�s31^0�,djxxxT��9�V,�Ҽ1���S�A�eF(o�8!�P_�����,�b�\�S 7����2�S�x�aY��TG�0�O���:	E@F+��q�)��%+���dB�ۗ��2N�\����� �x��qW�\!1A&quot;d骷��������&gt;(	3���Q�Bww7Yq���z.�f����,�������f����,��XCUU��������DS\\L%:::��VBss3&amp;(�,���~��
+        zMM��o��jkke�����B-��,dmk� ��b��Z��;�|�p��$�&#x60;��Q�YH�a������K��L\�@ �m500@�������$A�ȹ�����
+        iBBy��
+        1IH��ɗ�y�&quot;I�&#x60;�e���B~~&gt;�2��H1��K�����|��� �E�P�&#x27;��\��JV�:��5Ġ�0)�s��ՙunSr�H��b�a�YHMEEeEe�����VT���Oc�HE���sr&quot;#���&gt;dd�_�qP��ͩ�E�%%���|���UZJ�Hv����o�
+        ��Q�Y�uum�����w+�߶mGJʆ��k#	�w��Ñ��o���/�����k�w�ڵk��M�#i��ܞ��ׁ����/(&lt;|$�Hv.���&#x3D;��stwFfII�PV��荌
+        ̢J\�%�6n��_Z����۟�%���E�.��/8��Դ��
+        z#����bgY��0��I({�m�
+        �A���Y���-3�R���G�(
+        ��������[�-�72*0�d9&#x60;��3;$���?&#x60;��o���~h��Ȩp�,$K ca�~Lp����G��:�B$A��7-!�9��x:ԇ���p�vȂ4���3�d��H�	 �r(�����ɊR��;�A
+        �&#x60;�L7��ky�J\����RI|$���dQ�|/�R���}TQ��� 4E��&gt;��rT��[�C	�54��hR�k!+�&quot;�����$ȉq�g�E}7C�-q�HB�)H^���(/8&quot;�?��)�
+        ��2K&lt;;ʠrߩ�� _YY����!&amp;�S&lt;������x9/�#�h*-�O�!B2&#x27;7(�&#x27;!ad��ɖT����#��,5�I����Zu�N�oH�$��۷��y.��ޕ�3�,qS�����J�x�����N+����������%)�G���/���
+        S ��n��b��#����$�_Ț\�RL;a.Y�����8��+��pt	�Q��nT��Ϩo���� 3�,:���iT���1�f9�Gue��j&#x60;4m�?p��p��B���D��$�/�d]4��Af�W�oF�p�J�3��S�G��&lt;���b4 V�P���!�DSd&quot;av&#x3D;�����6��Yf�����9u�����066v��}Đ_�2����1�̮H���x�Q0��՟�&#x60;y^/��&lt;��d�軠NS3��	�7L$�0�V0Ē��S�����&amp;���5?�(��ʲ�&#x60;xxHm����Q�Y����ѣ���:P6�E&quot;d;&gt;�:VޮCIm�D�|M�s�&#x60;&gt;IJJZ�r%s����*虋�|�
+        �z������@�J����N��Y�
+        ȸ�t�m$W��݉�v]}~�&amp;&quot;����!XvQ�:�#^Tf�+�?b�/^�O�    IEND�B&#x60;�</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-498b88f8-878e-4408-a74b-525a9eebecd9">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <div class="table-responsive text-nowrap">
+                                        <table id="myTable-498b88f8-878e-4408-a74b-525a9eebecd9" class="table table-hover">
+                                        <thead><tr class="text-center"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr></thead>
+                                            <tbody>
+                                                <tr >
+                                                    <td >Status code should be 200</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="bg-light">
+                                                    <td><strong>Total</strong></td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">0</td>
+                                                    <td class="text-center">0</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="row d-none">
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="card-deck">
+                                        <div class="card border-danger" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-danger">Test Failure</h5>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                    <thead><tr class="text-nowrap"><th>Test Name</th><th>Assertion Error</th></tr></thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div id="folder-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c" aria-expanded="false" aria-controls="collapse" id="requests-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c" class="collapsed text-white z-block">
+                    Iteration: 1 - Create Pdf Accept PDFDotAsset FieldVariables <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c" class="collapse" aria-labelledby="requests-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> POST</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/v1/contenttype/PDFDotAsset/fields/var/asset/variables" target="_blank">http://dotcms-app:8080/api/v1/contenttype/PDFDotAsset/fields/var/asset/variables</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 6s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 272B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar bg-success" style="width: 100%" role="progressbar">
+                                            <h5 class="text-uppercase text-white text-center" style="padding-top:5px;"><strong>No Tests for this request</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Type</td>
+                                                        <td>application/json</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>c959f4d6-8e66-4590-9513-59cd6f3031e3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Length</td>
+                                                        <td>99</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cookie</td>
+                                                        <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NjExOTI1Mi02ODRmLTRiOTItYTE5YS1mZjAxODc3MzRiNzYiLCJ4bW9kIjoxNjQ2MzUzODg1MzYzLCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDYzNTM4ODgsImlzcyI6ImY0ZjllMTM2OTEiLCJleHAiOjE2NDY0NDAyODh9.RkFaXSZj438UTuZW4x9YrTgaKZwIAqZp6_VZoinnb3c</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Body</h5>
+                                        <div class="dyn-height">
+                                            <pre><code id="copyReqText-3" class="prettyPrint">{&quot;key&quot;:&quot;accept&quot;,&quot;value&quot;:&quot;img/*,image/*&quot;,&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.FieldVariable&quot;}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyReqText-3">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>6047cfe3a9cd|9c36c57e15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;08FB873E35B83E4FE94B95AE5F0D8E92; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">vary</td>
+                                                    <td>accept-encoding</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Encoding</td>
+                                                    <td>gzip</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Transfer-Encoding</td>
+                                                    <td>chunked</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Fri, 04 Mar 2022 00:31:49 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-1c161992-2879-4d90-b6b1-ad95f921b43c" class="prettyPrint">{&quot;entity&quot;:{&quot;clazz&quot;:&quot;com.dotcms.contenttype.model.field.ImmutableFieldVariable&quot;,&quot;fieldId&quot;:&quot;c8a4c19e387bd1a2cfd66e38da20ae8f&quot;,&quot;id&quot;:&quot;739e28bd-22c1-44ef-9d21-35ea26068700&quot;,&quot;key&quot;:&quot;accept&quot;,&quot;value&quot;:&quot;img/*,image/*&quot;},&quot;errors&quot;:[],&quot;i18nMessagesMap&quot;:{},&quot;messages&quot;:[],&quot;permissions&quot;:[]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-1c161992-2879-4d90-b6b1-ad95f921b43c">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div id="folder-82b3ff4c-3592-4f77-866c-c1c37ce6017c" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c" aria-expanded="false" aria-controls="collapse" id="requests-82b3ff4c-3592-4f77-866c-c1c37ce6017c" class="collapsed text-white z-block">
+                    Iteration: 1 - Fire NEW for PDFDotAsset with an image <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c" class="collapse" aria-labelledby="requests-82b3ff4c-3592-4f77-866c-c1c37ce6017c">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code class="renderMarkdown">PDFDotAsset only accepts pdf files, so if we try to upload an image, it should throw a 400</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> PUT</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/v1/workflow/actions/default/fire/NEW" target="_blank">http://dotcms-app:8080/api/v1/workflow/actions/default/fire/NEW</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 6.2s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 1.18KB</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar bg-success" style="width: 100%" role="progressbar">
+                                            <h5 class="text-uppercase text-white text-center" style="padding-top:5px;"><strong>No Tests for this request</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Type</td>
+                                                        <td>application/json</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>c4ca4ff0-9403-4eb1-81d4-f3222b3554e6</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cookie</td>
+                                                        <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NjExOTI1Mi02ODRmLTRiOTItYTE5YS1mZjAxODc3MzRiNzYiLCJ4bW9kIjoxNjQ2MzUzODg1MzYzLCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDYzNTM4ODgsImlzcyI6ImY0ZjllMTM2OTEiLCJleHAiOjE2NDY0NDAyODh9.RkFaXSZj438UTuZW4x9YrTgaKZwIAqZp6_VZoinnb3c</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Length</td>
+                                                        <td>11953</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-12 mb-3">
+                                    <div class="card-deck">
+                                        <div class="card border-info" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-info">Request Body</h5>
+                                                <div class="dyn-height">
+                                                    <pre><code id="copyReqText-4" class="prettyPrint">{&quot;file&quot;:&quot;resources/dotcms.png&quot;,&quot;json&quot;:&quot;{\n\t \&quot;contentlet\&quot;: {\n\t\t\&quot;contentType\&quot;:\&quot;PDFDotAsset\&quot;,\n\t\t\&quot;title\&quot;:\&quot;Test1\&quot;,\n\t\t\&quot;contentHost\&quot;:\&quot;demo.dotcms.com\&quot;\n\t}\n}\n&quot;}</code></pre>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyReqText-4">Copy to Clipboard</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>6047cfe3a9cd|9c36c57e15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;6F0E93CE040E3BD12C372F954FDDFD0D; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">vary</td>
+                                                    <td>accept-encoding</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Encoding</td>
+                                                    <td>gzip</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Transfer-Encoding</td>
+                                                    <td>chunked</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Fri, 04 Mar 2022 00:31:55 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-5e48a15f-0b9c-46a6-91bf-1c858bd09eda" class="prettyPrint">{&quot;entity&quot;:{&quot;AUTO_ASSIGN_WORKFLOW&quot;:false,&quot;__icon__&quot;:&quot;pngIcon&quot;,&quot;archived&quot;:false,&quot;asset&quot;:&quot;/dA/464c1b6c0654f0b6ab85dccf6af8ba9a/asset/dotcms.png&quot;,&quot;assetContentAsset&quot;:&quot;464c1b6c0654f0b6ab85dccf6af8ba9a/asset&quot;,&quot;assetVersion&quot;:&quot;/dA/f6f5d999-4a81-42f9-81a5-a717320337cf/asset/dotcms.png&quot;,&quot;baseType&quot;:&quot;DOTASSET&quot;,&quot;contentType&quot;:&quot;PDFDotAsset&quot;,&quot;extension&quot;:&quot;png&quot;,&quot;folder&quot;:&quot;SYSTEM_FOLDER&quot;,&quot;hasLiveVersion&quot;:false,&quot;hasTitleImage&quot;:true,&quot;host&quot;:&quot;SYSTEM_HOST&quot;,&quot;hostName&quot;:&quot;System Host&quot;,&quot;identifier&quot;:&quot;464c1b6c0654f0b6ab85dccf6af8ba9a&quot;,&quot;inode&quot;:&quot;f6f5d999-4a81-42f9-81a5-a717320337cf&quot;,&quot;isContentlet&quot;:true,&quot;languageId&quot;:1,&quot;live&quot;:false,&quot;locked&quot;:false,&quot;mimeType&quot;:&quot;image/png&quot;,&quot;modDate&quot;:1646353912087,&quot;modUser&quot;:&quot;dotcms.org.1&quot;,&quot;modUserName&quot;:&quot;Admin User&quot;,&quot;name&quot;:&quot;dotcms.png&quot;,&quot;owner&quot;:&quot;dotcms.org.1&quot;,&quot;path&quot;:&quot;/content.f6f5d999-4a81-42f9-81a5-a717320337cf&quot;,&quot;publishDate&quot;:1646353912087,&quot;size&quot;:11502,&quot;sortOrder&quot;:0,&quot;stInode&quot;:&quot;2ea501759e081395f62c0c9cc435e04b&quot;,&quot;statusIcons&quot;:&quot;&lt;span class&#x3D;&#x27;workingIcon&#x27;&gt;&lt;/span&gt;&lt;span class&#x3D;&#x27;greyDotIcon&#x27; style&#x3D;&#x27;opacity:.4&#x27;&gt;&lt;/span&gt;&quot;,&quot;title&quot;:&quot;dotcms.png&quot;,&quot;titleImage&quot;:&quot;asset&quot;,&quot;type&quot;:&quot;dotasset&quot;,&quot;url&quot;:&quot;/content.f6f5d999-4a81-42f9-81a5-a717320337cf&quot;,&quot;working&quot;:true},&quot;errors&quot;:[],&quot;i18nMessagesMap&quot;:{},&quot;messages&quot;:[],&quot;permissions&quot;:[]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-5e48a15f-0b9c-46a6-91bf-1c858bd09eda">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div id="folder-8195c397-3c7d-4cb6-82f4-14199bd03db9" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9" aria-expanded="false" aria-controls="collapse" id="requests-8195c397-3c7d-4cb6-82f4-14199bd03db9" class="collapsed text-white z-block">
+                    Iteration: 1 - Fire NEW for PDFDotAsset with an pdf <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9" class="collapse" aria-labelledby="requests-8195c397-3c7d-4cb6-82f4-14199bd03db9">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code class="renderMarkdown">This should be ok, valid asset</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> PUT</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/v1/workflow/actions/default/fire/NEW" target="_blank">http://dotcms-app:8080/api/v1/workflow/actions/default/fire/NEW</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 400 - Bad Request</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 3s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 162B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar bg-success" style="width: 100%" role="progressbar">
+                                            <h5 class="text-uppercase text-white text-center" style="padding-top:5px;"><strong>No Tests for this request</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Type</td>
+                                                        <td>application/json</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>039df635-1fbf-42cf-9270-657d5e0d3776</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cookie</td>
+                                                        <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3NjExOTI1Mi02ODRmLTRiOTItYTE5YS1mZjAxODc3MzRiNzYiLCJ4bW9kIjoxNjQ2MzUzODg1MzYzLCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDYzNTM4ODgsImlzcyI6ImY0ZjllMTM2OTEiLCJleHAiOjE2NDY0NDAyODh9.RkFaXSZj438UTuZW4x9YrTgaKZwIAqZp6_VZoinnb3c</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Length</td>
+                                                        <td>648982</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-12 mb-3">
+                                    <div class="card-deck">
+                                        <div class="card border-info" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-info">Request Body</h5>
+                                                <div class="dyn-height">
+                                                    <pre><code id="copyReqText-5" class="prettyPrint">{&quot;file&quot;:&quot;resources/testpdf.pdf&quot;,&quot;json&quot;:&quot;{\n\t \&quot;contentlet\&quot;: {\n\t\t\&quot;contentType\&quot;:\&quot;PDFDotAsset\&quot;,\n\t\t\&quot;title\&quot;:\&quot;Test1\&quot;,\n\t\t\&quot;contentHost\&quot;:\&quot;demo.dotcms.com\&quot;\n\t}\n}\n&quot;}</code></pre>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyReqText-5">Copy to Clipboard</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>6047cfe3a9cd|9c36c57e15</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;1FD65A0B0315BF1EC17BB232AA3578B6; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">vary</td>
+                                                    <td>accept-encoding</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Encoding</td>
+                                                    <td>gzip</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Transfer-Encoding</td>
+                                                    <td>chunked</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Fri, 04 Mar 2022 00:31:58 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>close</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-206e1dad-1613-42cc-ada0-e0a562e7d541" class="prettyPrint">{&quot;entity&quot;:&quot;&quot;,&quot;errors&quot;:[{&quot;errorCode&quot;:&quot;badType&quot;,&quot;fieldName&quot;:&quot;asset&quot;,&quot;message&quot;:&quot;This file type is not allowed&quot;}],&quot;i18nMessagesMap&quot;:{},&quot;messages&quot;:[],&quot;permissions&quot;:[]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-206e1dad-1613-42cc-ada0-e0a562e7d541">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <h5 class="alert alert-success text-uppercase text-center">No Tests for this request</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- Data Table Configuration -->
+
+<script>
+$(document).ready( function () {
+    $('#myTable-1c506667-34a0-43f4-9261-4ec4560813d4').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+$(document).ready( function () {
+    $('#myTable-e5f2d140-0cbf-4304-8b07-49c12d4b2752').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+$(document).ready( function () {
+    $('#myTable-498b88f8-878e-4408-a74b-525a9eebecd9').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+$(document).ready( function () {
+    $('#myTable-1c161992-2879-4d90-b6b1-ad95f921b43c').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+$(document).ready( function () {
+    $('#myTable-5e48a15f-0b9c-46a6-91bf-1c858bd09eda').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+$(document).ready( function () {
+    $('#myTable-206e1dad-1613-42cc-ada0-e0a562e7d541').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+</script>
+
+<!-- Tooltip Configuration -->
+
+<script>
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger : 'hover'
+    })
+})
+</script>
+
+<!-- Show/Hide The Folders -->
+
+<script>
+$('#openAll').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#folder-93d36d2e-b2a7-412c-93d1-f49f40dd5444-iteration-0').removeClass('collapsed')
+            $('#folder-collapse-93d36d2e-b2a7-412c-93d1-f49f40dd5444-iteration-0').addClass('show')
+        $('#openAll').html("Collapse Folders");
+        break;
+    case 2:
+            $('#folder-93d36d2e-b2a7-412c-93d1-f49f40dd5444-iteration-0').addClass('collapsed')
+            $('#folder-collapse-93d36d2e-b2a7-412c-93d1-f49f40dd5444-iteration-0').removeClass('show')
+        $('#openAll').html("Expand Folders");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Requests -->
+
+<script>
+$('#openAllRequests').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#requests-64e85f48-fb33-4f8e-9ce1-743a3b65a439').removeClass('collapsed')
+            $('#collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439').removeClass('collapsed')
+            $('#requests-64e85f48-fb33-4f8e-9ce1-743a3b65a439').addClass('show')
+            $('#collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439').addClass('show')
+            $('#requests-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').removeClass('collapsed')
+            $('#collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').removeClass('collapsed')
+            $('#requests-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').addClass('show')
+            $('#collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').addClass('show')
+            $('#requests-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').removeClass('collapsed')
+            $('#collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').removeClass('collapsed')
+            $('#requests-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').addClass('show')
+            $('#collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').addClass('show')
+            $('#requests-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').removeClass('collapsed')
+            $('#collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').removeClass('collapsed')
+            $('#requests-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').addClass('show')
+            $('#collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').addClass('show')
+            $('#requests-82b3ff4c-3592-4f77-866c-c1c37ce6017c').removeClass('collapsed')
+            $('#collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c').removeClass('collapsed')
+            $('#requests-82b3ff4c-3592-4f77-866c-c1c37ce6017c').addClass('show')
+            $('#collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c').addClass('show')
+            $('#requests-8195c397-3c7d-4cb6-82f4-14199bd03db9').removeClass('collapsed')
+            $('#collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9').removeClass('collapsed')
+            $('#requests-8195c397-3c7d-4cb6-82f4-14199bd03db9').addClass('show')
+            $('#collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9').addClass('show')
+        $('#openAllRequests').html("Collapse Requests");
+        break;
+    case 2:
+            $('#requests-64e85f48-fb33-4f8e-9ce1-743a3b65a439').addClass('collapsed')
+            $('#collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439').addClass('collapsed')
+            $('#requests-64e85f48-fb33-4f8e-9ce1-743a3b65a439').removeClass('show')
+            $('#collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439').removeClass('show')
+            $('#requests-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').addClass('collapsed')
+            $('#collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').addClass('collapsed')
+            $('#requests-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').removeClass('show')
+            $('#collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').removeClass('show')
+            $('#requests-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').addClass('collapsed')
+            $('#collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').addClass('collapsed')
+            $('#requests-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').removeClass('show')
+            $('#collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').removeClass('show')
+            $('#requests-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').addClass('collapsed')
+            $('#collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').addClass('collapsed')
+            $('#requests-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').removeClass('show')
+            $('#collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').removeClass('show')
+            $('#requests-82b3ff4c-3592-4f77-866c-c1c37ce6017c').addClass('collapsed')
+            $('#collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c').addClass('collapsed')
+            $('#requests-82b3ff4c-3592-4f77-866c-c1c37ce6017c').removeClass('show')
+            $('#collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c').removeClass('show')
+            $('#requests-8195c397-3c7d-4cb6-82f4-14199bd03db9').addClass('collapsed')
+            $('#collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9').addClass('collapsed')
+            $('#requests-8195c397-3c7d-4cb6-82f4-14199bd03db9').removeClass('show')
+            $('#collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9').removeClass('show')
+        $('#openAllRequests').html("Expand Requests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Skipped Tests -->
+
+<script>
+$('#openAllSkipped').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#skipped-64e85f48-fb33-4f8e-9ce1-743a3b65a439').removeClass('collapsed')
+            $('#skipped-collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439').removeClass('collapsed')
+            $('#skipped-64e85f48-fb33-4f8e-9ce1-743a3b65a439').addClass('show')
+            $('#skipped-collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439').addClass('show')
+            $('#skipped-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').removeClass('collapsed')
+            $('#skipped-collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').removeClass('collapsed')
+            $('#skipped-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').addClass('show')
+            $('#skipped-collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').addClass('show')
+            $('#skipped-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').removeClass('collapsed')
+            $('#skipped-collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').removeClass('collapsed')
+            $('#skipped-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').addClass('show')
+            $('#skipped-collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').addClass('show')
+            $('#skipped-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').removeClass('collapsed')
+            $('#skipped-collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').removeClass('collapsed')
+            $('#skipped-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').addClass('show')
+            $('#skipped-collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').addClass('show')
+            $('#skipped-82b3ff4c-3592-4f77-866c-c1c37ce6017c').removeClass('collapsed')
+            $('#skipped-collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c').removeClass('collapsed')
+            $('#skipped-82b3ff4c-3592-4f77-866c-c1c37ce6017c').addClass('show')
+            $('#skipped-collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c').addClass('show')
+            $('#skipped-8195c397-3c7d-4cb6-82f4-14199bd03db9').removeClass('collapsed')
+            $('#skipped-collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9').removeClass('collapsed')
+            $('#skipped-8195c397-3c7d-4cb6-82f4-14199bd03db9').addClass('show')
+            $('#skipped-collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9').addClass('show')
+        $('#openAllSkipped').html("Collapse All Skipped Tests");
+        break;
+    case 2:
+            $('#skipped-64e85f48-fb33-4f8e-9ce1-743a3b65a439').addClass('collapsed')
+            $('#skipped-collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439').addClass('collapsed')
+            $('#skipped-64e85f48-fb33-4f8e-9ce1-743a3b65a439').removeClass('show')
+            $('#skipped-collapse-64e85f48-fb33-4f8e-9ce1-743a3b65a439').removeClass('show')
+            $('#skipped-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').addClass('collapsed')
+            $('#skipped-collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').addClass('collapsed')
+            $('#skipped-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').removeClass('show')
+            $('#skipped-collapse-d01d5d04-7f99-48c9-aafe-d8bb6c854db9').removeClass('show')
+            $('#skipped-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').addClass('collapsed')
+            $('#skipped-collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').addClass('collapsed')
+            $('#skipped-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').removeClass('show')
+            $('#skipped-collapse-5c1fdeea-a15d-4c9c-96fb-22bbe84f9724').removeClass('show')
+            $('#skipped-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').addClass('collapsed')
+            $('#skipped-collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').addClass('collapsed')
+            $('#skipped-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').removeClass('show')
+            $('#skipped-collapse-fc14dac7-74ea-4c64-b6e7-c7cd0c2c416c').removeClass('show')
+            $('#skipped-82b3ff4c-3592-4f77-866c-c1c37ce6017c').addClass('collapsed')
+            $('#skipped-collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c').addClass('collapsed')
+            $('#skipped-82b3ff4c-3592-4f77-866c-c1c37ce6017c').removeClass('show')
+            $('#skipped-collapse-82b3ff4c-3592-4f77-866c-c1c37ce6017c').removeClass('show')
+            $('#skipped-8195c397-3c7d-4cb6-82f4-14199bd03db9').addClass('collapsed')
+            $('#skipped-collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9').addClass('collapsed')
+            $('#skipped-8195c397-3c7d-4cb6-82f4-14199bd03db9').removeClass('show')
+            $('#skipped-collapse-8195c397-3c7d-4cb6-82f4-14199bd03db9').removeClass('show')
+        $('#openAllSkipped').html("Expand All Skipped Tests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Failures -->
+
+<script>
+$('#openAllFailed').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+let failedItemContent
+let failedItemHeading
+switch (clickCount){
+    case 1:
+        $('#openAllFailed').html("Collapse All Failed Tests");
+        break;
+    case 2:
+        $('#openAllFailed').html("Expand All Failed Tests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Pretty Print the Response Body-->
+
+<script>
+function isJSON(data)
+{
+    var ret = true;
+    try {
+            JSON.parse(data);
+    }catch(e) {
+            ret = false;
+    }
+    return ret;
+}
+
+function isXML(data)
+{
+    return (data.length > 0 && data[0] === '<');
+}
+
+// see https://gist.github.com/sente/1083506/d2834134cd070dbcc08bf42ee27dabb746a1c54d#gistcomment-2254622
+function formatXML(data) {
+    const PADDING = ' '.repeat(2); // set desired indent size here
+    const reg = /(>)(<)(\/*)/g;
+    let pad = 0;
+    xml = data.replace(reg, '$1\r\n$2$3');
+
+    return xml.split('\r\n').map((node, index) => {
+        let indent = 0;
+        if (node.match(/.+<\/\w[^>]*>$/)) {
+            indent = 0;
+        } else if (node.match(/^<\/\w/) && pad > 0) {
+            pad -= 1;
+        } else if (node.match(/^<\w[^>]*[^\/]>.*$/)) {
+            indent = 1;
+        } else {
+            indent = 0;
+        }
+
+        pad += indent;
+        return PADDING.repeat(pad - indent) + node;
+    }).join('\r\n');
+}
+
+$(".prettyPrint").each(function () {
+        var data = $(this).text();
+        // Verify whether data is JSON
+        if(isJSON(data))
+        {
+                obj = JSON.parse(data);
+                data = JSON.stringify(obj, null, 2);
+        }
+        else if(isXML(data)) {
+            data = formatXML(data);            
+        }
+        $(this).text(data);
+});
+</script>
+
+
+<!-- Copy Response Body To Clipboard -->
+
+<script>
+    var clipboard = new ClipboardJS('.copyButton');
+
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        $(".copyButton").addClass("bg-success text-white")
+        e.trigger.textContent = '✔ Copied!';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-success text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+    clipboard.on('error', function(e) {
+        e.clearSelection();
+        $(".copyButton").addClass("bg-danger text-white")
+        e.trigger.textContent = '✗ Not Copied';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-danger text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+
+</script>
+
+<!-- Render the Description Markdown and link in the test failures -->
+
+<script>
+    const remarkable = new Remarkable();
+
+    const descriptions = document.querySelectorAll(".renderMarkdown");
+    descriptions.forEach(description => {
+        description.innerHTML = renderHtmlFromMarkdown(description.textContent);
+    });
+    function renderHtmlFromMarkdown(markdown) {
+        return remarkable.render(trim(markdown));
+    }
+    function trim(string) {
+        return string ? string.replace(/^ +| +$/gm, "") : string;
+    }
+</script>
+
+<!-- Show/Hide The Toggles When Scrolling The Page -->
+
+<script>
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("topOfRequestsScreen").style.display = "block";
+    document.getElementById("topOfFailuresScreen").style.display = "block";
+    document.getElementById("topOfSkippedScreen").style.display = "block";
+    document.getElementById("openAll").style.display = "none";
+    document.getElementById("openAllRequests").style.display = "none";
+    
+    
+  } else {
+    document.getElementById("topOfRequestsScreen").style.display = "none";
+    document.getElementById("topOfFailuresScreen").style.display = "none";
+    document.getElementById("topOfSkippedScreen").style.display = "none";
+    document.getElementById("openAll").style.display = "block";
+    document.getElementById("openAllRequests").style.display = "block";
+    
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+<!-- Creates The Iteration Tabs -->
+
+<script type="text/javascript">
+    "use strict";
+
+window.onload = function () {
+
+  // set display for all blocks of response
+  var allItems = document.querySelectorAll('[class*=iteration-]');
+  allItems.forEach(function(elem){
+    elem.style.display = 'block';
+  });
+
+   
+  let totalIterations = 1;
+   
+
+  let menu = document.querySelector('#execution-menu .nav');
+
+  for(var i = 0; i < totalIterations; i++)
+  {
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode((i + 1)));
+    li.setAttribute('id', 'iteration-' + i);
+    li.classList.add("custom-tab");
+    li.classList.add("itPassed");
+
+    li.addEventListener('click', function() {
+      //set display to none for all except row
+      let allItems = document.querySelectorAll('[class*=iteration-]:not(.row)');
+      allItems.forEach(function(elem) {
+        elem.style.display = 'none';
+      })
+
+      let allMenus = document.querySelectorAll('[id*=iteration-]');
+      allMenus.forEach(function(elem){
+        elem.style.borderBottom = 'none';
+      })
+    
+      this.style.borderBottom = 'solid 3px #032a33';
+
+      let items = document.querySelectorAll("." + this.id + ':not(.row)');
+      items.forEach(function(elem) {
+        elem.style.display = elem.style.display == 'block' ? 'none' : 'block';
+      })
+    });
+    menu.appendChild(li);
+  }
+
+  //shows first tab data
+  document.getElementById('iteration-0').click();
+  document.getElementById('iterationSelected').innerHTML = `Iteration ${document.getElementById('iteration-0').innerHTML} selected`
+
+}
+</script>
+
+<!-- Create the Selected Iteration Label -->
+
+<script>
+$(document).ready(function(){
+    $(function() {
+        $("#iterationList li").click(function() {
+            document.getElementById('iterationSelected').innerHTML = "Iteration " + this.innerHTML + " selected"
+        });
+    });
+});
+</script>
+
+<!-- Filter Action for the Iterations -->
+
+<script>
+$("#filterInput").on("input paste", function() {
+    var value = $(this).val();
+    $("#iterationList li").filter(function() {
+	    $("#showOnlyFailures").data("clickCount") ? $("#showOnlyFailures").click():null;
+        $(this).toggle($(this).text().indexOf(value) > -1)
+    });
+});
+</script>
+
+<!-- Showing the Failed Interations -->
+
+<script>
+$('#showOnlyFailures').on('click', function(e) {
+    let clickCount = $(this).data("clickCount") || 1
+	$("#filterInput").val()!="" && clickCount==1 ? $("#filterInput").val('').trigger('input'): null;
+    let selectedIteration = $('#iterationList li').filter(function () { 
+        return $(this).css('border-bottom').indexOf("solid") > -1 && $(this).hasClass('itFailed');
+    });
+    selectedIteration.length || clickCount > 1 ? null : $("#iterationList li.itFailed")[0].click()
+    $("#iterationList li.itPassed").toggle()
+    $("div.bg-success [id*=requests]").parents('[class^="row iteration-"]').toggle();
+    clickCount = clickCount > 1 ? 1 : ++clickCount;
+    clickCount > 1 ? $("#showOnlyFailures").html("Show All Iterations") : $("#showOnlyFailures").html("Show Failed Iterations");
+    $(this).data("clickCount", clickCount)     
+})
+</script>
+
+<!-- Set The Theme Of The Report -->
+
+<script>
+        function setTheme(themeName) {
+            localStorage.setItem('theme', themeName);
+            document.body.className = themeName;
+        }
+
+        function toggleTheme() {
+            if (localStorage.getItem('theme') === 'theme-light') {
+                setTheme('theme-dark');
+            } else {
+                setTheme('theme-light');
+            }
+        }
+
+        (function () {
+            if (localStorage.getItem('theme') === 'theme-light') {
+                setTheme('theme-light');
+                document.getElementById('slider').checked = false;
+            } else {
+                setTheme('theme-dark');
+                document.getElementById('slider').checked = true;
+            }
+        })();
+</script>
