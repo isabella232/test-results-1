@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-y: scroll;">
+<head>
+  <meta charset="UTF-8">
+  <title>Newman Summary Report</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
+<style>
+code.renderMarkdown table, code.renderMarkdown th, code.renderMarkdown td {
+    border: 1px solid black;
+    width: max-content;
+    padding: .75rem;
+}
+
+.theme-dark {
+    --background-color: #222;
+    --bg-card-deck: #444444;
+    --text-color: #ccd2d8;
+    --tab-border: solid 1px #444;
+    --success: #3c9372;
+    --failure: #c24a3f;
+    --warning: #d28c23;
+    --info: #4083b6;
+    --badge-outline: #3c9372;
+    --badge-bg: #cdd3db;
+    --badge-text: #ccd2d9;
+    --failure-row: #c24a3f;
+    --warning-row: #d28c23;
+    --card-bg: #444;
+    --card-footer: #4f5758;
+    --form-input: #ececb5;
+    --hov-text: #d2dae5;
+    --h4-text: #ccd1d9;
+}
+
+.theme-light {
+    --tab-border: solid 1px #fff;
+    --text-color: #000000;
+    --success: #42a745;
+    --failure: #dc3544;
+    --warning: #f4c10b;
+    --info: #49a1b8;
+    --badge-outline: #040411;
+    --badge-bg: #f8f9fa;
+    --badge-text: #fff;
+    --failure-row: #f5c6cb;
+    --warning-row: #ffeeba;
+    --card-bg: #f7f7f7;
+    --hov-text: #fff;
+    --h4-text: #ffffff;
+}
+
+body {
+  padding-top:30px;
+  background-color: var(--background-color)!important;
+  color: var(--text-color);
+}
+
+#execution-data {
+  padding: 10px;
+  border: var(--tab-border);
+  border-top: none;
+}
+
+.nav-tabs {
+  padding-top: 10px;
+  height: 105px;
+  overflow-y: auto;
+}
+
+body.theme-dark .card-header {
+    background-color: #444;
+}
+
+body.theme-light .card-header {
+    background-color: #f7f7f7;
+}
+
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: var(--card-footer);
+}
+
+.card-deck {
+    background-color: var(--bg-card-deck)!important;
+}
+.form-control {
+    background: var(--form-input);
+}
+
+.custom-tab {
+  padding: 10px 15px;
+  margin-right: 0px;
+  height: 47px;
+  width: 69px;
+  text-align: center;
+  border: var(--tab-border);
+  border-bottom: none;
+  cursor:pointer;
+}
+
+body.theme-dark .text-white {
+    color: #ccd2d9!important;
+}
+h4 {
+    color: var(--h4-text);
+}
+
+body.theme-dark h1 {
+    color: #ccd2da;
+}
+
+body.theme-dark .bg-light>td {
+    background: #4f5858!important;
+}
+
+body.theme-dark .hljs {
+    background: #0a0a0ab0!important;
+    color: #8d8787!important;
+}
+
+.bg-info {
+    background-color: var(--info)!important;
+}
+.bg-success {
+    background-color: var(--success)!important;
+}
+
+.alert-success {
+    background-color: var(--success)!important;
+}
+
+.alert-warning {
+    background-color: var(--warning)!important;
+}
+
+.alert-info {
+    background-color: var(--info)!important;
+}
+
+.bg-warning {
+    background-color: var(--warning)!important;
+}
+
+.badge-warning {
+    color: var(--badge-text)!important;
+    background-color: var(--warning)!important;
+}
+
+.table-warning>td {
+    background-color: var(--warning-row);
+}
+
+.alert-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-dark .alert-dark {
+    background-color: #636467!important;
+}
+
+body.theme-dark .text-dark {
+    color: #d1dae4!important;
+}
+
+body.theme-dark .badge-light {
+    color: #212529;
+    background-color: #cdd3db;
+}
+
+body.theme-light .badge-light {
+    color: #212529;
+    background-color: #f8f9fa;
+}
+body.theme-light .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-dark .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+.table-danger>td {
+    background-color: var(--failure-row);
+}
+
+body.theme-dark .table .thead-light th {
+    background-color: #4f5858!important;
+    border-color: #dee2e6!important;
+    color: #ccd2d8!important;
+}
+
+.itPassed {
+  background: var(--success);
+  color: white;
+}
+.itFailed {
+  background: var(--failure);
+  color: white;
+}
+
+.resultsInfoPass {
+  color: var(--success);
+  padding-top: 4px;
+}
+
+.resultsInfoFail {
+  color: var(--failure);
+  padding-top: 4px;
+}
+
+.badge-outline-success {
+  color: var(--success);
+  border: 1px solid var(--success);
+  background-color: transparent;
+}
+
+.badge-outline {
+  color: var(--badge-outline);
+  border: 1px solid var(--badge-outline);
+  background-color: transparent;
+}
+
+.btn-outline-success {
+    color: var(--success)!important;
+    border-color: var(--success)!important;
+}
+
+.backToTop:hover {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--hov-text)!important;
+}
+
+.btn-outline-success:hover {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--hov-text)!important;
+}
+
+.btn-outline-secondary {
+  background-color: var(--success)!important;
+  color: var(--hov-text)!important;
+}
+
+body.theme-dark .env-heading {
+    color: #ccd2d9!important;
+}
+
+body, html {
+  height:100%;
+}
+
+.card {
+  overflow:hidden;
+}
+
+body.theme-dark .card-body {
+    background-color: #444;
+}
+
+body.theme-light .card-body {
+    background-color: #f7f7f7;
+}
+
+body.theme-dark .card-body .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-light .card-body .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+.card-body .rotate {
+  z-index: 8;
+  float: right;
+  height: 100%;
+}
+
+.card-body .rotate i {
+  color: #14141426;
+  position: absolute;
+  left: 0;
+  left: auto;
+  right: -10px;
+  bottom: 0;
+  display: block;
+  -webkit-transform: rotate(-44deg);
+  -moz-transform: rotate(-44deg);
+  -o-transform: rotate(-44deg);
+  -ms-transform: rotate(-44deg);
+  transform: rotate(-44deg);
+}
+
+.dyn-height {
+  max-height:350px;
+  overflow-y:auto;
+}
+
+.nav-pills .nav-link.active {
+  background-color: transparent!important;
+}
+
+.backToTop {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  z-index: 99;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.card-header .fa {
+  transition: .3s transform ease-in-out;
+}
+.card-header .collapsed .fa {
+  transform: rotate(90deg);
+}
+
+.single-line-tabs {
+  padding-top: 10px;
+  height: 60px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 0px;
+  bottom: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  box-shadow: 0 0px 15px #2020203d;
+  background: white;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input:checked + .slider {
+  background-color: #4083b6;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4083b6;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+  background: white;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+table.dataTable td, table.dataTable tr {
+    vertical-align: middle;
+} 
+
+body.theme-dark code {
+    color: #ccd2d8!important;
+} 
+
+body.theme-light code {
+    color: #000000!important;
+} 
+
+</style>
+</head>
+<body class="">
+  <div class="container">
+        <div class="container">
+            <label>Light</label>
+            <label id="switch" class="switch">
+                <input type="checkbox" onchange="toggleTheme()" id="slider">
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+        <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+            <li class="nav-item bg-info active" data-toggle="tooltip" title="Click to view the Summary">
+                <a class="nav-link text-white" id="pills-summary-tab" data-toggle="pill" href="#pills-summary" role="tab" aria-controls="pills-summary" aria-selected="true">Summary</a>
+            </li>
+            <li class="nav-item bg-success" data-toggle="tooltip" title="Click to view the Requests">
+                <a class="nav-link text-white" id="pills-requests-tab" data-toggle="pill" href="#pills-requests" role="tab" aria-controls="pills-requests" aria-selected="false">Total Requests <span class="badge badge-light">2</span></a>
+            </li>
+            <li class="nav-item bg-danger" data-toggle="tooltip" title="Click to view the Failed Tests">
+                <a class="nav-link text-white" id="pills-failed-tab" data-toggle="pill" href="#pills-failed" role="tab" aria-controls="pills-failed" aria-selected="false">Failed Tests <span class="badge badge-light">0</span></a>
+            </li>
+            <li class="nav-item bg-warning" data-toggle="tooltip" title="Click to view the Skipped Tests">
+                <a class="nav-link text-white" id="pills-skipped-tab" data-toggle="pill" href="#pills-skipped" role="tab" aria-controls="pills-skipped" aria-selected="false">Skipped Tests <span class="badge badge-light">0</span></a>
+            </li>
+            </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-summary" role="tabcard" aria-labelledby="pills-summary-tab">
+<div class="row">
+  <div class="col-md-9 col-lg-12 main">
+   <h1 class="display-2 text-center">Newman Run Dashboard</h1>
+   <h5 class="text-center">Thursday, 17 March 2022 19:07:00</h5>
+   <div class="row">
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-success">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-retweet fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Iterations</h6>
+       <h1 class="display-1">1</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-danger">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-list fa-4x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Assertions</h6>
+       <h1 class="display-1">2</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-info">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-plus-circle fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Failed Tests</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-warning">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-share fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Skipped Tests</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+   </div>
+   <hr>
+    <div class="row">
+    <div class="col">
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-white text-center bg-info">File Information</h5>
+                <span><i class="fas fa-file-code"></i></span><strong> Collection:</strong> Save Layout With Relative Path<br>
+                
+                <span><i class="fas fa-file-code"></i></span><strong> Environment:</strong> dotCMS - Local 8080<br>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-white text-center bg-info">Timings and Data</h5>
+                <span><i class="fas fa-stopwatch"></i></span><strong> Total run duration:</strong> 1m 15.9s<br>
+                <span><i class="fas fa-database"></i></span><strong> Total data received:</strong> 29.12KB<br>
+                <span><i class="fas fa-stopwatch"></i></span><strong> Average response time:</strong> 37.8s<br>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-inverse">
+                    <tr class="text-center">
+                        <th class="text-uppercase">Summary Item</th>
+                        <th class="text-uppercase">Total</th>
+                        <th class="text-uppercase">Failed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Requests</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td>Prerequest Scripts</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td>Test Scripts</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr class="">
+                        <td>Assertions</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr class="">
+                        <td>Skipped Tests</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">-</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    <hr>
+   </div>
+   </div>
+  </div>
+ </div>
+        </div>
+            <div class="tab-pane fade" id="pills-failed" role="tabcard" aria-labelledby="pills-failed-tab">
+                <button id="topOfFailuresScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+                
+                <div class="alert alert-success text-uppercase text-center">
+                     <br><br><h1 class="text-center">There are no failed tests <span><i class="far fa-thumbs-up"></i></span></h1><br><br>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-skipped" role="tabcard" aria-labelledby="pills-skipped-tab">
+                <button id="topOfSkippedScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+
+                <div class="alert alert-success text-uppercase text-center">
+                    <br><br><h1 class="text-center">There are no skipped tests <span><i class="far fa-thumbs-up"></i></span></h1><br><br>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-requests" role="tabcard" aria-labelledby="pills-requests-tab">
+
+            <button id="topOfRequestsScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+            
+            <div class="btn-group float-right" role="group" aria-label="Button Group">
+                <button id="openAll" class="btn btn-outline-success btn-sm float-right" style="text-align: center; width: 140px;">Expand Folders</button>
+                <button id="openAllRequests" class="btn btn-outline-success btn-sm float-right" style="text-align: center; width: 140px;">Expand Requests</button>
+            </div>
+
+    <div class="text-uppercase" id="execution-menu">
+        <h5>1 Iteration available to view</h5>
+        
+        <nav class="table-responsive">
+        <ul class="nav single-line-tabs" id="iterationList">
+        </ul>
+        </nav>
+    </div>
+    <h6 class="text-uppercase text-muted" id="iterationSelected" style="padding-top: 10px;"></h6>
+	<div class="tab-content" id="execution-data">
+            <div id="folder-dc2ae682-65d7-40e5-bd79-294574289742" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-dc2ae682-65d7-40e5-bd79-294574289742" aria-expanded="false" aria-controls="collapse" id="requests-dc2ae682-65d7-40e5-bd79-294574289742" class="collapsed text-white z-block">
+                    Iteration: 1 - Upload Bundle Success <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-dc2ae682-65d7-40e5-bd79-294574289742" class="collapse" aria-labelledby="requests-dc2ae682-65d7-40e5-bd79-294574289742">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code class="renderMarkdown">Imports a Bundle that includes:
+        *  A piece of content of type &quot;Rich text&quot; with &quot;test Content&quot; as title and body</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> POST</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/bundle/sync" target="_blank">http://dotcms-app:8080/api/bundle/sync</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 1m 8s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 86B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5 style="padding-top:5px;"><strong>100 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Type</td>
+                                                        <td>application/octet-stream</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Disposition</td>
+                                                        <td>attachment</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>a57bcbcc-1409-4bd2-9010-3d5b26096b99</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Length</td>
+                                                        <td>2702665</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-12 mb-3">
+                                    <div class="card-deck">
+                                        <div class="card border-info" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-info">Request Body</h5>
+                                                <div class="dyn-height">
+                                                    <pre><code id="copyReqText-0" class="prettyPrint">{&quot;file&quot;:&quot;resources/resolve_relative_path_in_layout_end_point/page_test_bundle-01EEZJ5H186WF88K28VHB3P9A6.tar.gz&quot;}</code></pre>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyReqText-0">Copy to Clipboard</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>33b7e51fce90|75ede02778</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;2965C955EF41FED0A853B1DFEB754575; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3Y2FlNWU2NS1mOGM1LTQzMGQtOWU1Ni1hODUwYTgzYzM1ZmEiLCJ4bW9kIjoxNjQ3NTQzOTQ3NzEwLCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDc1NDM5NTAsImlzcyI6ImY5MWVlNWQ1MGIiLCJleHAiOjE2NDc2MzAzNTB9.fyyGN1uf7LJapawL8o-lb_A3Hu24O5KBHfWTPzbiUpM; Path&#x3D;/; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>86</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Thu, 17 Mar 2022 19:06:52 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-8f9b1809-1271-46c0-a230-4ac61e6ca13e" class="prettyPrint">{&quot;bundleName&quot;:&quot;page_test_bundle-01EEZJ5H186WF88K28VHB3P9A6.tar.gz&quot;,&quot;status&quot;:&quot;SUCCESS&quot;}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-8f9b1809-1271-46c0-a230-4ac61e6ca13e">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <div class="table-responsive text-nowrap">
+                                        <table id="myTable-8f9b1809-1271-46c0-a230-4ac61e6ca13e" class="table table-hover">
+                                        <thead><tr class="text-center"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr></thead>
+                                            <tbody>
+                                                <tr >
+                                                    <td >Bundle uploaded sucessfully</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="bg-light">
+                                                    <td><strong>Total</strong></td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">0</td>
+                                                    <td class="text-center">0</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="row d-none">
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="card-deck">
+                                        <div class="card border-danger" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-danger">Test Failure</h5>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                    <thead><tr class="text-nowrap"><th>Test Name</th><th>Assertion Error</th></tr></thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div id="folder-737b0ca7-a53f-4cad-b740-aeacca8b45ab" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab" aria-expanded="false" aria-controls="collapse" id="requests-737b0ca7-a53f-4cad-b740-aeacca8b45ab" class="collapsed text-white z-block">
+                    Iteration: 1 - Save Layout With relative Path <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab" class="collapse" aria-labelledby="requests-737b0ca7-a53f-4cad-b740-aeacca8b45ab">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> POST</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/v1/page/24ca92bb-c71a-4d85-9a9c-a2719df9b05b/layout" target="_blank">http://dotcms-app:8080/api/v1/page/24ca92bb-c71a-4d85-9a9c-a2719df9b05b/layout</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 7.6s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 29.04KB</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5 style="padding-top:5px;"><strong>100 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Type</td>
+                                                        <td>application/json</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>df09b415-7dbb-434a-b48d-fdd72621bea3</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Length</td>
+                                                        <td>907</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cookie</td>
+                                                        <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI3Y2FlNWU2NS1mOGM1LTQzMGQtOWU1Ni1hODUwYTgzYzM1ZmEiLCJ4bW9kIjoxNjQ3NTQzOTQ3NzEwLCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDc1NDM5NTAsImlzcyI6ImY5MWVlNWQ1MGIiLCJleHAiOjE2NDc2MzAzNTB9.fyyGN1uf7LJapawL8o-lb_A3Hu24O5KBHfWTPzbiUpM</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Body</h5>
+                                        <div class="dyn-height">
+                                            <pre><code id="copyReqText-1" class="prettyPrint">{
+            &quot;title&quot;:null,
+            &quot;themeId&quot;:&quot;d7b0ebc2-37ca-4a5a-b769-e8a3ff187661&quot;,
+            &quot;layout&quot;:{
+                &quot;body&quot;:{
+                    &quot;rows&quot;:[
+                        {
+                            &quot;styleClass&quot;:null,
+                            &quot;columns&quot;:[
+                                {
+                                    &quot;styleClass&quot;:null,
+                                    &quot;leftOffset&quot;:1,
+                                    &quot;width&quot;:10,
+                                    &quot;containers&quot;:[
+                                        {
+                                            &quot;identifier&quot;:&quot;/application/containers/default/&quot;,
+                                            &quot;uuid&quot;:&quot;1234&quot;
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                &quot;header&quot;:true,
+                &quot;footer&quot;:true,
+                &quot;sidebar&quot;:{
+                    &quot;location&quot;:&quot;&quot;,
+                    &quot;containers&quot;:[],
+                    &quot;width&quot;:&quot;small&quot;
+                }
+            }
+        }</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyReqText-1">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>33b7e51fce90|75ede02778</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;92FCCB20F0B9D2EAA7225EBEF8BAEBA4; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">vary</td>
+                                                    <td>accept-encoding</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Encoding</td>
+                                                    <td>gzip</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;UTF-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Transfer-Encoding</td>
+                                                    <td>chunked</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Thu, 17 Mar 2022 19:07:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-43bfb57d-0a98-4e52-ad62-3455f2fe0d39" class="prettyPrint">{&quot;entity&quot;:{
+          &quot;canCreateTemplate&quot; : true,
+          &quot;containers&quot; : {
+            &quot;//demo.dotcms.com/application/containers/default/&quot; : {
+              &quot;containerStructures&quot; : [ {
+                &quot;id&quot; : &quot;1e5372c4-9fff-4793-ad8a-a52558d0d395&quot;,
+                &quot;structureId&quot; : &quot;2a3e91e4-fbbf-4876-8c5b-2233c1739b05&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/webpagecontent.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;webPageContent&quot;
+              }, {
+                &quot;id&quot; : &quot;313498a4-5b57-4d9e-8d32-ef2d30f9e867&quot;,
+                &quot;structureId&quot; : &quot;778f3246-9b11-4a2a-a101-e7fdf111bdad&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/activity.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;Activity&quot;
+              }, {
+                &quot;id&quot; : &quot;342a83bf-040a-45a2-a4bc-defb0f1bf4eb&quot;,
+                &quot;structureId&quot; : &quot;a1661fbc-9e84-4c00-bd62-76d633170da3&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/product.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;Product&quot;
+              }, {
+                &quot;id&quot; : &quot;77ec7720-bad8-431c-a0a3-6443fe87af73&quot;,
+                &quot;structureId&quot; : &quot;ce7295c8-df36-46c0-9c98-2fb764e9ec1c&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/calltoaction.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;CallToAction&quot;
+              }, {
+                &quot;id&quot; : &quot;57b4a9de-4765-4c57-8a05-2a0a317ec546&quot;,
+                &quot;structureId&quot; : &quot;d5ea385d-32ee-4f35-8172-d37f58d9cd7a&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/image.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;Image&quot;
+              }, {
+                &quot;id&quot; : &quot;86a06a2e-ba40-43d4-a3ad-3a870d43bfc1&quot;,
+                &quot;structureId&quot; : &quot;799f176a-d32e-4844-a07c-1b5fcd107578&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/blog.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;Blog&quot;
+              }, {
+                &quot;id&quot; : &quot;461b6fad-04a8-49ba-b75b-6634799bc289&quot;,
+                &quot;structureId&quot; : &quot;f6259cc9-5d78-453e-8167-efd7b72b2e96&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/calendarevent.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;calendarEvent&quot;
+              }, {
+                &quot;id&quot; : &quot;7673e601-26d4-4dbc-b6ad-7028599df656&quot;,
+                &quot;structureId&quot; : &quot;4c441ada-944a-43af-a653-9bb4f3f0cb2b&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/banner.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;Banner&quot;
+              }, {
+                &quot;id&quot; : &quot;91a955a0-5c97-4fc3-91dd-f894e2f3dc54&quot;,
+                &quot;structureId&quot; : &quot;e65543eb-6b81-42e0-a59b-1bb9fd7bfce4&quot;,
+                &quot;containerInode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+                &quot;containerId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+                &quot;code&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/video.vtl\&quot;)&quot;,
+                &quot;contentTypeVar&quot; : &quot;Video&quot;
+              } ],
+              &quot;rendered&quot; : {
+                &quot;uuid-1&quot; : &quot;\n    &lt;div&gt;&lt;/div&gt;&quot;
+              },
+              &quot;contentlets&quot; : {
+                &quot;uuid-1&quot; : [ ]
+              },
+              &quot;container&quot; : {
+          &quot;archived&quot; : false,
+          &quot;categoryId&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+          &quot;deleted&quot; : false,
+          &quot;friendlyName&quot; : &quot;container&quot;,
+          &quot;host&quot; : {
+            &quot;aliases&quot; : &quot;test.dotcms.com\ntest2.dotcms.com\nlocalhost\n127.0.0.1&quot;,
+            &quot;archived&quot; : false,
+            &quot;categoryId&quot; : &quot;0c3418eb-4c27-4d71-937d-bf231399312a&quot;,
+            &quot;contentTypeId&quot; : &quot;855a2d72-f2f3-4169-8b04-ac5157c4380c&quot;,
+            &quot;default&quot; : true,
+            &quot;dotAsset&quot; : false,
+            &quot;fileAsset&quot; : false,
+            &quot;folder&quot; : &quot;SYSTEM_FOLDER&quot;,
+            &quot;form&quot; : false,
+            &quot;host&quot; : &quot;SYSTEM_HOST&quot;,
+            &quot;hostThumbnail&quot; : null,
+            &quot;hostname&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;htmlpage&quot; : false,
+            &quot;identifier&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;indexPolicyDependencies&quot; : &quot;DEFER&quot;,
+            &quot;inode&quot; : &quot;0c3418eb-4c27-4d71-937d-bf231399312a&quot;,
+            &quot;keyValue&quot; : false,
+            &quot;languageId&quot; : 1,
+            &quot;live&quot; : true,
+            &quot;locked&quot; : false,
+            &quot;lowIndexPriority&quot; : false,
+            &quot;map&quot; : {
+              &quot;addThis&quot; : &quot;ra-4e02119211875e7b&quot;,
+              &quot;aliases&quot; : &quot;test.dotcms.com\ntest2.dotcms.com\nlocalhost\n127.0.0.1&quot;,
+              &quot;description&quot; : &quot;dotCMS starter site was designed to demonstrate what you can do with dotCMS.&quot;,
+              &quot;disabledWYSIWYG&quot; : [ ],
+              &quot;folder&quot; : &quot;SYSTEM_FOLDER&quot;,
+              &quot;googleAnalytics&quot; : &quot;UA-9877660-3&quot;,
+              &quot;googleMap&quot; : &quot;AIzaSyDXvD7JA5Q8S5VgfviI8nDinAq9x5Utmu0&quot;,
+              &quot;host&quot; : &quot;SYSTEM_HOST&quot;,
+              &quot;hostName&quot; : &quot;demo.dotcms.com&quot;,
+              &quot;hostname&quot; : &quot;demo.dotcms.com&quot;,
+              &quot;identifier&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+              &quot;inode&quot; : &quot;0c3418eb-4c27-4d71-937d-bf231399312a&quot;,
+              &quot;isDefault&quot; : true,
+              &quot;isSystemHost&quot; : false,
+              &quot;keywords&quot; : &quot;CMS, Web Content Management, Open Source, Java, J2EE, DXP, NoCode, OSGI, Apache Velocity, Elasticsearch, RESTful Services, REST API, Workflows, Personalization, Multilingual, I18N, L10N, Internationalization, Localization, Docker CMS, Containerized CMS&quot;,
+              &quot;languageId&quot; : 1,
+              &quot;modDate&quot; : 1580831056732,
+              &quot;modUser&quot; : &quot;dotcms.org.1&quot;,
+              &quot;nullProperties&quot; : [ ],
+              &quot;owner&quot; : &quot;dotcms.org.1&quot;,
+              &quot;proxyEditModeUrl&quot; : &quot;https://ematest.dotcms.com:8443&quot;,
+              &quot;runDashboard&quot; : false,
+              &quot;sortOrder&quot; : 0,
+              &quot;stInode&quot; : &quot;855a2d72-f2f3-4169-8b04-ac5157c4380c&quot;,
+              &quot;tagStorage&quot; : &quot;SYSTEM_HOST&quot;,
+              &quot;title&quot; : &quot;demo.dotcms.com&quot;,
+              &quot;titleImage&quot; : &quot;TITLE_IMAGE_NOT_FOUND&quot;,
+              &quot;type&quot; : &quot;host&quot;
+            },
+            &quot;modDate&quot; : 1580831056732,
+            &quot;modUser&quot; : &quot;dotcms.org.1&quot;,
+            &quot;name&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;new&quot; : false,
+            &quot;owner&quot; : &quot;dotcms.org.1&quot;,
+            &quot;parent&quot; : true,
+            &quot;permissionId&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;permissionType&quot; : &quot;com.dotmarketing.portlets.contentlet.model.Contentlet&quot;,
+            &quot;persona&quot; : false,
+            &quot;sortOrder&quot; : 0,
+            &quot;structureInode&quot; : &quot;855a2d72-f2f3-4169-8b04-ac5157c4380c&quot;,
+            &quot;systemHost&quot; : false,
+            &quot;tagStorage&quot; : &quot;SYSTEM_HOST&quot;,
+            &quot;title&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;titleImage&quot; : {
+              &quot;empty&quot; : true,
+              &quot;present&quot; : false
+            },
+            &quot;type&quot; : &quot;contentlet&quot;,
+            &quot;vanityUrl&quot; : false,
+            &quot;versionId&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;versionType&quot; : &quot;host&quot;,
+            &quot;working&quot; : true
+          },
+          &quot;iDate&quot; : 1574462157503,
+          &quot;idate&quot; : 1574462157503,
+          &quot;identifier&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+          &quot;inode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+          &quot;languageId&quot; : 1,
+          &quot;live&quot; : true,
+          &quot;locked&quot; : false,
+          &quot;map&quot; : {
+            &quot;deleted&quot; : false,
+            &quot;friendlyName&quot; : &quot;container&quot;,
+            &quot;hasLiveVersion&quot; : true,
+            &quot;iDate&quot; : 1574462157503,
+            &quot;identifier&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+            &quot;inode&quot; : &quot;ad50ff07-6f7e-4b3c-a1ca-08667fecb28d&quot;,
+            &quot;live&quot; : true,
+            &quot;locked&quot; : false,
+            &quot;modDate&quot; : 1574462157503,
+            &quot;modUser&quot; : &quot;system&quot;,
+            &quot;modUserName&quot; : &quot;system user system user&quot;,
+            &quot;showOnMenu&quot; : false,
+            &quot;sortOrder&quot; : 0,
+            &quot;title&quot; : &quot;Default&quot;,
+            &quot;type&quot; : &quot;containers&quot;,
+            &quot;working&quot; : true
+          },
+          &quot;maxContentlets&quot; : 25,
+          &quot;modDate&quot; : 1574462157503,
+          &quot;modUser&quot; : &quot;system&quot;,
+          &quot;name&quot; : &quot;Default&quot;,
+          &quot;new&quot; : false,
+          &quot;notes&quot; : &quot;New File Container&quot;,
+          &quot;owner&quot; : &quot;dotcms.org.1&quot;,
+          &quot;parentPermissionable&quot; : {
+            &quot;aliases&quot; : &quot;test.dotcms.com\ntest2.dotcms.com\nlocalhost\n127.0.0.1&quot;,
+            &quot;archived&quot; : false,
+            &quot;categoryId&quot; : &quot;0c3418eb-4c27-4d71-937d-bf231399312a&quot;,
+            &quot;contentTypeId&quot; : &quot;855a2d72-f2f3-4169-8b04-ac5157c4380c&quot;,
+            &quot;default&quot; : true,
+            &quot;dotAsset&quot; : false,
+            &quot;fileAsset&quot; : false,
+            &quot;folder&quot; : &quot;SYSTEM_FOLDER&quot;,
+            &quot;form&quot; : false,
+            &quot;host&quot; : &quot;SYSTEM_HOST&quot;,
+            &quot;hostThumbnail&quot; : null,
+            &quot;hostname&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;htmlpage&quot; : false,
+            &quot;identifier&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;indexPolicyDependencies&quot; : &quot;DEFER&quot;,
+            &quot;inode&quot; : &quot;0c3418eb-4c27-4d71-937d-bf231399312a&quot;,
+            &quot;keyValue&quot; : false,
+            &quot;languageId&quot; : 1,
+            &quot;live&quot; : true,
+            &quot;locked&quot; : false,
+            &quot;lowIndexPriority&quot; : false,
+            &quot;map&quot; : {
+              &quot;addThis&quot; : &quot;ra-4e02119211875e7b&quot;,
+              &quot;aliases&quot; : &quot;test.dotcms.com\ntest2.dotcms.com\nlocalhost\n127.0.0.1&quot;,
+              &quot;description&quot; : &quot;dotCMS starter site was designed to demonstrate what you can do with dotCMS.&quot;,
+              &quot;disabledWYSIWYG&quot; : [ ],
+              &quot;folder&quot; : &quot;SYSTEM_FOLDER&quot;,
+              &quot;googleAnalytics&quot; : &quot;UA-9877660-3&quot;,
+              &quot;googleMap&quot; : &quot;AIzaSyDXvD7JA5Q8S5VgfviI8nDinAq9x5Utmu0&quot;,
+              &quot;host&quot; : &quot;SYSTEM_HOST&quot;,
+              &quot;hostName&quot; : &quot;demo.dotcms.com&quot;,
+              &quot;hostname&quot; : &quot;demo.dotcms.com&quot;,
+              &quot;identifier&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+              &quot;inode&quot; : &quot;0c3418eb-4c27-4d71-937d-bf231399312a&quot;,
+              &quot;isDefault&quot; : true,
+              &quot;isSystemHost&quot; : false,
+              &quot;keywords&quot; : &quot;CMS, Web Content Management, Open Source, Java, J2EE, DXP, NoCode, OSGI, Apache Velocity, Elasticsearch, RESTful Services, REST API, Workflows, Personalization, Multilingual, I18N, L10N, Internationalization, Localization, Docker CMS, Containerized CMS&quot;,
+              &quot;languageId&quot; : 1,
+              &quot;modDate&quot; : 1580831056732,
+              &quot;modUser&quot; : &quot;dotcms.org.1&quot;,
+              &quot;nullProperties&quot; : [ ],
+              &quot;owner&quot; : &quot;dotcms.org.1&quot;,
+              &quot;proxyEditModeUrl&quot; : &quot;https://ematest.dotcms.com:8443&quot;,
+              &quot;runDashboard&quot; : false,
+              &quot;sortOrder&quot; : 0,
+              &quot;stInode&quot; : &quot;855a2d72-f2f3-4169-8b04-ac5157c4380c&quot;,
+              &quot;tagStorage&quot; : &quot;SYSTEM_HOST&quot;,
+              &quot;title&quot; : &quot;demo.dotcms.com&quot;,
+              &quot;type&quot; : &quot;host&quot;
+            },
+            &quot;modDate&quot; : 1580831056732,
+            &quot;modUser&quot; : &quot;dotcms.org.1&quot;,
+            &quot;name&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;new&quot; : false,
+            &quot;owner&quot; : &quot;dotcms.org.1&quot;,
+            &quot;parent&quot; : true,
+            &quot;permissionId&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;permissionType&quot; : &quot;com.dotmarketing.portlets.contentlet.model.Contentlet&quot;,
+            &quot;persona&quot; : false,
+            &quot;sortOrder&quot; : 0,
+            &quot;structureInode&quot; : &quot;855a2d72-f2f3-4169-8b04-ac5157c4380c&quot;,
+            &quot;systemHost&quot; : false,
+            &quot;tagStorage&quot; : &quot;SYSTEM_HOST&quot;,
+            &quot;title&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;titleImage&quot; : {
+              &quot;empty&quot; : true,
+              &quot;present&quot; : false
+            },
+            &quot;type&quot; : &quot;contentlet&quot;,
+            &quot;vanityUrl&quot; : false,
+            &quot;versionId&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;versionType&quot; : &quot;host&quot;,
+            &quot;working&quot; : true
+          },
+          &quot;path&quot; : &quot;//demo.dotcms.com/application/containers/default/&quot;,
+          &quot;permissionId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+          &quot;permissionType&quot; : &quot;com.dotmarketing.portlets.containers.model.FileAssetContainer&quot;,
+          &quot;postLoop&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/postloop.vtl\&quot;)&quot;,
+          &quot;preLoop&quot; : &quot;#dotParse(\&quot;//demo.dotcms.com/application/containers/default/preloop.vtl\&quot;)&quot;,
+          &quot;showOnMenu&quot; : false,
+          &quot;sortOrder&quot; : 0,
+          &quot;source&quot; : &quot;FILE&quot;,
+          &quot;staticify&quot; : false,
+          &quot;title&quot; : &quot;Default&quot;,
+          &quot;type&quot; : &quot;containers&quot;,
+          &quot;useDiv&quot; : false,
+          &quot;versionId&quot; : &quot;69b3d24d-7e80-4be6-b04a-d352d16493ee&quot;,
+          &quot;versionType&quot; : &quot;containers&quot;,
+          &quot;working&quot; : true
+        }
+            }
+          },
+          &quot;layout&quot; : {
+            &quot;width&quot; : null,
+            &quot;title&quot; : &quot;anonymouslayout1647544017298&quot;,
+            &quot;header&quot; : true,
+            &quot;footer&quot; : true,
+            &quot;body&quot; : {
+              &quot;rows&quot; : [ {
+                &quot;columns&quot; : [ {
+                  &quot;containers&quot; : [ {
+                    &quot;identifier&quot; : &quot;/application/containers/default/&quot;,
+                    &quot;uuid&quot; : &quot;1&quot;
+                  } ],
+                  &quot;widthPercent&quot; : 83,
+                  &quot;leftOffset&quot; : 1,
+                  &quot;styleClass&quot; : null,
+                  &quot;preview&quot; : false,
+                  &quot;width&quot; : 10,
+                  &quot;left&quot; : 0
+                } ],
+                &quot;styleClass&quot; : null
+              } ]
+            },
+            &quot;sidebar&quot; : {
+              &quot;containers&quot; : [ ],
+              &quot;location&quot; : &quot;&quot;,
+              &quot;width&quot; : &quot;small&quot;,
+              &quot;widthPercent&quot; : 20,
+              &quot;preview&quot; : false
+            }
+          },
+          &quot;numberContents&quot; : 0,
+          &quot;page&quot; : {
+            &quot;__icon__&quot; : &quot;pageIcon&quot;,
+            &quot;archived&quot; : false,
+            &quot;baseType&quot; : &quot;HTMLPAGE&quot;,
+            &quot;cachettl&quot; : &quot;15&quot;,
+            &quot;canEdit&quot; : true,
+            &quot;canLock&quot; : true,
+            &quot;canRead&quot; : true,
+            &quot;contentType&quot; : &quot;htmlpageasset&quot;,
+            &quot;deleted&quot; : false,
+            &quot;description&quot; : &quot;page-test&quot;,
+            &quot;extension&quot; : &quot;page&quot;,
+            &quot;folder&quot; : &quot;SYSTEM_FOLDER&quot;,
+            &quot;friendlyName&quot; : &quot;page-test&quot;,
+            &quot;hasLiveVersion&quot; : true,
+            &quot;hasTitleImage&quot; : false,
+            &quot;host&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;hostName&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;httpsRequired&quot; : false,
+            &quot;identifier&quot; : &quot;24ca92bb-c71a-4d85-9a9c-a2719df9b05b&quot;,
+            &quot;inode&quot; : &quot;fa665098-eede-43cf-bfc8-9bae14574457&quot;,
+            &quot;isContentlet&quot; : true,
+            &quot;languageId&quot; : 1,
+            &quot;live&quot; : true,
+            &quot;liveInode&quot; : &quot;fa665098-eede-43cf-bfc8-9bae14574457&quot;,
+            &quot;locked&quot; : true,
+            &quot;lockedBy&quot; : &quot;dotcms.org.1&quot;,
+            &quot;lockedByName&quot; : &quot;Admin User&quot;,
+            &quot;lockedOn&quot; : 1596639479081,
+            &quot;mimeType&quot; : &quot;application/dotpage&quot;,
+            &quot;modDate&quot; : 1596639470366,
+            &quot;modUser&quot; : &quot;dotcms.org.1&quot;,
+            &quot;modUserName&quot; : &quot;Admin User&quot;,
+            &quot;name&quot; : &quot;page-test&quot;,
+            &quot;owner&quot; : &quot;dotcms.org.1&quot;,
+            &quot;pageURI&quot; : &quot;/page-test&quot;,
+            &quot;pageUrl&quot; : &quot;page-test&quot;,
+            &quot;path&quot; : &quot;/page-test&quot;,
+            &quot;publishDate&quot; : 1596639470366,
+            &quot;shortyLive&quot; : &quot;fa665098ee&quot;,
+            &quot;shortyWorking&quot; : &quot;fa665098ee&quot;,
+            &quot;sortOrder&quot; : 0,
+            &quot;stInode&quot; : &quot;c541abb1-69b3-4bc5-8430-5e09e5239cc8&quot;,
+            &quot;statusIcons&quot; : &quot;&lt;span class&#x3D;&#x27;greyDotIcon&#x27; style&#x3D;&#x27;opacity:.4&#x27;&gt;&lt;/span&gt;&lt;span class&#x3D;&#x27;liveIcon&#x27;&gt;&lt;/span&gt;&lt;span class&#x3D;&#x27;lockIcon&#x27;&gt;&lt;/span&gt;&quot;,
+            &quot;template&quot; : &quot;30c76a0c-72b3-4fba-9ab1-b4e7754844ed&quot;,
+            &quot;title&quot; : &quot;page-test&quot;,
+            &quot;titleImage&quot; : &quot;TITLE_IMAGE_NOT_FOUND&quot;,
+            &quot;type&quot; : &quot;htmlpage&quot;,
+            &quot;url&quot; : &quot;/page-test&quot;,
+            &quot;working&quot; : true,
+            &quot;workingInode&quot; : &quot;fa665098-eede-43cf-bfc8-9bae14574457&quot;,
+            &quot;rendered&quot; : &quot;&lt;!doctype html&gt;\n&lt;html lang&#x3D;\&quot;en\&quot;&gt;\n\n    &lt;head&gt;\n\n        \n&lt;meta charset&#x3D;\&quot;utf-8\&quot;&gt;\n&lt;meta name&#x3D;\&quot;viewport\&quot; content&#x3D;\&quot;width&#x3D;device-width, height&#x3D;device-height, initial-scale&#x3D;1.0, maximum-scale&#x3D;5.0, user-scalable&#x3D;1\&quot;&gt;\n&lt;meta http-equiv&#x3D;\&quot;X-UA-Compatible\&quot; content&#x3D;\&quot;IE&#x3D;edge\&quot;&gt;\n&lt;meta charset&#x3D;\&quot;utf-8\&quot;&gt;\n&lt;link rel&#x3D;\&quot;icon\&quot; href&#x3D;\&quot;/application/themes/travel/images/favicon.ico\&quot; type&#x3D;\&quot;image/x-icon\&quot;&gt;\n&lt;title&gt;page-test&lt;/title&gt;\n&lt;meta name&#x3D;\&quot;description\&quot; content&#x3D;\&quot;\&quot;&gt;\n&lt;meta name&#x3D;\&quot;language\&quot; content&#x3D;\&quot;english\&quot;&gt;\n&lt;meta name&#x3D;\&quot;author\&quot; content&#x3D;\&quot;dotCMS\&quot;&gt;\n&lt;meta name&#x3D;\&quot;copyright\&quot; content&#x3D;\&quot;dotCMS LLC, Miami Florida, US\&quot;&gt;\n&lt;meta property&#x3D;\&quot;og:title\&quot; content&#x3D;\&quot;page-test\&quot;&gt;\n&lt;meta property&#x3D;\&quot;og:url\&quot; content&#x3D;\&quot;https://demo.dotcms.com$!{request.getAttribute(\&quot;javax.servlet.forward.request_uri\&quot;)}\&quot;&gt;\n&lt;meta property&#x3D;\&quot;og:image\&quot; content&#x3D;\&quot;/images/default.png\&quot;&gt;\n&lt;link rel&#x3D;\&quot;canonical\&quot; href&#x3D;\&quot;https://demo.dotcms.com$!{request.getAttribute(\&quot;javax.servlet.forward.request_uri\&quot;)}\&quot;&gt;\n\n&lt;!-- CSS --&gt;\n&lt;link rel&#x3D;\&quot;stylesheet\&quot; type&#x3D;\&quot;text/css\&quot; href&#x3D;\&quot;//fonts.googleapis.com/css?family&#x3D;Oswald:500,600,700%7CRoboto:300,300i,700%7CCondiment%7CDella+Respira\&quot;&gt;\n&lt;link rel&#x3D;\&quot;stylesheet\&quot; href&#x3D;\&quot;/application/themes/travel/css/styles.dotsass\&quot;&gt;\n\n&lt;/head&gt;\n\n&lt;body id&#x3D;\&quot;page-test\&quot; &gt;\n\n            &lt;header&gt;\n\n  &lt;!-- RD Navbar--&gt;\n  &lt;div class&#x3D;\&quot;rd-navbar-wrap\&quot;&gt;\n    &lt;nav class&#x3D;\&quot;rd-navbar rd-navbar-static rd-navbar-classic\&quot; data-layout&#x3D;\&quot;rd-navbar-fixed\&quot; data-sm-layout&#x3D;\&quot;rd-navbar-fixed\&quot; data-md-layout&#x3D;\&quot;rd-navbar-fixed\&quot; data-md-device-layout&#x3D;\&quot;rd-navbar-fixed\&quot; data-lg-layout&#x3D;\&quot;rd-navbar-static\&quot; data-lg-device-layout&#x3D;\&quot;rd-navbar-static\&quot; data-xl-layout&#x3D;\&quot;rd-navbar-static\&quot; data-xl-device-layout&#x3D;\&quot;rd-navbar-static\&quot; data-lg-stick-up-offset&#x3D;\&quot;78px\&quot; data-xl-stick-up-offset&#x3D;\&quot;98px\&quot; data-xxl-stick-up-offset&#x3D;\&quot;118px\&quot; data-lg-stick-up&#x3D;\&quot;true\&quot; data-xl-stick-up&#x3D;\&quot;true\&quot; data-xxl-stick-up&#x3D;\&quot;true\&quot;&gt;\n      &lt;div class&#x3D;\&quot;rd-navbar-collapse-toggle rd-navbar-fixed-element-1\&quot; data-rd-navbar-toggle&#x3D;\&quot;.rd-navbar-collapse\&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;\n      \n      &lt;div class&#x3D;\&quot;rd-navbar-aside-outer rd-navbar-collapse bg-default\&quot;&gt;\n        &lt;div class&#x3D;\&quot;rd-navbar-aside\&quot;&gt;\n\n          &lt;!-- CONTACT INFO --&gt;\n          &lt;ul class&#x3D;\&quot;list-inline list-inline-xxl\&quot;&gt;\n            &lt;li&gt;\n              &lt;div class&#x3D;\&quot;unit unit-spacing-xs\&quot;&gt;\n                &lt;div class&#x3D;\&quot;unit-left\&quot;&gt;&lt;span class&#x3D;\&quot;icon mdi mdi-map-marker\&quot;&gt;&lt;/span&gt;&lt;/div&gt;\n                &lt;div class&#x3D;\&quot;unit-body\&quot;&gt;&lt;a href&#x3D;\&quot;#\&quot;&gt;3059 Grand Avenue, Suite 300 Miami, FL, 33133 USA&lt;/a&gt;&lt;/div&gt;\n              &lt;/div&gt;\n            &lt;/li&gt;\n            &lt;li&gt;\n              &lt;div class&#x3D;\&quot;unit unit-spacing-xs\&quot;&gt;\n                &lt;div class&#x3D;\&quot;unit-left\&quot;&gt;&lt;span class&#x3D;\&quot;icon mdi mdi-cellphone-android\&quot;&gt;&lt;/span&gt;&lt;/div&gt;\n                &lt;div class&#x3D;\&quot;unit-body\&quot;&gt;&lt;a href&#x3D;\&quot;tel:+1-888-404-6185\&quot;&gt;+1-888-404-6185&lt;/a&gt;&lt;/div&gt;\n              &lt;/div&gt;\n            &lt;/li&gt;\n            &lt;li&gt;\n              &lt;div class&#x3D;\&quot;unit unit-spacing-xs\&quot;&gt;\n                &lt;div class&#x3D;\&quot;unit-left\&quot;&gt;&lt;span class&#x3D;\&quot;icon mdi mdi-email-outline\&quot;&gt;&lt;/span&gt;&lt;/div&gt;\n                &lt;div class&#x3D;\&quot;unit-body\&quot;&gt;&lt;a href&#x3D;\&quot;mailto: info@dotcms.com\&quot;&gt;info@dotcms.com&lt;/a&gt;&lt;/div&gt;\n              &lt;/div&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n\n          &lt;div&gt;\n            &lt;!-- CART --&gt;\n            &lt;a class&#x3D;\&quot;basket\&quot; href&#x3D;\&quot;/store/cart\&quot;&gt;&lt;span class&#x3D;\&quot;icon mdi mdi-cart-outline\&quot;&gt;&lt;/span&gt;&lt;span class&#x3D;\&quot;basket-count\&quot;&gt;3&lt;/span&gt;&lt;/a&gt;\n\n            &lt;!-- My Account --&gt;\n            &lt;a href&#x3D;\&quot;/login/profile\&quot; class&#x3D;\&quot;ml-3\&quot;&gt;\n                                &lt;img src&#x3D;\&quot;/html/images/persona/default-persona.png\&quot;  style&#x3D;\&quot;width:42px;\&quot; alt&#x3D;\&quot;Default Persona\&quot; class&#x3D;\&quot;img-circles border\&quot;&gt;\n                          &lt;/a&gt;\n          &lt;/div&gt;\n        &lt;/div&gt;\n      &lt;/div&gt;\n\n      &lt;div class&#x3D;\&quot;rd-navbar-main-outer\&quot;&gt;\n        &lt;div class&#x3D;\&quot;rd-navbar-main\&quot;&gt;\n\n          &lt;div class&#x3D;\&quot;rd-navbar-panel\&quot;&gt;\n            &lt;button class&#x3D;\&quot;rd-navbar-toggle\&quot; data-rd-navbar-toggle&#x3D;\&quot;.rd-navbar-nav-wrap\&quot; aria-label&#x3D;\&quot;Toggle Menu\&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/button&gt;\n            &lt;div class&#x3D;\&quot;rd-navbar-brand\&quot;&gt;&lt;a class&#x3D;\&quot;brand\&quot; href&#x3D;\&quot;/\&quot; aria-label&#x3D;\&quot;TravelLux Home\&quot;&gt;&lt;img class&#x3D;\&quot;brand-logo-dark\&quot; src&#x3D;\&quot;/application/themes/travel/images/logo.png\&quot; width&#x3D;\&quot;195\&quot; height&#x3D;\&quot;40\&quot; alt&#x3D;\&quot;TravelLux Home\&quot;&gt;&lt;/a&gt;&lt;/div&gt;\n          &lt;/div&gt;\n\n          &lt;!-- NAV BAR --&gt;\n\n          &lt;div class&#x3D;\&quot;rd-navbar-main-element\&quot;&gt;\n\n            &lt;div class&#x3D;\&quot;rd-navbar-nav-wrap\&quot;&gt;\n            \n                        \n              &lt;ul class&#x3D;\&quot;rd-navbar-nav\&quot;&gt;\n                &lt;li class&#x3D;\&quot;rd-nav-item  \&quot;&gt;&lt;a class&#x3D;\&quot;rd-nav-link\&quot; href&#x3D;&#x27;/&#x27;&gt;Home&lt;/a&gt;&lt;/li&gt;\n                                                                      &lt;li class&#x3D;\&quot;rd-nav-item \&quot;&gt;&lt;a class&#x3D;\&quot;rd-nav-link\&quot; href&#x3D;&#x27;/blog&#x27; target&#x3D;&#x27;_self&#x27;&gt;Travel Blog&lt;/a&gt;&lt;/li&gt;\n                                                                        &lt;li class&#x3D;\&quot;rd-nav-item \&quot;&gt;&lt;a class&#x3D;\&quot;rd-nav-link\&quot; href&#x3D;&#x27;/destinations&#x27; target&#x3D;&#x27;_self&#x27;&gt;Destinations&lt;/a&gt;&lt;/li&gt;\n                                                                        &lt;li class&#x3D;\&quot;rd-nav-item rd-navbar--has-megamenu rd-navbar-submenu \&quot;&gt;\n                      &lt;a href&#x3D;\&quot;/store\&quot; class&#x3D;\&quot;rd-nav-link\&quot;&gt;Shop&lt;/a&gt;\n                        &lt;ul class&#x3D;\&quot;rd-menu rd-navbar-megamenu rd-navbar-open-left\&quot;&gt;\n                                                      &lt;li class&#x3D;\&quot;rd-megamenu-item\&quot;&gt;\n                              &lt;div class&#x3D;\&quot;rd-megamenu-title\&quot;&gt;&lt;a href&#x3D;&#x27;/store/outdoor&#x27; target&#x3D;&#x27;_self&#x27;&gt;Outdoor&lt;/a&gt;&lt;/div&gt;\n                                                                                            &lt;ul class&#x3D;\&quot;rd-megamenu-list\&quot;&gt;\n                                                                    &lt;li class&#x3D;\&quot;rd-megamenu-list-item\&quot;&gt;&lt;a class&#x3D;\&quot;rd-dropdown-link\&quot; href&#x3D;&#x27;/store/outdoor/hiking-gear&#x27; target&#x3D;&#x27;_self&#x27;&gt;Hiking Gear&lt;/a&gt;&lt;/li&gt;\n                                                                &lt;/ul&gt;\n                                                          &lt;/li&gt;\n                                                  &lt;/ul&gt;\n                    &lt;/li&gt;\n                                                                        &lt;li class&#x3D;\&quot;rd-nav-item rd-navbar--has-megamenu rd-navbar-submenu \&quot;&gt;\n                      &lt;a href&#x3D;\&quot;/contact-us\&quot; class&#x3D;\&quot;rd-nav-link\&quot;&gt;Contact Us&lt;/a&gt;\n                        &lt;ul class&#x3D;\&quot;rd-menu rd-navbar-megamenu rd-navbar-open-left\&quot;&gt;\n                                                      &lt;li class&#x3D;\&quot;rd-megamenu-item\&quot;&gt;\n                              &lt;div class&#x3D;\&quot;rd-megamenu-title\&quot;&gt;&lt;a href&#x3D;&#x27;/contact-us/index&#x27; target&#x3D;&#x27;_self&#x27;&gt;Contact Us&lt;/a&gt;&lt;/div&gt;\n                                                                                        &lt;/li&gt;\n                                                      &lt;li class&#x3D;\&quot;rd-megamenu-item\&quot;&gt;\n                              &lt;div class&#x3D;\&quot;rd-megamenu-title\&quot;&gt;&lt;a href&#x3D;&#x27;/contact-us/thank-you&#x27; target&#x3D;&#x27;_self&#x27;&gt;Thank You&lt;/a&gt;&lt;/div&gt;\n                                                                                        &lt;/li&gt;\n                                                  &lt;/ul&gt;\n                    &lt;/li&gt;\n                                                &lt;/ul&gt;\n            &lt;/div&gt;\n\n            &lt;!-- RD Navbar Search--&gt;\n            &lt;div class&#x3D;\&quot;rd-navbar-search\&quot;&gt;\n              &lt;button class&#x3D;\&quot;rd-navbar-search-toggle rd-navbar-fixed-element-2\&quot; data-rd-navbar-toggle&#x3D;\&quot;.rd-navbar-search\&quot; aria-label&#x3D;\&quot;Search Box Toggle\&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/button&gt;\n              &lt;form class&#x3D;\&quot;rd-search\&quot; action&#x3D;\&quot;/search/\&quot; method&#x3D;\&quot;GET\&quot;&gt;\n                &lt;div class&#x3D;\&quot;form-wrap\&quot;&gt;\n                  &lt;label class&#x3D;\&quot;form-label search-label\&quot; for&#x3D;\&quot;site-search\&quot;&gt;Search...&lt;/label&gt;\n                  &lt;input class&#x3D;\&quot;rd-navbar-search-form-input form-input site-search\&quot; type&#x3D;\&quot;text\&quot; name&#x3D;\&quot;q\&quot; autocomplete&#x3D;\&quot;off\&quot;&gt;\n                &lt;/div&gt;\n                &lt;button class&#x3D;\&quot;rd-search-form-submit fa-search\&quot; type&#x3D;\&quot;submit\&quot; aria-label&#x3D;\&quot;Submit\&quot;&gt;&lt;/button&gt;\n              &lt;/form&gt;\n            &lt;/div&gt;\n            \n          &lt;/div&gt;\n        &lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/nav&gt;\n  &lt;/div&gt;\n\n&lt;/header&gt;\n    \n    &lt;div class&#x3D;\&quot;body-wrapper\&quot;&gt;\n    \n            \n            \n                \n                        \n    \n                                                            \n                                                \n                                                                                                                        \n                        &lt;section id&#x3D;\&quot;section-1\&quot; class&#x3D;\&quot;section \&quot;&gt;&lt;!-- section --&gt;\n                            &lt;div class&#x3D;\&quot;container\&quot;&gt;&lt;!-- container --&gt;\n                                &lt;div class&#x3D;\&quot;row\&quot;&gt;&lt;!-- row --&gt;\n                        \n                                                \n                                                                                                \n                                    &lt;div class&#x3D;\&quot; col-lg-10  \&quot;&gt;&lt;!-- Column --&gt;\n                                                                                \n&lt;div&gt;&lt;/div&gt;\n                                    &lt;/div&gt;&lt;!-- Column --&gt;\n\n                                                        &lt;/div&gt;&lt;!-- /row --&gt;\n                            &lt;/div&gt;&lt;!-- /container --&gt;\n                        &lt;/section&gt;&lt;!-- /section --&gt;\n                                                                            \n                                                    &lt;/div&gt;&lt;!-- /body-wrapper --&gt;\n\n            &lt;!-- Page Footer--&gt;\n\n\n\n\n&lt;footer class&#x3D;\&quot;footer-classic bg-footer bg-overlay-80 context-dark\&quot; style&#x3D;\&quot;background-image: url(&#x27;/dA/716dcfa9-537d-419a-837f-73084a499cf3/fileAsset/1200w/50q/bg-footer.jpg&#x27;)\&quot; &gt;\n  &lt;div class&#x3D;\&quot;section-xxl\&quot;&gt;\n    &lt;div class&#x3D;\&quot;container\&quot;&gt;\n      &lt;div class&#x3D;\&quot;row row-50 justify-content-center\&quot;&gt;\n        &lt;div class&#x3D;\&quot;col-lg-4\&quot;&gt;\n          &lt;h2&gt;About us&lt;/h2&gt;\n          &lt;p class&#x3D;\&quot;max-width-xl-90 text-gray-400\&quot;&gt;We are TravelLux, a community of dedicated travel experts, journalists, and bloggers. Our aim is to offer you the best insight on where to go for your travel as well as to give you amazing opportunities with free benefits and bonuses for registered clients.&lt;/p&gt;\n          &lt;a class&#x3D;\&quot;footer-brand\&quot; href&#x3D;\&quot;./\&quot;&gt;&lt;img src&#x3D;\&quot;/application/themes/travel/images/logo-inverse.png\&quot; alt&#x3D;\&quot;TravelLux Home\&quot; height&#x3D;\&quot;40\&quot;/&gt;&lt;/a&gt;\n        &lt;/div&gt;\n\n\n        &lt;div class&#x3D;\&quot;col-sm-8 col-md-6 col-lg-4\&quot;&gt;\n          &lt;h2&gt;Latest blog posts&lt;/h2&gt;\n          \n          &lt;!-- Latest Blogs --&gt;\n                    \n        &lt;/div&gt;\n        &lt;div class&#x3D;\&quot;col-sm-8 col-md-6 col-lg-4\&quot;&gt;\n          &lt;h2&gt;Get in touch&lt;/h2&gt;\n          &lt;form class&#x3D;\&quot;rd-form form-sm rd-mailform\&quot; data-form-output&#x3D;\&quot;form-output-global\&quot; data-form-type&#x3D;\&quot;contact\&quot; method&#x3D;\&quot;post\&quot; action&#x3D;\&quot;\&quot;&gt;\n            &lt;div class&#x3D;\&quot;form-wrap\&quot;&gt;\n              &lt;input class&#x3D;\&quot;form-input\&quot; id&#x3D;\&quot;footer-form-name\&quot; type&#x3D;\&quot;text\&quot; name&#x3D;\&quot;name\&quot; data-constraints&#x3D;\&quot;@Required\&quot;&gt;\n              &lt;label class&#x3D;\&quot;form-label\&quot; for&#x3D;\&quot;footer-form-name\&quot;&gt;Name&lt;/label&gt;\n            &lt;/div&gt;\n            &lt;div class&#x3D;\&quot;form-wrap\&quot;&gt;\n              &lt;input class&#x3D;\&quot;form-input\&quot; id&#x3D;\&quot;footer-form-email\&quot; type&#x3D;\&quot;email\&quot; name&#x3D;\&quot;email\&quot; data-constraints&#x3D;\&quot;@Email @Required\&quot;&gt;\n              &lt;label class&#x3D;\&quot;form-label\&quot; for&#x3D;\&quot;footer-form-email\&quot;&gt;E-mail&lt;/label&gt;\n            &lt;/div&gt;\n            &lt;div class&#x3D;\&quot;form-wrap\&quot;&gt;\n              &lt;label class&#x3D;\&quot;form-label\&quot; for&#x3D;\&quot;footer-form-message\&quot;&gt;Message&lt;/label&gt;\n              &lt;textarea class&#x3D;\&quot;form-input\&quot; id&#x3D;\&quot;footer-form-message\&quot; name&#x3D;\&quot;message\&quot; data-constraints&#x3D;\&quot;@Required\&quot;&gt;&lt;/textarea&gt;\n            &lt;/div&gt;\n            &lt;div class&#x3D;\&quot;form-wrap\&quot;&gt;\n              &lt;button class&#x3D;\&quot;button button-md button-primary\&quot; type&#x3D;\&quot;submit\&quot;&gt;Send&lt;/button&gt;\n            &lt;/div&gt;\n          &lt;/form&gt;\n        &lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class&#x3D;\&quot;container\&quot;&gt;\n    &lt;!-- Rights--&gt;\n    &lt;p class&#x3D;\&quot;rights mb-0\&quot;&gt;&lt;span&gt;&amp;copy;2012 - 2022 All Rights Reserved&lt;/span&gt; &lt;a href&#x3D;\&quot;https://dotcms.com/company/policies/privacy-policy\&quot;&gt;Terms of Use&lt;/a&gt; &lt;span&gt;and&lt;/span&gt; &lt;a href&#x3D;\&quot;https://dotcms.com/company/policies/privacy-policy\&quot;&gt;Privacy Policy&lt;/a&gt;&lt;/p&gt;\n  &lt;/div&gt;\n&lt;/footer&gt;\n\n&lt;!-- Javascript--&gt;\n&lt;script src&#x3D;\&quot;/application/themes/travel/js/core.min.js\&quot;&gt;&lt;/script&gt;\n&lt;script src&#x3D;\&quot;/application/themes/travel/js/script.js\&quot;&gt;&lt;/script&gt;\n\n    \n&lt;/body&gt;\n&lt;/html&gt;&quot;
+          },
+          &quot;site&quot; : {
+            &quot;lowIndexPriority&quot; : false,
+            &quot;indexPolicyDependencies&quot; : &quot;DEFER&quot;,
+            &quot;default&quot; : true,
+            &quot;aliases&quot; : &quot;test.dotcms.com\ntest2.dotcms.com\nlocalhost\n127.0.0.1&quot;,
+            &quot;inode&quot; : &quot;0c3418eb-4c27-4d71-937d-bf231399312a&quot;,
+            &quot;parent&quot; : true,
+            &quot;hostname&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;hostThumbnail&quot; : null,
+            &quot;tagStorage&quot; : &quot;SYSTEM_HOST&quot;,
+            &quot;systemHost&quot; : false,
+            &quot;structureInode&quot; : &quot;855a2d72-f2f3-4169-8b04-ac5157c4380c&quot;,
+            &quot;versionType&quot; : &quot;host&quot;,
+            &quot;name&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;owner&quot; : &quot;dotcms.org.1&quot;,
+            &quot;permissionId&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;permissionType&quot; : &quot;com.dotmarketing.portlets.contentlet.model.Contentlet&quot;,
+            &quot;identifier&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;modDate&quot; : 1580831056732,
+            &quot;type&quot; : &quot;contentlet&quot;,
+            &quot;host&quot; : &quot;SYSTEM_HOST&quot;,
+            &quot;live&quot; : true,
+            &quot;new&quot; : false,
+            &quot;languageId&quot; : 1,
+            &quot;archived&quot; : false,
+            &quot;folder&quot; : &quot;SYSTEM_FOLDER&quot;,
+            &quot;title&quot; : &quot;demo.dotcms.com&quot;,
+            &quot;sortOrder&quot; : 0,
+            &quot;modUser&quot; : &quot;dotcms.org.1&quot;,
+            &quot;working&quot; : true,
+            &quot;fileAsset&quot; : false,
+            &quot;htmlpage&quot; : false,
+            &quot;vanityUrl&quot; : false,
+            &quot;contentTypeId&quot; : &quot;855a2d72-f2f3-4169-8b04-ac5157c4380c&quot;,
+            &quot;form&quot; : false,
+            &quot;persona&quot; : false,
+            &quot;versionId&quot; : &quot;48190c8c-42c4-46af-8d1a-0cd5db894797&quot;,
+            &quot;categoryId&quot; : &quot;0c3418eb-4c27-4d71-937d-bf231399312a&quot;,
+            &quot;titleImage&quot; : {
+              &quot;empty&quot; : true,
+              &quot;present&quot; : false
+            },
+            &quot;dotAsset&quot; : false,
+            &quot;keyValue&quot; : false,
+            &quot;locked&quot; : false
+          },
+          &quot;template&quot; : {
+            &quot;iDate&quot; : 1647543954350,
+            &quot;type&quot; : &quot;template&quot;,
+            &quot;owner&quot; : &quot;system&quot;,
+            &quot;inode&quot; : &quot;01602bab-cab7-4853-9082-5c8a90e3d0f7&quot;,
+            &quot;identifier&quot; : &quot;30c76a0c-72b3-4fba-9ab1-b4e7754844ed&quot;,
+            &quot;source&quot; : &quot;DB&quot;,
+            &quot;title&quot; : &quot;anonymous_layout_1647544017298&quot;,
+            &quot;friendlyName&quot; : &quot;&quot;,
+            &quot;modDate&quot; : 1647544017326,
+            &quot;modUser&quot; : &quot;system&quot;,
+            &quot;sortOrder&quot; : 0,
+            &quot;showOnMenu&quot; : false,
+            &quot;body&quot; : &quot;null&quot;,
+            &quot;image&quot; : &quot;&quot;,
+            &quot;drawed&quot; : true,
+            &quot;drawedBody&quot; : &quot;{\&quot;header\&quot;:true,\&quot;footer\&quot;:true,\&quot;body\&quot;:{\&quot;rows\&quot;:[{\&quot;columns\&quot;:[{\&quot;containers\&quot;:[{\&quot;identifier\&quot;:\&quot;/application/containers/default/\&quot;,\&quot;uuid\&quot;:\&quot;1\&quot;}],\&quot;widthPercent\&quot;:83,\&quot;leftOffset\&quot;:1,\&quot;preview\&quot;:false,\&quot;width\&quot;:10,\&quot;left\&quot;:0}]}]},\&quot;sidebar\&quot;:{\&quot;containers\&quot;:[],\&quot;location\&quot;:\&quot;\&quot;,\&quot;width\&quot;:\&quot;small\&quot;,\&quot;widthPercent\&quot;:20,\&quot;preview\&quot;:false}}&quot;,
+            &quot;countAddContainer&quot; : 0,
+            &quot;countContainers&quot; : 0,
+            &quot;theme&quot; : &quot;d7b0ebc2-37ca-4a5a-b769-e8a3ff187661&quot;,
+            &quot;header&quot; : &quot;null&quot;,
+            &quot;footer&quot; : &quot;null&quot;,
+            &quot;anonymous&quot; : true,
+            &quot;template&quot; : false,
+            &quot;live&quot; : false,
+            &quot;archived&quot; : false,
+            &quot;working&quot; : true,
+            &quot;permissionId&quot; : &quot;30c76a0c-72b3-4fba-9ab1-b4e7754844ed&quot;,
+            &quot;versionId&quot; : &quot;30c76a0c-72b3-4fba-9ab1-b4e7754844ed&quot;,
+            &quot;versionType&quot; : &quot;template&quot;,
+            &quot;deleted&quot; : false,
+            &quot;name&quot; : &quot;anonymous_layout_1647544017298&quot;,
+            &quot;locked&quot; : false,
+            &quot;permissionType&quot; : &quot;com.dotmarketing.portlets.templates.model.Template&quot;,
+            &quot;new&quot; : false,
+            &quot;categoryId&quot; : &quot;01602bab-cab7-4853-9082-5c8a90e3d0f7&quot;,
+            &quot;idate&quot; : 1647543954350,
+            &quot;canEdit&quot; : true
+          },
+          &quot;viewAs&quot; : {
+            &quot;visitor&quot; : {
+              &quot;tags&quot; : [ ],
+              &quot;device&quot; : &quot;UNKNOWN&quot;,
+              &quot;isNew&quot; : true,
+              &quot;userAgent&quot; : {
+                &quot;operatingSystem&quot; : &quot;UNKNOWN&quot;,
+                &quot;browser&quot; : &quot;UNKNOWN&quot;,
+                &quot;id&quot; : 16843022,
+                &quot;browserVersion&quot; : null
+              },
+              &quot;personas&quot; : { }
+            },
+            &quot;language&quot; : {
+              &quot;id&quot; : 1,
+              &quot;languageCode&quot; : &quot;en&quot;,
+              &quot;countryCode&quot; : &quot;US&quot;,
+              &quot;language&quot; : &quot;English&quot;,
+              &quot;country&quot; : &quot;United States&quot;
+            },
+            &quot;mode&quot; : &quot;PREVIEW_MODE&quot;
+          }
+        },&quot;errors&quot;:[],&quot;i18nMessagesMap&quot;:{},&quot;messages&quot;:[],&quot;permissions&quot;:[]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-43bfb57d-0a98-4e52-ad62-3455f2fe0d39">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <div class="table-responsive text-nowrap">
+                                        <table id="myTable-43bfb57d-0a98-4e52-ad62-3455f2fe0d39" class="table table-hover">
+                                        <thead><tr class="text-center"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr></thead>
+                                            <tbody>
+                                                <tr >
+                                                    <td >Relative path should be save as Absolute path</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="bg-light">
+                                                    <td><strong>Total</strong></td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">0</td>
+                                                    <td class="text-center">0</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="row d-none">
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="card-deck">
+                                        <div class="card border-danger" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-danger">Test Failure</h5>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                    <thead><tr class="text-nowrap"><th>Test Name</th><th>Assertion Error</th></tr></thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- Data Table Configuration -->
+
+<script>
+$(document).ready( function () {
+    $('#myTable-8f9b1809-1271-46c0-a230-4ac61e6ca13e').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+$(document).ready( function () {
+    $('#myTable-43bfb57d-0a98-4e52-ad62-3455f2fe0d39').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+</script>
+
+<!-- Tooltip Configuration -->
+
+<script>
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger : 'hover'
+    })
+})
+</script>
+
+<!-- Show/Hide The Folders -->
+
+<script>
+$('#openAll').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#folder-87387ef4-2f0c-4a85-b5f6-d5f14dbc2a6b-iteration-0').removeClass('collapsed')
+            $('#folder-collapse-87387ef4-2f0c-4a85-b5f6-d5f14dbc2a6b-iteration-0').addClass('show')
+        $('#openAll').html("Collapse Folders");
+        break;
+    case 2:
+            $('#folder-87387ef4-2f0c-4a85-b5f6-d5f14dbc2a6b-iteration-0').addClass('collapsed')
+            $('#folder-collapse-87387ef4-2f0c-4a85-b5f6-d5f14dbc2a6b-iteration-0').removeClass('show')
+        $('#openAll').html("Expand Folders");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Requests -->
+
+<script>
+$('#openAllRequests').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#requests-dc2ae682-65d7-40e5-bd79-294574289742').removeClass('collapsed')
+            $('#collapse-dc2ae682-65d7-40e5-bd79-294574289742').removeClass('collapsed')
+            $('#requests-dc2ae682-65d7-40e5-bd79-294574289742').addClass('show')
+            $('#collapse-dc2ae682-65d7-40e5-bd79-294574289742').addClass('show')
+            $('#requests-737b0ca7-a53f-4cad-b740-aeacca8b45ab').removeClass('collapsed')
+            $('#collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab').removeClass('collapsed')
+            $('#requests-737b0ca7-a53f-4cad-b740-aeacca8b45ab').addClass('show')
+            $('#collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab').addClass('show')
+        $('#openAllRequests').html("Collapse Requests");
+        break;
+    case 2:
+            $('#requests-dc2ae682-65d7-40e5-bd79-294574289742').addClass('collapsed')
+            $('#collapse-dc2ae682-65d7-40e5-bd79-294574289742').addClass('collapsed')
+            $('#requests-dc2ae682-65d7-40e5-bd79-294574289742').removeClass('show')
+            $('#collapse-dc2ae682-65d7-40e5-bd79-294574289742').removeClass('show')
+            $('#requests-737b0ca7-a53f-4cad-b740-aeacca8b45ab').addClass('collapsed')
+            $('#collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab').addClass('collapsed')
+            $('#requests-737b0ca7-a53f-4cad-b740-aeacca8b45ab').removeClass('show')
+            $('#collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab').removeClass('show')
+        $('#openAllRequests').html("Expand Requests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Skipped Tests -->
+
+<script>
+$('#openAllSkipped').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#skipped-dc2ae682-65d7-40e5-bd79-294574289742').removeClass('collapsed')
+            $('#skipped-collapse-dc2ae682-65d7-40e5-bd79-294574289742').removeClass('collapsed')
+            $('#skipped-dc2ae682-65d7-40e5-bd79-294574289742').addClass('show')
+            $('#skipped-collapse-dc2ae682-65d7-40e5-bd79-294574289742').addClass('show')
+            $('#skipped-737b0ca7-a53f-4cad-b740-aeacca8b45ab').removeClass('collapsed')
+            $('#skipped-collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab').removeClass('collapsed')
+            $('#skipped-737b0ca7-a53f-4cad-b740-aeacca8b45ab').addClass('show')
+            $('#skipped-collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab').addClass('show')
+        $('#openAllSkipped').html("Collapse All Skipped Tests");
+        break;
+    case 2:
+            $('#skipped-dc2ae682-65d7-40e5-bd79-294574289742').addClass('collapsed')
+            $('#skipped-collapse-dc2ae682-65d7-40e5-bd79-294574289742').addClass('collapsed')
+            $('#skipped-dc2ae682-65d7-40e5-bd79-294574289742').removeClass('show')
+            $('#skipped-collapse-dc2ae682-65d7-40e5-bd79-294574289742').removeClass('show')
+            $('#skipped-737b0ca7-a53f-4cad-b740-aeacca8b45ab').addClass('collapsed')
+            $('#skipped-collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab').addClass('collapsed')
+            $('#skipped-737b0ca7-a53f-4cad-b740-aeacca8b45ab').removeClass('show')
+            $('#skipped-collapse-737b0ca7-a53f-4cad-b740-aeacca8b45ab').removeClass('show')
+        $('#openAllSkipped').html("Expand All Skipped Tests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Failures -->
+
+<script>
+$('#openAllFailed').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+let failedItemContent
+let failedItemHeading
+switch (clickCount){
+    case 1:
+        $('#openAllFailed').html("Collapse All Failed Tests");
+        break;
+    case 2:
+        $('#openAllFailed').html("Expand All Failed Tests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Pretty Print the Response Body-->
+
+<script>
+function isJSON(data)
+{
+    var ret = true;
+    try {
+            JSON.parse(data);
+    }catch(e) {
+            ret = false;
+    }
+    return ret;
+}
+
+function isXML(data)
+{
+    return (data.length > 0 && data[0] === '<');
+}
+
+// see https://gist.github.com/sente/1083506/d2834134cd070dbcc08bf42ee27dabb746a1c54d#gistcomment-2254622
+function formatXML(data) {
+    const PADDING = ' '.repeat(2); // set desired indent size here
+    const reg = /(>)(<)(\/*)/g;
+    let pad = 0;
+    xml = data.replace(reg, '$1\r\n$2$3');
+
+    return xml.split('\r\n').map((node, index) => {
+        let indent = 0;
+        if (node.match(/.+<\/\w[^>]*>$/)) {
+            indent = 0;
+        } else if (node.match(/^<\/\w/) && pad > 0) {
+            pad -= 1;
+        } else if (node.match(/^<\w[^>]*[^\/]>.*$/)) {
+            indent = 1;
+        } else {
+            indent = 0;
+        }
+
+        pad += indent;
+        return PADDING.repeat(pad - indent) + node;
+    }).join('\r\n');
+}
+
+$(".prettyPrint").each(function () {
+        var data = $(this).text();
+        // Verify whether data is JSON
+        if(isJSON(data))
+        {
+                obj = JSON.parse(data);
+                data = JSON.stringify(obj, null, 2);
+        }
+        else if(isXML(data)) {
+            data = formatXML(data);            
+        }
+        $(this).text(data);
+});
+</script>
+
+
+<!-- Copy Response Body To Clipboard -->
+
+<script>
+    var clipboard = new ClipboardJS('.copyButton');
+
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        $(".copyButton").addClass("bg-success text-white")
+        e.trigger.textContent = '✔ Copied!';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-success text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+    clipboard.on('error', function(e) {
+        e.clearSelection();
+        $(".copyButton").addClass("bg-danger text-white")
+        e.trigger.textContent = '✗ Not Copied';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-danger text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+
+</script>
+
+<!-- Render the Description Markdown and link in the test failures -->
+
+<script>
+    const remarkable = new Remarkable();
+
+    const descriptions = document.querySelectorAll(".renderMarkdown");
+    descriptions.forEach(description => {
+        description.innerHTML = renderHtmlFromMarkdown(description.textContent);
+    });
+    function renderHtmlFromMarkdown(markdown) {
+        return remarkable.render(trim(markdown));
+    }
+    function trim(string) {
+        return string ? string.replace(/^ +| +$/gm, "") : string;
+    }
+</script>
+
+<!-- Show/Hide The Toggles When Scrolling The Page -->
+
+<script>
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("topOfRequestsScreen").style.display = "block";
+    document.getElementById("topOfFailuresScreen").style.display = "block";
+    document.getElementById("topOfSkippedScreen").style.display = "block";
+    document.getElementById("openAll").style.display = "none";
+    document.getElementById("openAllRequests").style.display = "none";
+    
+    
+  } else {
+    document.getElementById("topOfRequestsScreen").style.display = "none";
+    document.getElementById("topOfFailuresScreen").style.display = "none";
+    document.getElementById("topOfSkippedScreen").style.display = "none";
+    document.getElementById("openAll").style.display = "block";
+    document.getElementById("openAllRequests").style.display = "block";
+    
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+<!-- Creates The Iteration Tabs -->
+
+<script type="text/javascript">
+    "use strict";
+
+window.onload = function () {
+
+  // set display for all blocks of response
+  var allItems = document.querySelectorAll('[class*=iteration-]');
+  allItems.forEach(function(elem){
+    elem.style.display = 'block';
+  });
+
+   
+  let totalIterations = 1;
+   
+
+  let menu = document.querySelector('#execution-menu .nav');
+
+  for(var i = 0; i < totalIterations; i++)
+  {
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode((i + 1)));
+    li.setAttribute('id', 'iteration-' + i);
+    li.classList.add("custom-tab");
+    li.classList.add("itPassed");
+
+    li.addEventListener('click', function() {
+      //set display to none for all except row
+      let allItems = document.querySelectorAll('[class*=iteration-]:not(.row)');
+      allItems.forEach(function(elem) {
+        elem.style.display = 'none';
+      })
+
+      let allMenus = document.querySelectorAll('[id*=iteration-]');
+      allMenus.forEach(function(elem){
+        elem.style.borderBottom = 'none';
+      })
+    
+      this.style.borderBottom = 'solid 3px #032a33';
+
+      let items = document.querySelectorAll("." + this.id + ':not(.row)');
+      items.forEach(function(elem) {
+        elem.style.display = elem.style.display == 'block' ? 'none' : 'block';
+      })
+    });
+    menu.appendChild(li);
+  }
+
+  //shows first tab data
+  document.getElementById('iteration-0').click();
+  document.getElementById('iterationSelected').innerHTML = `Iteration ${document.getElementById('iteration-0').innerHTML} selected`
+
+}
+</script>
+
+<!-- Create the Selected Iteration Label -->
+
+<script>
+$(document).ready(function(){
+    $(function() {
+        $("#iterationList li").click(function() {
+            document.getElementById('iterationSelected').innerHTML = "Iteration " + this.innerHTML + " selected"
+        });
+    });
+});
+</script>
+
+<!-- Filter Action for the Iterations -->
+
+<script>
+$("#filterInput").on("input paste", function() {
+    var value = $(this).val();
+    $("#iterationList li").filter(function() {
+	    $("#showOnlyFailures").data("clickCount") ? $("#showOnlyFailures").click():null;
+        $(this).toggle($(this).text().indexOf(value) > -1)
+    });
+});
+</script>
+
+<!-- Showing the Failed Interations -->
+
+<script>
+$('#showOnlyFailures').on('click', function(e) {
+    let clickCount = $(this).data("clickCount") || 1
+	$("#filterInput").val()!="" && clickCount==1 ? $("#filterInput").val('').trigger('input'): null;
+    let selectedIteration = $('#iterationList li').filter(function () { 
+        return $(this).css('border-bottom').indexOf("solid") > -1 && $(this).hasClass('itFailed');
+    });
+    selectedIteration.length || clickCount > 1 ? null : $("#iterationList li.itFailed")[0].click()
+    $("#iterationList li.itPassed").toggle()
+    $("div.bg-success [id*=requests]").parents('[class^="row iteration-"]').toggle();
+    clickCount = clickCount > 1 ? 1 : ++clickCount;
+    clickCount > 1 ? $("#showOnlyFailures").html("Show All Iterations") : $("#showOnlyFailures").html("Show Failed Iterations");
+    $(this).data("clickCount", clickCount)     
+})
+</script>
+
+<!-- Set The Theme Of The Report -->
+
+<script>
+        function setTheme(themeName) {
+            localStorage.setItem('theme', themeName);
+            document.body.className = themeName;
+        }
+
+        function toggleTheme() {
+            if (localStorage.getItem('theme') === 'theme-light') {
+                setTheme('theme-dark');
+            } else {
+                setTheme('theme-light');
+            }
+        }
+
+        (function () {
+            if (localStorage.getItem('theme') === 'theme-light') {
+                setTheme('theme-light');
+                document.getElementById('slider').checked = false;
+            } else {
+                setTheme('theme-dark');
+                document.getElementById('slider').checked = true;
+            }
+        })();
+</script>
