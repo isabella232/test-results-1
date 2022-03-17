@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1m20.00s</div>
+<div class="counter">1m12.53s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">95%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,10 +61,113 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Tests</a>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="whenFindContainerByIdAndUserNotHasPermission"></a>
+<h3 class="failures">whenFindContainerByIdAndUserNotHasPermission</h3>
+<span class="code">
+<pre>java.lang.Exception: Unexpected exception, expected&lt;com.dotmarketing.exception.DotSecurityException&gt; but was&lt;java.lang.NullPointerException&gt;
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.rules.TestWatcher$1.evaluate(TestWatcher.java:55)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:28)
+	at com.dotcms.junit.CustomDataProviderRunner.runChild(CustomDataProviderRunner.java:13)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at com.dotcms.junit.MainBaseSuite$DotRunner.run(MainBaseSuite.java:60)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:106)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:117)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.NullPointerException
+	at com.dotmarketing.business.IdentifierFactoryImpl.createNewIdentifier(IdentifierFactoryImpl.java:334)
+	at com.dotmarketing.business.IdentifierAPIImpl.createNew_aroundBody18(IdentifierAPIImpl.java:156)
+	at com.dotmarketing.business.IdentifierAPIImpl$AjcClosure19.run(IdentifierAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.business.IdentifierAPIImpl.createNew(IdentifierAPIImpl.java:143)
+	at com.dotmarketing.business.IdentifierAPIImpl.createNew(IdentifierAPIImpl.java:138)
+	at com.dotmarketing.portlets.folders.business.FolderAPIImpl.createFolders_aroundBody30(FolderAPIImpl.java:657)
+	at com.dotmarketing.portlets.folders.business.FolderAPIImpl$AjcClosure31.run(FolderAPIImpl.java:1)
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
+	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
+	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
+	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
+	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
+	at com.dotmarketing.portlets.folders.business.FolderAPIImpl.createFolders(FolderAPIImpl.java:621)
+	at com.dotcms.datagen.ContainerAsFileDataGen.creatApplicationContainerFolderIfNeeded(ContainerAsFileDataGen.java:181)
+	at com.dotcms.datagen.ContainerAsFileDataGen.createFileAsContainerFolderIfNeeded(ContainerAsFileDataGen.java:188)
+	at com.dotcms.datagen.ContainerAsFileDataGen.persist(ContainerAsFileDataGen.java:112)
+	at com.dotcms.datagen.ContainerAsFileDataGen.persist(ContainerAsFileDataGen.java:26)
+	at com.dotcms.datagen.DataGen.nextPersisted(DataGen.java:25)
+	at com.dotmarketing.portlets.containers.business.ContainerAPIImplTest.whenFindContainerByIdAndUserNotHasPermission(ContainerAPIImplTest.java:644)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:19)
+	... 53 more
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -76,47 +179,47 @@
 </thead>
 <tr>
 <td class="success">getContentTypesInContainer</td>
-<td class="success">4.065s</td>
+<td class="success">3.948s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_containerapi_find_by_inode</td>
-<td class="success">0.625s</td>
+<td class="success">1.044s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_find_all_containers_success</td>
-<td class="success">6.159s</td>
+<td class="success">5.810s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_find_container_not_found</td>
-<td class="success">0.931s</td>
+<td class="success">1.175s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_getContainerByFolder_cache</td>
-<td class="success">0.207s</td>
+<td class="success">0.200s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_get_container_by_folder_found</td>
-<td class="success">6.479s</td>
+<td class="success">6.340s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_get_live_not_found</td>
-<td class="success">0.003s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">test_get_working_found</td>
-<td class="success">7.324s</td>
+<td class="success">6.469s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenFindContainerByIdAndExists</td>
-<td class="success">0.008s</td>
+<td class="success">0.010s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -125,53 +228,53 @@
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">whenFindContainerByIdAndUserNotHasPermission</td>
-<td class="success">6.007s</td>
-<td class="success">passed</td>
+<td class="failures">whenFindContainerByIdAndUserNotHasPermission</td>
+<td class="failures">0.843s</td>
+<td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">whenFindFileContainerByAbsolutePathAndExists</td>
-<td class="success">6.892s</td>
+<td class="success">6.926s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenFindFileContainerByAbsolutePathAndExistsInCurrentHost</td>
-<td class="success">7.755s</td>
+<td class="success">7.290s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenFindFileContainerByAbsolutePathAndExistsInDefaultHost</td>
-<td class="success">6.927s</td>
+<td class="success">6.989s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenFindFileContainerByRelativePathAndNotExists</td>
-<td class="success">0.003s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenFindPublishContainerByIdAndExistsAndLiveFalse</td>
-<td class="success">1.009s</td>
+<td class="success">0.976s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenFindPublishContainerByIdAndExistsAndLiveTrue</td>
-<td class="success">0.963s</td>
+<td class="success">0.713s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenFindPublishedFileContainerByAbsolutePathAndExists</td>
-<td class="success">7.286s</td>
+<td class="success">7.133s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenUserNotHavePermissionInCurrentHost</td>
-<td class="success">9.145s</td>
+<td class="success">9.097s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenUserNotHavePermissionInDefaultHost</td>
-<td class="success">8.207s</td>
+<td class="success">7.562s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -184,7 +287,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Mar 15, 2022, 6:01:45 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Mar 17, 2022, 12:18:55 AM</p>
 </div>
 </div>
 </body>
