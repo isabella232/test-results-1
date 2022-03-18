@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">24.653s</div>
+<div class="counter">21.471s</div>
 <p>duration</p>
 </div>
 </td>
@@ -73,32 +73,11 @@
 <a name="whenHostNameChangeShouldUpdatePageTemplatePath"></a>
 <h3 class="failures">whenHostNameChangeShouldUpdatePageTemplatePath</h3>
 <span class="code">
-<pre>com.dotmarketing.exception.DotRuntimeException
-	at com.dotcms.exception.ExceptionUtil.bubbleUpException(ExceptionUtil.java:165)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody150(ESContentletAPIImpl.java:4408)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure151.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4359)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:8747)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody140(ESContentletAPIImpl.java:4270)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl$AjcClosure141.run(ESContentletAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotcms.aspects.interceptors.CloseDBIfOpenedMethodInterceptor.invoke(CloseDBIfOpenedMethodInterceptor.java:29)
-	at com.dotcms.aspects.aspectj.CloseDBIfOpenedAspect.invoke(CloseDBIfOpenedAspect.java:41)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin(ESContentletAPIImpl.java:4265)
-	at com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor.checkin(ContentletAPIInterceptor.java:258)
-	at com.dotcms.datagen.ContentletDataGen.checkin(ContentletDataGen.java:297)
-	at com.dotcms.datagen.ContentletDataGen.persist(ContentletDataGen.java:207)
-	at com.dotcms.datagen.ContentletDataGen.nextPersisted(ContentletDataGen.java:193)
-	at com.dotcms.datagen.TemplateAsFileDataGen.persist(TemplateAsFileDataGen.java:85)
-	at com.dotcms.datagen.TemplateAsFileDataGen.persist(TemplateAsFileDataGen.java:20)
-	at com.dotcms.datagen.DataGen.nextPersisted(DataGen.java:25)
-	at com.dotmarketing.portlets.contentlet.business.web.ContentletWebAPIImplIntegrationTest.whenHostNameChangeShouldUpdatePageTemplatePath(ContentletWebAPIImplIntegrationTest.java:107)
+<pre>java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:86)
+	at org.junit.Assert.assertTrue(Assert.java:41)
+	at org.junit.Assert.assertTrue(Assert.java:52)
+	at com.dotmarketing.portlets.contentlet.business.web.ContentletWebAPIImplIntegrationTest.whenHostNameChangeShouldUpdatePageTemplatePath(ContentletWebAPIImplIntegrationTest.java:128)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -160,29 +139,6 @@
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
 	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: com.dotmarketing.exception.DotRuntimeException
-	at com.dotcms.exception.ExceptionUtil.bubbleUpException(ExceptionUtil.java:165)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.internalCheckin(ESContentletAPIImpl.java:4963)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.lambda$69(ESContentletAPIImpl.java:4401)
-	at com.dotcms.concurrent.lock.StripedLockImpl.tryLock(StripedLockImpl.java:100)
-	at com.dotcms.concurrent.lock.StripedLockImpl.tryLock(StripedLockImpl.java:55)
-	at com.dotcms.concurrent.lock.IdentifierStripedLock.tryLock(IdentifierStripedLock.java:16)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.checkin_aroundBody150(ESContentletAPIImpl.java:4400)
-	... 84 more
-Caused by: java.lang.NullPointerException
-	at com.dotmarketing.business.IdentifierFactoryImpl.createNewIdentifier(IdentifierFactoryImpl.java:369)
-	at com.dotmarketing.business.IdentifierAPIImpl.createNew_aroundBody20(IdentifierAPIImpl.java:197)
-	at com.dotmarketing.business.IdentifierAPIImpl$AjcClosure21.run(IdentifierAPIImpl.java:1)
-	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149)
-	at com.dotcms.aspects.aspectj.AspectJDelegateMethodInvocation.proceed(AspectJDelegateMethodInvocation.java:42)
-	at com.dotmarketing.db.LocalTransaction.wrapReturnWithListeners(LocalTransaction.java:119)
-	at com.dotcms.aspects.interceptors.WrapInTransactionMethodInterceptor.invoke(WrapInTransactionMethodInterceptor.java:30)
-	at com.dotcms.aspects.aspectj.WrapInTransactionAspect.invoke(WrapInTransactionAspect.java:41)
-	at com.dotmarketing.business.IdentifierAPIImpl.createNew(IdentifierAPIImpl.java:184)
-	at com.dotmarketing.business.IdentifierAPIImpl.createNew(IdentifierAPIImpl.java:138)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.addOrUpdateContentletIdentifier(ESContentletAPIImpl.java:5027)
-	at com.dotcms.content.elasticsearch.business.ESContentletAPIImpl.internalCheckin(ESContentletAPIImpl.java:4839)
-	... 89 more
 </pre>
 </span>
 </div>
@@ -199,42 +155,42 @@ Caused by: java.lang.NullPointerException
 </thead>
 <tr>
 <td class="success">testSavePersonaWithLicenseShouldPass</td>
-<td class="success">0.246s</td>
+<td class="success">0.201s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSavePersonaWithoutLicenseShouldFail</td>
-<td class="success">0.264s</td>
+<td class="success">0.197s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenHostNameChangeShouldUpdateContainerPath</td>
-<td class="success">5.187s</td>
+<td class="success">4.088s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="failures">whenHostNameChangeShouldUpdatePageTemplatePath</td>
-<td class="failures">0.931s</td>
+<td class="failures">2.414s</td>
 <td class="failures">failed</td>
 </tr>
 <tr>
 <td class="success">whenHostNameChangeWithLegacyTemplateLayout</td>
-<td class="success">3.753s</td>
+<td class="success">3.222s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenHostNameNotChange</td>
-<td class="success">4.410s</td>
+<td class="success">3.492s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenNewNameIsSubstring</td>
-<td class="success">5.035s</td>
+<td class="success">4.065s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">whenOldNameIsSubstring</td>
-<td class="success">4.827s</td>
+<td class="success">3.792s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -247,7 +203,7 @@ Caused by: java.lang.NullPointerException
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10.2</a> at Mar 18, 2022, 7:09:09 PM</p>
+<a href="http://www.gradle.org">Gradle 4.10.2</a> at Mar 18, 2022, 8:02:50 PM</p>
 </div>
 </div>
 </body>
