@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-y: scroll;">
+<head>
+  <meta charset="UTF-8">
+  <title>Newman Summary Report</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
+
+<style>
+code.renderMarkdown table, code.renderMarkdown th, code.renderMarkdown td {
+    border: 1px solid black;
+    width: max-content;
+    padding: .75rem;
+}
+
+.theme-dark {
+    --background-color: #222;
+    --bg-card-deck: #444444;
+    --text-color: #ccd2d8;
+    --tab-border: solid 1px #444;
+    --success: #3c9372;
+    --failure: #c24a3f;
+    --warning: #d28c23;
+    --info: #4083b6;
+    --badge-outline: #3c9372;
+    --badge-bg: #cdd3db;
+    --badge-text: #ccd2d9;
+    --failure-row: #c24a3f;
+    --warning-row: #d28c23;
+    --card-bg: #444;
+    --card-footer: #4f5758;
+    --form-input: #ececb5;
+    --hov-text: #d2dae5;
+    --h4-text: #ccd1d9;
+}
+
+.theme-light {
+    --tab-border: solid 1px #fff;
+    --text-color: #000000;
+    --success: #42a745;
+    --failure: #dc3544;
+    --warning: #f4c10b;
+    --info: #49a1b8;
+    --badge-outline: #040411;
+    --badge-bg: #f8f9fa;
+    --badge-text: #fff;
+    --failure-row: #f5c6cb;
+    --warning-row: #ffeeba;
+    --card-bg: #f7f7f7;
+    --hov-text: #fff;
+    --h4-text: #ffffff;
+}
+
+body {
+  padding-top:30px;
+  background-color: var(--background-color)!important;
+  color: var(--text-color);
+}
+
+#execution-data {
+  padding: 10px;
+  border: var(--tab-border);
+  border-top: none;
+}
+
+.nav-tabs {
+  padding-top: 10px;
+  height: 105px;
+  overflow-y: auto;
+}
+
+body.theme-dark .card-header {
+    background-color: #444;
+}
+
+body.theme-light .card-header {
+    background-color: #f7f7f7;
+}
+
+.card-footer {
+    padding: .75rem 1.25rem;
+    background-color: var(--card-footer);
+}
+
+.card-deck {
+    background-color: var(--bg-card-deck)!important;
+}
+.form-control {
+    background: var(--form-input);
+}
+
+.custom-tab {
+  padding: 10px 15px;
+  margin-right: 0px;
+  height: 47px;
+  width: 69px;
+  text-align: center;
+  border: var(--tab-border);
+  border-bottom: none;
+  cursor:pointer;
+}
+
+body.theme-dark .text-white {
+    color: #ccd2d9!important;
+}
+h4 {
+    color: var(--h4-text);
+}
+
+body.theme-dark h1 {
+    color: #ccd2da;
+}
+
+body.theme-dark .bg-light>td {
+    background: #4f5858!important;
+}
+
+body.theme-dark .hljs {
+    background: #0a0a0ab0!important;
+    color: #8d8787!important;
+}
+
+.bg-info {
+    background-color: var(--info)!important;
+}
+.bg-success {
+    background-color: var(--success)!important;
+}
+
+.alert-success {
+    background-color: var(--success)!important;
+}
+
+.alert-warning {
+    background-color: var(--warning)!important;
+}
+
+.alert-info {
+    background-color: var(--info)!important;
+}
+
+.bg-warning {
+    background-color: var(--warning)!important;
+}
+
+.badge-warning {
+    color: var(--badge-text)!important;
+    background-color: var(--warning)!important;
+}
+
+.table-warning>td {
+    background-color: var(--warning-row);
+}
+
+.alert-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-dark .alert-dark {
+    background-color: #636467!important;
+}
+
+body.theme-dark .text-dark {
+    color: #d1dae4!important;
+}
+
+body.theme-dark .badge-light {
+    color: #212529;
+    background-color: #cdd3db;
+}
+
+body.theme-light .badge-light {
+    color: #212529;
+    background-color: #f8f9fa;
+}
+body.theme-light .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-dark .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+.table-danger>td {
+    background-color: var(--failure-row);
+}
+
+body.theme-dark .table .thead-light th {
+    background-color: #4f5858!important;
+    border-color: #dee2e6!important;
+    color: #ccd2d8!important;
+}
+
+.itPassed {
+  background: var(--success);
+  color: white;
+}
+.itFailed {
+  background: var(--failure);
+  color: white;
+}
+
+.resultsInfoPass {
+  color: var(--success);
+  padding-top: 4px;
+}
+
+.resultsInfoFail {
+  color: var(--failure);
+  padding-top: 4px;
+}
+
+.badge-outline-success {
+  color: var(--success);
+  border: 1px solid var(--success);
+  background-color: transparent;
+}
+
+.badge-outline {
+  color: var(--badge-outline);
+  border: 1px solid var(--badge-outline);
+  background-color: transparent;
+}
+
+.btn-outline-success {
+    color: var(--success)!important;
+    border-color: var(--success)!important;
+}
+
+.backToTop:hover {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--hov-text)!important;
+}
+
+.btn-outline-success:hover {
+  background-color: var(--success);
+  border-color: var(--success);
+  color: var(--hov-text)!important;
+}
+
+.btn-outline-secondary {
+  background-color: var(--success)!important;
+  color: var(--hov-text)!important;
+}
+
+body.theme-dark .env-heading {
+    color: #ccd2d9!important;
+}
+
+body, html {
+  height:100%;
+}
+
+.card {
+  overflow:hidden;
+}
+
+body.theme-dark .card-body {
+    background-color: #444;
+}
+
+body.theme-light .card-body {
+    background-color: #f7f7f7;
+}
+
+body.theme-dark .card-body .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+body.theme-light .card-body .bg-danger {
+    background-color: var(--failure)!important;
+}
+
+.card-body .rotate {
+  z-index: 8;
+  float: right;
+  height: 100%;
+}
+
+.card-body .rotate i {
+  color: #14141426;
+  position: absolute;
+  left: 0;
+  left: auto;
+  right: -10px;
+  bottom: 0;
+  display: block;
+  -webkit-transform: rotate(-44deg);
+  -moz-transform: rotate(-44deg);
+  -o-transform: rotate(-44deg);
+  -ms-transform: rotate(-44deg);
+  transform: rotate(-44deg);
+}
+
+.dyn-height {
+  max-height:350px;
+  overflow-y:auto;
+}
+
+.nav-pills .nav-link.active {
+  background-color: transparent!important;
+}
+
+.backToTop {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  z-index: 99;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.card-header .fa {
+  transition: .3s transform ease-in-out;
+}
+.card-header .collapsed .fa {
+  transform: rotate(90deg);
+}
+
+.single-line-tabs {
+  padding-top: 10px;
+  height: 60px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 0px;
+  bottom: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  box-shadow: 0 0px 15px #2020203d;
+  background: white;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input:checked + .slider {
+  background-color: #4083b6;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #4083b6;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+  background: white;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+table.dataTable td, table.dataTable tr {
+    vertical-align: middle;
+} 
+
+body.theme-dark code {
+    color: #ccd2d8!important;
+} 
+
+body.theme-light code {
+    color: #000000!important;
+} 
+
+</style>
+</head>
+<body class="">
+  <div class="container">
+        <div class="container">
+            <label>Light</label>
+            <label id="switch" class="switch">
+                <input type="checkbox" onchange="toggleTheme()" id="slider">
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+        <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist">
+            <li class="nav-item bg-info active" data-toggle="tooltip" title="Click to view the Summary">
+                <a class="nav-link text-white" id="pills-summary-tab" data-toggle="pill" href="#pills-summary" role="tab" aria-controls="pills-summary" aria-selected="true">Summary</a>
+            </li>
+            <li class="nav-item bg-success" data-toggle="tooltip" title="Click to view the Requests">
+                <a class="nav-link text-white" id="pills-requests-tab" data-toggle="pill" href="#pills-requests" role="tab" aria-controls="pills-requests" aria-selected="false">Total Requests <span class="badge badge-light">2</span></a>
+            </li>
+            <li class="nav-item bg-danger" data-toggle="tooltip" title="Click to view the Failed Tests">
+                <a class="nav-link text-white" id="pills-failed-tab" data-toggle="pill" href="#pills-failed" role="tab" aria-controls="pills-failed" aria-selected="false">Failed Tests <span class="badge badge-light">0</span></a>
+            </li>
+            <li class="nav-item bg-warning" data-toggle="tooltip" title="Click to view the Skipped Tests">
+                <a class="nav-link text-white" id="pills-skipped-tab" data-toggle="pill" href="#pills-skipped" role="tab" aria-controls="pills-skipped" aria-selected="false">Skipped Tests <span class="badge badge-light">0</span></a>
+            </li>
+            </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-summary" role="tabcard" aria-labelledby="pills-summary-tab">
+<div class="row">
+  <div class="col-md-9 col-lg-12 main">
+   <h1 class="display-2 text-center">Newman Run Dashboard</h1>
+   <h5 class="text-center">Friday, 18 March 2022 17:41:28</h5>
+   <div class="row">
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-success">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-retweet fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Iterations</h6>
+       <h1 class="display-1">1</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-danger">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-list fa-4x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Assertions</h6>
+       <h1 class="display-1">2</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-info">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-plus-circle fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Failed Tests</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+     <div class="card text-white card-warning">
+      <div class="card-body bg-success">
+       <div class="rotate">
+        <i class="fa fa-share fa-5x"></i>
+       </div>
+       <h6 class="text-uppercase">Total Skipped Tests</h6>
+       <h1 class="display-1">0</h1>
+      </div>
+     </div>
+    </div>
+   </div>
+   <hr>
+    <div class="row">
+    <div class="col">
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-white text-center bg-info">File Information</h5>
+                <span><i class="fas fa-file-code"></i></span><strong> Collection:</strong> ContainerResource<br>
+                
+                <span><i class="fas fa-file-code"></i></span><strong> Environment:</strong> dotCMS - Local 8080<br>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="card border-info">
+                <div class="card-body">
+                <h5 class="card-title text-uppercase text-white text-center bg-info">Timings and Data</h5>
+                <span><i class="fas fa-stopwatch"></i></span><strong> Total run duration:</strong> 19.7s<br>
+                <span><i class="fas fa-database"></i></span><strong> Total data received:</strong> 23.66KB<br>
+                <span><i class="fas fa-stopwatch"></i></span><strong> Average response time:</strong> 9.7s<br>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-12 mb-3">
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-inverse">
+                    <tr class="text-center">
+                        <th class="text-uppercase">Summary Item</th>
+                        <th class="text-uppercase">Total</th>
+                        <th class="text-uppercase">Failed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Requests</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td>Prerequest Scripts</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr>
+                        <td>Test Scripts</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr class="">
+                        <td>Assertions</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">0</td>
+                    </tr>
+                    <tr class="">
+                        <td>Skipped Tests</td>
+                        <td class="text-center">0</td>
+                        <td class="text-center">-</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    <hr>
+   </div>
+   </div>
+  </div>
+ </div>
+        </div>
+            <div class="tab-pane fade" id="pills-failed" role="tabcard" aria-labelledby="pills-failed-tab">
+                <button id="topOfFailuresScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+                
+                <div class="alert alert-success text-uppercase text-center">
+                     <br><br><h1 class="text-center">There are no failed tests <span><i class="far fa-thumbs-up"></i></span></h1><br><br>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="pills-skipped" role="tabcard" aria-labelledby="pills-skipped-tab">
+                <button id="topOfSkippedScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+
+                <div class="alert alert-success text-uppercase text-center">
+                    <br><br><h1 class="text-center">There are no skipped tests <span><i class="far fa-thumbs-up"></i></span></h1><br><br>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pills-requests" role="tabcard" aria-labelledby="pills-requests-tab">
+
+            <button id="topOfRequestsScreen" class="btn btn-outline-success btn-sm backToTop" onclick="topFunction()">Go To Top</button>
+            
+            <div class="btn-group float-right" role="group" aria-label="Button Group">
+                <button id="openAll" class="btn btn-outline-success btn-sm float-right" style="text-align: center; width: 140px;">Expand Folders</button>
+                <button id="openAllRequests" class="btn btn-outline-success btn-sm float-right" style="text-align: center; width: 140px;">Expand Requests</button>
+            </div>
+
+    <div class="text-uppercase" id="execution-menu">
+        <h5>1 Iteration available to view</h5>
+        
+        <nav class="table-responsive">
+        <ul class="nav single-line-tabs" id="iterationList">
+        </ul>
+        </nav>
+    </div>
+    <h6 class="text-uppercase text-muted" id="iterationSelected" style="padding-top: 10px;"></h6>
+	<div class="tab-content" id="execution-data">
+            <div id="folder-7e26aa90-31d5-4c5b-9a0c-03ed3473047c" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c" aria-expanded="false" aria-controls="collapse" id="requests-7e26aa90-31d5-4c5b-9a0c-03ed3473047c" class="collapsed text-white z-block">
+                    Iteration: 1 - Upload $dotPageContent_test bundle <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c" class="collapse" aria-labelledby="requests-7e26aa90-31d5-4c5b-9a0c-03ed3473047c">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Description</h5>
+                                        <div class="dyn-height">
+                                            <code class="renderMarkdown">Imports a Bundle that includes:
+        *  A piece of content of type &quot;Rich text&quot; with &quot;test Content&quot; as title and body</code>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> POST</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/bundle/sync" target="_blank">http://dotcms-app:8080/api/bundle/sync</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 15.8s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 90B</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5 style="padding-top:5px;"><strong>100 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Type</td>
+                                                        <td>application/octet-stream</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Disposition</td>
+                                                        <td>attachment</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Authorization</td>
+                                                        <td>Basic YWRtaW5AZG90Y21zLmNvbTphZG1pbg&#x3D;&#x3D;</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>522f62d4-e246-4c5d-bb1b-6a79376b8121</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Content-Length</td>
+                                                        <td>15955</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-sm-12 mb-3">
+                                    <div class="card-deck">
+                                        <div class="card border-info" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-info">Request Body</h5>
+                                                <div class="dyn-height">
+                                                    <pre><code id="copyReqText-0" class="prettyPrint">{&quot;file&quot;:&quot;resources/ContainerResource/_dotPageContent_test-01FNRS68FETJPPDHY6PJ9SA9ZQ.tar.gz&quot;}</code></pre>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyReqText-0">Copy to Clipboard</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>c87d2eb4e1de|db545d0ca7</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;0E7BF560A4E56BD98BE286249E8F1C49; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDdhMGRlNi1lNDEwLTQzZTktYTcwMC1iMGMyMDgzMWQ0ZGMiLCJ4bW9kIjoxNjQ3NjI1MjcyMzA4LCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDc2MjUyNzUsImlzcyI6IjY4ZTg3NTRjMTgiLCJleHAiOjE2NDc3MTE2NzV9.T2n8S9rR1P5P_yKOj7lpgRXDqL_c2xFMOVnCwNzgr4U; Path&#x3D;/; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json;charset&#x3D;utf-8</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Length</td>
+                                                    <td>90</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Fri, 18 Mar 2022 17:41:24 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-d6b13680-dc5e-436d-8dd6-c1578abf626e" class="prettyPrint">{&quot;bundleName&quot;:&quot;_dotPageContent_test-01FNRS68FETJPPDHY6PJ9SA9ZQ.tar.gz&quot;,&quot;status&quot;:&quot;SUCCESS&quot;}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-d6b13680-dc5e-436d-8dd6-c1578abf626e">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <div class="table-responsive text-nowrap">
+                                        <table id="myTable-d6b13680-dc5e-436d-8dd6-c1578abf626e" class="table table-hover">
+                                        <thead><tr class="text-center"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr></thead>
+                                            <tbody>
+                                                <tr >
+                                                    <td >Bundle uploaded sucessfully</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="bg-light">
+                                                    <td><strong>Total</strong></td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">0</td>
+                                                    <td class="text-center">0</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="row d-none">
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="card-deck">
+                                        <div class="card border-danger" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-danger">Test Failure</h5>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                    <thead><tr class="text-nowrap"><th>Test Name</th><th>Assertion Error</th></tr></thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div id="folder-6ef14976-c68e-419c-b59e-2786d89a522a" class="card-deck iteration-0">
+            <div class="row iteration-0">
+                <div class="col-sm-12 mb-3 iteration-0">
+                <div class="card iteration-0">
+                    <div class="card-header  bg-success iteration-0">
+                        <a data-toggle="collapse" href="#" data-target="#collapse-6ef14976-c68e-419c-b59e-2786d89a522a" aria-expanded="false" aria-controls="collapse" id="requests-6ef14976-c68e-419c-b59e-2786d89a522a" class="collapsed text-white z-block">
+                    Iteration: 1 - Get Contentlet in Container <i class="float-lg-right fa fa-chevron-down" style="padding-top: 5px;"></i>
+                </a>
+                    </div>
+                    <div id="collapse-6ef14976-c68e-419c-b59e-2786d89a522a" class="collapse" aria-labelledby="requests-6ef14976-c68e-419c-b59e-2786d89a522a">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request Method:</strong> <span class="badge-outline-success badge badge-success"> GET</span><br>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Request URL:</strong> <a href="http://dotcms-app:8080/api/v1/containers/content/0207b411-b66a-4bcf-8da1-e3ab81db47c3?containerId&#x3D;067682378f271bec7fa17795192e7f59&amp;pageInode&#x3D;0cd9101a-fa6c-41b0-8149-e8eb6b444033" target="_blank">http://dotcms-app:8080/api/v1/containers/content/0207b411-b66a-4bcf-8da1-e3ab81db47c3?containerId&#x3D;067682378f271bec7fa17795192e7f59&amp;pageInode&#x3D;0cd9101a-fa6c-41b0-8149-e8eb6b444033</a><br>
+                                    </div>
+                                </div>
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5>
+                                    <span><i class="fas fa-info-circle"></i></span><strong> Response Code:</strong> <span class="float-right badge-outline badge badge-success"> 200 - OK</span><br>
+                                    <span><i class="fas fa-stopwatch"></i></span><strong> Mean time per request:</strong> <span class="float-right badge-outline badge badge-success"> 3.6s</span><br>
+                                    <span><i class="fas fa-database"></i></span><strong> Mean size per request:</strong> <span class="float-right badge-outline badge badge-success"> 23.57KB</span><br>
+                                    <hr>
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Test Pass Percentage</h5>
+                                    <div>
+                                        <div class="progress" style="height: 40px;">
+                                            <div class="progress-bar  bg-success" style="width: 100%" role="progressbar">
+                                            <h5 style="padding-top:5px;"><strong>100 %</strong></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mb-3">
+                                <div class="card-deck">
+                                <div class="card border-info" style="width: 50rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-uppercase text-white text-center bg-info">Request Headers</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-nowrap">User-Agent</td>
+                                                        <td>PostmanRuntime/7.29.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept</td>
+                                                        <td>*/*</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cache-Control</td>
+                                                        <td>no-cache</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Postman-Token</td>
+                                                        <td>63393b2c-7ac5-4040-b75b-af59985a2b0b</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Host</td>
+                                                        <td>dotcms-app:8080</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Accept-Encoding</td>
+                                                        <td>gzip, deflate, br</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Connection</td>
+                                                        <td>keep-alive</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-nowrap">Cookie</td>
+                                                        <td>access_token&#x3D;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI1MDdhMGRlNi1lNDEwLTQzZTktYTcwMC1iMGMyMDgzMWQ0ZGMiLCJ4bW9kIjoxNjQ3NjI1MjcyMzA4LCJzdWIiOiJkb3RjbXMub3JnLjEiLCJpYXQiOjE2NDc2MjUyNzUsImlzcyI6IjY4ZTg3NTRjMTgiLCJleHAiOjE2NDc3MTE2NzV9.T2n8S9rR1P5P_yKOj7lpgRXDqL_c2xFMOVnCwNzgr4U</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Headers</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                        <thead class="thead-light text-center"><tr><th>Header Name</th><th>Header Value</th></tr></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Frame-Options</td>
+                                                    <td>SAMEORIGIN</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-Content-Type-Options</td>
+                                                    <td>nosniff</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">X-XSS-Protection</td>
+                                                    <td>1; mode&#x3D;block</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">x-dot-server</td>
+                                                    <td>c87d2eb4e1de|db545d0ca7</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Set-Cookie</td>
+                                                    <td>JSESSIONID&#x3D;C1D4F92E66DAC14B77A2A958C4B3BC9B; Path&#x3D;/; Secure; HttpOnly; SameSite&#x3D;Strict</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Origin</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Methods</td>
+                                                    <td>GET,PUT,POST,DELETE,HEAD,OPTIONS,PATCH</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Credentials</td>
+                                                    <td>true</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Allow-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Access-Control-Expose-Headers</td>
+                                                    <td>*</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Cache-Control</td>
+                                                    <td>no-cache, no-store, must-revalidate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Pragma</td>
+                                                    <td>no-cache</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Expires</td>
+                                                    <td>Mon, 26 Jul 1997 05:00:00 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">vary</td>
+                                                    <td>accept-encoding</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Encoding</td>
+                                                    <td>gzip</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Content-Type</td>
+                                                    <td>application/json</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Transfer-Encoding</td>
+                                                    <td>chunked</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Date</td>
+                                                    <td>Fri, 18 Mar 2022 17:41:28 GMT</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Keep-Alive</td>
+                                                    <td>timeout&#x3D;3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-nowrap">Connection</td>
+                                                    <td>keep-alive</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12 mb-3">
+                            <div class="card-deck">
+                            <div class="card border-info" style="width: 50rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-uppercase text-white text-center bg-info">Response Body</h5>
+                                        <div class="dyn-height">
+                                                <pre><code id="copyText-e5ffb61b-0282-4ed4-b936-19b54dee0d26" class="prettyPrint">{&quot;entity&quot;:{&quot;render&quot;:&quot;&lt;div data-dot-object&#x3D;\&quot;contentlet\&quot; data-dot-inode&#x3D;\&quot;684e8058-b822-400d-b196-457ca256f402\&quot; data-dot-identifier&#x3D;\&quot;0207b411-b66a-4bcf-8da1-e3ab81db47c3\&quot; data-dot-type&#x3D;\&quot;webPageContent\&quot; data-dot-basetype&#x3D;\&quot;CONTENT\&quot; data-dot-lang&#x3D;\&quot;1\&quot; data-dot-title&#x3D;\&quot;Before You Book\&quot; data-dot-can-edit&#x3D;\&quot;true\&quot; data-dot-content-type-id&#x3D;\&quot;2a3e91e4-fbbf-4876-8c5b-2233c1739b05\&quot; data-dot-has-page-lang-version&#x3D;\&quot;true\&quot;&gt;&lt;h1&gt;My Test Container&lt;/h1&gt;\r\n&lt;p&gt;\r\n    Before You Book\r\n&lt;/p&gt;\r\n    &lt;h3&gt;dotPageContent object has the expected values&lt;/h4&gt;\r\n&lt;hr/&gt;\r\n&lt;h5&gt;Contents of the dotPageContent object:&lt;/h5&gt;\r\n&lt;div&gt;\r\n    com.dotcms.rendering.velocity.viewtools.content.ContentMap@251481b6[content&#x3D;com.dotmarketing.portlets.contentlet.model.Contentlet@3de09ca5[map&#x3D;{template&#x3D;2323f14aaf06aadb2281171179147876, modDate&#x3D;2021-11-24 17:19:20.267, cachettl&#x3D;15, title&#x3D;my-test-page, inode&#x3D;0cd9101a-fa6c-41b0-8149-e8eb6b444033, disabledWYSIWYG&#x3D;[], host&#x3D;48190c8c-42c4-46af-8d1a-0cd5db894797, stInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8, friendlyName&#x3D;my-test-page, owner&#x3D;dotcms.org.1, identifier&#x3D;bef4458a0da3e55cf37322b32e4ecb14, nullProperties&#x3D;[wfExpireDate, wfPublishDate, wfActionAssign, wfActionId, wfActionComments, filterKey, whereToSend, wfNeverExpire, _path_to_move, timezoneId, iWantTo, wfPublishTime, wfExpireTime], languageId&#x3D;1, folder&#x3D;SYSTEM_FOLDER, sortOrder&#x3D;0, modUser&#x3D;dotcms.org.1},lowIndexPriority&#x3D;false],conAPI&#x3D;com.dotmarketing.portlets.contentlet.business.ContentletAPIInterceptor@4f1c1939,perAPI&#x3D;com.dotmarketing.business.PermissionBitAPIImpl@6d87d5fe,fields&#x3D;[com.dotmarketing.portlets.structure.model.Field@47ea8eae[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-0,fieldType&#x3D;com.dotcms.contenttype.model.field.RowField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields0,sortOrder&#x3D;0,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:17 UTC 2022,iDate&#x3D;Fri Jun 01 20:09:57 UTC 2018,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;fdb123f4-52aa-4ac0-b631-cc0308ca51ff,identifier&#x3D;fdb123f4-52aa-4ac0-b631-cc0308ca51ff], com.dotmarketing.portlets.structure.model.Field@46f2bed4[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-1,fieldType&#x3D;com.dotcms.contenttype.model.field.ColumnField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields1,sortOrder&#x3D;1,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:17 UTC 2022,iDate&#x3D;Fri Jun 01 20:09:57 UTC 2018,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;fb2639d0-c6ef-4e66-8cbd-994a1084614e,identifier&#x3D;fb2639d0-c6ef-4e66-8cbd-994a1084614e], com.dotmarketing.portlets.structure.model.Field@6988a2e2[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Host or Folder,fieldType&#x3D;com.dotcms.contenttype.model.field.HostFolderField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text2,required&#x3D;true,velocityVarName&#x3D;hostFolder,sortOrder&#x3D;2,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:17 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;23b5f1be-935e-442e-be48-1cf2d1c96d71,identifier&#x3D;23b5f1be-935e-442e-be48-1cf2d1c96d71], com.dotmarketing.portlets.structure.model.Field@3af3a208[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Title,fieldType&#x3D;com.dotcms.contenttype.model.field.CustomField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text1,required&#x3D;true,velocityVarName&#x3D;title,sortOrder&#x3D;3,values&#x3D;$velutil.mergeTemplate(&#x27;/static/htmlpage_assets/title_custom_field.vtl&#x27;),regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;true,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:17 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;c623cd2f-6653-47d8-9825-1153061ea088,identifier&#x3D;c623cd2f-6653-47d8-9825-1153061ea088], com.dotmarketing.portlets.structure.model.Field@29ffc406[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Url,fieldType&#x3D;com.dotcms.contenttype.model.field.TextField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text3,required&#x3D;true,velocityVarName&#x3D;url,sortOrder&#x3D;4,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;true,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:17 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;a1bfbb4f-b78b-4197-94e7-917f4e812043,identifier&#x3D;a1bfbb4f-b78b-4197-94e7-917f4e812043], com.dotmarketing.portlets.structure.model.Field@7aa8cbf3[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Template,fieldType&#x3D;com.dotcms.contenttype.model.field.CustomField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text5,required&#x3D;true,velocityVarName&#x3D;template,sortOrder&#x3D;5,values&#x3D;$velutil.mergeTemplate(&#x27;/static/htmlpage_assets/template_custom_field.vtl&#x27;),regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;bf73876b-8517-4123-a0ec-d862ba6e8797,identifier&#x3D;bf73876b-8517-4123-a0ec-d862ba6e8797], com.dotmarketing.portlets.structure.model.Field@561bf9f6[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Subtitle,fieldType&#x3D;com.dotcms.contenttype.model.field.TextField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text13,required&#x3D;false,velocityVarName&#x3D;subtitle,sortOrder&#x3D;6,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Mon Aug 05 19:36:33 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;94a72dbc-fa3d-4de0-b8ab-e9f5d6d577e6,identifier&#x3D;94a72dbc-fa3d-4de0-b8ab-e9f5d6d577e6], com.dotmarketing.portlets.structure.model.Field@715fe2df[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Image,fieldType&#x3D;com.dotcms.contenttype.model.field.ImageField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text11,required&#x3D;false,velocityVarName&#x3D;image,sortOrder&#x3D;7,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;Used in Banner or Breadcrumbs,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Mon Aug 05 19:17:15 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;95439019-2411-446b-823d-9904b2d188d1,identifier&#x3D;95439019-2411-446b-823d-9904b2d188d1], com.dotmarketing.portlets.structure.model.Field@26d7c706[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Friendly Name,fieldType&#x3D;com.dotcms.contenttype.model.field.TextField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text7,required&#x3D;false,velocityVarName&#x3D;friendlyName,sortOrder&#x3D;8,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;d8a7431e-140d-4076-bf07-17fdfad6a14e,identifier&#x3D;d8a7431e-140d-4076-bf07-17fdfad6a14e], com.dotmarketing.portlets.structure.model.Field@1a9c677c[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-2,fieldType&#x3D;com.dotcms.contenttype.model.field.RowField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields4,sortOrder&#x3D;9,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Tue Aug 27 20:08:01 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;fa5ddfd5-4a3d-4cc1-8358-255497e16b8e,identifier&#x3D;fa5ddfd5-4a3d-4cc1-8358-255497e16b8e], com.dotmarketing.portlets.structure.model.Field@1341e990[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-3,fieldType&#x3D;com.dotcms.contenttype.model.field.ColumnField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields5,sortOrder&#x3D;10,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Tue Aug 27 20:08:01 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;97f0c9f1-8dad-4fae-bab5-8f3826660091,identifier&#x3D;97f0c9f1-8dad-4fae-bab5-8f3826660091], com.dotmarketing.portlets.structure.model.Field@1d86a83d[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Show on Menu,fieldType&#x3D;com.dotcms.contenttype.model.field.CheckboxField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text6,required&#x3D;false,velocityVarName&#x3D;showOnMenu,sortOrder&#x3D;11,values&#x3D;|true,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;false,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;99ac031c-7d72-4b08-bedd-37a71b594950,identifier&#x3D;99ac031c-7d72-4b08-bedd-37a71b594950], com.dotmarketing.portlets.structure.model.Field@5f1b37c[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-4,fieldType&#x3D;com.dotcms.contenttype.model.field.ColumnField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields6,sortOrder&#x3D;12,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Tue Aug 27 20:08:01 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;14534da0-9ead-4667-b4a4-993d33374fff,identifier&#x3D;14534da0-9ead-4667-b4a4-993d33374fff], com.dotmarketing.portlets.structure.model.Field@7c2f8339[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Sort Order,fieldType&#x3D;com.dotcms.contenttype.model.field.TextField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;integer1,required&#x3D;true,velocityVarName&#x3D;sortOrder,sortOrder&#x3D;13,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;0,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;1677ca4f-e46f-449f-ae59-4952fb567e5e,identifier&#x3D;1677ca4f-e46f-449f-ae59-4952fb567e5e], com.dotmarketing.portlets.structure.model.Field@60bef845[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-5,fieldType&#x3D;com.dotcms.contenttype.model.field.ColumnField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields7,sortOrder&#x3D;14,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Tue Aug 27 20:08:01 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;e6a050cb-22fc-4a13-8646-5b60c25f2972,identifier&#x3D;e6a050cb-22fc-4a13-8646-5b60c25f2972], com.dotmarketing.portlets.structure.model.Field@4851732f[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-6,fieldType&#x3D;com.dotcms.contenttype.model.field.ColumnField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields8,sortOrder&#x3D;15,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Tue Aug 27 20:08:01 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;e58d33b7-17e5-4205-a191-4af292381019,identifier&#x3D;e58d33b7-17e5-4205-a191-4af292381019], com.dotmarketing.portlets.structure.model.Field@4033430a[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;SEO,fieldType&#x3D;com.dotcms.contenttype.model.field.TabDividerField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;seo,sortOrder&#x3D;16,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Mon Oct 08 16:48:13 UTC 2018,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;0ef91b42-2fdf-4711-b9e6-a9a0cf389632,identifier&#x3D;0ef91b42-2fdf-4711-b9e6-a9a0cf389632], com.dotmarketing.portlets.structure.model.Field@4085367e[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-7,fieldType&#x3D;com.dotcms.contenttype.model.field.RowField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields9,sortOrder&#x3D;17,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Fri Mar 15 20:53:12 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;29175adc-271b-4691-ab7b-b40d11e8e408,identifier&#x3D;29175adc-271b-4691-ab7b-b40d11e8e408], com.dotmarketing.portlets.structure.model.Field@576e82fb[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-8,fieldType&#x3D;com.dotcms.contenttype.model.field.ColumnField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields10,sortOrder&#x3D;18,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:18 UTC 2022,iDate&#x3D;Fri Mar 15 20:53:12 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;2a083fcb-ceba-4daf-a6e3-405cd27f1620,identifier&#x3D;2a083fcb-ceba-4daf-a6e3-405cd27f1620], com.dotmarketing.portlets.structure.model.Field@14654b32[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Canonical URL,fieldType&#x3D;com.dotcms.contenttype.model.field.TextField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text10,required&#x3D;false,velocityVarName&#x3D;canonicalUrl,sortOrder&#x3D;19,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Thu May 28 15:26:35 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;95b191a7-a28e-463f-bb0f-e0d36fb40022,identifier&#x3D;95b191a7-a28e-463f-bb0f-e0d36fb40022], com.dotmarketing.portlets.structure.model.Field@4e9461a7[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;SEO Title,fieldType&#x3D;com.dotcms.contenttype.model.field.TextField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text12,required&#x3D;false,velocityVarName&#x3D;seoTitle,sortOrder&#x3D;20,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;The page title should be 55 characters or less. Try to use primary Keyword and secondary keyword separated by a dash in the title.,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Mar 15 20:53:12 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;5971d5e7-3119-4c3e-b01d-0641aca79977,identifier&#x3D;5971d5e7-3119-4c3e-b01d-0641aca79977], com.dotmarketing.portlets.structure.model.Field@274b98cd[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;SEO Title Count,fieldType&#x3D;com.dotcms.contenttype.model.field.CustomField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text_area6,required&#x3D;false,velocityVarName&#x3D;seoTitleCount,sortOrder&#x3D;21,values&#x3D;#set($maxChar &#x3D; 55)\r\n#set($fieldId &#x3D; &#x27;seoTitle&#x27;)\r\n#dotParse(&#x27;/application/vtl/custom-fields/text-count.vtl&#x27;)\r\n&lt;style&gt;#seoDescription_field .editor-toolbar {display: none;}&lt;/style&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Mar 15 20:53:30 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;97f28e49-15ab-40b9-af68-a571d9d86972,identifier&#x3D;97f28e49-15ab-40b9-af68-a571d9d86972], com.dotmarketing.portlets.structure.model.Field@411af85[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;SEO Description,fieldType&#x3D;com.dotcms.contenttype.model.field.TextAreaField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text_area1,required&#x3D;false,velocityVarName&#x3D;seodescription,sortOrder&#x3D;22,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;The SEO description should be 150 characters or less. Do not use quotes or any non-alpha characters.,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;dfc5f28d-d47e-4007-869a-f2d5cfbc3d39,identifier&#x3D;dfc5f28d-d47e-4007-869a-f2d5cfbc3d39], com.dotmarketing.portlets.structure.model.Field@3a9358ee[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;SEO Description Count,fieldType&#x3D;com.dotcms.contenttype.model.field.CustomField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text_area4,required&#x3D;false,velocityVarName&#x3D;seoDescriptionCount,sortOrder&#x3D;23,values&#x3D;#set($maxChar &#x3D; 150)\r\n#set($fieldId &#x3D; &#x27;seodescription&#x27;)\r\n#dotParse(&#x27;/application/vtl/custom-fields/text-count.vtl&#x27;),regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Mar 15 20:55:25 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;67674c15-0825-4c93-b826-af2e0a210625,identifier&#x3D;67674c15-0825-4c93-b826-af2e0a210625], com.dotmarketing.portlets.structure.model.Field@57e79f42[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;SEO Keywords,fieldType&#x3D;com.dotcms.contenttype.model.field.TextAreaField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text_area2,required&#x3D;false,velocityVarName&#x3D;seokeywords,sortOrder&#x3D;24,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;f00b3844-820d-4967-9f8e-0cce68d22b13,identifier&#x3D;f00b3844-820d-4967-9f8e-0cce68d22b13], com.dotmarketing.portlets.structure.model.Field@2c91f883[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Advanced Properties,fieldType&#x3D;com.dotcms.contenttype.model.field.TabDividerField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;advancedtab,sortOrder&#x3D;25,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;1aa4bbc6-d30e-4b43-8f13-d6e8f2a58a52,identifier&#x3D;1aa4bbc6-d30e-4b43-8f13-d6e8f2a58a52], com.dotmarketing.portlets.structure.model.Field@25f51713[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-9,fieldType&#x3D;com.dotcms.contenttype.model.field.RowField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields19,sortOrder&#x3D;26,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Mar 15 20:53:12 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;af75bdd6-21b9-451f-9fb9-abc763dbf4b1,identifier&#x3D;af75bdd6-21b9-451f-9fb9-abc763dbf4b1], com.dotmarketing.portlets.structure.model.Field@5016f6b[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;fields-10,fieldType&#x3D;com.dotcms.contenttype.model.field.ColumnField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;system_field,required&#x3D;false,velocityVarName&#x3D;fields20,sortOrder&#x3D;27,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Mar 15 20:53:12 UTC 2019,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;3c63301e-1f8f-4f5f-b3a6-736a95d69d4d,identifier&#x3D;3c63301e-1f8f-4f5f-b3a6-736a95d69d4d], com.dotmarketing.portlets.structure.model.Field@6ef7ed06[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Custom CSS,fieldType&#x3D;com.dotcms.contenttype.model.field.CustomField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text_area5,required&#x3D;false,velocityVarName&#x3D;customCss,sortOrder&#x3D;28,values&#x3D;&lt;style&gt;\r\n#seodescription_field .editor-toolbar {display: none;}\r\n#seokeywords_field .editor-toolbar {display: none;}\r\n#customCss_tag {display: none;}\r\n&lt;/style&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;false,listed&#x3D;false,fixed&#x3D;false,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Mon Oct 08 17:06:53 UTC 2018,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;1efc9281-0a67-4252-8efd-4927dbeab19c,identifier&#x3D;1efc9281-0a67-4252-8efd-4927dbeab19c], com.dotmarketing.portlets.structure.model.Field@4d0155bb[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Page Metadata,fieldType&#x3D;com.dotcms.contenttype.model.field.TextAreaField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text_area3,required&#x3D;false,velocityVarName&#x3D;pagemetadata,sortOrder&#x3D;29,values&#x3D;&lt;null&gt;,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;c50906a6-dafb-4348-a185-a9334448813c,identifier&#x3D;c50906a6-dafb-4348-a185-a9334448813c], com.dotmarketing.portlets.structure.model.Field@40c18e87[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Redirect Url,fieldType&#x3D;com.dotcms.contenttype.model.field.CustomField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text8,required&#x3D;false,velocityVarName&#x3D;redirecturl,sortOrder&#x3D;30,values&#x3D;$velutil.mergeTemplate(&#x27;/static/htmlpage_assets/redirect_custom_field.vtl&#x27;),regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;ba99667c-87be-44cd-82b6-4aa7bb157ac7,identifier&#x3D;ba99667c-87be-44cd-82b6-4aa7bb157ac7], com.dotmarketing.portlets.structure.model.Field@4e35cbc3[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;Cache TTL,fieldType&#x3D;com.dotcms.contenttype.model.field.CustomField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text4,required&#x3D;true,velocityVarName&#x3D;cachettl,sortOrder&#x3D;31,values&#x3D;$velutil.mergeTemplate(&#x27;/static/htmlpage_assets/cachettl_custom_field.vtl&#x27;),regexCheck&#x3D;^[0-9]+$,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;&lt;null&gt;,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;true,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;e633ab20-0aa1-4ed1-b052-82a711af61df,identifier&#x3D;e633ab20-0aa1-4ed1-b052-82a711af61df], com.dotmarketing.portlets.structure.model.Field@1f7b90de[structureInode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,fieldName&#x3D;HTTPS Required,fieldType&#x3D;com.dotcms.contenttype.model.field.CheckboxField,fieldRelationType&#x3D;&lt;null&gt;,fieldContentlet&#x3D;text9,required&#x3D;false,velocityVarName&#x3D;httpsreq,sortOrder&#x3D;32,values&#x3D;|true,regexCheck&#x3D;&lt;null&gt;,hint&#x3D;&lt;null&gt;,defaultValue&#x3D;false,indexed&#x3D;true,listed&#x3D;false,fixed&#x3D;true,readOnly&#x3D;false,searchable&#x3D;false,unique&#x3D;false,modDate&#x3D;Fri Mar 18 17:41:19 UTC 2022,iDate&#x3D;Fri Jan 16 13:51:06 UTC 2015,type&#x3D;field,owner&#x3D;&lt;null&gt;,inode&#x3D;b0d65eee-b050-4fa2-bcf6-4016dc4e20af,identifier&#x3D;b0d65eee-b050-4fa2-bcf6-4016dc4e20af]],fieldMap&#x3D;&lt;null&gt;,fieldValueMap&#x3D;&lt;null&gt;,user&#x3D;Admin User [ID: dotcms.org.1][email:admin@dotcms.com],EDIT_OR_PREVIEW_MODE&#x3D;true,host&#x3D;demo.dotcms.com,structure&#x3D;com.dotmarketing.portlets.structure.model.Structure@5810b207[name&#x3D;Page,description&#x3D;Default Structure for Pages,defaultStructure&#x3D;false,reviewInterval&#x3D;&lt;null&gt;,reviewerRole&#x3D;&lt;null&gt;,pagedetail&#x3D;&lt;null&gt;,structureType&#x3D;5,fixed&#x3D;true,system&#x3D;false,velocityVarName&#x3D;htmlpageasset,urlMapPattern&#x3D;&lt;null&gt;,host&#x3D;SYSTEM_HOST,folder&#x3D;SYSTEM_FOLDER,publishDateVar&#x3D;&lt;null&gt;,expireDateVar&#x3D;&lt;null&gt;,modDate&#x3D;Fri Mar 18 17:41:20 UTC 2022,icon&#x3D;description,sortOrder&#x3D;0,iDate&#x3D;Thu May 28 11:26:34 UTC 2015,type&#x3D;structure,owner&#x3D;&lt;null&gt;,inode&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8,identifier&#x3D;c541abb1-69b3-4bc5-8430-5e09e5239cc8],title&#x3D;my-test-page,context&#x3D;org.apache.velocity.tools.view.context.ChainedContext@14e9aa34]\r\n&lt;/div&gt;&lt;/div&gt;&quot;},&quot;errors&quot;:[],&quot;i18nMessagesMap&quot;:{},&quot;messages&quot;:[],&quot;permissions&quot;:[]}</code></pre>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-e5ffb61b-0282-4ed4-b936-19b54dee0d26">Copy to Clipboard</button>
+                                        </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                <h5 class="card-title text-uppercase text-white text-center bg-info">Test Information</h5>
+                                    <div class="table-responsive text-nowrap">
+                                        <table id="myTable-e5ffb61b-0282-4ed4-b936-19b54dee0d26" class="table table-hover">
+                                        <thead><tr class="text-center"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th></tr></thead>
+                                            <tbody>
+                                                <tr >
+                                                    <td >Render contentlet in container</td>
+                                                    <td class="text-center bg-success">1</td>
+                                                    <td class="text-center ">0</td>
+                                                    <td class="text-center ">0</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="bg-light">
+                                                    <td><strong>Total</strong></td>
+                                                    <td class="text-center">1</td>
+                                                    <td class="text-center">0</td>
+                                                    <td class="text-center">0</td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="row d-none">
+                                    <div class="col-sm-12 mb-3">
+                                        <div class="card-deck">
+                                        <div class="card border-danger" style="width: 50rem;">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-uppercase text-white text-center bg-danger">Test Failure</h5>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover">
+                                                    <thead><tr class="text-nowrap"><th>Test Name</th><th>Assertion Error</th></tr></thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- Data Table Configuration -->
+
+<script>
+$(document).ready( function () {
+    $('#myTable-d6b13680-dc5e-436d-8dd6-c1578abf626e').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+$(document).ready( function () {
+    $('#myTable-e5ffb61b-0282-4ed4-b936-19b54dee0d26').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false,
+        "fixedColumns":   {
+            "heightMatch": 'none'
+        }
+    });
+});
+</script>
+
+<!-- Tooltip Configuration -->
+
+<script>
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger : 'hover'
+    })
+})
+</script>
+
+<!-- Show/Hide The Folders -->
+
+<script>
+$('#openAll').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#folder-4c97f297-9004-4421-af9f-96b430ebafe6-iteration-0').removeClass('collapsed')
+            $('#folder-collapse-4c97f297-9004-4421-af9f-96b430ebafe6-iteration-0').addClass('show')
+        $('#openAll').html("Collapse Folders");
+        break;
+    case 2:
+            $('#folder-4c97f297-9004-4421-af9f-96b430ebafe6-iteration-0').addClass('collapsed')
+            $('#folder-collapse-4c97f297-9004-4421-af9f-96b430ebafe6-iteration-0').removeClass('show')
+        $('#openAll').html("Expand Folders");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Requests -->
+
+<script>
+$('#openAllRequests').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#requests-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').removeClass('collapsed')
+            $('#collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').removeClass('collapsed')
+            $('#requests-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').addClass('show')
+            $('#collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').addClass('show')
+            $('#requests-6ef14976-c68e-419c-b59e-2786d89a522a').removeClass('collapsed')
+            $('#collapse-6ef14976-c68e-419c-b59e-2786d89a522a').removeClass('collapsed')
+            $('#requests-6ef14976-c68e-419c-b59e-2786d89a522a').addClass('show')
+            $('#collapse-6ef14976-c68e-419c-b59e-2786d89a522a').addClass('show')
+        $('#openAllRequests').html("Collapse Requests");
+        break;
+    case 2:
+            $('#requests-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').addClass('collapsed')
+            $('#collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').addClass('collapsed')
+            $('#requests-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').removeClass('show')
+            $('#collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').removeClass('show')
+            $('#requests-6ef14976-c68e-419c-b59e-2786d89a522a').addClass('collapsed')
+            $('#collapse-6ef14976-c68e-419c-b59e-2786d89a522a').addClass('collapsed')
+            $('#requests-6ef14976-c68e-419c-b59e-2786d89a522a').removeClass('show')
+            $('#collapse-6ef14976-c68e-419c-b59e-2786d89a522a').removeClass('show')
+        $('#openAllRequests').html("Expand Requests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Skipped Tests -->
+
+<script>
+$('#openAllSkipped').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+switch (clickCount){
+    case 1:
+            $('#skipped-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').removeClass('collapsed')
+            $('#skipped-collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').removeClass('collapsed')
+            $('#skipped-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').addClass('show')
+            $('#skipped-collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').addClass('show')
+            $('#skipped-6ef14976-c68e-419c-b59e-2786d89a522a').removeClass('collapsed')
+            $('#skipped-collapse-6ef14976-c68e-419c-b59e-2786d89a522a').removeClass('collapsed')
+            $('#skipped-6ef14976-c68e-419c-b59e-2786d89a522a').addClass('show')
+            $('#skipped-collapse-6ef14976-c68e-419c-b59e-2786d89a522a').addClass('show')
+        $('#openAllSkipped').html("Collapse All Skipped Tests");
+        break;
+    case 2:
+            $('#skipped-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').addClass('collapsed')
+            $('#skipped-collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').addClass('collapsed')
+            $('#skipped-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').removeClass('show')
+            $('#skipped-collapse-7e26aa90-31d5-4c5b-9a0c-03ed3473047c').removeClass('show')
+            $('#skipped-6ef14976-c68e-419c-b59e-2786d89a522a').addClass('collapsed')
+            $('#skipped-collapse-6ef14976-c68e-419c-b59e-2786d89a522a').addClass('collapsed')
+            $('#skipped-6ef14976-c68e-419c-b59e-2786d89a522a').removeClass('show')
+            $('#skipped-collapse-6ef14976-c68e-419c-b59e-2786d89a522a').removeClass('show')
+        $('#openAllSkipped').html("Expand All Skipped Tests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Show/Hide The Failures -->
+
+<script>
+$('#openAllFailed').on('click', function(e) {
+let clickCount = $(this).data("clickCount") || 1
+let failedItemContent
+let failedItemHeading
+switch (clickCount){
+    case 1:
+        $('#openAllFailed').html("Collapse All Failed Tests");
+        break;
+    case 2:
+        $('#openAllFailed').html("Expand All Failed Tests");
+        break;
+}
+clickCount = clickCount > 1 ? 1 : ++clickCount;
+$(this).data("clickCount", clickCount)
+})
+</script>
+
+<!-- Pretty Print the Response Body-->
+
+<script>
+function isJSON(data)
+{
+    var ret = true;
+    try {
+            JSON.parse(data);
+    }catch(e) {
+            ret = false;
+    }
+    return ret;
+}
+
+function isXML(data)
+{
+    return (data.length > 0 && data[0] === '<');
+}
+
+// see https://gist.github.com/sente/1083506/d2834134cd070dbcc08bf42ee27dabb746a1c54d#gistcomment-2254622
+function formatXML(data) {
+    const PADDING = ' '.repeat(2); // set desired indent size here
+    const reg = /(>)(<)(\/*)/g;
+    let pad = 0;
+    xml = data.replace(reg, '$1\r\n$2$3');
+
+    return xml.split('\r\n').map((node, index) => {
+        let indent = 0;
+        if (node.match(/.+<\/\w[^>]*>$/)) {
+            indent = 0;
+        } else if (node.match(/^<\/\w/) && pad > 0) {
+            pad -= 1;
+        } else if (node.match(/^<\w[^>]*[^\/]>.*$/)) {
+            indent = 1;
+        } else {
+            indent = 0;
+        }
+
+        pad += indent;
+        return PADDING.repeat(pad - indent) + node;
+    }).join('\r\n');
+}
+
+$(".prettyPrint").each(function () {
+        var data = $(this).text();
+        // Verify whether data is JSON
+        if(isJSON(data))
+        {
+                obj = JSON.parse(data);
+                data = JSON.stringify(obj, null, 2);
+        }
+        else if(isXML(data)) {
+            data = formatXML(data);            
+        }
+        $(this).text(data);
+});
+</script>
+
+
+<!-- Copy Response Body To Clipboard -->
+
+<script>
+    var clipboard = new ClipboardJS('.copyButton');
+
+    clipboard.on('success', function(e) {
+        e.clearSelection();
+        $(".copyButton").addClass("bg-success text-white")
+        e.trigger.textContent = '✔ Copied!';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-success text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+    clipboard.on('error', function(e) {
+        e.clearSelection();
+        $(".copyButton").addClass("bg-danger text-white")
+        e.trigger.textContent = '✗ Not Copied';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-danger text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+
+</script>
+
+<!-- Render the Description Markdown and link in the test failures -->
+
+<script>
+    const remarkable = new Remarkable();
+
+    const descriptions = document.querySelectorAll(".renderMarkdown");
+    descriptions.forEach(description => {
+        description.innerHTML = renderHtmlFromMarkdown(description.textContent);
+    });
+    function renderHtmlFromMarkdown(markdown) {
+        return remarkable.render(trim(markdown));
+    }
+    function trim(string) {
+        return string ? string.replace(/^ +| +$/gm, "") : string;
+    }
+</script>
+
+<!-- Show/Hide The Toggles When Scrolling The Page -->
+
+<script>
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("topOfRequestsScreen").style.display = "block";
+    document.getElementById("topOfFailuresScreen").style.display = "block";
+    document.getElementById("topOfSkippedScreen").style.display = "block";
+    document.getElementById("openAll").style.display = "none";
+    document.getElementById("openAllRequests").style.display = "none";
+    
+    
+  } else {
+    document.getElementById("topOfRequestsScreen").style.display = "none";
+    document.getElementById("topOfFailuresScreen").style.display = "none";
+    document.getElementById("topOfSkippedScreen").style.display = "none";
+    document.getElementById("openAll").style.display = "block";
+    document.getElementById("openAllRequests").style.display = "block";
+    
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+<!-- Creates The Iteration Tabs -->
+
+<script type="text/javascript">
+    "use strict";
+
+window.onload = function () {
+
+  // set display for all blocks of response
+  var allItems = document.querySelectorAll('[class*=iteration-]');
+  allItems.forEach(function(elem){
+    elem.style.display = 'block';
+  });
+
+   
+  let totalIterations = 1;
+   
+
+  let menu = document.querySelector('#execution-menu .nav');
+
+  for(var i = 0; i < totalIterations; i++)
+  {
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode((i + 1)));
+    li.setAttribute('id', 'iteration-' + i);
+    li.classList.add("custom-tab");
+    li.classList.add("itPassed");
+
+    li.addEventListener('click', function() {
+      //set display to none for all except row
+      let allItems = document.querySelectorAll('[class*=iteration-]:not(.row)');
+      allItems.forEach(function(elem) {
+        elem.style.display = 'none';
+      })
+
+      let allMenus = document.querySelectorAll('[id*=iteration-]');
+      allMenus.forEach(function(elem){
+        elem.style.borderBottom = 'none';
+      })
+    
+      this.style.borderBottom = 'solid 3px #032a33';
+
+      let items = document.querySelectorAll("." + this.id + ':not(.row)');
+      items.forEach(function(elem) {
+        elem.style.display = elem.style.display == 'block' ? 'none' : 'block';
+      })
+    });
+    menu.appendChild(li);
+  }
+
+  //shows first tab data
+  document.getElementById('iteration-0').click();
+  document.getElementById('iterationSelected').innerHTML = `Iteration ${document.getElementById('iteration-0').innerHTML} selected`
+
+}
+</script>
+
+<!-- Create the Selected Iteration Label -->
+
+<script>
+$(document).ready(function(){
+    $(function() {
+        $("#iterationList li").click(function() {
+            document.getElementById('iterationSelected').innerHTML = "Iteration " + this.innerHTML + " selected"
+        });
+    });
+});
+</script>
+
+<!-- Filter Action for the Iterations -->
+
+<script>
+$("#filterInput").on("input paste", function() {
+    var value = $(this).val();
+    $("#iterationList li").filter(function() {
+	    $("#showOnlyFailures").data("clickCount") ? $("#showOnlyFailures").click():null;
+        $(this).toggle($(this).text().indexOf(value) > -1)
+    });
+});
+</script>
+
+<!-- Showing the Failed Interations -->
+
+<script>
+$('#showOnlyFailures').on('click', function(e) {
+    let clickCount = $(this).data("clickCount") || 1
+	$("#filterInput").val()!="" && clickCount==1 ? $("#filterInput").val('').trigger('input'): null;
+    let selectedIteration = $('#iterationList li').filter(function () { 
+        return $(this).css('border-bottom').indexOf("solid") > -1 && $(this).hasClass('itFailed');
+    });
+    selectedIteration.length || clickCount > 1 ? null : $("#iterationList li.itFailed")[0].click()
+    $("#iterationList li.itPassed").toggle()
+    $("div.bg-success [id*=requests]").parents('[class^="row iteration-"]').toggle();
+    clickCount = clickCount > 1 ? 1 : ++clickCount;
+    clickCount > 1 ? $("#showOnlyFailures").html("Show All Iterations") : $("#showOnlyFailures").html("Show Failed Iterations");
+    $(this).data("clickCount", clickCount)     
+})
+</script>
+
+<!-- Set The Theme Of The Report -->
+
+<script>
+        function setTheme(themeName) {
+            localStorage.setItem('theme', themeName);
+            document.body.className = themeName;
+        }
+
+        function toggleTheme() {
+            if (localStorage.getItem('theme') === 'theme-light') {
+                setTheme('theme-dark');
+            } else {
+                setTheme('theme-light');
+            }
+        }
+
+        (function () {
+            if (localStorage.getItem('theme') === 'theme-light') {
+                setTheme('theme-light');
+                document.getElementById('slider').checked = false;
+            } else {
+                setTheme('theme-dark');
+                document.getElementById('slider').checked = true;
+            }
+        })();
+</script>
